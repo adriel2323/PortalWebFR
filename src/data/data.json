@@ -1,0 +1,197 @@
+{
+    "sections":[ {
+        "general": [
+            {
+                "id":1,
+                "titulo": "Quienes somos",
+                "link":"/quienessomos",
+                "icon":"faGear"           
+            },
+            {
+                "id":2,
+                "titulo": "Novedades",
+                "link":"/",
+                "icon":"fa-solid fa-gear"            
+            },
+            {
+                "id":3,
+                "titulo": "Contactos",
+                "link":"/contactos",
+                "icon":"fa-solid fa-gear"          
+            },
+            {
+                "id":4,
+                "titulo": "Prestadores",
+                "link":"/prestadores",
+                "icon":"fa-solid fa-gear"            
+            },
+            {
+                "id":5,
+                "titulo": "Obra social",
+                "link":"/obrasocial",
+                "icon":"fa-solid fa-gear"           
+            },
+            {
+                "id":6,
+                "titulo": "Pacientes",
+                "link":"/pacientes",
+                "icon":"fa-solid fa-gear"           
+            },
+            {
+                "id":7,
+                "titulo": "RR.HH.",
+                "link":"/rrhh",
+                "icon":"fa-solid fa-gear"           
+            }
+        ],
+        "pacientes": [
+            
+            {
+                "id":2,
+                "titulo": "Novedades",
+                "link":"/",
+                "icon":"fa-solid fa-gear"            
+            },
+            {
+                "id":3,
+                "titulo": "Contactos",
+                "link":"/contactos",
+                "icon":"fa-solid fa-gear"          
+            },
+            {
+                "id":4,
+                "titulo": "Prestadores",
+                "link":"/prestadores",
+                "icon":"fa-solid fa-gear"            
+            },
+            {
+                "id":5,
+                "titulo": "Obra social",
+                "link":"/obrasocial",
+                "icon":"fa-solid fa-gear"           
+            },
+            {
+                "id":7,
+                "titulo": "RR.HH.",
+                "link":"/rrhh",
+                "icon":"fa-solid fa-gear"           
+            }
+        ],
+        "os": [
+            
+            {
+                "id":3,
+                "titulo": "Novedades",
+                "link":"/",
+                "icon":""            
+            },
+            {
+                "id":4,
+                "titulo": "Contactos",
+                "link":"/contactos",
+                "icon":""            
+            },
+            {
+                "id":5,
+                "titulo": "Prestadores",
+                "link":"/prestadores",
+                "icon":""            
+            },
+           
+            {
+                "id":5,
+                "titulo": "Pacientes",
+                "link":"/pacientes",
+                "icon":""            
+            }
+        ],
+        "prestadores": [
+            
+            {
+                "id":1,
+                "titulo": "Novedades",
+                "link":"/",
+                "icon":""            
+            },
+            {
+                "id":2,
+                "titulo": "Contactos",
+                "link":"/contactos",
+                "icon":""            
+            },
+            {
+                "id":3,
+                "titulo": "Obra social",
+                "link":"/obrasocial",
+                "icon":""            
+            },
+            {
+                "id":4,
+                "titulo": "Pacientes",
+                "link":"/pacientes",
+                "icon":""            
+            },
+            {
+                "id":5,
+                "titulo": "RR.HH.",
+                "link":"/rrhh",
+                "icon":"fa-solid fa-gear"           
+            }
+        ],
+        "rrhh": [
+            
+            {
+                "id":1,
+                "titulo": "Quienes somos",
+                "link":"/quienessomos",
+                "icon":"faGear"           
+            },
+            {
+                "id":2,
+                "titulo": "Novedades",
+                "link":"/",
+                "icon":"fa-solid fa-gear"            
+            },
+            {
+                "id":3,
+                "titulo": "Contactos",
+                "link":"/contactos",
+                "icon":"fa-solid fa-gear"          
+            },
+            {
+                "id":4,
+                "titulo": "Prestadores",
+                "link":"/prestadores",
+                "icon":"fa-solid fa-gear"            
+            },
+            {
+                "id":5,
+                "titulo": "Obra social",
+                "link":"/obrasocial",
+                "icon":"fa-solid fa-gear"           
+            },
+            {
+                "id":6,
+                "titulo": "Pacientes",
+                "link":"/pacientes",
+                "icon":"fa-solid fa-gear"           
+            }
+          
+        ]
+    }],
+    "logos": [
+        {"fnsr":"link"},
+        {"uom":"link"}
+
+    ],
+    "botones":[
+        {
+
+        }
+    ],
+    "formularioTipo":{
+        
+    }
+    
+}
+
