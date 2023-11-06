@@ -1,5 +1,5 @@
 import axios from "axios";
-export const Apiurl= "http://localhost:3001/api/";
+export const Apiurl= "http://10.84.3.225:3001/api/";
 
 export async function cargarNovedad(form){
 

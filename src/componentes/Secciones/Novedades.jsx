@@ -10,7 +10,7 @@ const Novedades=({usuarios})=>{
     const usuario=usuarios
 
     useEffect(()=>{
-        fetch("http://localhost:3001/api/novedades/"+usuario)
+        fetch(Apiurl+"/api/novedades/"+usuario)
         
         .then(response=>response.json())
         .then(response=>{
