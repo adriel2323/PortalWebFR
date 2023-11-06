@@ -8,9 +8,10 @@ const Novedades=({usuarios})=>{
     const [novedades, setNovedades]= useState([])
     const [isLoad,setIsLoad]= useState(false);
     const usuario=usuarios
+    console.log(Apiurl+"/api/novedades/"+usuari);
 
     useEffect(()=>{
-        fetch("http://localhost:3001/api/novedades/"+usuario)
+        fetch(Apiurl+"/api/novedades/"+usuario)
         
         .then(response=>response.json())
         .then(response=>{

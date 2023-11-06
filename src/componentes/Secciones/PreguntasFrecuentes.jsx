@@ -1,6 +1,7 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
 import React,{useEffect, useState} from 'react'
+import { Apiurl } from '../../services/apiPortal';
 
 export default function Example() {
 
@@ -8,7 +9,7 @@ export default function Example() {
   const [isLoad,setIsLoad]=useState(false);
 
   useEffect(()=>{
-    fetch("http://localhost:3001/api/preguntas")
+    fetch(Apiurl+"/api/preguntas")
     
     .then(response=>response.json())
     .then(response=>{
