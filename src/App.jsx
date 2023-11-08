@@ -11,16 +11,18 @@ import PaginaGestionNov from './componentes/Secciones/FormulariosNovedades/Pagin
 import Declaracion from "./componentes/RRHH/DeclaracionJurada/Declaracion"
 import ArchivosU from './componentes/visualizadorArchivos/ArchivoU'
 import Afiliaciones from './componentes/ObraSocial/Afiliaciones'
-import { Routes,Route } from 'react-router-dom';
+import { Routes,Route,Switch } from 'react-router-dom';
 import NotFound from './Pages/NotFound'
 
 export const PerfilContext= createContext();
 
 function App() {
+
   const [CurrentPath, setCuerrentPath]= useState(window.location.pathname)
   const [login,setLogin]= useState(false);
   const [permisos,setPermisos]=useState({});
   const[usuario,setUsuario]=useState({algo:"algo"});
+console.log(CurrentPath);
 
   const [verModalNovedad,setVerModalNovedad]=useState(false)
   const [novedad,setNovedad]=useState();
@@ -138,8 +140,9 @@ function App() {
     <PerfilContext.Provider value={{
           abrirCerrarCartilla,permisosOsAdmin, setPermisosOsAdmin, cartillaOpen, login, setLogin, usuario, setUsuario, permisos,setPermisos, permisosAdministradorPersonal, setPermisosAdministradorPersonal,setPermisosAdministradorTotal,setPermisosPersonal,setPermisosPrestadores,setPermisosRrhh,permisosAdministradorTotal,permisosPersonal,permisosPrestadores,permisosRrhh, quitarPermisos
         }}>
-      <Routes>
-          <Route path='/' element={<HomeGeneral usuarios= {"general"} />} />
+    <Switch>	
+      	<Routes>
+          
           <Route path='/prestadores' element={<HomePrestadores usuarios= "prestadores" />} />
           <Route path='/pacientes' element={<HomePacientes usuarios= {"pacientes"}/>} />
           <Route path='/rrhh' element={<HomeRH usuarios= {"rrhh"}/>} />
@@ -150,8 +153,11 @@ function App() {
           <Route path='/rrhh/buscar' element={<BuscarCV usuarios= {"rrhh"}/>} />
           <Route path='/rrhh/declaracion' element={<Declaracion usuarios= {"rrhh"}/>} />
           <Route path='/admin/nov' element={<PaginaGestionNov usuarios= {"general"}/>} />
-          <Route path='*' element={<NotFound usuarios= {"general"}/>} />
-      </Routes>
+	  <Route path='/' element={<HomeGeneral usuarios= {"general"} />} />
+	  <Route path='*' element={<NotFound usuarios= {"general"}/>} />
+         
+      	</Routes>
+    </Switch>
     </PerfilContext.Provider>
 
       

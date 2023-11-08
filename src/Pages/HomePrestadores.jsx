@@ -12,7 +12,7 @@ import { useContext,useState,useEffect } from "react";
 
 
 const HomePrestadores =({usuarios})=>{
-    
+    conlole.log("algo pasa")
     const {login,usuario,permisosPrestadores}= useContext(PerfilContext)
     useEffect(()=>{
 
@@ -24,6 +24,7 @@ const HomePrestadores =({usuarios})=>{
     
     return(
         <>
+<h1>Algo pasa</h1>
             <div className="normalize font-mont  " >
                 <Secciones usuarios={usuarios}/>
                 <Carrusel className="" usuarios={usuarios}/>
