@@ -11,7 +11,7 @@ import PaginaGestionNov from './componentes/Secciones/FormulariosNovedades/Pagin
 import Declaracion from "./componentes/RRHH/DeclaracionJurada/Declaracion"
 import ArchivosU from './componentes/visualizadorArchivos/ArchivoU'
 import Afiliaciones from './componentes/ObraSocial/Afiliaciones'
-import { Routes,Route, Switch} from 'react-router-dom';
+import { Routes,Route} from 'react-router-dom';
 import NotFound from './Pages/NotFound'
 
 export const PerfilContext= createContext();
@@ -120,7 +120,6 @@ function App() {
     <PerfilContext.Provider value={{
           abrirCerrarCartilla,permisosOsAdmin, setPermisosOsAdmin, cartillaOpen, login, setLogin, usuario, setUsuario, permisos,setPermisos, permisosAdministradorPersonal, setPermisosAdministradorPersonal,setPermisosAdministradorTotal,setPermisosPersonal,setPermisosPrestadores,setPermisosRrhh,permisosAdministradorTotal,permisosPersonal,permisosPrestadores,permisosRrhh, quitarPermisos
         }}>
-      <Switch>
         <Routes>
             <Route path='/' element={<HomeGeneral usuarios= {"general"} />} />
             <Route path='/prestadores' element={<HomePrestadores usuarios= "prestadores" />} />
@@ -135,7 +134,7 @@ function App() {
             <Route path='/admin/nov' element={<PaginaGestionNov usuarios= {"general"}/>} />
             <Route path='*' element={<NotFound usuarios= {"general"}/>} />
         </Routes>
-      </Switch>
+      
     </PerfilContext.Provider>
 
       
