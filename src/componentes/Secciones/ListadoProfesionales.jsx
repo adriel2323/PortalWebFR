@@ -22,7 +22,7 @@ const Novedades=({usuarios})=>{
         })
         .catch(error=>console.log(error))
 
-        fetch(Apiurl+"api/clinica/personal/lista/especialidades")
+        fetch(Apiurl+"clinica/personal/lista/especialidades")
         // fetch("http://localhost:3001/api/novedades/"+usuario)
         
         .then(response=>response.json())
@@ -30,7 +30,10 @@ const Novedades=({usuarios})=>{
           
         //   setNovedades(response.novedades)
           setEspecialidades(response.result)
-          setIsLoad(true)
+          if(result!=undefined){
+
+              setIsLoad(true)
+          }
         })
         .catch(error=>console.log(error))
         
@@ -73,6 +76,17 @@ const Novedades=({usuarios})=>{
                     }
                 </ul>
             </div>
+                )
+            }
+            {
+                !isLoad && (
+                    
+                        <li >
+                            <h1 key="1" className="text-secondary text-lg font-semibold">
+                                No se encontraron especialidades
+                            </h1>
+                        </li>
+                    
                 )
             }
            
