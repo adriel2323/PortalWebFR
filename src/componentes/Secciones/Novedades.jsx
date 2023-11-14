@@ -30,7 +30,8 @@ const Novedades=({usuarios})=>{
       },[])
    
      
-   
+    console.log(novedades);
+    console.log(isLoad);
     return(
         < div className="lg:mx-52 mx-10 mb-5">
             
@@ -38,8 +39,8 @@ const Novedades=({usuarios})=>{
             <p className=" text-base font-light text-center mb-10">Enterate de las novedades sobre mejoras en sistemas, regulaciones y temas de interes</p>
             {
                 isLoad && (
-                    <div className="">
-                <ul className="grid grid-cols-1 lg:grid-cols-3  h-[35rem] w-full bg-white  ">
+                <div className="">
+                    <ul className="grid grid-cols-1 lg:grid-cols-3  h-[35rem] w-full bg-white  ">
                     
                     {   
                         novedades.map(novedad=>(
