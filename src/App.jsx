@@ -11,17 +11,13 @@ import PaginaGestionNov from './componentes/Secciones/FormulariosNovedades/Pagin
 import Declaracion from "./componentes/RRHH/DeclaracionJurada/Declaracion"
 import ArchivosU from './componentes/visualizadorArchivos/ArchivoU'
 import Afiliaciones from './componentes/ObraSocial/Afiliaciones'
-<<<<<<< HEAD
-import { Routes,Route,Switch } from 'react-router-dom';
-=======
-import { Routes,Route, Switch} from 'react-router-dom';
->>>>>>> 572004ce9f75a8f372055b3a225e1cad8bb77cd5
+import { Routes,Route} from 'react-router-dom';
 import NotFound from './Pages/NotFound'
 
 export const PerfilContext= createContext();
 
 function App() {
-
+console.log(HomePrestadores);
   const [CurrentPath, setCuerrentPath]= useState(window.location.pathname)
   const [login,setLogin]= useState(false);
   const [permisos,setPermisos]=useState({});
@@ -125,28 +121,7 @@ console.log(CurrentPath);
     <main className='text-mygray general '>
     <PerfilContext.Provider value={{
           abrirCerrarCartilla,permisosOsAdmin, setPermisosOsAdmin, cartillaOpen, login, setLogin, usuario, setUsuario, permisos,setPermisos, permisosAdministradorPersonal, setPermisosAdministradorPersonal,setPermisosAdministradorTotal,setPermisosPersonal,setPermisosPrestadores,setPermisosRrhh,permisosAdministradorTotal,permisosPersonal,permisosPrestadores,permisosRrhh, quitarPermisos
-        }}>
-<<<<<<< HEAD
-    <Switch>	
-      	<Routes>
-          
-          <Route path='/prestadores' element={<HomePrestadores usuarios= "prestadores" />} />
-          <Route path='/pacientes' element={<HomePacientes usuarios= {"pacientes"}/>} />
-          <Route path='/rrhh' element={<HomeRH usuarios= {"rrhh"}/>} />
-          <Route path='/obrasocial' element={<HomeOs usuarios= {"os"}/>} />
-          <Route path='/obrasocial/afiliaciones' element={<Afiliaciones usuarios= {"os"}/>} />
-          <Route path='/archivos' element={<ArchivosU usuarios= {"rrhh"}/>} />
-          <Route path='/rrhh/cv' element={<FormularioCV usuarios= {"rrhh"}/>} />
-          <Route path='/rrhh/buscar' element={<BuscarCV usuarios= {"rrhh"}/>} />
-          <Route path='/rrhh/declaracion' element={<Declaracion usuarios= {"rrhh"}/>} />
-          <Route path='/admin/nov' element={<PaginaGestionNov usuarios= {"general"}/>} />
-	  <Route path='/' element={<HomeGeneral usuarios= {"general"} />} />
-	  <Route path='*' element={<NotFound usuarios= {"general"}/>} />
-         
-      	</Routes>
-    </Switch>
-=======
-      <Switch>
+        }}>	
         <Routes>
             <Route path='/' element={<HomeGeneral usuarios= {"general"} />} />
             <Route path='/prestadores' element={<HomePrestadores usuarios= "prestadores" />} />
@@ -161,8 +136,6 @@ console.log(CurrentPath);
             <Route path='/admin/nov' element={<PaginaGestionNov usuarios= {"general"}/>} />
             <Route path='*' element={<NotFound usuarios= {"general"}/>} />
         </Routes>
-      </Switch>
->>>>>>> 572004ce9f75a8f372055b3a225e1cad8bb77cd5
     </PerfilContext.Provider>
 
       

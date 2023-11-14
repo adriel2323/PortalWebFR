@@ -1,5 +1,5 @@
 import axios from "axios";
-export const Apiurl= "http://10.84.3.225:3001/api/";
+export const Apiurl= "http://publica.fnsr.com.ar:3002/api/";
 
 export async function cargarNovedad(form){
 

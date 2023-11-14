@@ -6,7 +6,7 @@ import Novedades from "../componentes/Secciones/Novedades";
 import Footer from "../componentes/Footer/Footer"
 import ContactoInterno from "../componentes/Prestadores/ContactoInterno"
 import { PerfilContext } from "../App";
-import { useContext,useState,useEffect } from "react";
+import { useContext,useState } from "react";
 
 
 
@@ -17,13 +17,10 @@ const HomePrestadores =({usuarios})=>{
     useEffect(()=>{
 
     },[permisosPrestadores])
-
-    console.log( "este es el permiso: ", permisosPrestadores);
-    
-    
     
     return(
         <>
+<h1>Algo pasa</h1>
             <div className="normalize font-mont  " >
                 <Secciones usuarios={usuarios}/>
                 <Carrusel className="" usuarios={usuarios}/>

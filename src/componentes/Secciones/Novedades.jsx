@@ -8,10 +8,10 @@ const Novedades=({usuarios})=>{
     const [novedades, setNovedades]= useState([])
     const [isLoad,setIsLoad]= useState(false);
     const usuario=usuarios
-    console.log(Apiurl+"/api/novedades/"+usuari);
+    console.log(Apiurl+"/api/novedades/"+usuario);
 
     useEffect(()=>{
-        fetch(Apiurl+"/api/novedades/"+usuario)
+        fetch(Apiurl+"/novedades/"+usuario)
         
         .then(response=>response.json())
         .then(response=>{
