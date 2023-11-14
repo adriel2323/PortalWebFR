@@ -18,7 +18,7 @@ const Novedades=({usuarios})=>{
         .then(response=>{
           
           setNovedades(response.novedades)
-          if(response!=undefined){
+          if(novedades !=undefined){
               setIsLoad(true)
           }
         })
