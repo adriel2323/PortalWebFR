@@ -18,11 +18,11 @@ const Novedades=({usuarios})=>{
         .then(response=>{
           
           setNovedades(response.novedades)
-          if(novedades !=undefined){
-              setIsLoad(true)
+          if(novedades != undefined){
+              setIsLoad(false)
           }else{
-            setIsLoad(false)
-            setNovedades([])
+            setIsLoad(true)
+            
           }
         })
         .catch(error=>console.log(error))
