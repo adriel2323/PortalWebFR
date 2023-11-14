@@ -10,7 +10,7 @@ const Novedades=({usuarios})=>{
     
 
     useEffect(()=>{
-        fetch("http://localhost:3001/api/clinica/personal/lista/profesionales")
+        fetch(Apiurl+"clinica/personal/lista/profesionales")
         // fetch("http://localhost:3001/api/novedades/"+usuario)
         
         .then(response=>response.json())
@@ -22,7 +22,7 @@ const Novedades=({usuarios})=>{
         })
         .catch(error=>console.log(error))
 
-        fetch("http://localhost:3001/api/clinica/personal/lista/especialidades")
+        fetch(Apiurl+"api/clinica/personal/lista/especialidades")
         // fetch("http://localhost:3001/api/novedades/"+usuario)
         
         .then(response=>response.json())
