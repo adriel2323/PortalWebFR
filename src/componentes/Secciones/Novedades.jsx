@@ -20,6 +20,9 @@ const Novedades=({usuarios})=>{
           setNovedades(response.novedades)
           if(novedades !=undefined){
               setIsLoad(true)
+          }else{
+            setIsLoad(false)
+            setNovedades([])
           }
         })
         .catch(error=>console.log(error))
