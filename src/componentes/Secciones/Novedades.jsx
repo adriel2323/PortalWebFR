@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Apiurl } from "../../services/apiPortal";
 import { PerfilContext } from "../../App";
+import { Link } from "react-router-dom";
 
 const Novedades=({usuarios})=>{
     const {verNovedad}= useContext(PerfilContext)
@@ -8,7 +9,7 @@ const Novedades=({usuarios})=>{
     const [novedades, setNovedades]= useState([])
     const [isLoad,setIsLoad]= useState(false);
     const usuario=usuarios
-    console.log(Apiurl+"/api/novedades/"+usuario);
+    const textoGenerico= "Busca en nuestro portal las ultimas noticias.."
 
     useEffect(()=>{
         fetch(Apiurl+"/novedades/"+usuario)
@@ -17,7 +18,9 @@ const Novedades=({usuarios})=>{
         .then(response=>{
           
           setNovedades(response.novedades)
-          setIsLoad(true)
+          if(response!=undefined){
+              setIsLoad(true)
+          }
         })
         .catch(error=>console.log(error))
         
@@ -35,7 +38,7 @@ const Novedades=({usuarios})=>{
                     <div className="">
                 <ul className="grid grid-cols-1 lg:grid-cols-3  h-[35rem] w-full bg-white  ">
                     
-                    {
+                    {   
                         novedades.map(novedad=>(
                             
                             <>
@@ -65,6 +68,29 @@ const Novedades=({usuarios})=>{
                 </ul>
             </div>
                 )
+                
+            }
+            {
+                !isLoad && (
+                    <Link to="/">
+                        <li key="1" >
+                                    <div  className="flex lg:flex-col  w-full justify-between  p-5 " >
+                                    {/* <div onClick={verNovedad(novedad.id)} className="flex lg:flex-col  w-full justify-between  p-5 " href={novedad.link}> */}
+                                        <div className=" mr-4 lg:mr-0 w-10/12  aspect-square  ">
+                                            <img src={(Apiurl+ "novedades/imagenes/imageDefault")} alt=""className=" rounded-md  h-full aspect-square object-cover" />
+                                        </div>
+                                        <h4 className="hidden lg:flex text-gray-400">{"..."}</h4>
+
+                                        <div className=" w-full text-rigth h-[5rem] ">
+                                            
+                                            <h2 className="text-secondary text-lg font-semibold">{"Ultimas noticias"}</h2>
+                                            <p className=" sm:hidden md:flex md:text-sm h-full overflow-hidden ">{textoGenerico.slice(0,130)} ...</p>
+                                            <h4 className="lg:hidden text-gray-400">{"..."}</h4>
+                                        </div>
+                                    </div>
+                                </li>
+                    </Link>
+                    )
             }
            
         </div>
