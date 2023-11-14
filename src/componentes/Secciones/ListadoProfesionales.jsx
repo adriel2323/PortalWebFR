@@ -30,7 +30,7 @@ const Novedades=({usuarios})=>{
           
         //   setNovedades(response.novedades)
           setEspecialidades(response.result)
-          if(result!=undefined){
+          if(especialidades!=undefined){
 
               setIsLoad(true)
           }
