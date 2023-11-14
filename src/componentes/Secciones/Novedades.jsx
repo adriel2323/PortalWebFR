@@ -78,7 +78,7 @@ const Novedades=({usuarios})=>{
                 !isLoad && (
                     <Link to="/">
                         <li key="1" >
-                                    <div  className="flex lg:flex-col  w-full justify-between  p-5 " >
+                                    <div  className="flex lg:flex-col  w-1/4 justify-start  p-5 " >
                                     {/* <div onClick={verNovedad(novedad.id)} className="flex lg:flex-col  w-full justify-between  p-5 " href={novedad.link}> */}
                                         <div className=" mr-4 lg:mr-0 w-10/12  aspect-square  ">
                                             <img src={(Apiurl+ "novedades/imagenes/imageDefault")} alt=""className=" rounded-md  h-full aspect-square object-cover" />
