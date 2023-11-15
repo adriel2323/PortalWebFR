@@ -10,7 +10,7 @@ const Nosotros =( )=>{
                 Sanatorio de alta complejidad ubicado estratégicamente en el corazón de la ciudad. Equipado con tecnología de vanguardia de las mejores marcas y personal de profesionales capacitados para brindar el mejor servicio.
                 </p>
                 <div className="w-full lg:w-full ">
-                    <img className="w-full h-full object-cover object-right-top rounded-full" src="../../../public/imagenes/general.jpeg" alt="" />
+                    <img className="w-full h-full aspec-square object-cover object-right-top " src="../../../public/imagenes/general.jpeg" alt="" />
                 </div>
             </div>
         </div>
