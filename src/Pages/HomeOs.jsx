@@ -9,6 +9,7 @@ import {  createContext,useContext,useEffect } from "react";
 import BuscarCartilla from "../componentes/ObraSocial/Cartilla/BuscarCartilla";
 import { PerfilContext } from "../App";
 import { apiBusquedas } from "../services/apiPortal";
+import Novedades from "../componentes/Secciones/Novedades";
 
 export const OsContext= createContext();
 
@@ -44,6 +45,7 @@ const HomeOs =({usuarios})=>{
                         {!permisosOsAdmin && <OsBotones />}
                         {cartillaOpen && <BuscarCartilla urlBusquedas={urlBusquedas} selectores={selectores} />}
                         <Nosotros/>
+                        <Novedades/>
                         <DatosSanatorio/>
                     </div>
                     <Footer/>

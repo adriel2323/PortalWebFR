@@ -1,5 +1,10 @@
 import axios from "axios";
-export const Apiurl= "http://publica.fnsr.com.ar:3002/api/";
+//export const Apiurl= "http://publica.fnsr.com.ar:3002/api/";
+export const Apiurl= "http://localhost:3000/api/";
+
+export const MESSAGES= {
+    SIN_RESULTADOS_MESSAGE: "No se encontraron resultados de la busqueda"
+}
 
 export async function cargarNovedad(form){
 

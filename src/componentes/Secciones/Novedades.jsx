@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Apiurl } from "../../services/apiPortal";
+import { Apiurl,MESSAGES } from "../../services/apiPortal";
 import { PerfilContext } from "../../App";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const Novedades=({usuarios})=>{
     const [isLoad,setIsLoad]= useState(false);
     const usuario=usuarios
     const textoGenerico= "Busca en nuestro portal las ultimas noticias.."
-
+    
     useEffect(()=>{
         fetch(Apiurl+"/novedades/"+usuario)
         
@@ -18,20 +18,19 @@ const Novedades=({usuarios})=>{
         .then(response=>{
           
           setNovedades(response.novedades)
-          if(novedades != undefined){
-              setIsLoad(false)
+          console.log(response);
+          console.log(MESSAGES.SIN_RESULTADOS_MESSAGE);
+          if(response == MESSAGES.SIN_RESULTADOS_MESSAGE){
+            setIsLoad(false)
           }else{
             setIsLoad(true)
+            
             
           }
         })
         .catch(error=>console.log(error))
         
       },[])
-   
-     
-    console.log(novedades);
-    console.log(isLoad);
     return(
         < div className="lg:mx-52 mx-10 mb-5">
             

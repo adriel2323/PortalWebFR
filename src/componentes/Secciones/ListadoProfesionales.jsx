@@ -64,7 +64,10 @@ const Novedades=({usuarios})=>{
                                                         
                                                         if(e.especialidad===especialidad.especialidades)
                                                         
-                                                        return(<h1 data-tooltip={e.osNo} key={e.id} className=" flex text-gray-400">{e.name}{(e.osNo == ""?e.osNo:" - "+e.osNo)}</h1>)})
+                                                        return(<>
+                                                                <h1 data-tooltip={e.osNo} key={e.id} className=" flex font-medium text-gray-600">{e.name}</h1>
+                                                                <h2 data-tooltip={e.osNo} key={e.id} className=" flex text-gray-400">{(e.osNo == ""?e.osNo:" - "+e.osNo)}</h2>
+                                                                </>)})
                                                     }
                                                 </li>
                                                     

@@ -17,13 +17,11 @@ import NotFound from './Pages/NotFound'
 export const PerfilContext= createContext();
 
 function App() {
-console.log(HomePrestadores);
+
   const [CurrentPath, setCuerrentPath]= useState(window.location.pathname)
   const [login,setLogin]= useState(false);
   const [permisos,setPermisos]=useState({});
   const[usuario,setUsuario]=useState({algo:"algo"});
-console.log(CurrentPath);
-
   const [verModalNovedad,setVerModalNovedad]=useState(false)
   const [novedad,setNovedad]=useState();
   const [isLoadNovedad,setIsLoadNovedad]=useState(false);
