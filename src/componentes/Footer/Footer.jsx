@@ -5,13 +5,21 @@ import Icon from "../BotonesHome/Icon";
 
 const Footer =()=>{
 
-    const redes=[
+    const redes=[{id:1,
+        "icono":"../../../public/imagenes/facebook.png",
+        "link":"https://www.facebook.com/OSUOMRA",
+        "color":"hover:text-blue-600",
+        "nombre":"facebook"},
         {id:2,
         "icono":"../../../public/imagenes/instagram.png ",
         "link":"https://www.instagram.com/sanatorio_fnsr/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==",
         "color":"hover:text-orange-400",
         "nombre":"Instagram"},
-         ]
+        {id:3,
+            "icono":"../../../public/imagenes/gorjeo.png ",
+            "link":"twitter",
+            "color":"hover:text-blue-700",
+            "nombre":"twitter"} ]
 
     return(
         <>

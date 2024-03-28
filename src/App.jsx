@@ -11,17 +11,17 @@ import PaginaGestionNov from './componentes/Secciones/FormulariosNovedades/Pagin
 import Declaracion from "./componentes/RRHH/DeclaracionJurada/Declaracion"
 import ArchivosU from './componentes/visualizadorArchivos/ArchivoU'
 import Afiliaciones from './componentes/ObraSocial/Afiliaciones'
-import { Routes,Route} from 'react-router-dom';
+import { Routes,Route } from 'react-router-dom';
 import NotFound from './Pages/NotFound'
 
 export const PerfilContext= createContext();
 
 function App() {
-
   const [CurrentPath, setCuerrentPath]= useState(window.location.pathname)
   const [login,setLogin]= useState(false);
   const [permisos,setPermisos]=useState({});
   const[usuario,setUsuario]=useState({algo:"algo"});
+
   const [verModalNovedad,setVerModalNovedad]=useState(false)
   const [novedad,setNovedad]=useState();
   const [isLoadNovedad,setIsLoadNovedad]=useState(false);
@@ -34,6 +34,24 @@ function App() {
   const [permisosAdministradorPersonal,setPermisosAdministradorPersonal]=useState(false);
   const [permisosOsAdmin, setPermisosOsAdmin]= useState(false);
 
+// const verNovedad=(id)=>{
+  //   setVerModalNovedad(true);
+  //   useEffect(()=>{
+  //     fetch("http://localhost:3001/api/vernovedades/"+id)
+      
+  //     .then(response=>response.json())
+  //     .then(response=>{
+        
+  //       setNovedad(response.novedad)
+  //       setIsLoadNovedad(true)
+  //     })
+  //     .catch(error=>console.log(error))
+      
+  //   },[])
+ 
+
+
+  // }
 
   const [cartillaOpen, setCartillaOpen]= useState(false)
   const abrirCerrarCartilla=()=>{
