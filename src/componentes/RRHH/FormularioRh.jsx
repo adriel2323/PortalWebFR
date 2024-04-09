@@ -1,5 +1,6 @@
-import { useState,useEffect, useRef } from "react";
+import { useState,useEffect, useRef, Fragment } from "react";
 import { cargarCv } from "../../services/apiPortal";
+import { Dialog, Transition } from '@headlessui/react';
 
 
 
@@ -16,6 +17,7 @@ const FormularioRh = ()=>{
     })
     
     const archivo= useRef()
+    const imagen= useRef()
 
     let [isOpen, setIsOpen] = useState(false)
     useEffect(()=>{
@@ -29,7 +31,7 @@ const FormularioRh = ()=>{
   
     function closeModal() {
       setIsOpen(false)
-      location.href =window.location.protocol + "//" + window.location.host + '/rrhh'
+      location.href =window.location.protocol + "//" + window.location.host + '/'
       
     }
   
@@ -45,6 +47,15 @@ const FormularioRh = ()=>{
             }
         })
     }
+    const handleChangeImagen= async e=>{
+        console.log(imagen.current.files[0]);
+        await setFormulario({
+            form:{
+                ...formulario.form,
+                imagen: imagen.current.files[0]
+            }
+        })
+    }
      
     const handleSubmit=e=>{
         e.preventDefault();
@@ -57,7 +68,7 @@ const FormularioRh = ()=>{
     
         
         cargarCv(formulario).then(response=> {
-            // console.log(response);
+            console.log("esta es la respuesta de la carga ",response);
             if(response != undefined){
                 setFormEnviado(true)
             }
@@ -76,6 +87,59 @@ const FormularioRh = ()=>{
 
     return(
         <>
+        <Transition appear show={isOpen} as={Fragment}>
+                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
+                    <div className="fixed inset-0 bg-black bg-opacity-25" />
+                </Transition.Child>
+
+                <div className="fixed inset-0 overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 text-center">
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 scale-95"
+                        enterTo="opacity-100 scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 scale-100"
+                        leaveTo="opacity-0 scale-95"
+                    >
+                        <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                        <Dialog.Title
+                            as="h3"
+                            className="text-lg font-medium leading-6 text-gray-900"
+                        >
+                            Enviado exitoso
+                        </Dialog.Title>
+                        <div className="mt-2">
+                            <p className="text-sm text-gray-500">
+                            El Cv ha sido cargado correctamente.
+                            </p>
+                        </div>
+
+                        <div className="mt-4">
+                            <button
+                            type="button"
+                            className="inline-flex justify-center rounded-md border border-transparent bg-secondary px-4 py-2 text-sm font-medium text-blue-100 hover:text-secondary hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                            onClick={closeModal}
+                            >
+                            Volver a página principal
+                            </button>
+                        </div>
+                        </Dialog.Panel>
+                    </Transition.Child>
+                    </div>
+                </div>
+                </Dialog>
+            </Transition>
             <div className="  bg-white text-mygray px-5 lg:px-10 py-5  rounded-lg mt-[1rem] drop-shadow-xl w-11/12 md:w-5/6 mb-5" >
                 <form action="#">
                     <h1 className=" mb-5 text-sm lg:text-2xl font-bold text-center">Formulario de curricullum vitae</h1>
@@ -166,8 +230,12 @@ const FormularioRh = ()=>{
                     </div>
                     </div>
                     <div>
-                        <label className="form-label" htmlFor="archivoCv">Cargar archivo de CV personal  </label>
-                        <input onChange={handleChangeArchivo} type="file" name="archivoCv" ref={archivo} />
+                        <label className="form-label" htmlFor="archivo">Cargar archivo de CV personal  </label>
+                        <input onChange={handleChangeArchivo} type="file" name="archivo" ref={archivo} />
+                    </div>
+                    <div>
+                        <label className="form-label" htmlFor="imagen">Cargar foto de perfil</label>
+                        <input onChange={handleChangeImagen} type="file" name="imagen" ref={imagen} />
                     </div>
                     <div className=" mt-12 mb-4">
                         <input onClick={handleSubmit} className="form-buttom-send mr-10 " type="submit" value="Enviar" />

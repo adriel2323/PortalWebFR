@@ -9,7 +9,7 @@ const HomeBotones=()=>{
         <Buttom redir={1} titulo={"Geclisa Web"} icono={faLaptopMedical} link= {"http://geclisa.fnsr.com.ar"} />
         <Buttom redir={1} titulo={"OME y Recetas(PAMI)"} icono={faPeopleRoof} link= {"https://cup.pami.org.ar/controllers/loginController.php"} />
         <Buttom redir={1} titulo={"Diagnostico por imagen"} icono={faBoxTissue} link= {"http://imagenes.fnsr.com.ar"} />
-        <Buttom redir={1} titulo={"Sistema de bonos"} icono={faMoneyCheck} link= {"http://publica.fnsr.com.ar:3000/users/login"} />
+        <Buttom redir={1} titulo={"Sistema de bonos"} icono={faMoneyCheck} link= {"https://bonos.fnsr.com.ar"} />
         <Buttom redir={1} titulo={"Instructivos"} icono={faChalkboardUser} link= {"https://archivos.fnsr.com.ar/"} />
     </div>
     )

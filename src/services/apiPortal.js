@@ -1,6 +1,6 @@
 import axios from "axios";
 //export const Apiurl= "http://publica.fnsr.com.ar:3002/api/";
-export const Apiurl= "http://localhost:3000/api/";
+export const Apiurl= "http://localhost:3001/api/";
 
 export const MESSAGES= {
     SIN_RESULTADOS_MESSAGE: "No se encontraron resultados de la busqueda"
@@ -17,7 +17,7 @@ export async function cargarNovedad(form){
         formData.append('area',form.form.area)
         formData.append('descripcion',form.form.descripcion)
         formData.append('imagen',form.form.imagen)
-        console.log(formData);
+        
         const response= await axios({
             url: Apiurl+'cargarnovedad',
             method:'POST',
@@ -34,6 +34,7 @@ export async function cargarNovedad(form){
 }
 
 export async function cargarCv(form){
+    
 
     try{
         const formData= new FormData()
@@ -53,7 +54,9 @@ export async function cargarCv(form){
         formData.append('titulo',form.form.titulo)
         formData.append('archivo',form.form.archivo)
         formData.append('imagen',form.form.imagen)
+
         console.log(formData);
+        
         const response= await axios({
             url: Apiurl+'rrhh/cv/cargar',
             method:'POST',

@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
+import { Apiurl } from "../../../services/apiPortal";
+let imagen;
+const validarFoto= (perfil)=>{
+    if(perfil?.imagen?.includes('https')){
+        imagen=perfil.imagen
+    }else{
+        imagen=Apiurl+ "/perfiles/imagenes/"+perfil?.imagen||'userDefault.jpg'
+    }
+    perfil.imagen
+}
 
 const Perfil= ({perfil, datos})=>{
+    validarFoto(perfil)
     
     function deMiliADias(n){
         return Math.round((((n/1000)/60)/60)/24)
@@ -20,7 +31,7 @@ const Perfil= ({perfil, datos})=>{
             <Link to="/" key={perfil.id} className="flex h-[20vh] shadow-lg m-2 rounded-lg p-4 items-center w-100 mb-4 bg-white text-mygray">
                 <div>
                     <div className="mx-4 h-28 w-28 rounded-full overflow-hidden bg-gray-500 aspect-square">
-                        <img className="w-full" src={perfil.imagen} alt="" />
+                        <img className="w-full" src={imagen} alt="" />
                     </div>
                 </div>
                 <section className="grid grid-cols-3 p-8">

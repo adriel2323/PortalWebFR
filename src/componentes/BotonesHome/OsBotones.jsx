@@ -56,10 +56,10 @@ const RhBotones=()=>{
     return(
         <div className="mx-52 mb-52">
             <div className=" grid grid-cols-4 place-items-center mt-[650px]   ">
-                <ButtomDrop  className="" titulo={"Acceso a Oficina Virtual"} icono={faHouseLaptop} lista={empleadosList}  />
+                <ButtomDrop  className="" titulo={"Acceso a Oficina Virtual"} icono={faHouseLaptop} lista={empleadosList} link={"http://gsannicolas.ddns.net:5001/Home/IniciarSesion"}  />
                 <Buttom redir={0} className="" titulo={"Afiliaciones online"} icono={faPersonCirclePlus} lista={trabajaList} link= {"/obrasocial/afiliaciones"}   />
                 <ButtomOpen onClick={abrirCerrarCartilla} className="" titulo={"Cartilla Médica"} icono={faMoneyCheck} />
-                <Buttom redir={1} className="" titulo={"Asociate"} icono={faSquarePlus} link= {"https://portal.fnsr.com.ar"}  />
+                <Buttom redir={1} className="" titulo={"Asociate"} icono={faSquarePlus} link= {"/obrasocial/afiliaciones"}  />
             </div>
 
 
