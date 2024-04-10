@@ -2,10 +2,13 @@ import { useRef, useEffect, useState, Fragment } from "react";
 import {cargarNovedad } from "../../../services/apiPortal";
 import { Dialog, Transition } from '@headlessui/react'
 
-
-
-
 const FormularioNovedades = ()=>{
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
 
     const [send, setSend]=useState(false);
     const [formEnviado,setFormEnviado]= useState(false)
@@ -24,8 +27,6 @@ const FormularioNovedades = ()=>{
 
   }, [formEnviado])
 
-
-
   function closeModal() {
     setIsOpen(false)
     location.href =window.location.protocol + "//" + window.location.host + '/'
@@ -36,10 +37,8 @@ const FormularioNovedades = ()=>{
     setIsOpen(true)
   }
 
-    
     const imagen= useRef()
     const usuario={}
-
 
     const handleSubmit=e=>{
         e.preventDefault();
@@ -49,7 +48,6 @@ const FormularioNovedades = ()=>{
             }
         })  
         cargarNovedad(formulario).then(response=> {
-            // console.log(response);
             if(response != undefined){
                 setFormEnviado(true)
             }
@@ -141,9 +139,9 @@ const FormularioNovedades = ()=>{
                         <input className="form-input"   type="text" name="titulo" placeholder="Ej: Capacitación en gestión de PAMI" onChange={handleChange} />
                         
                         <label className="  form-label " htmlFor="fecha">Fecha de novedad:</label>
-                        <input className="form-input  " type="date" name="fecha" onChange={handleChange} />
+                        <input className="form-input  " type="date" name="fecha" value={today} onChange={handleChange} />
                         <label className="  form-label " htmlFor="responsable">Responsable : </label>
-                        <input className="form-input " type="text" name="responsable" onChange={handleChange} />
+                        <input className="form-input " type="text" name="responsable" onChange={handleChange} value={usuario.name} />
                         <label className="  form-label " htmlFor="area">Área: </label>
                         <select className="form-input "  name="area" id="" onChange={handleChange}>
                             <option id="0" value="nn">Elija una opción</option>

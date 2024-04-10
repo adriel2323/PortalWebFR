@@ -2,11 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import { Apiurl,MESSAGES } from "../../services/apiPortal";
 import { PerfilContext } from "../../App";
 import { Link } from "react-router-dom";
-import { Dialog } from '@headlessui/react'
+import { Dialog } from '@headlessui/react';
+
 
 const Novedades=({usuarios})=>{
     const {verNovedad}= useContext(PerfilContext)
-
     const [novedades, setNovedades]= useState([])
     const [isLoad,setIsLoad]= useState(false);
     const usuario=usuarios
