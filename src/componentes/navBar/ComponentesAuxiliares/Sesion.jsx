@@ -14,7 +14,7 @@ const Sesion=({setViewForm})=>{
     
                             <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary" >
                                 <Icon className="" icono={faUserCircle}/>
-                                <h4 className=" text-base text-center">Log Out</h4>
+                                <h4 className=" text-xs xl:text-base text-center">Log Out</h4>
                             </div>
             </div>
             )}
@@ -24,7 +24,7 @@ const Sesion=({setViewForm})=>{
 
                         <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary" >
                             <Icon className="" icono={faUserCircle}/>
-                            <h4 className=" text-base text-center">Iniciar sesión</h4>
+                            <h4 className=" text-xs xl:text-base text-center">Iniciar sesión</h4>
                         </div>
                     </div>  
                 )

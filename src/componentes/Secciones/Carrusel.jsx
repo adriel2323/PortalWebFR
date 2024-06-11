@@ -17,7 +17,7 @@ const Carrusel=({usuarios})=>{
     
 
     return(
-        <div className="w-[100vw] aspect-square md:aspect-bannerXs absolute">
+        <div className="w-[100vw] aspect-square md:aspect-bannerXs ">
             <img className=" w-full h-full object-cover" src={(Apiurl+ "carrusel/imagenes/"+usuarios)||(Apiurl+ "novedades/imagenes/imageDefault")} alt="" />
         </div>
     )

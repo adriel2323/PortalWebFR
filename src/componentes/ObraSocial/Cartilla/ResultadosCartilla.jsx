@@ -18,7 +18,7 @@ const ResultadosCartilla=({resultados})=>{
                         )
                    
                 }
-                <div className="grid grid-cols-4 text-center font-semibold">
+                <div className=" hidden md:grid md:grid-cols-4 text-center font-semibold">
                     <h1>
                         Especialidad
                     </h1>
@@ -39,25 +39,28 @@ const ResultadosCartilla=({resultados})=>{
                             i+=1;
                             
                             if(i%2==0){
-                                 return (<div alt="{r.osNo}" className="grid grid-cols-4 text-center bg-slate-300 rounded-md">
-                                <h1 className="py-2 ">{r.especialidad}</h1>
-                                <div className="py-2 ">
-                                    <h1  className="">{r.name}</h1>
-                                    <h1  className=" font-light text-sm ">{r.osNo || r.descripcion}</h1>
-                                </div>
-                                <h1 className="py-2 ">{r.direccion}</h1>
-                                <h1 className="py-2 ">{r.telefono}</h1>
-                            </div>)}
+                                 return (
+                                        <div alt="{r.osNo}" className="flex flex-col md:grid md:grid-cols-4 text-center bg-slate-300 rounded-md">
+                                            <h1 className="hidden md:flex py-2 ">{r.especialidad}</h1>
+                                            <div className="py-2 ">
+                                                <h1  className="">{r.name}</h1>
+                                                <h1  className=" font-light text-sm ">{r.osNo || r.descripcion}</h1>
+                                            </div>
+                                            <h1 className="py-2 ">{r.direccion}</h1>
+                                            <h1 className="py-2 ">{r.telefono}</h1>
+                                        </div>)}
                              else{
-                                 return(<div className="grid grid-cols-4 text-center">
-                                <h1 className="py-2 ">{r.especialidad}</h1>
-                                <div className="py-2 ">
-                                    <h1  className="">{r.name}</h1>
-                                    <h1  className=" font-light text-sm ">{r.osNo}</h1>
+                                 return(
+                                 <div className="flex flex-col md:grid md:grid-cols-4 text-center">
+                                    <h1 className="hidden md:flex py-2 ">{r.especialidad}</h1>
+                                    <div className="py-2 ">
+                                        <h1  className="">{r.name}</h1>
+                                        <h1  className=" font-light text-sm ">{r.osNo}</h1>
+                                    </div>
+                                    <h1 className="py-2 ">{r.direccion?r.direccion:""}</h1>
+                                    <h1 className="py-2 ">{r.telefono}</h1>
                                 </div>
-                                <h1 className="py-2 ">{r.direccion?r.direccion:""}</h1>
-                                <h1 className="py-2 ">{r.telefono}</h1>
-                            </div>)
+                                )
                             }  }
                         )
                     }

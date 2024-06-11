@@ -5,8 +5,8 @@ import Resultados from "./PanelBusqueda/Resultados";
 import { useEffect,createContext,useState } from "react";
 import { Apiurl,apiRRHHCv } from "../../services/apiPortal";
 import { Link } from "react-router-dom";
-
-
+import {  faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const cvContext= createContext();
 
@@ -14,6 +14,8 @@ const BuscarCV=()=>{
     const usuario="rrhh"
     const [listaResultados, setListaResultados]= useState([])
     const [isLoad,setIsLoad]= useState(false);
+    const [isOpen,setIsOpen]= useState(false);
+    const [openSearch,setOpenSearch]= useState(false);
     const [busqueda,setBusqueda]=useState({})
     const [busquedaDone,setBusquedaDone]=useState(false);
     const handleChange= async e=>{
@@ -59,25 +61,23 @@ const BuscarCV=()=>{
         <>
             
 
-            <div className="flex justify-between w-full  bg-gray-100">
-                <cvContext.Provider value={{listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
-
-                    <div className="pl-4 pt-4 w-1/4 text-white bg-secondary justify-start  ">
-                        <Link  className="pl-10 mb-10" to="/rrhh">
-                            <Icon icono={faArrowAltCircleLeft}/>
-                        </Link>
-                        <h1 className="px-10 pt-10 text-3xl uppercase font-bold">Sanatorio de alta complejidad</h1>
-                        <h1 className="px-10 pb-8 text-xl  font-medium">Fundación nuestra Señora del Rosario</h1>
-                        <Categorias/>
+            <div className="relative flex justify-between w-full  bg-gray-100">
+                <cvContext.Provider value={{openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
+                    <div className="z-10">
+                        {openSearch && <Categorias/>}
+                        
+                        
                     </div>
+                    
                     {
                         isLoad && <Resultados resultados={[]}/>
                     }
                     {
-                        !isLoad && <section className='w-3/4 px-10 pt-24 h-[100vh]'>
-                        <h1 className=' text-mygray font-semibold  pb-6 text-4xl'>Resultados de busqueda</h1>
-                        <div className='py-4 h-[80vh] overflow-auto shadow-inner px-3 '>
-                            <div className=" font-medium text-3xl">Buscando....</div>
+                        !isLoad && <section className='z-0 w-3/4 px-10 pt-24 h-[100vh]'>
+                        {!openSearch && (<FontAwesomeIcon onClick={()=> setOpenSearch((prev)=> !prev)} className=" text-xl absolute z-10" icon={faBars} />)}
+                        <h1 className=' text-mygray font-semibold  pb-6 text-md lg:text-4xl'>Resultados de busqueda</h1>
+                        <div className='lg:py-4 h-[80vh] overflow-auto shadow-inner px-3 '>
+                            <div className=" font-medium lg:text-3xl">Buscando....</div>
                         </div>
         
                     </section> 

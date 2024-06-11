@@ -56,8 +56,7 @@ const OsAdminBotones=()=>{
 
 
     return(
-        <div className="mx-52 mb-52">
-            <div className=" grid grid-cols-3 place-items-center mt-[650px]   ">
+            <div className=" grid-buttoms  ">
                 <ButtomDrop  className="" titulo={"Acceso a Oficina Virtual"} icono={faHouseLaptop} lista={empleadosList}  />
                 <Buttom redir={0} className="" titulo={"Afiliaciones online"} icono={faPersonCirclePlus} lista={trabajaList} link= {"/obrasocial/afiliaciones"}   />
                 <ButtomOpen onClick={abrirCerrarCartilla} className="" titulo={"Cartilla Médica"} icono={faMoneyCheck} />
@@ -66,10 +65,6 @@ const OsAdminBotones=()=>{
                 <Buttom redir={0} className="col-span-2" titulo={"Ver afiliaciones"} icono={faUsers} link= {"/obrasocial/admin/afiliaciones"} />
                 
             </div>
-
-
-            
-        </div>
     )
 }
 

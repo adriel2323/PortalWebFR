@@ -45,7 +45,7 @@ const Footer =()=>{
                 <ul className="h-32 flex  lg:flex-col justify-between">
                     {
                         redes.map(link=> 
-                        <li id={link.id} className="">
+                        <li key={link.id} className="">
                             <a href={link.link} className={link.color+" flex flex-col items-center"} >
                                 <div className="h-10 w-10 ">
                                     <img src={link.icono} alt="" />

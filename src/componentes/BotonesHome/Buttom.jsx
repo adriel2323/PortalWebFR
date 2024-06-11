@@ -4,31 +4,18 @@ import Icon from "./Icon";
 import { Link } from "react-router-dom";
 
 const Buttom = ({titulo, icono, link, redir, })=>{
-
-    
-    
     return(
 
     <div className="flex justify-center w-full"  >
         <div className="buttom-A">
-            {
-                redir===1?(<a className=" buttom-B"  target="_blank" rel="noopener noreferrer" href={link}>
+            <Link to={link} className=" buttom-B"  rel="noopener noreferrer" target="_blank">
                 <div className="grid place-items-stretch content-end h-1/3">
                     <Icon  icono={icono} />
                 </div>
                 <div className=" text-center flex justify-center h-1/3">
                     <h3 className="buttom-T" >{titulo}</h3>
                 </div>
-            </a>):(<Link to={link} className=" buttom-B"  rel="noopener noreferrer">
-                <div className="grid place-items-stretch content-end h-1/3">
-                    <Icon  icono={icono} />
-                </div>
-                <div className=" text-center flex justify-center h-1/3">
-                    <h3 className="buttom-T" >{titulo}</h3>
-                </div>
-            </Link>)
-            }
-            
+            </Link>
         </div>
     </div>
     )

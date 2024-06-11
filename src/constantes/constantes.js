@@ -12,3 +12,12 @@ export const usuarios={
     RRHH:"rrhh",
     PRESTADORES:"prestadores"
 }
+
+
+export const links={
+    os:[7,9,10,11,12],
+    pacientes:[1,3,13],
+    general:[1,3,13],
+    rrhh:[7,4],
+    prestadores:[1,2,3,4,5,6,7]
+}

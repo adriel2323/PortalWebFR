@@ -4,7 +4,7 @@ import { faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeo
 const HomeBotones=()=>{
 
     return(
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 lg:place-items-center mt-[80vw]  lg:mt-[65vh]  mb-[150px] px-10 sm:px-12 lg:px-52  lg:w-full rounded drop-shadow-md">    
+    <div className="solapar grid-buttoms">    
         <Buttom redir={1} titulo={"Interconsulta"} icono={faNotesMedical} link= {"http://10.84.3.225"} />
         <Buttom redir={1} titulo={"Geclisa Web"} icono={faLaptopMedical} link= {"http://geclisa.fnsr.com.ar"} />
         <Buttom redir={1} titulo={"OME y Recetas(PAMI)"} icono={faPeopleRoof} link= {"https://cup.pami.org.ar/controllers/loginController.php"} />

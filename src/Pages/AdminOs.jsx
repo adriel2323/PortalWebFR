@@ -6,6 +6,8 @@ import { useEffect,createContext,useState } from "react";
 import { Apiurl,apiRRHHCv } from "../../services/apiPortal";
 import { Link } from "react-router-dom";
 import {usuarios} from "../constantes"
+import { apiLinks } from "../services/apiPortal";
+import { links } from "../constantes/constantes";
 
 
 export const cvContext= createContext();
@@ -38,14 +40,17 @@ const AdminOS=()=>{
         .catch(error=>console.log(error))
     }
     useEffect(()=>{
-      fetch(Apiurl+apiRRHHCv.listaCv)
-      .then(response=>response.json())
-      .then(response=>{
-        setListaResultados(response.Cv)
-        setIsLoad(true)
-      })
-      .catch(error=>console.log(error))
-      
+    
+        fetch(Apiurl+apiRRHHCv.listaCv)
+        .then(response=>response.json())
+        .then(response=>{
+            setListaResultados(response.Cv)
+            setIsLoad(true)
+        })
+        .catch(error=>console.log(error))
+
+        
+        
     },[])
 
     

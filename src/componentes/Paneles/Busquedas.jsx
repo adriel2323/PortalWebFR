@@ -10,19 +10,7 @@ const Categorias=(listaConOpciones)=>{
         <form onSubmit={buscar} action="">
 
             <ul className="bg-secondary buttomList-contein w-full pr-4">
-                <select onChange={handleChange} className="form-input font-sans text-base mb-1 w-full"  name={listaConOpciones.name} id="">
-                    {
-                    listaConOpciones.opciones.map(lista=> {
-
-                        return(
-                                <option id={Math.random} value="">Elija una opción</option>
-                                <option id={Math.random} value={lista.value}>{lista.value}</option>
-                            
-                            );
-                        }
-                    )
-                    }
-                    </select>
+                
                 <li className="buttomList-item pr-2">
                     <div className="w-11/12" >
 

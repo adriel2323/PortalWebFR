@@ -1,6 +1,6 @@
 import axios from "axios";
 //export const Apiurl= "http://publica.fnsr.com.ar:3002/api/";
-export const Apiurl= "http://localhost:3001/api/";
+export const Apiurl= "http://10.84.1.112:3001/api/";
 
 export const MESSAGES= {
     SIN_RESULTADOS_MESSAGE: "No se encontraron resultados de la busqueda"
@@ -158,5 +158,9 @@ export const apiRRHHCv ={
 
 export const apiPrestadores ={
     contacto: "prestadores/contacto"
+}
+
+export const apiLinks ={
+    LINKS_BOTONES: "links"
 }
 

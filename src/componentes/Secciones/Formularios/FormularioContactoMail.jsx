@@ -1,6 +1,6 @@
 import axios from "axios";
-import { Apiurl } from "../../services/apiPortal";
-import { apiPrestadores } from "../../services/apiPortal";
+import { Apiurl} from "../../../services/apiPortal";
+import { apiPrestadores } from "../../../services/apiPortal";
 import { useState,useEffect, Fragment } from "react";
 import { Dialog, Transition } from '@headlessui/react'
 

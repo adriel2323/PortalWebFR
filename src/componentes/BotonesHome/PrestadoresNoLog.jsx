@@ -85,7 +85,7 @@ const PrestadoresNolog=()=>{
     ]
 
     return(
-            <div className="  grid md:grid-cols-2 lg:grid-cols-3 lg:place-items-center mt-[90vw] mb:mt-[30vh]  lg:mt-[65vh]  mb-[150px] px-10 sm:px-12 lg:px-52  lg:w-full rounded drop-shadow-md">
+            <div className="solapar  grid-buttoms">
                 <ButtomDrop  titulo={"Trabaja con nosotros"} icono={faUserPlus} lista={trabajaList}  />
                 <ButtomDrop  titulo={"Documentacion"} icono={faLaptopMedical} lista={documentacion}  />
                 <ButtomDrop  titulo={"Requerimientos PAMI"} icono={faPeopleRoof} lista={pami}  />

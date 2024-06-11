@@ -4,19 +4,25 @@ import Novedades from "../componentes/Secciones/Novedades";
 import HomeBotones from "../componentes/BotonesHome/PacientesBotones";
 import Footer from "../componentes/Footer/Footer";
 import ListadoProf from "../componentes/Secciones/ListadoProfesionales";
-import { createContext,useContext } from "react";
+import { useContext,useState,useEffect, createContext } from "react";
+import { Apiurl,apiLinks } from "../services/apiPortal";
+import {links} from "../constantes/constantes";
 import { PerfilContext } from "../App";
 import BuscarCartilla from "../componentes/ObraSocial/Cartilla/BuscarCartilla";
 import { apiBusquedas } from "../services/apiPortal";
+import { transformacionLink_URL } from "../Utilities/transformadorArray.utilities";
 
 export const PacientesContext= createContext();
 
 
 const HomePacientes =({usuarios})=> {
     const {cartillaOpen}= useContext(PerfilContext);
-    const usuario= usuarios;
-
-    
+    const {login,permisosPrestadores}= useContext(PerfilContext);
+    const [buttons, setButtons]= useState([]);
+    // console.log('esto es lo que va a entrar ',links.prestadores,usuarios)
+    let ids=transformacionLink_URL(links,usuarios);
+    const usuario=usuarios
+    console.log(usuario)
 
     const selectores={
         prestadores:true,
@@ -26,7 +32,21 @@ const HomePacientes =({usuarios})=> {
     const urlBusquedas={
         prestadores:apiBusquedas.buscarProfesionalClinica,
         especialidades:apiBusquedas.especialidadesClinica,
-    }
+    };
+
+    useEffect(()=>{
+        console.log('esto es lo que va a entrar ',ids)
+        fetch(Apiurl+apiLinks.LINKS_BOTONES+'/'+ids)
+        .then(response=>response.json())
+        .then(response=>{
+            setButtons(response.links)
+            console.log('estos son los botones ', response);
+        })
+        .catch(error=>console.log(error))
+    },[])
+    
+    useEffect(()=>{
+    },[permisosPrestadores])
     
 
     return (
@@ -40,8 +60,8 @@ const HomePacientes =({usuarios})=> {
                         <HomeBotones />
                         {cartillaOpen && <BuscarCartilla urlBusquedas={urlBusquedas}  selectores={selectores} />}
                         <Novedades usuarios={usuario}/>
-                        <ListadoProf/>
                     </div>
+                    <ListadoProf/>
                     <Footer/>
                     
 

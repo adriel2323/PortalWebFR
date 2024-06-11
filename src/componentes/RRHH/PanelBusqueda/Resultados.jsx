@@ -1,27 +1,31 @@
 import Perfil from './Perfil'
-import { useState,useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { cvContext } from '../BuscarCV';
+import {  faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 
 
 
 const Resultados=()=>{
-  const {listaResultados, isLoad}= useContext(cvContext)
-  const datosPerfil=["nombre","apellido","secundario","superior","titulo","experiencia"]
+    const {openSearch,setOpenSearch}=useContext(cvContext)
+    const {listaResultados, isLoad}= useContext(cvContext)
+    const datosPerfil=["nombre","apellido","secundario","superior","titulo","experiencia"]
+    
 
-    
-        
-    
     return(
         <>
-            <section className='w-3/4 px-10 pt-24 h-[100vh]'>
-                <h1 className=' text-mygray font-semibold  pb-6 text-4xl'>Resultados de busqueda</h1>
-                <div className='py-4 h-[80vh] overflow-auto shadow-inner px-3 '>
+            <section className='z-0 lg:w-3/4  flex flex-col justify-center p-5 lg:px-10 lg:pt-24 h-[100vh]'>
+                <div className='flex '>
+                    {!openSearch && (<FontAwesomeIcon onClick={()=> setOpenSearch((prev)=> !prev)} className=" text-xl mr-4" icon={faBars} />)}
+                    <h1 className=' text-mygray font-semibold  pb-6 text-xl lg:text-4xl'>Resultados de busqueda</h1>
+                </div>
+                <div className='rounded bg-gray-300 py-4 h-[80vh] overflow-auto shadow-inner px-3 '>
                     {
                         isLoad && listaResultados.map(resultado=> <Perfil perfil={resultado} datos={datosPerfil}/>)
                     }
                 </div>
-
             </section>
         </>
     )

@@ -67,8 +67,8 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
                 <h1 className="font-semibold text-2xl mb-5">Prestadores:</h1>
                 <div>
                     <form  onSubmit={buscar} action="#">
-                        <div className="flex justify-between mb-5">
-                            <h1 className="self-center font-medium text-xl  mr-3">Especialidad</h1>
+                        <div className="flex flex-col sm:flex-row justify-between mb-5">
+                            <h1 className="sm:self-center font-medium text-xl  mr-3">Especialidad</h1>
                             <select onChange={handleChange} className="form-input font-sans text-base mb-1 w-full"  name="especialidad" id="">
                                 <Opciones opcion={"Elija una opción"}/>
                                 {

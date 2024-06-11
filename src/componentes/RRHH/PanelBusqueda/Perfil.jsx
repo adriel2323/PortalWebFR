@@ -28,74 +28,36 @@ const Perfil= ({perfil, datos})=>{
     const edad= diferenciaDias(perfil.fecha)
     return(
         <>
-            <Link to="/" key={perfil.id} className="flex h-[20vh] shadow-lg m-2 rounded-lg p-4 items-center w-100 mb-4 bg-white text-mygray">
-                <div>
-                    <div className="mx-4 h-28 w-28 rounded-full overflow-hidden bg-gray-500 aspect-square">
-                        <img className="w-full" src={imagen} alt="" />
-                    </div>
+            <Link to="/" key={perfil.id} className="flex justify-between p-2   lg:h-[20vh] shadow-lg my-2 lg:m-2 rounded-lg lg:p-4 items-center lg:w-100 lg:mb-4 bg-white text-mygray">
+                <div className=" aspect-square h-16 mr-2 lg:mr-0 lg:mx-4 lg:h-28 lg:w-28 rounded-full overflow-hidden bg-gray-500">
+                    <img className="w-full" src={imagen} alt="" />
                 </div>
-                <section className="grid grid-cols-3 p-8">
-                {
-                        perfil && datos.map(dato=>{ return(
-                            <div className="mb-2 flex">
-                                <h2 className=" font-medium pr-2">{dato}: </h2>
-                                <h2 className=" h-[5vh]  w-full overflow-scroll font-light"> { perfil[dato]}</h2>
+                <section className="grid  w-[80%] ">
+                    <div className="flex flex-col lg:flex-row w-full">
+                        <div className="lg:mb-2 flex  overflow-scroll">
+                            {/* <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Nombre: </h2> */}
+                            <h2 className="font-bold  text-base lg:h-[5vh]  w-full overflow-scroll lg:font-light"> { `${perfil.nombre} ${perfil.apellido}`}</h2>
+                        </div>
+                        <div className="flex">
+                            <div className="lg:mb-2 flex  overflow-scroll mr-2 lg:mr-0">
+                                <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Secundario: </h2>
+                                <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.secundario==1?"Si": 'No'}</h2>
                             </div>
-                        )})
-                    }
+                            <div className="lg:mb-2 flex  overflow-scroll">
+                                <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Superior: </h2>
+                                <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.superior==1?"Si": 'No'}</h2>
+                            </div>
+                        </div>
+                        <div className="lg:mb-2 flex  overflow-scroll">
+                            <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Título: </h2>
+                            <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.titulo}</h2>
+                        </div>
+                    </div>
+                        <div className="lg:mb-2 flex flex-col overflow-scroll col-span-2">
+                            <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Experiencia: </h2>
+                            <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.experiencia}</h2>
+                        </div>
                 </section>
-                {/* <div className="flex flex-col p-4">
-                    <h1 className="my-2 text-lg font-semibold">{perfil.nombre} {perfil.apellido}</h1>
-                    <div className="grid grid-cols-5 text-sm">
-                        <div >
-                            <div className="mb-10 flex">
-                                <h2 className=" font-medium pr-2">Edad: </h2>
-                                <h2 className=" font-light"> { edad}</h2>
-                            </div>
-                            <div className="mb-10 flex">
-                                <h2 className=" font-medium pr-2">Área: </h2>
-                                <h2 className=" font-light"> { perfil.area}</h2>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="mb-10 flex">
-                                <h2 className=" font-medium pr-2">Secundario: </h2>
-                                <h2 className=" font-light"> { perfil.secundario?"Si": "No"}</h2>
-                            </div>
-                            <div className="mb-10 flex">
-                                <h2 className=" font-medium pr-2">Superior: </h2>
-                                <h2 className=" font-light">{ perfil.superior?"Si": "No"}</h2>
-                            </div>
-                            
-                        </div>
-                        <div>
-                            <div className="mb-10 flex">
-                                <h2 className=" font-medium pr-2">Titulo: </h2>
-                                <h2 className=" font-light"> { perfil.titulo}</h2>
-                            </div>
-                            
-                        </div>
-                        <div className="col-span-2">
-                            <div className="mb-10 ">
-                                <h2 className=" font-medium pr-2">Experiencia: </h2>
-                                <div className="h-16 font-light overflow-scroll text-xs">
-
-                                    <p> { perfil.experiencia}
-                                    </p>
-                            </div>
-                            </div>
-                            <h1> </h1>
-                            
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                </div>
-                <div>
-                </div> */}
             </Link>
         </>
     )

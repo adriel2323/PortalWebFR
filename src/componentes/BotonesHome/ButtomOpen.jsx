@@ -7,7 +7,7 @@ const ButtomOpen = ({titulo, icono, link, redir, onClick})=>{
 
     return(
 
-    <div className="flex justify-center w-full" onClick={onClick}>
+    <div className="cartilla" onClick={onClick}>
         <div className="buttom-A ">
             
             <div className=" buttom-B" >

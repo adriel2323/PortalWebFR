@@ -5,7 +5,7 @@ const HomeBotones=()=>{
     
 
     return(
-    <div className=" mx-10 md:mx-52 grid md:grid-cols-2 lg:grid-cols-4 place-items-center mb-40 mt-[40vh] sm:mt-[65vh] md:mt-[65vh]">    
+    <div className="solapar grid-buttoms">    
         <Buttom redir={0} titulo={"Obra Social"} icono={faGear} link= {"/obrasocial"} />
         <Buttom redir={0} titulo={"Sanatorio"} icono={faHospital} link= {"/"} />
         <Buttom redir={1} titulo={"Portal de pacientes"} icono={faHospitalUser} link= {"https://portal.fnsr.com.ar"} />

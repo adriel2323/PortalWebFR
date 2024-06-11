@@ -13,6 +13,7 @@ import ArchivosU from './componentes/visualizadorArchivos/ArchivoU'
 import Afiliaciones from './componentes/ObraSocial/Afiliaciones'
 import { Routes,Route } from 'react-router-dom';
 import NotFound from './Pages/NotFound'
+import ReciboSueldo from './componentes/RRHH/Empleados/ReciboSueldo'
 
 export const PerfilContext= createContext();
 
@@ -33,25 +34,6 @@ function App() {
   const [permisosAdministradorTotal,setPermisosAdministradorTotal]=useState(false);
   const [permisosAdministradorPersonal,setPermisosAdministradorPersonal]=useState(false);
   const [permisosOsAdmin, setPermisosOsAdmin]= useState(false);
-
-// const verNovedad=(id)=>{
-  //   setVerModalNovedad(true);
-  //   useEffect(()=>{
-  //     fetch("http://localhost:3001/api/vernovedades/"+id)
-      
-  //     .then(response=>response.json())
-  //     .then(response=>{
-        
-  //       setNovedad(response.novedad)
-  //       setIsLoadNovedad(true)
-  //     })
-  //     .catch(error=>console.log(error))
-      
-  //   },[])
- 
-
-
-  // }
 
   const [cartillaOpen, setCartillaOpen]= useState(false)
   const abrirCerrarCartilla=()=>{
@@ -140,12 +122,13 @@ function App() {
         }}>	
         <Routes>
             <Route path='/' element={<HomeGeneral usuarios= {"general"} />} />
-            <Route path='/prestadores' element={<HomePrestadores usuarios= "prestadores" />} />
+            <Route path='/prestadores' element={<HomePrestadores usuarios= {"prestadores"} />} />
             <Route path='/pacientes' element={<HomePacientes usuarios= {"pacientes"}/>} />
             <Route path='/rrhh' element={<HomeRH usuarios= {"rrhh"}/>} />
             <Route path='/obrasocial' element={<HomeOs usuarios= {"os"}/>} />
             <Route path='/obrasocial/afiliaciones' element={<Afiliaciones usuarios= {"os"}/>} />
             <Route path='/archivos' element={<ArchivosU usuarios= {"rrhh"}/>} />
+            <Route path='/rrhh/recibosueldo' element={<ReciboSueldo usuarios= {"rrhh"}/>} />
             <Route path='/rrhh/cv' element={<FormularioCV usuarios= {"rrhh"}/>} />
             <Route path='/rrhh/buscar' element={<BuscarCV usuarios= {"rrhh"}/>} />
             <Route path='/rrhh/declaracion' element={<Declaracion usuarios= {"rrhh"}/>} />
@@ -153,9 +136,6 @@ function App() {
             <Route path='*' element={<NotFound usuarios= {"general"}/>} />
         </Routes>
     </PerfilContext.Provider>
-
-      
-
     </main>
   )
 }

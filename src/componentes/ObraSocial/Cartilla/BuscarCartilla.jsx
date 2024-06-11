@@ -27,25 +27,20 @@ const BuscarCartilla =({selectores, urlBusquedas})=> {
         setBuscadorOpen(false);
         setFarmaciasOpen(true)
     };
-
     const abrirLaboratorio=()=>{
         setBuscadorOpen(false);
         setLaboratoriosOpen(true)
     };
-
     const volverABuscador=()=>{
         setBuscadorOpen(true);
         setPrestadoresOpen(false);
         setFarmaciasOpen(false);
     };
-
     useEffect(()=>{
 
     },[buscadorOpen])
-
-
     return(
-        <div className="mx-52 shadow-xl p-16 mb-32">
+        <div className="mx-10 md:mx-52 shadow-xl p-5 sm:p-16 mb-20 md:mb-32">
             <CartillaContext.Provider value={{ setLaboratoriosOpen,laboratoriosOpen,abrirLaboratorio,
                 setPrestadoresOpen, setFarmaciasOpen, abrirCerrarCartilla,abrirPrestador,abrirFarmacia,volverABuscador
             }}>

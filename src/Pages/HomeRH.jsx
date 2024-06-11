@@ -15,22 +15,22 @@ import PreguntasFrecuentes from "../componentes/Secciones/PreguntasFrecuentes"
 const HomeRH =({usuarios})=>{
     const {login,usuario,permisosRrhh}= useContext(PerfilContext)
 
-    
-    
-
 
     return(
         <>
             <Secciones usuarios={usuarios}/>
-            <Carrusel usuarios={usuarios}/>
             <div>
-                {permisosRrhh && <RhBotonesAdmin />}
-                {!permisosRrhh && <RhBotones />}
-                
-                {login && <PreguntasFrecuentes/>}
-                <Novedades usuarios={usuarios}/>
-                
-                
+
+                <Carrusel usuarios={usuarios}/>
+                <div className="solapar">
+                    {permisosRrhh && <RhBotonesAdmin />}
+                    {!permisosRrhh && <RhBotones />}
+                    
+                    {login && <PreguntasFrecuentes/>}
+                    <Novedades usuarios={usuarios}/>
+                    
+                    
+                </div>
             </div>
             <Footer/>
         </>

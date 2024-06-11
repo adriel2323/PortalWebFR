@@ -64,16 +64,12 @@ const RhBotones=()=>{
     ]
 
     return(
-        <div className="mx-10 lg:mx-52 mb-14 lg:mb-52">
-            <div className="  grid lg:mx-0 lg:grid-cols-3 place-items-center lg:mt-[65vh] md:mt-[35vw]    ">
+            <div className="grid-buttoms">
                 <ButtomDrop  titulo={"Empleados"} icono={faPeopleGroup} lista={empleadosList}  />
                 <ButtomDrop  titulo={"Trabaja con nosotros"} icono={faUserPlus} lista={trabajaList}  />
-                <Buttom     redir={1} titulo={"capacitaciones"} icono={faUsers} link= {"/"}  />
+                <Buttom     redir={1} titulo={"capacitaciones"} icono={faUsers} link= {"https://archivos.fnsr.com.ar/index.php/apps/files/?dir=/Instructivos"}  />
             </div>
-
-
-            
-        </div>
+        
     )
 }
 

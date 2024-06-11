@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import UserData from "../../data/data.json";
 import SectionsBottom from "./SectionBottom";
 import Icon from "../BotonesHome/Icon";
 import { faLitecoinSign, faUserCircle, faBars, faX } from "@fortawesome/free-solid-svg-icons";
-import Modal from "../Modales/FormLog"
+import Log from "../Modales/Log";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { PerfilContext } from "../../App";
+import Sesion from "./ComponentesAuxiliares/Sesion";
 
 
 
 const SeccionesSmall= ({usuarios})=>{
+    const {login}= useContext(PerfilContext)
 
 
 
@@ -40,11 +43,8 @@ const SeccionesSmall= ({usuarios})=>{
                 {isOpen && (<FontAwesomeIcon onClick={()=> setIsOpen((prev)=> !prev)} className=" text-xl " icon={faX} />)}
                 {!isOpen && (<FontAwesomeIcon onClick={()=> setIsOpen((prev)=> !prev)} className=" text-xl" icon={faBars} />)}
                 
-                {(usuarios==="prestadores" || usuarios=== "pacientes" || usuarios === "rrhh" || usuarios === "os") &&(
-                    <div onClick={()=> setViewForm((prev)=> !prev)} className="flex flex-col justify-center w-20  " >
-                        <Icon className=" " icono={faUserCircle}/>
-                        <h4 className="flex text-center leading-none text-xs w-full">Iniciar sesión</h4>
-                    </div>
+                {(usuarios==="prestadores" || usuarios=== "pacientes" || usuarios === "rrhh" || usuarios === "os" || usuarios === "personal") &&(
+                    <Sesion setViewForm={setViewForm} />
                 )
 
                 }
@@ -58,13 +58,13 @@ const SeccionesSmall= ({usuarios})=>{
                         )}
                 </ul>
         </div>
+            
         {
-                viewForm && (
-                <Modal/>
-                )
+                viewForm  && (<Log />)
             }
         </div>
     )
 };
 
 export default SeccionesSmall;
+
