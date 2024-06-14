@@ -7,7 +7,8 @@ import ButtomTemplate from "./ButtomTemplate";
 
 
 const RhBotonesAdmin=()=>{
-    const [viewModal,setViewModal]=useState(false);
+    const [viewModalEmpleados,setViewModalEmpleados]=useState(false);
+    const [viewModalTN,setViewModalTN]=useState(false);
     const errorMSG= "No tiene autorizaciones para ver este apartado"
 
     const empleadosList =[
@@ -73,15 +74,16 @@ const RhBotonesAdmin=()=>{
             <div className="grid-buttoms solapar ">
                 <Buttom     redir={0} titulo={"Agregar novedad"} icono={faSquarePlus} link= {"/admin/nov"}  />
                 <Buttom     redir={0} titulo={"Buscar CV"} icono={faRectangleList} link= {"/rrhh/buscar"}  />
-                {/* <Buttom     redir={0} titulo={"Personal"} icono={faUsers} link= {"/"}  /> */}
-                {/* <ButtomDrop  titulo={"Empleados"} icono={faPeopleGroup} lista={empleadosList}  /> */}
-                <ButtomTemplate icono={faPeopleGroup} titulo={"Personal"} setViewModal={setViewModal} />
-                <ButtomDrop  titulo={"Trabaja con nosotros"} icono={faUserPlus} lista={trabajaList}  />
+                <ButtomTemplate icono={faPeopleGroup} titulo={"Personal"} setViewModal={setViewModalEmpleados} />
+                <ButtomTemplate  titulo={"Trabaja con nosotros"} icono={faUserPlus}  lista={trabajaList} setViewModal={setViewModalTN}  />
                 <Buttom     redir={0} titulo={"capacitaciones"} icono={faUsers} link= {"/"}  />
                 {
-                    viewModal && 
-                        <ModalSmButtoms titulo={"Empleados"} icono={faPeopleGroup} listButtoms={empleadosList} />
-                    
+                    viewModalEmpleados && 
+                        <ModalSmButtoms titulo={"Empleados"}  listButtoms={empleadosList} />
+                }
+                {
+                    viewModalTN && 
+                        <ModalSmButtoms titulo={"Trabaja con nosotros"}  listButtoms={trabajaList} />
                 }
             </div>
     )

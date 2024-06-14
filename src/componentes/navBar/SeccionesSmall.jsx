@@ -36,17 +36,15 @@ const SeccionesSmall= ({usuarios})=>{
 
         <div className= "  bg-white py-2 z-65 drop-shadow-xl px-10">
             <div className="flex justify-between items-center align-middle">
-                <Link className="flex   " href="/">
+                <Link className="flex   " to="/">
                     <img className="py-2 h-[10vh] " src="../../../public/imagenes/logoS.png" alt="" />
                 </Link>
-                
                 {isOpen && (<FontAwesomeIcon onClick={()=> setIsOpen((prev)=> !prev)} className=" text-xl " icon={faX} />)}
                 {!isOpen && (<FontAwesomeIcon onClick={()=> setIsOpen((prev)=> !prev)} className=" text-xl" icon={faBars} />)}
                 
                 {(usuarios==="prestadores" || usuarios=== "pacientes" || usuarios === "rrhh" || usuarios === "os" || usuarios === "personal") &&(
                     <Sesion setViewForm={setViewForm} />
                 )
-
                 }
                 
             </div>

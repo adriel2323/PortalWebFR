@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState, useContext,useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationTriangleIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { ExclamationTriangleIcon, UserCircleIcon,faUserPlus } from '@heroicons/react/24/outline'
 import { logear } from '../../services/apiPortal'
 import { PerfilContext } from '../../App'
 import { Link } from 'react-router-dom';

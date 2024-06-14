@@ -14,11 +14,7 @@ const Buttom = ({titulo, icono, link, lista})=>{
     const [isOpen, setIsOpen]= useState(false);
     const[viewForm,setViewForm]= useState(false);
     const [isLogged,setIsLogged]= useState(false)
-
     const verForm=()=> ()=> !login? setViewForm((prev)=> !prev):'';
-    console.log('el login es ',login);
-    
-
     return(
     <>
 

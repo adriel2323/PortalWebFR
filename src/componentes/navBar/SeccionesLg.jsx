@@ -47,7 +47,7 @@ const SeccionesLg= ({usuarios})=>{
         </div>
         <div className= " bg-white z-65 drop-shadow-2xl py-5  w-[100vw]">
             <div className="  flex justify-between h-[8vh]  px-10">
-                <Link className="flex-none items-center align-middle w-[10vw]" to="/">
+                <Link className="flex-none items-center align-middle w-[10vw]" to="/home">
                     { usuarios !="os" && (<img className=" h-full" src="../../../public/imagenes/logo.png" alt="" />)}
                     { usuarios=="os" && (<img className=" align-middle w-12" src="../../../public/imagenes/logoUOM.png" alt="" />)}
                     

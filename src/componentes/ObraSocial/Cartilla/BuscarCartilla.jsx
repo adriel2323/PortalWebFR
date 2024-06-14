@@ -15,7 +15,7 @@ const BuscarCartilla =({selectores, urlBusquedas})=> {
     const [farmaciasOpen,setFarmaciasOpen]=useState(false)
     const [laboratoriosOpen,setLaboratoriosOpen]=useState(false)
     const [buscadorOpen,setBuscadorOpen]=useState(true)
-    const usuario= "os"
+
 
     const abrirPrestador=()=>{
         setBuscadorOpen(false);
@@ -44,9 +44,9 @@ const BuscarCartilla =({selectores, urlBusquedas})=> {
             <CartillaContext.Provider value={{ setLaboratoriosOpen,laboratoriosOpen,abrirLaboratorio,
                 setPrestadoresOpen, setFarmaciasOpen, abrirCerrarCartilla,abrirPrestador,abrirFarmacia,volverABuscador
             }}>
-                <div onClick={abrirCerrarCartilla}>
+                {/* <div onClick={abrirCerrarCartilla}>
                         <Icon icono={faXmarkCircle}/>
-                    </div>
+                    </div> */}
                 <section className="flex justify-center">
                     {buscadorOpen && <Cartilla selectores={selectores}/>}
                     {prestadoresOpen && <BuscarPrestador urlBusqueda={urlBusquedas}/>}

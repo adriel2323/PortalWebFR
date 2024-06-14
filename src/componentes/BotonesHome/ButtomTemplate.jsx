@@ -1,8 +1,7 @@
-import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
+import { faPeopleGroup,faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext } from "react";
 import { PerfilContext } from "../../App";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Modales/FormLog"
 import Icon from "./Icon";
 
 const ButtomTemplate=({reqLogin,link,icono,titulo, redir, setViewModal})=>{
@@ -10,24 +9,6 @@ const ButtomTemplate=({reqLogin,link,icono,titulo, redir, setViewModal})=>{
     const [viewForm,setViewForm]= useState(false);
     const navigate = useNavigate();
 
-    // function checkLog(){
-    //     if(reqLogin){
-    //         if(!login){
-    //             setViewForm((prev)=> !prev)
-    //     } else if(login){
-    //         switch (redir) {
-    //             case 0:
-    //                 navigate(link)
-    //                 break;
-    //             case 1:
-    //                 window.open(link)
-    //                 break;
-    //             default:
-    //                 break;
-    //         }
-    //     }}
-    //     }
-    // ()=> !login? setViewForm((prev)=> !prev):null
     return(
     <>
         <div className="flex justify-center w-full"  >

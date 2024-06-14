@@ -38,8 +38,8 @@ const BuscarCartillaPacientes =()=> {
                 setPrestadoresOpen,  abrirCerrarCartilla,abrirPrestador,volverABuscador
             }}>
                 <div onClick={abrirCerrarCartilla}>
-                        <Icon icono={faXmarkCircle}/>
-                    </div>
+                        <Icon  icono={faXmarkCircle}/>
+                </div>
                 <section className="flex justify-center">
                     {buscadorOpen && <Cartilla/>}
                     {prestadoresOpen && <BuscarPrestador/>}

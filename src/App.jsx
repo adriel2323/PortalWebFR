@@ -122,6 +122,7 @@ function App() {
         }}>	
         <Routes>
             <Route path='/' element={<HomeGeneral usuarios= {"general"} />} />
+            <Route path='/home' element={<HomeGeneral usuarios= {"general"} />} />
             <Route path='/prestadores' element={<HomePrestadores usuarios= {"prestadores"} />} />
             <Route path='/pacientes' element={<HomePacientes usuarios= {"pacientes"}/>} />
             <Route path='/rrhh' element={<HomeRH usuarios= {"rrhh"}/>} />

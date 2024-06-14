@@ -8,7 +8,6 @@ import {PerfilContext} from '../../App';
 export default function FormLog() {
   const errorMSG="Credenciales invalidas"
   const {usuario,setUsuario, setLogin}=useContext(PerfilContext)
-
   const [open, setOpen] = useState(true)
   const [datosUsuario,setDatosUsuario]=useState({})
   const [stateRequest,setStateRequest]=useState(true)
@@ -21,18 +20,14 @@ export default function FormLog() {
         }
     })
 }
-
 useEffect(()=>{
-
 },[stateRequest])
   
   const logearse=()=>{
     logear(datosUsuario).then(
       (response) => {
         if(response.data.msg!=errorMSG){
-          
           const persona=response.data;
-          console.log(persona);
           setUsuario(persona.user)
           localStorage.setItem('Usuario',persona.user )
           localStorage.setItem('Nombre',persona.user.name )
@@ -44,7 +39,6 @@ useEffect(()=>{
           setDatosUsuario(persona);
           setStateRequest(true)
           setOpen(false)
-          console.log(localStorage)
         } else{
           setStateRequest(false)
           

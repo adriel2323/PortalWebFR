@@ -10,21 +10,19 @@ const Sesion=({setViewForm})=>{
         <div>
 
             {contexto.login && (
-                <div className="flex-none w-[10vw]">
-    
-                            <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary" >
-                                <Icon className="" icono={faUserCircle}/>
-                                <h4 className=" text-xs xl:text-base text-center">Log Out</h4>
+                <div className="flex flex-col justify-center">
+                            <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary h-[8vh]" >
+                                <Icon className=" " icono={faUserCircle}/>
+                                <h4 className="text-center leading-none text-xs w-full">Log Out</h4>
                             </div>
             </div>
             )}
             {
                 !contexto.login && (
-                    <div className="flex-none w-[10vw]">
-
-                        <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary" >
+                    <div className="flex flex-col justify-center ">
+                        <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary h-[8vh]" >
                             <Icon className="" icono={faUserCircle}/>
-                            <h4 className=" text-xs xl:text-base text-center">Iniciar sesión</h4>
+                            <h4 className="  text-center leading-none text-xs w-full">Iniciar sesión</h4>
                         </div>
                     </div>  
                 )
