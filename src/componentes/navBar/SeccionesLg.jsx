@@ -45,17 +45,17 @@ const SeccionesLg= ({usuarios})=>{
                     
                 </ul>
         </div>
-        <div className= " bg-white z-65 drop-shadow-2xl py-5  w-[100vw]">
-            <div className="  flex justify-between h-[8vh]  px-10">
-                <Link className="flex-none items-center align-middle w-[10vw]" to="/home">
-                    { usuarios !="os" && (<img className=" h-full" src="../../../public/imagenes/logo.png" alt="" />)}
+        <div className= " bg-white z-65 drop-shadow-2xl py-2  w-[100vw] h-20">
+            <div className="  flex justify-between  px-10">
+                <Link className="flex items-center align-middle aspect-square  h-16" to="/home">
+                    { usuarios !="os" && (<img className=" flex" src="../../../public/imagenes/logo.png" alt="" />)}
                     { usuarios=="os" && (<img className=" align-middle w-12" src="../../../public/imagenes/logoUOM.png" alt="" />)}
                     
                 </Link>
                 <div className="grow justify-center content-center">
                     <div className="flex justify-center h-full ">
 
-                        <ul className="text-sm md:text-base flex align-middle justify-around items-center w-full  xl:w-[50vw]">
+                        <ul className="text-sm md:text-base flex align-middle justify-around items-center w-full  xl:w-[55vw]">
                             
                             {((sectionList.sections[0])[usuarios]).map(section=> <SectionsBottom key={section.id} className="px-2 flex " oneSection= {section}/>)}
                         </ul>
@@ -64,7 +64,7 @@ const SeccionesLg= ({usuarios})=>{
                 
                 
                 {(usuarios==="prestadores" || usuarios=== "pacientes" || usuarios === "rrhh" || usuarios === "os" || usuarios === "personal") &&(
-                    <Sesion setViewForm={setViewForm} />
+                    <Sesion className="" setViewForm={setViewForm} />
                 )
 
                 }

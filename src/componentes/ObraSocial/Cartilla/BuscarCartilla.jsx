@@ -44,9 +44,9 @@ const BuscarCartilla =({selectores, urlBusquedas})=> {
             <CartillaContext.Provider value={{ setLaboratoriosOpen,laboratoriosOpen,abrirLaboratorio,
                 setPrestadoresOpen, setFarmaciasOpen, abrirCerrarCartilla,abrirPrestador,abrirFarmacia,volverABuscador
             }}>
-                {/* <div onClick={abrirCerrarCartilla}>
+                <div className=" h-4" onClick={abrirCerrarCartilla}>
                         <Icon icono={faXmarkCircle}/>
-                    </div> */}
+                    </div>
                 <section className="flex justify-center">
                     {buscadorOpen && <Cartilla selectores={selectores}/>}
                     {prestadoresOpen && <BuscarPrestador urlBusqueda={urlBusquedas}/>}

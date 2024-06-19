@@ -1,16 +1,57 @@
-import Buttom from "./Buttom";
-import { faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed, faLaptopMedical} from "@fortawesome/free-solid-svg-icons";
+import Buttom from '../BotonesHome/Buttom'
 
-const HomeBotones=()=>{
+
+const HomeBotones=({data})=>{
+    const usuario= "prestadores"
+
+    const botonesData={
+        "prestadores":[
+            
+            {
+                "id":1,
+                "titulo":"Interconsulta",
+                "link":"interconsultas.fnsr.com.ar",
+                "icono":"faNotesMedical",
+                "redir":1
+            },
+            {
+                "id":2,
+                "titulo":"Geclisa Web",
+                "link":"geclisa.fnsr.com.ar",
+                "icono":"faLaptopMedical",
+                "redir":1
+            },
+            {
+                "id":3,
+                "titulo":"OME y Recetas(PAMI)",
+                "link":"https://cup.pami.org.ar/controllers/loginController.php",
+                "icono":"faPeopleRoof",
+                "redir":1
+            },
+            {
+                "id":4,
+                "titulo":"Sistema de bonos",
+                "link":"bonos.fnsr.com.ar",
+                "icono":"faMoneyCheck",
+                "redir":1
+            },
+            {
+                "id":5,
+                "titulo":"Instructivos",
+                "link":"archivos.fnsr.com.ar",
+                "icono":"faChalkboardUser",
+                "redir":1
+            }
+        ]
+    }
+    const botones = botonesData.prestadores
 
     return(
-    <div className="solapar grid-buttoms">    
-        <Buttom redir={1} titulo={"Interconsulta"} icono={faNotesMedical} link= {"http://10.84.3.225"} />
-        <Buttom redir={1} titulo={"Geclisa Web"} icono={faLaptopMedical} link= {"http://geclisa.fnsr.com.ar"} />
-        <Buttom redir={1} titulo={"OME y Recetas(PAMI)"} icono={faPeopleRoof} link= {"https://cup.pami.org.ar/controllers/loginController.php"} />
-        <Buttom redir={1} titulo={"Diagnostico por imagen"} icono={faBoxTissue} link= {"http://imagenes.fnsr.com.ar"} />
-        <Buttom redir={1} titulo={"Sistema de bonos"} icono={faMoneyCheck} link= {"https://bonos.fnsr.com.ar"} />
-        <Buttom redir={1} titulo={"Instructivos"} icono={faChalkboardUser} link= {"https://archivos.fnsr.com.ar/"} />
+    <div className="solapar grid-buttoms">
+        { botones.map(boton => 
+            <Buttom redir={boton.redir} titulo={boton.titulo} icono={boton.icono} link= {boton.link} />
+        ) }
+        
     </div>
     )
 }

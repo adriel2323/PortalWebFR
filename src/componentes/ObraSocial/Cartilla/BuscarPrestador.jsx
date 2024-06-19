@@ -81,7 +81,7 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
                             <input className="form-buttom-send w-full" type="submit" value="Buscar" />
                     </form> 
                 </div>
-                <div className="flex mt-3" onClick={volverABuscador}>
+                <div className="flex mt-3 h-4" onClick={volverABuscador}>
                     <Icon icono={faArrowAltCircleLeft}/>
                     <h1 className="ml-3 self-center">
                         Volver

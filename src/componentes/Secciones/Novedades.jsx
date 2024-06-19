@@ -26,7 +26,7 @@ const Novedades=({usuarios})=>{
         .catch(error=>console.log(error))
     },[])
     return(
-        < div className="lg:mx-52 mx-10 mb-5">
+        < div className=" mx-10 lg:mx-32 mb-5">
             
             <h2 className=" text-secondary text-center my-4 text-4xl font-bold" >Ultimas novedades</h2>
             <p className=" text-base font-light text-center mb-10">Enterate de las novedades sobre mejoras en sistemas, regulaciones y temas de interes</p>
@@ -40,18 +40,17 @@ const Novedades=({usuarios})=>{
                             
                             <>
                             {    
-                            <li key={novedad.id} >
-                                 <div  className="flex lg:flex-col  w-full justify-between py-3 md:p-5 " href={novedad.link}>
-                                {/* <div onClick={verNovedad(novedad.id)} className="flex lg:flex-col  w-full justify-between  p-5 " href={novedad.link}> */}
-                                    <div className=" mr-4 lg:mr-0 w-10/12  aspect-square  ">
-                                        <img src={(Apiurl+ "novedades/imagenes/"+novedad.imagen)||(Apiurl+ "novedades/imagenes/imageDefault")} alt=""className=" rounded-md  h-full aspect-square object-cover" />
+                            <li key={novedad.id} className=" h-52 " >
+                                 <div  className="flex lg:flex-col  h-full justify-between py-3 md:p-5 " href={novedad.link}>
+                                    <div className=" mr-4 md:mr-0 lg:mr-0 w-10/12  aspect-square  ">
+                                        <img src={(Apiurl+ "novedades/imagenes/"+novedad.imagen)||(Apiurl+ "novedades/imagenes/imageDefault")} alt=""className=" rounded-md h-[100%] md:w-[100%] aspect-square object-cover" />
                                     </div>
                                     <h4 className="hidden lg:flex text-gray-400">{novedad.fecha}</h4>
 
-                                    <div className=" w-full text-rigth h-[5rem] ">
+                                    <div className=" w-full text-rigth ">
                                         
                                         <h2 className="text-secondary text-lg font-semibold">{novedad.titulo}</h2>
-                                        <p className=" sm:hidden md:flex md:text-sm h-full  overflow-scroll ">{novedad.descripcion.slice(0,130)} ...</p>
+                                        <p className=" sm:hidden md:flex md:text-sm h-[50%] overflow-scroll ">{novedad.descripcion.slice(0,130)} ...</p>
                                         <h4 className="lg:hidden text-gray-400">{novedad.fecha}</h4>
                                     </div>
                                 </div>

@@ -70,13 +70,42 @@ const RhBotonesAdmin=()=>{
         },
     ]
 
+    const botonesData={
+        "rrhh_admin":[
+            
+            {
+                "id":1,
+                "titulo":"Agregar novedad",
+                "icono":"faSquarePlus",
+                "link":"/admin/nov",
+                "redir":0
+            },
+            {
+                "id":2,
+                "titulo":"Buscar CV",
+                "link":"/rrhh/buscar",
+                "icono":"faRectangleList",
+                "redir":0
+            },
+            {
+                "id":3,
+                "titulo":"Capacitacioness",
+                "link":"https://archivos.fnsr.com.ar",
+                "icono":"faUsers",
+                "redir":1
+            },
+        ]
+    }
+
     return(
             <div className="grid-buttoms solapar ">
-                <Buttom     redir={0} titulo={"Agregar novedad"} icono={faSquarePlus} link= {"/admin/nov"}  />
-                <Buttom     redir={0} titulo={"Buscar CV"} icono={faRectangleList} link= {"/rrhh/buscar"}  />
+                {
+                    botonesData.rrhh_admin.map(boton=>
+                        <Buttom key={boton.id} redir={boton.redir} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
+                    )
+                }
                 <ButtomTemplate icono={faPeopleGroup} titulo={"Personal"} setViewModal={setViewModalEmpleados} />
                 <ButtomTemplate  titulo={"Trabaja con nosotros"} icono={faUserPlus}  lista={trabajaList} setViewModal={setViewModalTN}  />
-                <Buttom     redir={0} titulo={"capacitaciones"} icono={faUsers} link= {"/"}  />
                 {
                     viewModalEmpleados && 
                         <ModalSmButtoms titulo={"Empleados"}  listButtoms={empleadosList} />

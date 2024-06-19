@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 import Icon from "../BotonesHome/Icon";
-import { faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed } from "@fortawesome/free-solid-svg-icons";
+import { faHandHoldingMedical, faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed } from "@fortawesome/free-solid-svg-icons";
 import { Apiurl } from "../../services/apiPortal";
 
 const DatosSanatorio =()=>{
@@ -13,7 +13,8 @@ const DatosSanatorio =()=>{
         .then(response=>{
           
         //   setNovedades(response.novedades)
-          setAtenciones(response.ultimaAtencion)
+          setAtenciones(response.result[0].atencion)
+          console.log(atenciones)
           setIsLoad(true)
         })
         .catch(error=>console.log(error))
@@ -22,10 +23,10 @@ const DatosSanatorio =()=>{
       },[])
 
     return(
-        <div className="flex flex-col lg:flex-row lg:h-full justify-between bg-slate-200 my-40 p-10 lg:p-16 drop-shadow-2xl mx-10 lg:mx-52">
+        <div className="flex flex-col lg:flex-row lg:h-full justify-between bg-slate-200 my-40 p-10 lg:p-16 drop-shadow-2xl mx-10 xl:mx-52">
             <div className="flex flex-col h-1/4 " >
                 <div className="flex h-full justify-center lg:justify-between ">
-                    <h3 className=" font-bold  pr-5 lg:pr-0 text-4xl " >768</h3>
+                    <h3 className=" font-bold  pr-3 lg:pr-0 text-3xl " >768</h3>
                     <div className="grid place-items-stretch content-end h-1/2">
                         <Icon  icono={faHospitalUser} />
                     </div>
@@ -35,7 +36,7 @@ const DatosSanatorio =()=>{
             </div>
             <div className="flex flex-col h-1/4" >
                 <div className="flex h-full justify-center lg:justify-between">
-                    <h3 className=" font-bold pr-5 lg:pr-0 text-4xl" >400</h3>
+                    <h3 className=" font-bold pr-5 lg:pr-0 text-3xl" >400</h3>
                     <div className="grid place-items-stretch content-end h-1/2">
                         <Icon  icono={faBed} />
                     </div>
@@ -45,7 +46,7 @@ const DatosSanatorio =()=>{
             </div>
             <div className="flex flex-col h-1/4" >
                 <div className="flex h-full justify-center lg:justify-between">
-                    <h3 className=" font-bold  pr-5 lg:pr-0 text-4xl " >400</h3>
+                    <h3 className=" font-bold  pr-5  text-3xl " >12</h3>
                     <div className="grid place-items-stretch content-end h-1/2">
                         <Icon  icono={faBuilding} />
                     </div>
@@ -54,7 +55,14 @@ const DatosSanatorio =()=>{
                 <h3 className="text-center text-lg  lg:text-2xl pb-4 lg:pb-0">Pisos</h3>
             </div>
             <div className="flex flex-col h-1/4 text-center" >
-                    <h3 className="grid  font-bold text-4xl  " >{atenciones}</h3>
+                <div className="flex h-full justify-center lg:justify-between">
+                    <h3 className="grid  font-bold text-3xl  " >{atenciones}</h3>
+                    <div className="grid place-items-stretch content-end h-1/2">
+                        <Icon  icono={faHandHoldingMedical} />
+                    </div>
+                    
+                </div>
+                
                 <h3 className="text-center text-lg  lg:text-2xl pb-4 lg:pb-0">Atenciones</h3>
             </div>
         </div>

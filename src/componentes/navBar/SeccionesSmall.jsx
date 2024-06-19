@@ -37,7 +37,7 @@ const SeccionesSmall= ({usuarios})=>{
         <div className= "  bg-white py-2 z-65 drop-shadow-xl px-10">
             <div className="flex justify-between items-center align-middle">
                 <Link className="flex   " to="/">
-                    <img className="py-2 h-[10vh] " src="../../../public/imagenes/logoS.png" alt="" />
+                    <img className="py-2 aspect-square h-[10vh] " src="../../../public/imagenes/logoS.png" alt="" />
                 </Link>
                 {isOpen && (<FontAwesomeIcon onClick={()=> setIsOpen((prev)=> !prev)} className=" text-xl " icon={faX} />)}
                 {!isOpen && (<FontAwesomeIcon onClick={()=> setIsOpen((prev)=> !prev)} className=" text-xl" icon={faBars} />)}

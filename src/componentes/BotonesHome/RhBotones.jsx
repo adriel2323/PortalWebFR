@@ -11,11 +11,26 @@ const RhBotones=()=>{
     const errorMSG= "No tiene autorizaciones para ver este apartado"
     const empleadosList= data.empleadosList
     const trabajaList= data.trabajaList
+    const botonesData= {
+        "rrhh":[
+            {
+                "id":1,
+                "titulo":"Capacitaciones",
+                "link": "https://archivos.fnsr.com.ar/index.php/apps/files/?dir=/Instructivos",
+                "icono":"faUsers",
+                "redir":0
+            }
+        ]
+    }
     return(
             <div className="grid-buttoms">
                 <ButtomTemplate icono={faPeopleGroup} titulo={"Personal"} setViewModal={setViewModalEmpleados} />
                 <ButtomTemplate  titulo={"Trabaja con nosotros"} icono={faUserPlus}  lista={trabajaList} setViewModal={setViewModalTN}  />
-                <Buttom     redir={0} titulo={"capacitaciones"} icono={faUsers} link= {"https://archivos.fnsr.com.ar/index.php/apps/files/?dir=/Instructivos"}  />
+                {
+                    botonesData.rrhh.map(boton=>
+                        <Buttom key={boton.id} redir={boton.redir} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
+                    )
+                }
                 {
                     viewModalEmpleados && 
                         <ModalSmButtoms titulo={"Empleados"}  listButtoms={empleadosList} />

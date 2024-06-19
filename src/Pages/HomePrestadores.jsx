@@ -10,11 +10,10 @@ import { useContext,useState,useEffect } from "react";
 import { Apiurl,apiLinks } from "../services/apiPortal";
 import {links} from "../constantes/constantes";
 import { transformacionLink_URL } from "../Utilities/transformadorArray.utilities";
-
+import data from "../data/data.json";
 
 const HomePrestadores =({usuarios})=>{
     const [buttons, setButtons]= useState([]);
-    // console.log('esto es lo que va a entrar ',links.prestadores,usuarios)
     let ids=transformacionLink_URL(links,usuarios);
 
     useEffect(()=>{
@@ -22,7 +21,7 @@ const HomePrestadores =({usuarios})=>{
         .then(response=>response.json())
         .then(response=>{
             setButtons(response.links)
-            console.log('estos son los botones ', buttons[0]);
+        //     console.log('estos son los botones ', buttons[0]);
         })
         .catch(error=>console.log(error))
     },[])
@@ -36,9 +35,7 @@ const HomePrestadores =({usuarios})=>{
                 <Secciones usuarios={usuarios}/>
                 <Carrusel className="" usuarios={usuarios}/>
                 <div className=' z-30 '>
-                    {/* <PrestadoresBotones /> */}
-                    {/* <PrestadoresNoLogBotones /> */}
-                    {permisosPrestadores && <PrestadoresBotones />}
+                    {permisosPrestadores && <PrestadoresBotones data={data.botones[0]} />}
                     {!permisosPrestadores && <PrestadoresNoLogBotones />}
                     <ContactoInterno/>
                     <Novedades usuarios={usuarios}/>

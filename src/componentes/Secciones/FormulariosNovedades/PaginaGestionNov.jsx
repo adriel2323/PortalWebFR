@@ -12,7 +12,8 @@ const PaginaGestionNov =()=> {
     console.log(usuario);
     useEffect(()=>{
         if(permisosRrhh==false){
-            window.location = '/';
+            setTimeout(()=>{window.location = '/';}, 3000);
+
         } else{
         }
     },[])
@@ -23,12 +24,11 @@ const PaginaGestionNov =()=> {
         <>
             <Secciones usuarios={usuarioSec}/>
             <div className="flex flex-col place-items-center h-[40rem] mb-[20rem] lg:px-52 py-12 bg-secondary text-white">
-                <div className="flex w-11/12 md:w-5/6  justify-start ">
-                    <a href="/">
-                        <Icon icono={faArrowAltCircleLeft}/>
-                    </a>
-                </div>
-                <FormularioNovedades />
+                
+                {login && permisosRrhh && <FormularioNovedades /> }
+                {!login && <div className="mb-5 text-sm lg:text-2xl font-bold text-center">
+                    No tiene permisos para cargar novedades. Debe ser administrador.
+                </div> }
             </div>
             <Footer/>
 

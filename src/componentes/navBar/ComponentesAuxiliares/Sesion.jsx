@@ -7,11 +7,11 @@ import { faLitecoinSign, faUserCircle, faBars, faX } from "@fortawesome/free-sol
 const Sesion=({setViewForm})=>{
     const contexto= useContext(PerfilContext)
     return(
-        <div>
+        <div className="h-16">
 
             {contexto.login && (
                 <div className="flex flex-col justify-center">
-                            <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary h-[8vh]" >
+                            <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary h-full max-h-16" >
                                 <Icon className=" " icono={faUserCircle}/>
                                 <h4 className="text-center leading-none text-xs w-full">Log Out</h4>
                             </div>
@@ -20,7 +20,7 @@ const Sesion=({setViewForm})=>{
             {
                 !contexto.login && (
                     <div className="flex flex-col justify-center ">
-                        <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary h-[8vh]" >
+                        <div  onClick={()=> setViewForm((prev)=> !prev)} className="flex  flex-col  p-2 justify-center  hover:text-primary h-full max-h-16" >
                             <Icon className="" icono={faUserCircle}/>
                             <h4 className="  text-center leading-none text-xs w-full">Iniciar sesión</h4>
                         </div>
