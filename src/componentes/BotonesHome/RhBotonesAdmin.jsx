@@ -94,6 +94,14 @@ const RhBotonesAdmin=()=>{
                 "icono":"faUsers",
                 "redir":1
             },
+
+            {
+                "id":4,
+                "titulo":"Editar Usuarios",
+                "link":"/rrhh/admin/editarusuarios",
+                "icono":"faUserPen",
+                "redir":0
+            },
         ]
     }
 

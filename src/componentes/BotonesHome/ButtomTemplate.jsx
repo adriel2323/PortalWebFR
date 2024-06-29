@@ -1,4 +1,4 @@
-import { faPeopleGroup,faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faUserPen, faPeopleGroup,faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext } from "react";
 import { PerfilContext } from "../../App";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,37 @@ const ButtomTemplate=({reqLogin,link,icono,titulo, redir, setViewModal})=>{
     const {login,usuario,permisosRrhh}= useContext(PerfilContext)
     const [viewForm,setViewForm]= useState(false);
     const navigate = useNavigate();
+
+    
+    // const iconMap= {
+    //     "faMoneyCheck":faMoneyCheck,
+    //     "faChalkboardUser":faChalkboardUser,
+    //     "faNotesMedical":faNotesMedical,
+    //     "faLaptopMedical":faLaptopMedical,
+    //     "faPeopleRoof":faPeopleRoof,
+    //     "faGear":faGear,
+    //     "faPersonCirclePlus":faPersonCirclePlus,
+    //     "faSquarePlus":faSquarePlus,
+    //     "faHouseLaptop":faHouseLaptop,
+    //     "faUserPlus":faUserPlus,
+    //     "faPeopleGroup":faPeopleGroup,
+    //     "faUser":faUser,
+    //     "faLaptop":faLaptop,
+    //     "faRectangleList":faRectangleList,
+    //     "faHelmetSafety":faHelmetSafety,
+    //     "faBoxTissue":faBoxTissue,
+    //     "faFlaskVial":faFlaskVial,
+    //     "faUserDoctor":faUserDoctor,
+    //     "faHospitalUser":faHospitalUser,
+    //     "faHospital":faHospital,
+    //     "faCaretDown":faCaretDown,
+    //     "faCommentDots":faCommentDots,
+    //     "faCalendarCheck":faCalendarCheck,
+    //     "faBuilding":faBuilding,
+    //     "faBed":faBed,
+    //     "faUsers":faUsers,
+    //     "faUserpen":faUserPen
+    // }
 
     return(
     <>

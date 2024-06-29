@@ -67,6 +67,8 @@
     .form-label {
         @apply block text-mygray text-sm font-bold mb-2
     }
+    
+    
 
     .grid-buttoms {
         display: grid;

@@ -17,7 +17,7 @@ const PrestadoresBotones=({cuil})=>{
     return(
     <>
         <div onClick={verForm} className="solapar grid-buttoms" >    
-            <Buttom redir={1}  titulo={"Recibo de Sueldo"} icono={faMoneyCheck} link= {`https://archivos.fnsr.com.ar/index.php/apps/files/?dir=/Recibos/${cuil}`} />
+            <Buttom redir={1}  titulo={"Recibo de Sueldo"} icono={faMoneyCheck} link= {usuario.linkArchivos} />
         </div>
         {
                     viewForm && (
