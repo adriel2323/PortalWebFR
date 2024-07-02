@@ -16,7 +16,7 @@ const Resultados=()=>{
 
     return(
         <>
-            <section className='z-0 lg:w-3/4  flex flex-col justify-center p-5 lg:px-10 lg:pt-24 h-[100vh]'>
+            <section className='z-0 mx-auto lg:w-3/4  flex flex-col justify-center p-5 lg:px-10 lg:pt-24 h-[100vh]'>
                 <div className='flex '>
                     {!openSearch && (<FontAwesomeIcon onClick={()=> setOpenSearch((prev)=> !prev)} className=" text-xl mr-4" icon={faBars} />)}
                     <h1 className=' text-mygray font-semibold  pb-6 text-xl lg:text-4xl'>Resultados de busqueda</h1>

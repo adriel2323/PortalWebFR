@@ -18,6 +18,85 @@ const BuscarCV=()=>{
     const [openSearch,setOpenSearch]= useState(false);
     const [busqueda,setBusqueda]=useState({})
     const [busquedaDone,setBusquedaDone]=useState(false);
+
+    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
+    const [showSmall,setShowSmall]= useState(false);
+    const parametrosCV=[
+        {
+            id:1, 
+            nombre: "Administración y Atención al Público",	
+            value:"administracion/atencionalpublico"
+        },
+        {
+            id:2,
+            nombre: "Contabilidad",
+            value:"contable"
+        },
+        {
+            id:3,
+            nombre: "Enfermería",
+            value:"enfermeria"
+        },
+        {
+            id:4,
+            nombre: "Farmacia",
+            value:"farmacia"
+        },
+        {
+            id:5,
+            nombre: "Anatomía Patológica",
+            value:"anatomiPatologica"
+        },
+        {
+            id:6,
+            nombre: "Chofer",
+            value:"chofer"
+        },
+        {
+            id:7,
+            nombre: "Diagnostico por imagen",
+            value:"diagnosticoPorimagen"
+        },
+        {
+            id:8,
+            nombre: "Limpieza",
+            value:"limpieza"
+        },
+        {
+            id:9,
+            nombre: "Mantenimiento",
+            value:"Mantenimiento"
+        },
+        {
+            id:10,
+            nombre: "Camillero",
+            value:"camillero"
+        }
+
+    ]
+
+    const handleResize = () => {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+    };
+    const show=()=>{     
+            if(width< 1024){
+                setShowSmall(true);
+            } else {
+                setShowSmall(false);
+            }
+        }
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        }
+    }, []);
+    useEffect(() => {  
+        show()
+    }, [width]);
+
     const handleChange= async e=>{
         console.log(busqueda);
         await setBusqueda({
@@ -64,9 +143,7 @@ const BuscarCV=()=>{
             <div className="relative flex justify-between w-full  bg-gray-100">
                 <cvContext.Provider value={{openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
                     <div className="z-10">
-                        {openSearch && <Categorias/>}
-                        
-                        
+                        {openSearch && <Categorias paramsSerch={parametrosCV}/>}
                     </div>
                     
                     {
