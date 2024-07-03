@@ -7,6 +7,7 @@ import { Apiurl,apiRRHHCv } from "../../services/apiPortal";
 import { Link } from "react-router-dom";
 import {  faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Secciones from "../navBar/Secciones";
 
 export const cvContext= createContext();
 
@@ -22,7 +23,7 @@ const BuscarCV=()=>{
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
     const [showSmall,setShowSmall]= useState(false);
-    const parametrosCV=[
+    const paramsSerch=[
         {
             id:1, 
             nombre: "Administración y Atención al Público",	
@@ -138,19 +139,18 @@ const BuscarCV=()=>{
 
     return(
         <>
-            
-
+            <Secciones usuarios={usuario}/>
             <div className="relative flex justify-between w-full  bg-gray-100">
-                <cvContext.Provider value={{openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
+                <cvContext.Provider value={{paramsSerch,openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
                     <div className="z-10">
-                        {openSearch && <Categorias paramsSerch={parametrosCV}/>}
+                        {openSearch && <Categorias contexto={cvContext}/>}
                     </div>
                     
                     {
-                        isLoad && <Resultados resultados={[]}/>
+                        isLoad && <Resultados contexto={cvContext}/>
                     }
                     {
-                        !isLoad && <section className='z-0 w-3/4 px-10 pt-24 h-[100vh]'>
+                        !isLoad && <section className='z-0 w-3/4 px-10 h-[100vh]'>
                         {!openSearch && (<FontAwesomeIcon onClick={()=> setOpenSearch((prev)=> !prev)} className=" text-xl absolute z-10" icon={faBars} />)}
                         <h1 className=' text-mygray font-semibold  pb-6 text-md lg:text-4xl'>Resultados de busqueda</h1>
                         <div className='lg:py-4 h-[80vh] overflow-auto shadow-inner px-3 '>
@@ -160,10 +160,8 @@ const BuscarCV=()=>{
                     </section> 
                         
                     }
-                    {/* <Resultados  /> */}
                 </cvContext.Provider>
             </div>
-            {/* <Footer/> */}
         </>
     )
 };

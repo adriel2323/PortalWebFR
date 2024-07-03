@@ -154,8 +154,8 @@ export const apiBusquedas={
 export const apiRRHHCv ={
     listaCv:"rrhh/list",
     buscarCv: "rrhh/buscar/",
-    listaPersonal:"rrhh/listapersonal",
-    buscarPersonal: "rrhh/buscarpersonal/",
+    listaPersonal:"rrhh/personal/lista",
+    buscarPersonal: "rrhh/personal/buscar/",
 }
 
 export const apiPrestadores ={

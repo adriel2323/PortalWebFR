@@ -1,6 +1,5 @@
 import Perfil from './Perfil'
 import { useContext } from 'react';
-import { cvContext } from '../BuscarCV';
 import {  faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -8,9 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
-const Resultados=()=>{
-    const {openSearch,setOpenSearch}=useContext(cvContext)
-    const {listaResultados, isLoad}= useContext(cvContext)
+const Resultados=({contexto})=>{
+    const {openSearch, listaResultados,setOpenSearch, isLoad}= useContext(contexto)
+    // const {openSearch,setOpenSearch}=useContext(cvContext)
+    // const {listaResultados, isLoad}= useContext(cvContext)
     const datosPerfil=["nombre","apellido","secundario","superior","titulo","experiencia"]
     
 

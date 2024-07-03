@@ -14,6 +14,7 @@ import Afiliaciones from './componentes/ObraSocial/Afiliaciones'
 import { Routes,Route } from 'react-router-dom';
 import NotFound from './Pages/NotFound'
 import ReciboSueldo from './componentes/RRHH/Empleados/ReciboSueldo'
+import Personal from './componentes/RRHH/PersonalEdicion/EdicionPersonal'
 
 export const PerfilContext= createContext();
 
@@ -131,6 +132,7 @@ function App() {
             <Route path='/archivos' element={<ArchivosU usuarios= {"rrhh"}/>} />
             <Route path='/rrhh/recibosueldo' element={<ReciboSueldo usuarios= {"rrhh"}/>} />
             <Route path='/rrhh/cv' element={<FormularioCV usuarios= {"rrhh"}/>} />
+            <Route path='/rrhh/personal' element={<Personal usuarios= {"rrhh"}/>} />
             <Route path='/rrhh/buscar' element={<BuscarCV usuarios= {"rrhh"}/>} />
             <Route path='/rrhh/declaracion' element={<Declaracion usuarios= {"rrhh"}/>} />
             <Route path='/admin/nov' element={<PaginaGestionNov usuarios= {"general"}/>} />

@@ -1,15 +1,12 @@
 import { useContext} from "react";
-import { cvContext } from "../BuscarCV";
 import { Link } from "react-router-dom";
 import Icon from "../../BotonesHome/Icon";
 import { faArrowAltCircleLeft, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-const Categorias=({paramsSerch})=>{
-    const {listaResultados, setListaResultados, buscar, busqueda, handleChange}= useContext(cvContext);
-    const {setOpenSearch}=useContext(cvContext);
-    
+const Categorias=({contexto})=>{
+    const {paramsSerch,buscar,handleChange,openSearch,setOpenSearch,isLoad}=useContext(contexto)
 
     return(
 
