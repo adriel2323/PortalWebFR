@@ -11,16 +11,12 @@ const DatosSanatorio =()=>{
         fetch(Apiurl+"atenciones")
         .then(response=>response.json())
         .then(response=>{
-          
         //   setNovedades(response.novedades)
-          setAtenciones(response.result[0].atencion)
-          console.log(atenciones)
-          setIsLoad(true)
+            setAtenciones(response.result[0].atencion)
+            console.log(atenciones)
         })
         .catch(error=>console.log(error))
-
-       
-      },[])
+    },[])
 
     return(
         <div className="flex flex-col lg:flex-row lg:h-full justify-between bg-slate-200 my-40 p-10 lg:p-16 drop-shadow-2xl mx-10 xl:mx-52">

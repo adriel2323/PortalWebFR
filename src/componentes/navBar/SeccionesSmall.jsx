@@ -58,7 +58,7 @@ const SeccionesSmall= ({usuarios})=>{
         </div>
             
         {
-                viewForm  && (<Log />)
+                viewForm  && (<Log viewForm={viewForm} setViewForm={setViewForm} />)
             }
         </div>
     )

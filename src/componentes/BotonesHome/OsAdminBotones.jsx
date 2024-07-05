@@ -52,18 +52,50 @@ const OsAdminBotones=()=>{
             "link": "/"
         },
     ]
+    const botonesData={
+        "os_admin":[
+            
+            {
+                "id":1,
+                "titulo":"Afiliaciones online",
+                "icono":"faPersonCirclePlus",
+                "link":"/obrasocial/afiliaciones",
+                "redir":0
+            },
+            {
+                "id":2,
+                "titulo":"Asociate",
+                "link":"/obrasocial/afiliaciones",
+                "icono":"faSquarePlus",
+                "redir":0
+            },
+            {
+                "id":3,
+                "titulo":"Administrar cartilla",
+                "link":"/obrasocial/admin/cartilla",
+                "icono":"faGear",
+                "redir":0
+            },
 
-
+            {
+                "id":4,
+                "titulo":"Ver afiliaciones",
+                "link":"/obrasocial/admin/afiliaciones",
+                "icono":"faUsers",
+                "redir":0
+            },
+        ]
+    }
 
     return(
             <div className=" grid-buttoms  ">
                 <ButtomDrop  className="" titulo={"Acceso a Oficina Virtual"} icono={faHouseLaptop} lista={empleadosList}  />
-                <Buttom redir={0} className="" titulo={"Afiliaciones online"} icono={faPersonCirclePlus} lista={trabajaList} link= {"/obrasocial/afiliaciones"}   />
                 <ButtomOpen onClick={abrirCerrarCartilla} className="" titulo={"Cartilla Médica"} icono={faMoneyCheck} />
-                <Buttom redir={1} className="" titulo={"Asociate"} icono={faSquarePlus} link= {"https://portal.fnsr.com.ar"}  />
-                <Buttom redir={0} className="col-span-2" titulo={"Administrar cartilla"} icono={faGear} link= {"/obrasocial/admin/cartilla"}  />
-                <Buttom redir={0} className="col-span-2" titulo={"Ver afiliaciones"} icono={faUsers} link= {"/obrasocial/admin/afiliaciones"} />
-                
+                {
+                    botonesData.os_admin.map(boton=>
+                        <Buttom key={boton.id} redir={boton.redir} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
+                    )
+                }
             </div>
     )
 }

@@ -9,7 +9,7 @@ export default function Example() {
   const [isLoad,setIsLoad]=useState(false);
 
   useEffect(()=>{
-    fetch(Apiurl+"/api/preguntas")
+    fetch(Apiurl+"preguntas")
     
     .then(response=>response.json())
     .then(response=>{

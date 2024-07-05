@@ -5,7 +5,7 @@ import {logear} from "../../services/apiPortal"
 import {PerfilContext} from '../../App';
 
 
-export default function FormLog() {
+export default function FormLog( {setViewForm}) {
   const errorMSG="Credenciales invalidas"
   const {usuario,setUsuario, setLogin}=useContext(PerfilContext)
   const [open, setOpen] = useState(true)
@@ -39,6 +39,7 @@ useEffect(()=>{
           setDatosUsuario(persona);
           setStateRequest(true)
           setOpen(false)
+          setViewForm(false)
         } else{
           setStateRequest(false)
           

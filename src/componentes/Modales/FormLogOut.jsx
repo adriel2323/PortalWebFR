@@ -6,7 +6,7 @@ import {PerfilContext} from '../../App';
 import { LogContext } from '../navBar/SeccionesLg';
 
 
-export default function FormLogOut() {
+export default function FormLogOut({viewForm, setViewForm}) {
 
   const contextoLog= useContext(LogContext)
   const {setUsuario,usuario,quitarPermisos, setLogin}=useContext(PerfilContext)
@@ -26,7 +26,7 @@ export default function FormLogOut() {
     setDatosUsuario({})
     setStateRequest(true)
     setOpen(false) 
-
+    setViewForm(false)
   }
 
   const cancelButtonRef = useRef(null)

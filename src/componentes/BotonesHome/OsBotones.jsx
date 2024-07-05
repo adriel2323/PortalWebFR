@@ -53,12 +53,34 @@ const RhBotones=()=>{
         },
     ]
 
+    const botonesData={
+        "os":[
+            {
+                "id":1,
+                "titulo":"Afiliaciones online",
+                "icono":"faPersonCirclePlus",
+                "link":"/obrasocial/afiliaciones",
+                "redir":0
+            },
+            {
+                "id":2,
+                "titulo":"Asociate",
+                "link":"/obrasocial/afiliaciones",
+                "icono":"faSquarePlus",
+                "redir":0
+            },
+        ]
+    }
+
     return(
             <div className=" grid-buttoms ">
                 <ButtomDrop  className="" titulo={"Acceso a Oficina Virtual"} icono={faHouseLaptop} lista={empleadosList} link={"http://gsannicolas.ddns.net:5001/Home/IniciarSesion"}  />
-                <Buttom redir={0} className="" titulo={"Afiliaciones online"} icono={faPersonCirclePlus} lista={trabajaList} link= {"/obrasocial/afiliaciones"}   />
                 <ButtomOpen onClick={abrirCerrarCartilla} className="" titulo={"Cartilla Médica"} icono={faMoneyCheck} />
-                <Buttom redir={1} className="" titulo={"Asociate"} icono={faSquarePlus} link= {"/obrasocial/afiliaciones"}  />
+                {
+                    botonesData.os.map(boton=>
+                        <Buttom key={boton.id} redir={boton.redir} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
+                    )
+                }
             </div>
     )
 }

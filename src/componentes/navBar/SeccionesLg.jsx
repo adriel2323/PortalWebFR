@@ -72,7 +72,7 @@ const SeccionesLg= ({usuarios})=>{
             </div>
         </div>
         {
-                viewForm  && (<Log />)
+                viewForm  && (<Log viewForm={viewForm} setViewForm={setViewForm} />)
          
             }
         </div>
