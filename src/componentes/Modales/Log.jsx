@@ -6,15 +6,18 @@ import { PerfilContext } from "../../App";
 const Log=({viewForm, setViewForm})=>{
     const {login}=useContext(PerfilContext);
 
-    if(login){
-        return(
-            <FormLogOut viewForm={viewForm} setViewForm={setViewForm}/>
-        )
-    } else {
-        return (
-            <FormLog viewForm={viewForm} setViewForm={setViewForm}/>
-        )
-    }
+    return(
+        <>
+            {
+                login && <FormLogOut viewForm={viewForm} setViewForm={setViewForm}/>
+            }
+            {
+                !login && <FormLog viewForm={viewForm} setViewForm={setViewForm}/>
+            }
+        </>
+
+    )
+
 }
 
 export default Log;

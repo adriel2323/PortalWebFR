@@ -12,8 +12,8 @@ const Categorias=({contexto})=>{
 
     <> {
         descripcion==="CV" && (  
-        <div className="absolute sm:static z-10 sm:z-auto sm:w-[20vw] flex flex-row justify-between w-[100vw] ">
-            <div className="  pl-2 lg:pl-4 pt-4 w-3/4 lg:w-full  text-white bg-secondary justify-start  shadow-md lg:shadow-none   ">
+        <div className=" flex flex-row justify-between w-[100vw] ">
+            <div className="  pl-2 lg:pl-4 pt-4 w-3/4 lg:w-1/4 h-[100vh] text-white bg-secondary justify-start  shadow-md lg:shadow-none  ">
                             <Link  className="pl-2 lg:pl-10 mb-10" to="/rrhh">
                                 <Icon icono={faArrowAltCircleLeft}/>
                             </Link>
@@ -75,7 +75,7 @@ const Categorias=({contexto})=>{
                         ml-6 p-4 mr-4 w-10/12 form-buttom-send2 text-lg " type="submit" value="Buscar" />
                 </form>
             </div>
-            <div onClick={()=> setOpenSearch((prev)=> !prev)} className=" bg-black bg-opacity-20 w-full relative flex flex-row-reverse sm:hidden">
+            <div onClick={()=> setOpenSearch((prev)=> !prev)} className=" bg-black bg-opacity-20 w-full relative flex flex-row-reverse ">
                 <FontAwesomeIcon  className=" absolute z-10 text-xl m-4  " icon={faX} />
             </div>
         </div> )

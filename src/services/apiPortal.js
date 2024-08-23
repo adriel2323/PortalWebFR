@@ -158,6 +158,7 @@ export const apiRRHHCv ={
     buscarPersonal: "rrhh/personal/buscar/",
 }
 
+
 export const apiPrestadores ={
     contacto: "prestadores/contacto"
 }

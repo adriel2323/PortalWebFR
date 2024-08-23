@@ -1,4 +1,5 @@
 import Perfil from './Perfil'
+import PerfilPersonal from './PerfilPersonal';
 import { useContext } from 'react';
 import {  faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,10 +9,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const Resultados=({contexto})=>{
-    const {openSearch, listaResultados,setOpenSearch, isLoad}= useContext(contexto)
-    // const {openSearch,setOpenSearch}=useContext(cvContext)
-    // const {listaResultados, isLoad}= useContext(cvContext)
+    const {openSearch, listaResultados,setOpenSearch, isLoad,descripcion}= useContext(contexto)
     const datosPerfil=["nombre","apellido","secundario","superior","titulo","experiencia"]
+    console.log('Esta es la descripcion', descripcion);
+    
     
 
     return(
@@ -23,7 +24,10 @@ const Resultados=({contexto})=>{
                 </div>
                 <div className='rounded bg-gray-300 py-4 h-[80vh] overflow-auto shadow-inner px-3 '>
                     {
-                        isLoad && listaResultados.map(resultado=> <Perfil perfil={resultado} datos={datosPerfil}/>)
+                        isLoad && descripcion==="CV" && listaResultados.map(resultado=> <Perfil perfil={resultado} datos={datosPerfil}/>)
+                    }
+                    {
+                        isLoad && descripcion==="PERSONAL" && listaResultados.map(resultado=> <PerfilPersonal perfil={resultado} datos={datosPerfil}/>)
                     }
                 </div>
             </section>

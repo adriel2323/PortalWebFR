@@ -15,7 +15,7 @@ const RhBotonesAdmin=()=>{
         {
             "id":1,
             "titulo":"Recibo de sueldo",
-            "link": "/rrhh/recibosueldo",
+            "link": "/rrhh/personal/recibosueldo",
             "logged":1
         },
         {
@@ -98,7 +98,7 @@ const RhBotonesAdmin=()=>{
             {
                 "id":4,
                 "titulo":"Editar Usuarios",
-                "link":"/rrhh/admin/editarusuarios",
+                "link":"/rrhh/personal",
                 "icono":"faUserPen",
                 "redir":0
             },

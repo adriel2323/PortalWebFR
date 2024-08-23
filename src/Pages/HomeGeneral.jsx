@@ -9,6 +9,8 @@ import Secciones from "../componentes/navBar/Secciones";
 const HomeGeneral =({usuarios})=>{
 
     const usuario= usuarios;
+    console.log('Estos son los usuarios: ',usuario);
+    
     
     return(
         <>

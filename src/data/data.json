@@ -273,7 +273,7 @@
         {
             "id":1,
             "titulo":"Recibo de sueldo",
-            "link": "/rrhh/recibosueldo",
+            "link": "/rrhh/personal/recibosueldo",
             "logged":1
         },
         {
