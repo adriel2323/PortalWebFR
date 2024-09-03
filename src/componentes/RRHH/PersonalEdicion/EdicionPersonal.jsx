@@ -102,7 +102,7 @@ const Personal=()=>{
                 <Secciones usuarios={usuario}/>
                 <div className="relative flex justify-between w-full  bg-gray-100">
                         <div className="z-10">
-                            {openSearch && <Categorias contexto={edicionPersonalContext} />}
+                            {/* {openSearch && <Categorias contexto={edicionPersonalContext} />} */}
                         </div>
                         
                         {

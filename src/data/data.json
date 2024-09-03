@@ -168,6 +168,12 @@
                 "titulo": "RR.HH.",
                 "link":"/rrhh",
                 "icon":"fa-solid fa-gear"           
+            },
+            {
+                "id":7,
+                "titulo": "RR.HH.",
+                "link":"/rrhh",
+                "icon":"fa-solid fa-gear"           
             }
         ],
         "rrhh": [
@@ -206,6 +212,12 @@
                 "id":6,
                 "titulo": "Pacientes",
                 "link":"/pacientes",
+                "icon":"fa-solid fa-gear"           
+            },
+            {
+                "id":7,
+                "titulo": "RR.HH.",
+                "link":"/rrhh",
                 "icon":"fa-solid fa-gear"           
             }
         ]

@@ -44,14 +44,10 @@ const PerfilPersonal= ({perfil, datos})=>{
                             <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.area}</h2>
                         </div>
                     </div>
-                    <div className="lg:mb-2 flex  overflow-scroll">
-                        <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Nombre usuario: </h2>
-                        <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.userName}</h2>
-                    </div>
                     
                     <div className="lg:mb-2 col-span-3 flex flex-col overflow-scroll">
                         <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Link Archivos: </h2>
-                        <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.archivos}</h2>
+                        <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.archivos?'SI':'NO'  }</h2>
                     </div>
                 </section>
             </Link>
