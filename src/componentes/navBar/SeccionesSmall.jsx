@@ -8,28 +8,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { PerfilContext } from "../../App";
 import Sesion from "./ComponentesAuxiliares/Sesion";
+import { useUserStore } from "../../store/userStore";
 
 
 
 const SeccionesSmall= ({usuarios})=>{
     const {login}= useContext(PerfilContext)
-
-
-
-    const[isLoading,setIsLoading]= useState(true);
     const[viewForm,setViewForm]= useState(false);
-
     const [isOpen, setIsOpen]= useState(false);
-
     const sectionList= UserData
 
-    // const login=  ()=> {
-    //   setViewForm(true)
-
-    // }
-  
-
-
+    const user= useUserStore((state)=>state.user)
+    
 
     return (
         <div>
