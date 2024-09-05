@@ -13,7 +13,6 @@ const PrestadoresBotones=({cuil})=>{
             setViewForm((prev)=> !prev)
     }
 }
-    // ()=> !login? setViewForm((prev)=> !prev):null
     return(
     <>
         <div onClick={verForm} className="solapar grid-buttoms" >    

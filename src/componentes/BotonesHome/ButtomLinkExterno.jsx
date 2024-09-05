@@ -1,8 +1,6 @@
-import { faMoneyCheck } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext } from "react";
 import { PerfilContext } from "../../App";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Modales/FormLog"
 import Icon from "./Icon";
 
 const ButtomLinkExterno=({link,icono,titulo, redir})=>{
@@ -26,7 +24,6 @@ const ButtomLinkExterno=({link,icono,titulo, redir})=>{
                 break;
         }
     }}
-    // ()=> !login? setViewForm((prev)=> !prev):null
     return(
     <>
         <div className="flex justify-center w-full"  >

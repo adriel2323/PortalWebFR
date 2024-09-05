@@ -4,88 +4,13 @@ import ButtomDrop from "./ButtomDrop";
 import ButtomOpen from "./ButtomOpen";
 import { useState,useContext } from "react";
 import { PerfilContext } from "../../App";
+import { botones, dropList } from "../../data/constantes";
 
 
 const OsAdminBotones=()=>{
     const {abrirCerrarCartilla}= useContext(PerfilContext);
-    const empleadosList =[
-        {
-            "id":1,
-            "titulo":"Descargas utiles",
-            "link": "/"
-        },
-        {
-            "id":2,
-            "titulo":"Formularios",
-            "link": "/"
-        },
-        {
-            "id":3,
-            "titulo":"Documentación",
-            "link": "/"
-        },
-        {
-            "id":4,
-            "titulo":"Novedades",
-            "link": "/"
-        },
-    ]
-    const trabajaList =[
-        {
-            "id":1,
-            "titulo":"Carga tu curricullum",
-            "link": "/"
-        },
-        {
-            "id":2,
-            "titulo":"Areas de trabajo",
-            "link": "/"
-        },
-        {
-            "id":3,
-            "titulo":"Documentación",
-            "link": "/"
-        },
-        {
-            "id":4,
-            "titulo":"Novedades",
-            "link": "/"
-        },
-    ]
-    const botonesData={
-        "os_admin":[
-            
-            {
-                "id":1,
-                "titulo":"Afiliaciones online",
-                "icono":"faPersonCirclePlus",
-                "link":"/obrasocial/afiliaciones",
-                "redir":0
-            },
-            {
-                "id":2,
-                "titulo":"Asociate",
-                "link":"/obrasocial/afiliaciones",
-                "icono":"faSquarePlus",
-                "redir":0
-            },
-            {
-                "id":3,
-                "titulo":"Administrar cartilla",
-                "link":"/obrasocial/admin/cartilla",
-                "icono":"faGear",
-                "redir":0
-            },
-
-            {
-                "id":4,
-                "titulo":"Ver afiliaciones",
-                "link":"/obrasocial/admin/afiliaciones",
-                "icono":"faUsers",
-                "redir":0
-            },
-        ]
-    }
+    const empleadosList =dropList.empleadosList
+    const botonesData=botones.os_admin
 
     return(
             <div className=" grid-buttoms  ">

@@ -5,40 +5,9 @@ import { useNavigate } from "react-router-dom";
 import Icon from "./Icon";
 
 const ButtomTemplate=({reqLogin,link,icono,titulo, redir, setViewModal})=>{
-    const {login,usuario,permisosRrhh}= useContext(PerfilContext)
-    const [viewForm,setViewForm]= useState(false);
-    const navigate = useNavigate();
-
+    // const {login,usuario,permisosRrhh}= useContext(PerfilContext)
+    // const [viewForm,setViewForm]= useState(false);
     
-    // const iconMap= {
-    //     "faMoneyCheck":faMoneyCheck,
-    //     "faChalkboardUser":faChalkboardUser,
-    //     "faNotesMedical":faNotesMedical,
-    //     "faLaptopMedical":faLaptopMedical,
-    //     "faPeopleRoof":faPeopleRoof,
-    //     "faGear":faGear,
-    //     "faPersonCirclePlus":faPersonCirclePlus,
-    //     "faSquarePlus":faSquarePlus,
-    //     "faHouseLaptop":faHouseLaptop,
-    //     "faUserPlus":faUserPlus,
-    //     "faPeopleGroup":faPeopleGroup,
-    //     "faUser":faUser,
-    //     "faLaptop":faLaptop,
-    //     "faRectangleList":faRectangleList,
-    //     "faHelmetSafety":faHelmetSafety,
-    //     "faBoxTissue":faBoxTissue,
-    //     "faFlaskVial":faFlaskVial,
-    //     "faUserDoctor":faUserDoctor,
-    //     "faHospitalUser":faHospitalUser,
-    //     "faHospital":faHospital,
-    //     "faCaretDown":faCaretDown,
-    //     "faCommentDots":faCommentDots,
-    //     "faCalendarCheck":faCalendarCheck,
-    //     "faBuilding":faBuilding,
-    //     "faBed":faBed,
-    //     "faUsers":faUsers,
-    //     "faUserpen":faUserPen
-    // }
 
     return(
     <>

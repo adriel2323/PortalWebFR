@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./Icon";
 import Modal from "../Modales/FormLog"
-import ItemDrop from "./ItemDrop";
 import { PerfilContext } from "../../App";
 import { Link } from "react-router-dom";
 
@@ -13,8 +12,6 @@ const Buttom = ({titulo, icono, link, lista})=>{
     const {login}= useContext(PerfilContext)
     const [isOpen, setIsOpen]= useState(false);
     const[viewForm,setViewForm]= useState(false);
-    const [isLogged,setIsLogged]= useState(false)
-    const verForm=()=> ()=> !login? setViewForm((prev)=> !prev):'';
     return(
     <>
 

@@ -3,8 +3,6 @@ import { faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeo
 import Icon from "./Icon";
 
 const ButtomOpen = ({titulo, icono, link, redir, onClick})=>{
-    
-
     return(
 
     <div className="cartilla" onClick={onClick}>

@@ -4,6 +4,7 @@ import { faGear,faPersonCirclePlus, faSquarePlus,faUsers , faHouseLaptop,faUserP
 import ButtomTemplate from "./ButtomTemplate";
 import ModalSmButtoms from "../Modales/ModalSmButtoms";
 import data from "../../data/data.json";
+import { botones } from "../../data/constantes";
 
 const RhBotones=()=>{
     const [viewModalEmpleados,setViewModalEmpleados]=useState(false);
@@ -11,17 +12,9 @@ const RhBotones=()=>{
     const errorMSG= "No tiene autorizaciones para ver este apartado"
     const empleadosList= data.empleadosList
     const trabajaList= data.trabajaList
-    const botonesData= {
-        "rrhh":[
-            {
-                "id":1,
-                "titulo":"Capacitaciones",
-                "link": "https://archivos.fnsr.com.ar/index.php/apps/files/?dir=/Instructivos",
-                "icono":"faUsers",
-                "redir":0
-            }
-        ]
-    }
+    const botonesData= botones.rrhh
+   
+
     return(
             <div className="grid-buttoms">
                 <ButtomTemplate icono={faPeopleGroup} titulo={"Personal"} setViewModal={setViewModalEmpleados} />
