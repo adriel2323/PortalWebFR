@@ -35,6 +35,112 @@ export const adminRoutes= {
     ADMINISTRAR_RH:'/admin/rh',
 }
 
+export const links= [
+    {
+        "id": 1,
+        "titulo": "Portal de pacientes",
+        "link": "https://portal.fnsr.com.ar",
+        "fecha": "2023-03-22",
+        "area": "sistemas",
+        "icono": "faHospitalUser"
+    },
+    {
+        "id": 2,
+        "titulo": "PAMI",
+        "link": "https://www.pami.org.ar/preinicio",
+        "fecha": "2023-03-22",
+        "area": "pami",
+        "icono": "faMoneyCheck"
+    },
+    {
+        "id": 3,
+        "titulo": "Diagnostico por imagenes",
+        "link": "https://imagenes.fnsr.com.ar",
+        "fecha": "2023-03-22",
+        "area": "sistemas",
+        "icono": "faHospitalUser"
+    },
+    {
+        "id": 4,
+        "titulo": "Geclisa web",
+        "link": "https://geclisa.fnsr.com.ar",
+        "fecha": "2023-03-22",
+        "area": "sistemas",
+        "icono": "faLaptopMedical"
+    },
+    {
+        "id": 5,
+        "titulo": "OME y Recetas(PAMI)",
+        "link": "https://cup.pami.org.ar/controllers/loginController.php",
+        "fecha": "2023-03-22",
+        "area": "pami",
+        "icono": "faPeopleRoof"
+    },
+    {
+        "id": 6,
+        "titulo": "Sistema de bonos",
+        "link": "https://bonos.fnsr.com.ar",
+        "fecha": "2023-03-22",
+        "area": "sistemas",
+        "icono": "faMoneyCheck"
+    },
+    {
+        "id": 7,
+        "titulo": "Archivos",
+        "link": "https://archivos.fnsr.com.ar/",
+        "fecha": "2023-03-22",
+        "area": "sistemas",
+        "icono": "faChalkboardUser"
+    },
+    {
+        "id": 8,
+        "titulo": "Cartilla Médica",
+        "link": "/",
+        "fecha": "2023-03-22",
+        "area": "sistemas",
+        "icono": "faHospitalUser"
+    },
+    {
+        "id": 9,
+        "titulo": "Interconsultas",
+        "link": "https://interconsultas.fnsr.com.ar",
+        "fecha": "2023-03-22",
+        "area": "pacientes",
+        "icono": "faNotesMedical"
+    },
+    {
+        "id": 10,
+        "titulo": "Turnos",
+        "link": "https://turnos.fnsr.com.ar",
+        "fecha": "2023-03-22",
+        "area": "pacientes",
+        "icono": "faCalendarCheck"
+    },
+    {
+        "id": 11,
+        "titulo": "Instructivos",
+        "link": "https://archivos.fnsr.com.ar/index.php/apps/files/?dir=/Instructivos",
+        "fecha": "2023-03-22",
+        "area": "personal",
+        "icono": "faUsers"
+    },
+    {
+        "id": 12,
+        "titulo": "Agregar novedad",
+        "link": "/admin/nov",
+        "fecha": "2023-03-22",
+        "area": "rrhh_admin",
+        "icono": "faSquarePlus"
+    },
+    {
+        "id": 13,
+        "titulo": "Buscar CV",
+        "link": "/rrhh/buscar",
+        "fecha": "2023-03-22",
+        "area": "rrhh_admin",
+        "icono": "faRectangleList"
+    }
+]
 export const botones= {
     "general":[
         {
@@ -218,7 +324,7 @@ export const botones= {
                 "redir":0
             }
         ],
-        "rrhh_admin":[
+    "rrhh_admin":[
             
             {
                 "id":1,

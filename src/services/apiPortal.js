@@ -1,10 +1,12 @@
 import axios from "axios";
+import { userAdapter } from "../Utilities/Adapters/user.adapter";
 //export const Apiurl= "http://publica.fnsr.com.ar:3002/api/";
 export const Apiurl= "http://10.84.1.112:3001/api/";
 
 export const MESSAGES= {
     SIN_RESULTADOS_MESSAGE: "No se encontraron resultados de la busqueda"
 }
+const errorMSG= "Credenciales invalidas";
 
 export async function cargarNovedad(form){
 
@@ -73,12 +75,23 @@ export async function cargarCv(form){
 
 export async function logear(datosUsuario){
     try{
+        let usuario= {}
         const response= await axios({
             url: Apiurl+'login',
             method:'POST',
             data:datosUsuario,
         })
-        return response
+        console.log('este es el response',response);
+        if(response.data.msg!=errorMSG){
+
+            usuario= userAdapter(response.data.user)
+        } else {
+            usuario={
+                msg: 'Credenciales invalidas'
+            }
+        }
+
+        return usuario
 
     } catch(e){
         console.log(e);

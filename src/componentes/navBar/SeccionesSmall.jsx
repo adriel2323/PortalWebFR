@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import UserData from "../../data/data.json";
 import SectionsBottom from "./SectionBottom";
 import Icon from "../BotonesHome/Icon";
 import { faLitecoinSign, faUserCircle, faBars, faX } from "@fortawesome/free-solid-svg-icons";

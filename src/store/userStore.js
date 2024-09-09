@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import {permisosValidos} from "../Utilities/functions"
 
 export const useUserStore = create((set) => ({
     user: {
@@ -10,14 +11,24 @@ export const useUserStore = create((set) => ({
         archivos: null,
         area: null,
         imagen: null,
-        permisos: null,
+        tipoUser:null,
     },
-    setUser: (user) => {
-        useUserStore.user = user
-        localStorage.setItem('user', JSON.stringify(user))
+
+    permisos: {
+        'permisosPrestadores': false,
+        'permisosRrhh': false,
+        'permisosPersonal': false,
+        'permisosAdministradorTotal': false,
+        'permisosAdministradorPersonal': false,
+        'permisosOsAdmin': false
     },
+
+    setUser: (user) => set((state) => ({ 
+        user: user
+    })),
+        
     resetUser: () => {
-        useUserStore.user = {
+        user = {
             id: null,
             name: null,
             admin: null,
@@ -26,44 +37,24 @@ export const useUserStore = create((set) => ({
             archivos: null,
             area: null,
             imagen: null,
-            permisos: {
-                'permisosPrestadores': false,
-                'permisosRrhh': false,
-                'permisosPersonal': false,
-                'permisosAdministradorTotal': false,
-                'permisosAdministradorPersonal': false,
-                'permisosOsAdmin': false
-            },
+            tipoUser:null,
+            
         }
         localStorage.removeItem('user')
     },
-    setPermisosUser: (permisos) => {
+    setPermisos: () => set(state=>({
+        permisos: permisosValidos(state.user),
 
-        if(usuario.tipoUser===1){
-            useUserStore.user.permisos.permisosAdministradorTotal(true);
-            useUserStore.user.permisos.permisosAdministradorPersonal(true);
-            useUserStore.user.permisos.permisosPrestadores(true);
-            useUserStore.user.permisos.permisosRrhh(true);
-            useUserStore.user.permisos.permisosPersonal(true);
-            useUserStore.user.permisos.permisosOsAdmin(true);
+        })
+    ),
+    resetPermisos: () => set(state=>({
+        permisos: {
+            'permisosPrestadores': false,
+            'permisosRrhh': false,
+            'permisosPersonal': false,
+            'permisosAdministradorTotal': false,
+            'permisosAdministradorPersonal': false,
+            'permisosOsAdmin': false
         }
-        else if(usuario.tipoUser===2){
-            useUserStore.user.permisos.permisosAdministradorPersonal(true);
-            useUserStore.user.permisos.permisosPrestadores(true);
-            useUserStore.user.permisos.permisosRrhh(true);
-            useUserStore.user.permisos.permisosPersonal(true);
-        }
-        else if(usuario.tipoUser===3){
-            useUserStore.user.permisos.permisosRrhh(true);
-        }
-        else if(usuario.tipoUser===4){
-            useUserStore.user.permisos.permisosPersonal(true);
-        } else if (usuario.tipoUser===5){
-            useUserStore.user.permisos.permisosOsAdmin(true);
-        }
-
-        useUserStore.user.permisos = permisos
-        localStorage.setItem('user', JSON.stringify(userStore.user))
-    }
-    })
-)
+    }))
+}))

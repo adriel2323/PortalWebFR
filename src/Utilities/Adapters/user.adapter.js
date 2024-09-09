@@ -8,6 +8,6 @@ export const userAdapter = (user) => {
         archivos: user.linkArchivos,
         area: user.area,
         imagen: user.imagen,
-        permisos: null,
+        tipoUser:user.tipoUser,
     };
 }

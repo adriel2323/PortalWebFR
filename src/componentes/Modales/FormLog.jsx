@@ -3,11 +3,16 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 import {logear} from "../../services/apiPortal"
 import {PerfilContext} from '../../App';
+import { useUserStore } from '../../store/userStore';
 
 
 export default function FormLog( {setViewForm}) {
+  const usuario= useUserStore((state)=>state.user)
+  const permisos= useUserStore((state)=>state.permisos)
+  const setUser= useUserStore((state)=>state.setUser)
+  const setPermisos= useUserStore((state)=>state.setPermisos)
   const errorMSG="Credenciales invalidas"
-  const {usuario,setUsuario, setLogin}=useContext(PerfilContext)
+  const { setLogin}=useContext(PerfilContext)
   const [open, setOpen] = useState(true)
   const [datosUsuario,setDatosUsuario]=useState({})
   const [stateRequest,setStateRequest]=useState(true)
@@ -26,20 +31,28 @@ useEffect(()=>{
   const logearse=()=>{
     logear(datosUsuario).then(
       (response) => {
-        if(response.data.msg!=errorMSG){
-          const persona=response.data;
-          setUsuario(persona.user)
-          localStorage.setItem('Usuario',persona.user )
-          localStorage.setItem('Nombre',persona.user.name )
-          localStorage.setItem('Area',persona.user.area )
-          localStorage.setItem('TipoUsuario',persona.user.tipoUser )
-          localStorage.setItem('NombreUsuario',persona.user.userName )
-          console.log("esta es la persona:...",persona.user);
-          setLogin(true);
-          setDatosUsuario(persona);
-          setStateRequest(true)
-          setOpen(false)
+        console.log('este es el response', response);
+        
+        if(response.msg!=errorMSG){
+          setUser(response)
+          console.log('este es el user', usuario)
+          setPermisos(response)
+          console.log('este es el permisos', permisos)
+          setLogin(true)
           setViewForm(false)
+          setOpen(false)
+          setStateRequest(true)
+          
+          // const persona=response.data;
+          // setUsuario(persona.user)
+          // localStorage.setItem('Usuario',persona.user )
+          // localStorage.setItem('Nombre',persona.user.name )
+          // localStorage.setItem('Area',persona.user.area )
+          // localStorage.setItem('TipoUsuario',persona.user.tipoUser )
+          // localStorage.setItem('NombreUsuario',persona.user.userName )
+          // console.log("esta es la persona:...",persona.user);
+          // setLogin(true);
+          // setDatosUsuario(persona);
         } else{
           setStateRequest(false)
           
