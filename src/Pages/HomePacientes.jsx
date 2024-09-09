@@ -35,12 +35,11 @@ const HomePacientes =({usuarios})=> {
     };
 
     useEffect(()=>{
-        console.log('esto es lo que va a entrar ',ids)
+        
         fetch(Apiurl+apiLinks.LINKS_BOTONES+'/'+ids)
         .then(response=>response.json())
         .then(response=>{
             setButtons(response.links)
-            console.log('estos son los botones ', response);
         })
         .catch(error=>console.log(error))
     },[])

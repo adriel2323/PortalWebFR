@@ -5,6 +5,7 @@ import Log from "../Modales/Log"
 import { Link } from "react-router-dom";
 import useScreenSize from "../../Hooks/UseScreenSize";
 import Sesion from "./ComponentesAuxiliares/Sesion";
+import { sections } from "../../data/constantes";
 
 export const LogContext= createContext()
 
@@ -15,15 +16,14 @@ const SeccionesLg= ({usuarios})=>{
 
     const [isOpen, setIsOpen]= useState(false);
 
-    const sectionList= UserData
+    const sectionList= sections
+
+    // const sectionsNav=  usuarios != "admin" || usuarios != "os" || usuarios != "personal" ? sectionList.public : sectionList.privates
+    const sectionsNav=  sectionList.public 
 
     const [viewList, setViewList]= useState(false);
     const [viewBars, setViewBars]= useState(false);
     const size= useScreenSize()
-
-
-
-
 
     return (
         <div>
@@ -57,7 +57,7 @@ const SeccionesLg= ({usuarios})=>{
 
                         <ul className="text-sm md:text-base flex align-middle justify-around items-center w-full  xl:w-[55vw]">
                             
-                            {((sectionList.sections[0])[usuarios]).map(section=> <SectionsBottom key={section.id} className="px-2 flex " oneSection= {section}/>)}
+                            {sectionsNav.map(section=> <SectionsBottom key={section.id} className="px-2 flex " oneSection= {section}/>)}
                         </ul>
                     </div>
                 </div>

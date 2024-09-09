@@ -2,13 +2,37 @@ export const publicRoutes= {
     GENERAL: "/",
     PACIENTES: "/pacientes",
     RH: "/rrhh",
-    OS: "/os",
+    OS: "/obrasocial",
     CONTACTOS: "/contactos",
+    QUIENES_SOMOS: "/quienessomos",
+    PRESTADORES: "/prestadores",
+    OBRA_SOCIAL: "/os",
+}
+export const publicRoutes_os= {
+    GENERAL: "/os",
+    PACIENTES: "/pacientes",
+    RH: "/rrhh",
+    CONTACTOS: "/os/contactos",
+    QUIENES_SOMOS: "/quienessomos",
+    PRESTADORES: "/os/prestadores",
 }
 export const privatesRoutes= {
-    PRESTADORES: "/prestadores",
-    RH: "/rrhh",
-    OS: "/os",
+    RH: "/personal/rrhh",
+    PRESTADORES: "/personal/prestadores",
+    GENERAL: "/personal/novedades",
+    CONTACTOS: "/personal/contactos",
+    OBRA_SOCIAL: "/personal/os",
+}
+export const adminRoutes= {
+    ADMIN: "/admin",
+    ADMIN_NOVEDADES: "/admin/novedades",
+    ADMINISTRAR_USUARIOS:'/admin/usuarios',
+    ADMINISTRAR_PACIENTES:'/admin/pacientes',
+    ADMINISTRAR_PRESTADORES:'/admin/prestadores',
+    ADMINISTRAR_OBRA_SOCIAL:'/admin/obrasocial',
+    ADMINISTRAR_CONTACTOS:'/admin/contactos',
+    ADMINISTRAR_SISTEMAS:'/admin/sistemas',
+    ADMINISTRAR_RH:'/admin/rh',
 }
 
 export const botones= {
@@ -228,48 +252,48 @@ export const botones= {
         ]
 }
 
-export const sections=[ {
+export const sections= {
     "public": [
         {
             "id":1,
             "titulo": "Quienes somos",
-            "link":"/quienessomos",
+            "link":publicRoutes.QUIENES_SOMOS,
             "icon":"faGear"           
         },
         {
             "id":2,
             "titulo": "Novedades",
-            "link":"/",
+            "link":publicRoutes.GENERAL,
             "icon":"fa-solid fa-gear"            
         },
         {
             "id":3,
             "titulo": "Contactos",
-            "link":"/contactos",
+            "link":publicRoutes.CONTACTOS,
             "icon":"fa-solid fa-gear"          
         },
         {
             "id":4,
             "titulo": "Prestadores",
-            "link":"/prestadores",
+            "link":publicRoutes.PRESTADORES,
             "icon":"fa-solid fa-gear"            
         },
         {
             "id":5,
             "titulo": "Obra social",
-            "link":"/obrasocial",
+            "link":publicRoutes.OBRA_SOCIAL,
             "icon":"fa-solid fa-gear"           
         },
         {
             "id":6,
             "titulo": "Pacientes",
-            "link":"/pacientes",
+            "link":publicRoutes.PACIENTES,
             "icon":"fa-solid fa-gear"           
         },
         {
             "id":7,
             "titulo": "RR.HH.",
-            "link":"/rrhh",
+            "link":publicRoutes.RH,
             "icon":"fa-solid fa-gear"           
         }
     ],
@@ -279,31 +303,96 @@ export const sections=[ {
         {
             "id":2,
             "titulo": "Novedades",
-            "link":"/",
+            "link":privatesRoutes.GENERAL,
             "icon":"fa-solid fa-gear"            
         },
         {
             "id":3,
             "titulo": "Contactos",
-            "link":"/contactos",
+            "link":privatesRoutes.CONTACTOS,
             "icon":"fa-solid fa-gear"          
         },
         {
             "id":4,
             "titulo": "Prestadores",
-            "link":"/prestadores",
+            "link":privatesRoutes.PRESTADORES,
             "icon":"fa-solid fa-gear"            
         },
         {
             "id":5,
             "titulo": "Obra social",
-            "link":"/obrasocial",
+            "link":privatesRoutes.OBRA_SOCIAL,
             "icon":"fa-solid fa-gear"           
         },
         {
             "id":7,
             "titulo": "RR.HH.",
-            "link":"/rrhh",
+            "link":privatesRoutes.RH,
+            "icon":"fa-solid fa-gear"           
+        }
+    ],
+    "admin": [
+        
+        {
+            "id":2,
+            "titulo": "Novedades",
+            "link":adminRoutes.ADMIN_NOVEDADES,
+            "icon":"fa-solid fa-gear"            
+        },
+        {
+            "id":3,
+            "titulo": "Contactos",
+            "link":adminRoutes.ADMINISTRAR_CONTACTOS,
+            "icon":"fa-solid fa-gear"          
+        },
+        {
+            "id":4,
+            "titulo": "Prestadores",
+            "link":adminRoutes.ADMINISTRAR_PRESTADORES,
+            "icon":"fa-solid fa-gear"            
+        },
+        {
+            "id":5,
+            "titulo": "Obra social",
+            "link":adminRoutes.ADMINISTRAR_OBRA_SOCIAL,
+            "icon":"fa-solid fa-gear"           
+        },
+        {
+            "id":7,
+            "titulo": "RR.HH.",
+            "link":adminRoutes.ADMINISTRAR_RH,
+            "icon":"fa-solid fa-gear"           
+        }
+    ],
+    "sistemas": [
+        {
+            "id":2,
+            "titulo": "Novedades",
+            "link":adminRoutes.ADMIN_NOVEDADES,
+            "icon":"fa-solid fa-gear"            
+        },
+        {
+            "id":3,
+            "titulo": "Contactos",
+            "link":adminRoutes.ADMINISTRAR_CONTACTOS,
+            "icon":"fa-solid fa-gear"          
+        },
+        {
+            "id":4,
+            "titulo": "Prestadores",
+            "link":publicRoutes.PRESTADORES,
+            "icon":"fa-solid fa-gear"            
+        },
+        {
+            "id":5,
+            "titulo": "Obra social",
+            "link":publicRoutes.OBRA_SOCIAL,
+            "icon":"fa-solid fa-gear"           
+        },
+        {
+            "id":7,
+            "titulo": "RR.HH.",
+            "link":publicRoutes.RH,
             "icon":"fa-solid fa-gear"           
         }
     ],
@@ -312,29 +401,29 @@ export const sections=[ {
         {
             "id":3,
             "titulo": "Novedades",
-            "link":"/",
+            "link":publicRoutes.GENERAL,
             "icon":""            
         },
         {
             "id":4,
             "titulo": "Contactos",
-            "link":"/contactos",
+            "link":publicRoutes_os.CONTACTOS,
             "icon":""            
         },
         {
             "id":5,
             "titulo": "Prestadores",
-            "link":"/prestadores",
+            "link":publicRoutes_os.PRESTADORES,
             "icon":""            
         },
         {
             "id":5,
             "titulo": "Pacientes",
-            "link":"/pacientes",
+            "link":publicRoutes_os.PACIENTES,
             "icon":""            
         }
     ],
-}]
+}
 
 export const dropList={
     "empleadosList" :[

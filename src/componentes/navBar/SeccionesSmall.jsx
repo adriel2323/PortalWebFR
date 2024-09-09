@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { PerfilContext } from "../../App";
 import Sesion from "./ComponentesAuxiliares/Sesion";
 import { useUserStore } from "../../store/userStore";
+import { sections } from "../../data/constantes";
 
 
 
@@ -16,11 +17,12 @@ const SeccionesSmall= ({usuarios})=>{
     const {login}= useContext(PerfilContext)
     const[viewForm,setViewForm]= useState(false);
     const [isOpen, setIsOpen]= useState(false);
-    const sectionList= UserData
+    // const sectionsNav=  usuarios != "admin" || usuarios != "os" || usuarios != "personal" ? sections.public : sections.privates
+    const sectionsNav=  sections.public
 
     const user= useUserStore((state)=>state.user)
+    console.log('esto es el user :', user);
     
-
     return (
         <div>
 
@@ -41,7 +43,7 @@ const SeccionesSmall= ({usuarios})=>{
             <ul className="flex flex-col  justify-center">
                 {isOpen && (
                     <>
-                        {((sectionList.sections[0])[usuarios]).map(section=> <SectionsBottom key={section.id} oneSection= {section}/>)}
+                        {sectionsNav.map(section=> <SectionsBottom key={section.id} oneSection= {section}/>)}
                     </>
                         )}
                 </ul>

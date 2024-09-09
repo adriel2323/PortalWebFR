@@ -17,8 +17,11 @@ import ReciboSueldo from './componentes/RRHH/Empleados/ReciboSueldo'
 import Personal from './componentes/RRHH/PersonalEdicion/EdicionPersonal'
 import PanelEdicion from './componentes/RRHH/PanelEdicion/PanelEdicion'
 import EdicionPersonalForm from './componentes/RRHH/PanelEdicion/EdicionPersonalForm'
+import { useUserStore } from './store/userStore'
 
 export const PerfilContext= createContext();
+
+const usuario= useUserStore((state)=>state.user)
 
 function App() {
   const [CurrentPath, setCuerrentPath]= useState(window.location.pathname)
@@ -26,9 +29,9 @@ function App() {
   const [permisos,setPermisos]=useState({});
   const[usuario,setUsuario]=useState({algo:"algo"});
 
-  const [verModalNovedad,setVerModalNovedad]=useState(false)
-  const [novedad,setNovedad]=useState();
-  const [isLoadNovedad,setIsLoadNovedad]=useState(false);
+  // const [verModalNovedad,setVerModalNovedad]=useState(false)
+  // const [novedad,setNovedad]=useState();
+  // const [isLoadNovedad,setIsLoadNovedad]=useState(false);
 
   //Gestion de permisos de usuarios
   const [permisosPrestadores,setPermisosPrestadores]=useState(false);

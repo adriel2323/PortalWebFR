@@ -20,7 +20,7 @@ const RhBotones=()=>{
                 <ButtomTemplate icono={faPeopleGroup} titulo={"Personal"} setViewModal={setViewModalEmpleados} />
                 <ButtomTemplate  titulo={"Trabaja con nosotros"} icono={faUserPlus}  lista={trabajaList} setViewModal={setViewModalTN}  />
                 {
-                    botonesData.rrhh.map(boton=>
+                    botonesData.map(boton=>
                         <Buttom key={boton.id} redir={boton.redir} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
                     )
                 }

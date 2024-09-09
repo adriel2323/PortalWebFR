@@ -7,6 +7,7 @@ export const userAdapter = (user) => {
         ingreso: user.fechaIngreso,
         archivos: user.linkArchivos,
         area: user.area,
-        imagen: user.imagen
+        imagen: user.imagen,
+        permisos: null,
     };
 }
