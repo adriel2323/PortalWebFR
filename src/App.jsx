@@ -26,6 +26,7 @@ export const PerfilContext= createContext();
 
 
 function App() {
+
   const [CurrentPath, setCuerrentPath]= useState(window.location.pathname)
   const [login,setLogin]= useState(false);
   const [permisos,setPermisos]=useState({});
@@ -33,31 +34,15 @@ function App() {
   const resetPermisos= useUserStore((state)=>state.resetPermisos)
 
   const usuario= useUserStore((state)=>state.user)
-  console.log('Este es el usuario:' , usuario);
   
-  // const [permisosPrestadores,setPermisosPrestadores]=useState(false);
-  // const [permisosRrhh,setPermisosRrhh]=useState(false);
-  // const [permisosPersonal,setPermisosPersonal]=useState(false);
-  // const [permisosAdministradorTotal,setPermisosAdministradorTotal]=useState(false);
-  // const [permisosAdministradorPersonal,setPermisosAdministradorPersonal]=useState(false);
-  // const [permisosOsAdmin, setPermisosOsAdmin]= useState(false);
 
   const [cartillaOpen, setCartillaOpen]= useState(false)
   const abrirCerrarCartilla=()=>{
         setCartillaOpen(!cartillaOpen);
     }
-
-
-  const quitarPermisos=()=>{
-    resetPermisos();
-  }
-
-
-  const iniciarSesion=(e)=>{
-    e.preventDefault;
-
-  }
-
+    useEffect(()=>{
+      if(usuario!=null){setLogin(true);}
+    },[])
 
   return (
     <main className='text-mygray general '>

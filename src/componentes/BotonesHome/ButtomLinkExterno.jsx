@@ -2,12 +2,16 @@ import { useState, useContext } from "react";
 import { PerfilContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import Icon from "./Icon";
+import { useUserStore } from "../../store/userStore";
 
 const ButtomLinkExterno=({link,icono,titulo, redir})=>{
-    const {login,usuario,permisosRrhh}= useContext(PerfilContext)
+    const usuario= useUserStore((state)=>state.user);
+    const permisos = usuario.permisos;
+    const permisosRrhh = permisos.permisosPersonal;
+    const {login}= useContext(PerfilContext)
     const [viewForm,setViewForm]= useState(false);
     const navigate = useNavigate();
-    console.log(usuario.cuil,'estos son los permisos de rrhh ',permisosRrhh)
+    console.log(usuario,'estos son los permisos de rrhh ',permisosRrhh)
 
     function checkLog(){
         if(!login){

@@ -11,18 +11,17 @@ import PersonalBotones from "../../BotonesHome/PersonalBotones";
 import ContactoMail from "../../Secciones/Contacto/ContactoMail";
 import Modal from "../../Modales/FormLog"
 import { useState } from "react";
+import { useUserStore } from "../../../store/userStore";
 const ReciboSueldo =()=> {
     const usuarios= "personal"
-    const {login,usuario}= useContext(PerfilContext)
-    const cuil= usuario.userName
-    
-    
+    const usuario= useUserStore((state)=>state.user)
+    const {login}= useContext(PerfilContext)
 
     return(
         <>
             <Secciones usuarios={usuarios}/>
             <Carrusel usuarios={usuarios}/>
-            <PersonalBotones  cuil={cuil}/>
+            <PersonalBotones  cuil={usuario?.userName?usuario.userName:""}/>
             
             <ContactoMail/>
             

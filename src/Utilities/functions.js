@@ -20,65 +20,65 @@ export function usuariosValidos(usuarios){
 
 export function permisosValidos(usuario){
     let permisos= {
-        'permisosPrestadores': false,
-        'permisosRrhh': false,
-        'permisosPersonal': false,
-        'permisosAdministradorTotal': false,
-        'permisosAdministradorPersonal': false,
-        'permisosOsAdmin': false
+        permisosPrestadores: false,
+        permisosRrhh: false,
+        permisosPersonal: false,
+        permisosAdministradorTotal: false,
+        permisosAdministradorPersonal: false,
+        permisosOsAdmin: false
     }
-    if(usuario!=undefined){
-
+    if(usuario !=undefined ){
+      
         if(usuario.tipoUser===1){
           permisos={
-            'permisosPrestadores': true,
-            'permisosRrhh': true,
-            'permisosPersonal': true,
-            'permisosAdministradorTotal': true,
-            'permisosAdministradorPersonal': true,
-            'permisosOsAdmin': true
+            permisosPrestadores: true,
+            permisosRrhh: true,
+            permisosPersonal: true,
+            permisosAdministradorTotal: true,
+            permisosAdministradorPersonal: true,
+            permisosOsAdmin: true
           }
         }
         else if(usuario.tipoUser===2){
           permisos={
-            'permisosPrestadores': true,
-            'permisosRrhh': true,
-            'permisosPersonal': true,
-            'permisosAdministradorPersonal': true,
-            'permisosOsAdmin': false
+            permisosPrestadores: true,
+            permisosRrhh: true,
+            permisosPersonal: true,
+            permisosAdministradorPersonal: true,
+            permisosOsAdmin: false
           }
         }
         else if(usuario.tipoUser===3){
           permisos={
-            'permisosRrhh': false,
-            'permisosPersonal': false,
-            'permisosPersonal': true,
-            'permisosOsAdmin': false,
-            'permisosAdministradorPersonal': false,
-            'permisosAdministradorTotal': false
+            permisosRrhh: false,
+            permisosPersonal: false,
+            permisosPersonal: true,
+            permisosOsAdmin: false,
+            permisosAdministradorPersonal: false,
+            permisosAdministradorTotal: false
           }
         }
         else if(usuario.tipoUser===4){
             permisos= {
-                'permisosPrestadores': false,
-                'permisosRrhh': false,
-                'permisosPersonal': true,
-                'permisosAdministradorTotal': false,
-                'permisosAdministradorPersonal': false,
-                'permisosOsAdmin': false
+                permisosPrestadores: false,
+                permisosRrhh: false,
+                permisosPersonal: true,
+                permisosAdministradorTotal: false,
+                permisosAdministradorPersonal: false,
+                permisosOsAdmin: false
             }
         } else if (usuario.tipoUser===5){
             permisos= {
-                'permisosPrestadores': false,
-                'permisosRrhh': false,
-                'permisosPersonal': false,
-                'permisosAdministradorTotal': false,
-                'permisosAdministradorPersonal': false,
-                'permisosOsAdmin': true
+                permisosPrestadores: false,
+                permisosRrhh: false,
+                permisosPersonal: false,
+                permisosAdministradorTotal: false,
+                permisosAdministradorPersonal: false,
+                permisosOsAdmin: true
             }
         }
       }
-
+    
     return permisos
 }
 

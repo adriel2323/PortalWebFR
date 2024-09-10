@@ -4,13 +4,14 @@ import { ExclamationTriangleIcon, UserCircleIcon } from '@heroicons/react/24/out
 
 import {PerfilContext} from '../../App';
 import { LogContext } from '../navBar/SeccionesLg';
-
+import { useUserStore } from '../../store/userStore';
 
 export default function FormLogOut({viewForm, setViewForm}) {
+  const usuario= useUserStore((state)=> state.user);
+  const resetUser= useUserStore((state)=> state.resetUser);
 
   const contextoLog= useContext(LogContext)
-  const {setUsuario,usuario,quitarPermisos, setLogin}=useContext(PerfilContext)
- 
+  const {quitarPermisos, setLogin}=useContext(PerfilContext)
 
   const [open, setOpen] = useState(true)
   const [datosUsuario,setDatosUsuario]=useState({})
@@ -19,10 +20,9 @@ export default function FormLogOut({viewForm, setViewForm}) {
 
   
   const cerrarSesion=()=>{
-    setUsuario({});
+    resetUser();
     setLogin(false);
     localStorage.clear()
-    quitarPermisos();
     setDatosUsuario({})
     setStateRequest(true)
     setOpen(false) 
