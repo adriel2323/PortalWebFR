@@ -34,9 +34,14 @@ useEffect(()=>{
     logear(datosUsuario).then(
       (response) => {
         if(response.msg!=errorMSG){
+          console.log('Esta es la respuesta',response);
+          
           setUser(response)
-          localStorage.setItem('user', JSON.stringify(usuario));
-          localStorage.setItem('permisos', JSON.stringify(permisos));
+          
+          localStorage.setItem('user', JSON.stringify(response));
+          localStorage.setItem('permisos', JSON.stringify(response.permisos));
+          console.log('Este es el usuario en el local storage:',localStorage.getItem('user'));
+          
           setLogin(true)
           setViewForm(false)
           setOpen(false)

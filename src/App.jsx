@@ -41,7 +41,7 @@ function App() {
         setCartillaOpen(!cartillaOpen);
     }
     useEffect(()=>{
-      if(usuario!=null){setLogin(true);}
+      if(usuario.id != null){setLogin(true);}
     },[])
 
   return (

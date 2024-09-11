@@ -1,8 +1,8 @@
 import { create } from "zustand"
-import {permisosValidos} from "../Utilities/functions"
+import {permisosValidos, usuarioLocalStorage} from "../Utilities/functions"
 
 export const useUserStore = create((set) => ({
-    user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : 
+    user: usuarioLocalStorage()? {...JSON.parse(localStorage.getItem('user')), permisos: permisosValidos(JSON.parse(localStorage.getItem('user'))) } : 
     {
         id: null,
         name: null,

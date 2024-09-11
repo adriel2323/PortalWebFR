@@ -90,3 +90,14 @@ export function buscarBotones(ids){
     
     return botones
 }
+
+export function usuarioLocalStorage(){
+  if(localStorage.getItem('user')){
+    let usuario=JSON.parse(localStorage.getItem('user'));
+    if(usuario.id != null){
+      return usuario
+    } else{
+      return false
+    }
+  }
+}

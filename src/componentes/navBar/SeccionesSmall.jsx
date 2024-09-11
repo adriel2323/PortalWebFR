@@ -20,7 +20,6 @@ const SeccionesSmall= ({usuarios})=>{
     const sectionsNav=  sections.public
 
     const user= useUserStore((state)=>state.user)
-    console.log('esto es el user :', user);
     
     return (
         <div>

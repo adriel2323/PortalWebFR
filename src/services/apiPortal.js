@@ -81,10 +81,9 @@ export async function logear(datosUsuario){
             method:'POST',
             data:datosUsuario,
         })
-        console.log('este es el response',response);
         if(response.data.msg!=errorMSG){
-
             usuario= userAdapter(response.data.user)
+
         } else {
             usuario={
                 msg: 'Credenciales invalidas'

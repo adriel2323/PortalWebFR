@@ -12,10 +12,9 @@ import { buscarBotones } from "../Utilities/functions";
 
 const HomePrestadores =({usuarios})=>{
     const usuario= useUserStore((state)=>state.user)
-    const permisos= useUserStore((state)=>state.permisos)
+    const permisos= usuario.permisos
     const botones= useState(buscarBotones(links["prestadores"]))
-
-
+    
     return(
         <>
             <div className="normalize font-mont  " >
