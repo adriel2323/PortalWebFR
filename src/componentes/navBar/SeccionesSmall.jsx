@@ -9,13 +9,16 @@ import { PerfilContext } from "../../App";
 import Sesion from "./ComponentesAuxiliares/Sesion";
 import { useUserStore } from "../../store/userStore";
 import { sections } from "../../data/constantes";
+import { usersLog } from "../../data/constantes";
 
 
 
-const SeccionesSmall= ({usuarios})=>{
+const SeccionesSmall= ({area})=>{
     const {login}= useContext(PerfilContext)
     const[viewForm,setViewForm]= useState(false);
     const [isOpen, setIsOpen]= useState(false);
+    console.log('este es el ususario: ',usuarios);
+    
     // const sectionsNav=  usuarios != "admin" || usuarios != "os" || usuarios != "personal" ? sections.public : sections.privates
     const sectionsNav=  sections.public
 
@@ -32,7 +35,7 @@ const SeccionesSmall= ({usuarios})=>{
                 {isOpen && (<FontAwesomeIcon onClick={()=> setIsOpen((prev)=> !prev)} className=" text-xl " icon={faX} />)}
                 {!isOpen && (<FontAwesomeIcon onClick={()=> setIsOpen((prev)=> !prev)} className=" text-xl" icon={faBars} />)}
                 
-                {(usuarios==="prestadores" || usuarios=== "pacientes" || usuarios === "rrhh" || usuarios === "os" || usuarios === "personal") &&(
+                {usersLog.includes(area)  && (
                     <Sesion setViewForm={setViewForm} />
                 )
                 }

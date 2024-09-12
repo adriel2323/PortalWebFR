@@ -50,23 +50,23 @@ function App() {
           abrirCerrarCartilla, cartillaOpen, login, setLogin, permisos,setPermisos
         }}>	
         <Routes>
-            <Route path='/' element={<HomeGeneral usuarios= {"general"} />} />
-            <Route path='/home' element={<HomeGeneral usuarios= {"general"} />} />
-            <Route path='/prestadores' element={<HomePrestadores usuarios= {"prestadores"} />} />
-            <Route path='/pacientes' element={<HomePacientes usuarios= {"pacientes"}/>} />
-            <Route path='/rrhh' element={<HomeRH usuarios= {"rrhh"}/>} />
-            <Route path='/obrasocial' element={<HomeOs usuarios= {"os"}/>} />
-            <Route path='/obrasocial/afiliaciones' element={<Afiliaciones usuarios= {"os"}/>} />
-            <Route path='/archivos' element={<ArchivosU usuarios= {"rrhh"}/>} />
-            <Route path='/rrhh/personal' element={<BuscarPerfil descripcion={"PERSONAL"} usuarios= {"rrhh"}/>} />
-            <Route path='/rrhh/personal/perfil/:id' element={<PanelEdicion usuarios= {"rrhh"} />} />
-            <Route path='/rrhh/personal/recibosueldo' element={<ReciboSueldo usuarios= {"rrhh"}/>} />
-            <Route path='/rrhh/cv' element={<FormularioCV usuarios= {"rrhh"}/>} />
+            <Route path='/' element={<HomeGeneral area= {"general"} />} />
+            <Route path='/home' element={<HomeGeneral area= {"general"} />} />
+            <Route path='/prestadores' element={<HomePrestadores area= {"prestadores"} />} />
+            <Route path='/pacientes' element={<HomePacientes area= {"pacientes"}/>} />
+            <Route path='/rrhh' element={<HomeRH area= {"rrhh"}/>} />
+            <Route path='/obrasocial' element={<HomeOs area= {"os"}/>} />
+            <Route path='/obrasocial/afiliaciones' element={<Afiliaciones area= {"os"}/>} />
+            <Route path='/archivos' element={<ArchivosU area= {"rrhh"}/>} />
+            <Route path='/rrhh/personal' element={<BuscarPerfil descripcion={"PERSONAL"} area= {"rrhh"}/>} />
+            <Route path='/rrhh/personal/perfil/:id' element={<PanelEdicion area= {"rrhh"} />} />
+            <Route path='/rrhh/personal/recibosueldo' element={<ReciboSueldo area= {"rrhh"}/>} />
+            <Route path='/rrhh/cv' element={<FormularioCV area= {"rrhh"}/>} />
             
-            <Route path='/rrhh/buscar' element={<BuscarPerfil descripcion={"CV"} usuarios= {"rrhh"}/>} />
-            <Route path='/rrhh/declaracion' element={<Declaracion usuarios= {"rrhh"}/>} />
-            <Route path='/admin/nov' element={<PaginaGestionNov usuarios= {"general"}/>} />
-            <Route path='*' element={<NotFound usuarios= {"general"}/>} />
+            <Route path='/rrhh/buscar' element={<BuscarPerfil descripcion={"CV"} area= {"rrhh"}/>} />
+            <Route path='/rrhh/declaracion' element={<Declaracion area= {"rrhh"}/>} />
+            <Route path='/admin/nov' element={<PaginaGestionNov area= {"general"}/>} />
+            <Route path='*' element={<NotFound area= {"general"}/>} />
         </Routes>
     </PerfilContext.Provider>
     </main>

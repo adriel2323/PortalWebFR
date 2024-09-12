@@ -15,7 +15,7 @@ const HomeBotones=()=>{
                 <ButtomOpen onClick={abrirCerrarCartilla}  titulo={"Cartilla Médica"} icono={faMoneyCheck} />
                 {
                     botonesData.map(boton =>
-                        <Buttom key={boton.id} redir={boton} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
+                        <Buttom key={boton.id} redir={boton.redir==1 ? true :false} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
                     )
                 }
                 

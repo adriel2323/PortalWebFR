@@ -11,6 +11,7 @@ import { useUserStore } from "../store/userStore";
 import { buscarBotones } from "../Utilities/functions";
 
 const HomePrestadores =({usuarios})=>{
+    const area="prestadores"
     const usuario= useUserStore((state)=>state.user)
     const permisos= usuario.permisos
     const botones= useState(buscarBotones(links["prestadores"]))
@@ -18,8 +19,8 @@ const HomePrestadores =({usuarios})=>{
     return(
         <>
             <div className="normalize font-mont  " >
-                <Secciones usuarios={usuarios}/>
-                <Carrusel className="" usuarios={usuarios}/>
+                <Secciones area={area}/>
+                <Carrusel className="" usuarios={area}/>
                 <div className=' z-30 '>
                     {permisos.permisosPrestadores && <PrestadoresBotones data={botones[0]} />}
                     {!permisos.permisosPrestadores && <PrestadoresNoLogBotones />}

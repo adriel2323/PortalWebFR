@@ -10,24 +10,29 @@ import Modal from "../componentes/Modales/FormLog"
 import { PerfilContext } from "../App";
 
 import PreguntasFrecuentes from "../componentes/Secciones/PreguntasFrecuentes"
+import { useUserStore } from "../store/userStore";
 
 
-const HomeRH =({usuarios})=>{
-    const {login,usuario,permisosRrhh}= useContext(PerfilContext)
+const HomeRH =({})=>{
+    const area="rrhh"
+    const usuario= useUserStore((state)=>state.user)
+    const permisos=usuario.permisos
+    const permisosRrhh= permisos.permisosRrhh
+    const {login}= useContext(PerfilContext)
 
 
     return(
         <>
-            <Secciones usuarios={usuarios}/>
+            <Secciones area={area}/>
             <div>
 
-                <Carrusel usuarios={usuarios}/>
+                <Carrusel usuarios={area}/>
                 <div className="solapar">
                     {permisosRrhh && <RhBotonesAdmin />}
                     {!permisosRrhh && <RhBotones />}
                     
                     {login && <PreguntasFrecuentes/>}
-                    <Novedades usuarios={usuarios}/>
+                    <Novedades usuarios={area}/>
                     
                     
                 </div>

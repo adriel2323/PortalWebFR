@@ -4,7 +4,7 @@ import SeccionesLg from "../navBar/SeccionesLg";
 
 
 
-const Secciones = ({usuarios})=>{
+const Secciones = ({area})=>{
 
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
@@ -33,8 +33,8 @@ const Secciones = ({usuarios})=>{
    
     return(
         <>
-            { showSmall && (<SeccionesSmall usuarios={usuarios}/>)}
-            { !showSmall && (<SeccionesLg usuarios={usuarios}/>)}
+            { showSmall && (<SeccionesSmall area={area}/>)}
+            { !showSmall && (<SeccionesLg area={area}/>)}
         </>
     )
 };

@@ -6,7 +6,7 @@ export const publicRoutes= {
     CONTACTOS: "/contactos",
     QUIENES_SOMOS: "/quienessomos",
     PRESTADORES: "/prestadores",
-    OBRA_SOCIAL: "/os",
+    OBRA_SOCIAL: "/obrasocial",
 }
 export const publicRoutes_os= {
     GENERAL: "/os",
@@ -33,6 +33,18 @@ export const adminRoutes= {
     ADMINISTRAR_CONTACTOS:'/admin/contactos',
     ADMINISTRAR_SISTEMAS:'/admin/sistemas',
     ADMINISTRAR_RH:'/admin/rh',
+}
+
+export const usersLog=[ "prestadores","rrhh","os","personal","admin","sistemas"]
+
+export const areas={
+    PRESTADORES: "prestadores",
+    RHH: "rrhh",
+    OS: "os",
+    ADMIN: "admin",
+    PERSONAL: "personal",
+    SISTEMAS: "sistemas",
+    PACIENTES: "pacientes",
 }
 
 export const links= [
@@ -282,7 +294,7 @@ export const botones= {
             {
                 "id":2,
                 "titulo":"Turnos Online",
-                "link":"turnos.fnsr.com.ar",
+                "link":"https://turnos.fnsr.com.ar",
                 "icono":"faCalendarCheck",
                 "redir":1
             },
@@ -403,7 +415,6 @@ export const sections= {
             "icon":"fa-solid fa-gear"           
         }
     ],
-    
     "privates": [
         
         {
@@ -580,7 +591,7 @@ export const dropList={
         {
             "id":3,
             "titulo":"Documentación",
-            "link": "/archivos",
+            "link": "https://archivos.fnsr.com.ar/index.php/s/cMGrFHiEbTYWo5y",
             "logged":0
         },
         {
@@ -594,13 +605,13 @@ export const dropList={
         {
             "id":1,
             "titulo":"Documentación de ingreso",
-            "link": "/",
+            "link": "https://archivos.fnsr.com.ar/index.php/s/cMGrFHiEbTYWo5y",
             "logged":1
         },
         {
             "id":2,
             "titulo":"Formularios",
-            "link": "/",
+            "link": "https://archivos.fnsr.com.ar/index.php/s/tiQD99iS8YRKFFa",
             "logged":1
         },
         {

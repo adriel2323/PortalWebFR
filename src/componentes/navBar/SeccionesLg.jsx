@@ -5,12 +5,12 @@ import Log from "../Modales/Log"
 import { Link } from "react-router-dom";
 import useScreenSize from "../../Hooks/UseScreenSize";
 import Sesion from "./ComponentesAuxiliares/Sesion";
-import { sections } from "../../data/constantes";
+import { sections, usersLog } from "../../data/constantes";
 
 export const LogContext= createContext()
 
-const SeccionesLg= ({usuarios})=>{
-
+const SeccionesLg= ({area})=>{
+    console.log('este es el area: ',area);
     const[isLoading,setIsLoading]= useState(true);
     const[viewForm,setViewForm]= useState(false);
 
@@ -48,8 +48,8 @@ const SeccionesLg= ({usuarios})=>{
         <div className= " bg-white z-65 drop-shadow-2xl py-2  w-[100vw] h-20">
             <div className="  flex justify-between  px-10">
                 <Link className="flex items-center align-middle aspect-square  h-16" to="/home">
-                    { usuarios !="os" && (<img className=" flex" src="../../../public/imagenes/logo.png" alt="" />)}
-                    { usuarios=="os" && (<img className=" align-middle w-12" src="../../../public/imagenes/logoUOM.png" alt="" />)}
+                    { area !="os" && (<img className=" flex" src="../../../public/imagenes/logo.png" alt="" />)}
+                    { area=="os" && (<img className=" align-middle w-12" src="../../../public/imagenes/logoUOM.png" alt="" />)}
                     
                 </Link>
                 <div className="grow justify-center content-center">
@@ -63,7 +63,7 @@ const SeccionesLg= ({usuarios})=>{
                 </div>
                 
                 
-                {(usuarios==="prestadores" || usuarios=== "pacientes" || usuarios === "rrhh" || usuarios === "os" || usuarios === "personal") &&(
+                {usersLog.includes(area) &&(
                     <Sesion className="" setViewForm={setViewForm} />
                 )
 

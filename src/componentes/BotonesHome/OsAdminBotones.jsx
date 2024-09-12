@@ -11,13 +11,14 @@ const OsAdminBotones=()=>{
     const {abrirCerrarCartilla}= useContext(PerfilContext);
     const empleadosList =dropList.empleadosList
     const botonesData=botones.os_admin
+    
 
     return(
             <div className=" grid-buttoms  ">
                 <ButtomDrop  className="" titulo={"Acceso a Oficina Virtual"} icono={faHouseLaptop} lista={empleadosList}  />
                 <ButtomOpen onClick={abrirCerrarCartilla} className="" titulo={"Cartilla Médica"} icono={faMoneyCheck} />
                 {
-                    botonesData.os_admin.map(boton=>
+                    botonesData.map(boton=>
                         <Buttom key={boton.id} redir={boton.redir} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
                     )
                 }

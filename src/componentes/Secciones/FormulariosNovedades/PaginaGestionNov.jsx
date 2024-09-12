@@ -6,9 +6,13 @@ import Icon from "../../BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect } from "react";
 import { PerfilContext } from "../../../App";
+import { useUserStore } from "../../../store/userStore";
 
-const PaginaGestionNov =()=> {
-    const {login,usuario,permisosRrhh}= useContext(PerfilContext)
+const PaginaGestionNov =({area})=> {
+    const {login}= useContext(PerfilContext)
+    const usuario= useUserStore((state)=>state.user);
+    const permisos= usuario.permisos;
+    const permisosRrhh= permisos.permisosRrhh;
     console.log(usuario);
     useEffect(()=>{
         if(permisosRrhh==false){
@@ -18,11 +22,13 @@ const PaginaGestionNov =()=> {
         }
     },[])
 
-    const usuarioSec= "rrhh"
+    // const area= "rrhh"
+    console.log('Esta es el area',area);
+    
 
     return(
         <>
-            <Secciones usuarios={usuarioSec}/>
+            <Secciones usuarios={area}/>
             <div className="flex flex-col place-items-center h-[40rem] mb-[20rem] lg:px-52 py-12 bg-secondary text-white">
                 
                 {login && permisosRrhh && <FormularioNovedades /> }

@@ -15,14 +15,13 @@ import { transformacionLink_URL } from "../Utilities/transformadorArray.utilitie
 export const PacientesContext= createContext();
 
 
-const HomePacientes =({usuarios})=> {
+const HomePacientes =({area})=> {
     const {cartillaOpen}= useContext(PerfilContext);
     const {login,permisosPrestadores}= useContext(PerfilContext);
     const [buttons, setButtons]= useState([]);
     // console.log('esto es lo que va a entrar ',links.prestadores,usuarios)
-    let ids=transformacionLink_URL(links,usuarios);
-    const usuario=usuarios
-    console.log(usuario)
+    let ids=transformacionLink_URL(links,area);
+    // const usuario=
 
     const selectores={
         prestadores:true,
@@ -53,12 +52,12 @@ const HomePacientes =({usuarios})=> {
             <PacientesContext.Provider value={{
             }}>
                 <div className="normalize font-mont" >
-                    <Secciones usuarios={usuario}/>
-                    <Carrusel usuarios={usuario}/>
+                    <Secciones area={area}/>
+                    <Carrusel usuarios={area}/>
                     <div >
                         <HomeBotones />
                         {cartillaOpen && <BuscarCartilla urlBusquedas={urlBusquedas}  selectores={selectores} />}
-                        <Novedades usuarios={usuario}/>
+                        <Novedades usuarios={area}/>
                     </div>
                     <ListadoProf/>
                     <Footer/>

@@ -10,12 +10,17 @@ import BuscarCartilla from "../componentes/ObraSocial/Cartilla/BuscarCartilla";
 import { PerfilContext } from "../App";
 import { apiBusquedas } from "../services/apiPortal";
 import Novedades from "../componentes/Secciones/Novedades";
+import { useUserStore } from "../store/userStore";
+import { areas } from "../data/constantes";
 
 export const OsContext= createContext();
 
 const HomeOs =({usuarios})=>{
-    const {cartillaOpen,permisosOsAdmin}= useContext(PerfilContext);
-    const usuario= usuarios;
+    const area= areas.OS
+    const {cartillaOpen}= useContext(PerfilContext);
+    const usuario= useUserStore((state)=>state.user);
+    const permisos= usuario.permisos;
+    const permisosOsAdmin= permisos.permisosOsAdmin;
 
     const selectores={
         prestadores:true,
@@ -38,7 +43,7 @@ const HomeOs =({usuarios})=>{
                 
             }}>
                 <div className="normalize font-mont" >
-                    <Secciones usuarios={usuario}/>
+                    <Secciones area={area}/>
                     <Carrusel usuarios={usuario}/>
                     <div className=''>
                         {permisosOsAdmin && <OsAdminBotones />}
