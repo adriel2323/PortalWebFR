@@ -17,7 +17,6 @@ const SeccionesSmall= ({area})=>{
     const {login}= useContext(PerfilContext)
     const[viewForm,setViewForm]= useState(false);
     const [isOpen, setIsOpen]= useState(false);
-    console.log('este es el ususario: ',usuarios);
     
     // const sectionsNav=  usuarios != "admin" || usuarios != "os" || usuarios != "personal" ? sections.public : sections.privates
     const sectionsNav=  sections.public

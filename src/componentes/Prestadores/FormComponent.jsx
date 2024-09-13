@@ -4,7 +4,8 @@ import { apiPrestadores } from "../../services/apiPortal";
 import { useState,useEffect, Fragment } from "react";
 import { Dialog, Transition } from '@headlessui/react'
 
-const Formulario = ()=>{
+const Formulario = ({formularioInput})=>{
+        const formObject= formularioInput
         const [formEnviado,setFormEnviado]= useState(false)
         const [formulario,setFormulario]=useState({
         form:{
@@ -33,6 +34,8 @@ const Formulario = ()=>{
 
     const HandlerEnviarConsulta=e=>{
         e.preventDefault();
+        console.log(formulario);
+        
         let url= Apiurl + apiPrestadores.contacto;
         axios.post(url,formulario)
         .then(response=> {
@@ -106,32 +109,59 @@ const Formulario = ()=>{
         </Dialog>
             </Transition>
             <div className="  bg-white text-mygray px-5 lg:px-10 py-5  rounded-lg mt-[2rem] drop-shadow-xl w-3/4" >
-                <form onSubmit={HandlerEnviarConsulta}>
-                    <h1 className=" mb-5 text-sm lg:text-xl font-semibold text-center">Formulario de contacto</h1>
-                    <div className="flex flex-col">
-                        <label className="  form-label " htmlFor="name">Ingrese su nombre:</label>
-                        <input className="form-input  " type="text" name="name" placeholder="Ej: Juan García" onChange={handleChange} />
-                        <label className="  form-label " htmlFor="email">Ingrese su mail para contactarlo: </label>
-                        <input className="form-input " type="email" name="email" placeholder="ejemplo@gmail.com" onChange={handleChange}/>
-                        <label className="  form-label " htmlFor="area">Tema de la consulta</label>
-                        <select onChange={handleChange} className="form-input "  name="area" id="" >
-                            <option id="0" value="default">-Elija una opción-</option>
-                            <option id="1" value="sistemas">Sistema</option>
-                            <option id="2" value="facturacion">Facturación</option>
-                            <option id="3" value="personal">Personal</option>
-                            <option id="4" value="mantenimiento">Mantenimiento</option>
-                        </select>
-                        <label className="  form-label " htmlFor="texto">Consulta: </label>
-                        <textarea className="form-input " name="texto" id="" cols="10" rows="5" placeholder="Ingrese su consulta" onChange={handleChange}>
-                           
-                        </textarea>
-                        <div className=" flex flex-col justify-center mt-12 mb-4">
-                            <input className="form-buttom-send mb-4 " type="submit" value="Enviar" />
-                            <input className="form-buttom-borrar" type="reset" value="Borrar" />
+              <form onSubmit={HandlerEnviarConsulta}>
+                        <h1 className=" mb-5 text-sm lg:text-xl font-semibold text-center">{formObject.titulo}</h1>
+                        <div className="flex flex-col">
+                            {
+                              formObject.form.map(form=>{
+                                switch (form.type) {
+                                  case "input":
+                                    return(
+                                      <>
+                                        <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
+                                        <input className="form-input  " type="text" name={form.input.name} placeholder={form.input.placeholder} onChange={handleChange} />
+                                      </>
+                                    )
+                                    
+                                    break;
+                                  case "select":
+                                    return(
+                                      <>
+                                        <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
+                                        <select onChange={handleChange} className="form-input "  name={form.input.name} id={form.input.id} >
+                                          {
+                                            form.options.map(option=>{
+                                              return(
+                                                <option id={option.id} value={option.value}>{option.text}</option>
+                                              )
+                                            })
+                                          }
+                                        </select>
+                                      </>
+                                    )
+                                    break;
+                                  case "textarea":
+                                    return(
+                                      <>
+                                        <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
+                                        <textarea className="form-input " name={form.input.name} id={form.input.id} cols="10" rows="5" placeholder={form.input.placeholder} onChange={handleChange}>
+                                        </textarea>
+                                      </>
+                                    )
+                                    break;
+                                
+                                  default:
+                                    break;
+                                }
+                              }
+                              )
+                            }
+                            <div className=" flex flex-col justify-center mt-12 mb-4">
+                                <input className="form-buttom-send mb-4 " type="submit" value="Enviar" />
+                                <input className="form-buttom-borrar" type="reset" value="Borrar" />
+                            </div>
                         </div>
-                        
-                    </div>
-                </form>
+              </form>
             </div>
         </>
     )

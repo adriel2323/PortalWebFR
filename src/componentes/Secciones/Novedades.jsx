@@ -14,7 +14,7 @@ const Novedades=({usuarios})=>{
     const [isOpen, setIsOpen] = useState(false)
     
     useEffect(()=>{
-        fetch(Apiurl+"/novedades/"+usuario)
+        fetch(Apiurl+"novedades/"+usuario)
         .then(response=>response.json())
         .then(response=>{
             setNovedades(response.novedades)

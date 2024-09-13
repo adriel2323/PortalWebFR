@@ -56,6 +56,7 @@ function App() {
             <Route path='/pacientes' element={<HomePacientes area= {"pacientes"}/>} />
             <Route path='/rrhh' element={<HomeRH area= {"rrhh"}/>} />
             <Route path='/obrasocial' element={<HomeOs area= {"os"}/>} />
+            <Route path='/usuariopami' element={<Personal />} />
             <Route path='/obrasocial/afiliaciones' element={<Afiliaciones area= {"os"}/>} />
             <Route path='/archivos' element={<ArchivosU area= {"rrhh"}/>} />
             <Route path='/rrhh/personal' element={<BuscarPerfil descripcion={"PERSONAL"} area= {"rrhh"}/>} />

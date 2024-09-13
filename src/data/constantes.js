@@ -1,3 +1,5 @@
+import { formToJSON } from "axios"
+
 export const publicRoutes= {
     GENERAL: "/",
     PACIENTES: "/pacientes",
@@ -7,6 +9,7 @@ export const publicRoutes= {
     QUIENES_SOMOS: "/quienessomos",
     PRESTADORES: "/prestadores",
     OBRA_SOCIAL: "/obrasocial",
+    USUARIO_PAMI: '/usuariopami',
 }
 export const publicRoutes_os= {
     GENERAL: "/os",
@@ -631,7 +634,7 @@ export const dropList={
         {
             "id":1,
             "titulo":"Datos necesarios para alta en PAMI ",
-            "link": "/",
+            "link": publicRoutes.USUARIO_PAMI,
             "logged":0
         },
         {
@@ -665,4 +668,106 @@ export const messegesResult = {
     'SIN_RESULTADOS': 'No se encontraron resultados para la busqueda realizada. Compruebe los datos ingresados y vuelva a intentarlo.',
     'ERROR_AUTH': 'ERROR_AUTH',
     'ERROR_NOT_FOUND': 'ERROR_NOT_FOUND',
+}
+export const formulario = {
+    types:{
+        input:"input",
+        textarea:"textarea",
+        select:"select",
+        radio:"radio",
+    }
+}
+export const formObject = {
+    titulo: "Formulario de contacto",
+
+    form:[
+        {
+            id:1,
+            type:formulario.types.input,
+            label: {
+                for: "name",
+                text: "Ingrese su nombre",
+            },
+            input: {
+                type: "text",
+                name: "name",
+                id: "name",
+                placeholder: "Ej. Juan",
+                required: true
+            },
+        },
+        {
+            id:4,
+            type:formulario.types.input,
+            label: {
+                for: "email",
+                text: "Ingrese su email",
+            },
+            input: {
+                type: "text",
+                name: "email",
+                id: "email",
+                placeholder: "ejemplo@gmail.com",
+                required: true
+            },
+        },
+        {
+            id:1,
+            type:formulario.types.select,
+            label: {
+                for: "area",
+                text: "Seleccione el area",
+            },
+            input:{
+                name:"area",
+                id:"area",
+                required: true
+            },
+            options: [
+                {
+                    id:0,
+                    value: "default",
+                    text: "--Elija una opción--",
+                },
+                {
+                    id:2,
+                    value: "sistemas",
+                    text: "Sistema",
+                },
+                {
+                    id:3,
+                    value: "facturacion",
+                    text: "Facturación",
+                },
+                {
+                    id:4,
+                    value: "personal",
+                    text: "Personal",
+                },
+                {
+                    id:5,
+                    value: "mantenimiento",
+                    text: "Mantenimiento",
+                },
+            ],
+        },
+        {
+            id:3,
+            type:formulario.types.textarea,
+            label: {
+                for: "texto",
+                text: "Consulta",
+            },
+            input: {
+                type: "text",
+                name: "texto",
+                id: 3,
+                placeholder: "Ingrese su consulta",
+                required: true
+            },
+        },
+        
+
+    ]
+
 }
