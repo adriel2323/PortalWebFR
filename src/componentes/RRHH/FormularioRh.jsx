@@ -1,6 +1,7 @@
 import { useState,useEffect, useRef, Fragment } from "react";
-import { cargarCv } from "../../services/apiPortal";
+import { apiPortal, Apiurl } from "../../services/apiPortal";
 import { Dialog, Transition } from '@headlessui/react';
+import { enviarForm } from "../../Utilities/functions";
 
 
 
@@ -56,7 +57,6 @@ const FormularioRh = ()=>{
             }
         })
     }
-     
     const handleSubmit=e=>{
         e.preventDefault();
         setFormulario({
@@ -64,15 +64,19 @@ const FormularioRh = ()=>{
                 ...formulario.form,
             }
         })
-
-    
-        
-        cargarCv(formulario).then(response=> {
-            console.log("esta es la respuesta de la carga ",response);
-            if(response != undefined){
-                setFormEnviado(true)
-            }
-        })
+        let url=Apiurl+apiPortal.enviarCV
+        enviarForm(formulario,url).then(response=> {
+                console.log("esta es la respuesta de la carga ",response);
+                if(response != undefined){
+                    setFormEnviado(true)
+                }
+            })
+        //cargarCv(formulario).then(response=> {
+        //     console.log("esta es la respuesta de la carga ",response);
+        //     if(response != undefined){
+        //         setFormEnviado(true)
+        //     }
+        // })
     }
 
     const handleChange= async e=>{

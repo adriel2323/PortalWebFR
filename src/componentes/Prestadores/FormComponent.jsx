@@ -1,10 +1,11 @@
 import axios from "axios";
 import { Apiurl } from "../../services/apiPortal";
 import { apiPrestadores } from "../../services/apiPortal";
-import { useState,useEffect, Fragment } from "react";
+import { useState,useEffect, Fragment,useRef } from "react";
 import { Dialog, Transition } from '@headlessui/react'
+import { enviarForm } from "../../Utilities/functions";
 
-const Formulario = ({formularioInput})=>{
+const Formulario = ({formularioInput, apiSend})=>{
         const formObject= formularioInput
         const [formEnviado,setFormEnviado]= useState(false)
         const [formulario,setFormulario]=useState({
@@ -14,11 +15,21 @@ const Formulario = ({formularioInput})=>{
         errorMsg:""
     })
     let [isOpen, setIsOpen] = useState(false)
+    const archivo= useRef()
+
+    const handleChangeArchivo= async e=>{
+      await setFormulario({
+          form:{
+              ...formulario.form,
+              archivo: archivo.current.files[0]
+          }
+      })
+  }
+
   useEffect(()=>{
     if(formEnviado==true){
         setIsOpen(true)
     }
-
   }, [formEnviado])
 
 
@@ -31,28 +42,36 @@ const Formulario = ({formularioInput})=>{
     setIsOpen(true)
   }
 
+  const handleChange= async e=>{
+    await setFormulario({
+        form:{
+            ...formulario.form,
+            [e.target.name]: e.target.value
+        }
+    })
+}
 
-    const HandlerEnviarConsulta=e=>{
+    const HandlerEnviarForm=e=>{
         e.preventDefault();
         console.log(formulario);
-        
-        let url= Apiurl + apiPrestadores.contacto;
-        axios.post(url,formulario)
-        .then(response=> {
+        let url= Apiurl + apiSend;
+
+        enviarForm(formulario.form,url).then(response=>{
             if(response != undefined){
                 e.target.reset();
                 setFormEnviado(true)
             }
-        })
+          }
+        )
+        // axios.post(url,formulario)
+        // .then(response=> {
+        //     if(response != undefined){
+        //         e.target.reset();
+        //         setFormEnviado(true)
+        //     }
+        // })
     }
-    const handleChange= async e=>{
-        await setFormulario({
-            form:{
-                ...formulario.form,
-                [e.target.name]: e.target.value
-            }
-        })
-    }
+    
     return(
         <>
             <Transition appear show={isOpen} as={Fragment}>
@@ -109,7 +128,7 @@ const Formulario = ({formularioInput})=>{
         </Dialog>
             </Transition>
             <div className="  bg-white text-mygray px-5 lg:px-10 py-5  rounded-lg mt-[2rem] drop-shadow-xl w-3/4" >
-              <form onSubmit={HandlerEnviarConsulta}>
+              <form onSubmit={HandlerEnviarForm}>
                         <h1 className=" mb-5 text-sm lg:text-xl font-semibold text-center">{formObject.titulo}</h1>
                         <div className="flex flex-col">
                             {
@@ -119,7 +138,7 @@ const Formulario = ({formularioInput})=>{
                                     return(
                                       <>
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <input className="form-input  " type="text" name={form.input.name} placeholder={form.input.placeholder} onChange={handleChange} />
+                                        <input ref={form.input.type==="file"?archivo:null} className={form.input.type==="text"?"form-input":""} type={form.input.type} name={form.input.name} placeholder={form.input.placeholder} onChange={form.input.type==="file"?handleChangeArchivo:handleChange} />
                                       </>
                                     )
                                     

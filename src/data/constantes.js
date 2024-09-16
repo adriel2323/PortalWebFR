@@ -1,7 +1,7 @@
 import { formToJSON } from "axios"
 
 export const publicRoutes= {
-    GENERAL: "/",
+    GENERAL: "/home",
     PACIENTES: "/pacientes",
     RH: "/rrhh",
     OS: "/obrasocial",
@@ -10,11 +10,13 @@ export const publicRoutes= {
     PRESTADORES: "/prestadores",
     OBRA_SOCIAL: "/obrasocial",
     USUARIO_PAMI: '/usuariopami',
+    FORM_PAMI: '/prestadores/pami',
 }
 export const publicRoutes_os= {
     GENERAL: "/os",
     PACIENTES: "/pacientes",
     RH: "/rrhh",
+    AFILIACIONES: '/obrasocial/afiliaciones',
     CONTACTOS: "/os/contactos",
     QUIENES_SOMOS: "/quienessomos",
     PRESTADORES: "/os/prestadores",
@@ -634,7 +636,7 @@ export const dropList={
         {
             "id":1,
             "titulo":"Datos necesarios para alta en PAMI ",
-            "link": publicRoutes.USUARIO_PAMI,
+            "link": publicRoutes.FORM_PAMI,
             "logged":0
         },
         {

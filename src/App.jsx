@@ -19,6 +19,8 @@ import ReciboSueldo from './componentes/RRHH/Empleados/ReciboSueldo'
 import Personal from './componentes/RRHH/PersonalEdicion/EdicionPersonal'
 import PanelEdicion from './componentes/RRHH/PanelEdicion/PanelEdicion'
 import EdicionPersonalForm from './componentes/RRHH/PanelEdicion/EdicionPersonalForm'
+import DatosPami from './componentes/Prestadores/DatosPami';
+import { publicRoutes,privatesRoutes,publicRoutes_os,adminRoutes } from './data/constantes';
 
 
 export const PerfilContext= createContext();
@@ -51,13 +53,14 @@ function App() {
         }}>	
         <Routes>
             <Route path='/' element={<HomeGeneral area= {"general"} />} />
-            <Route path='/home' element={<HomeGeneral area= {"general"} />} />
-            <Route path='/prestadores' element={<HomePrestadores area= {"prestadores"} />} />
-            <Route path='/pacientes' element={<HomePacientes area= {"pacientes"}/>} />
-            <Route path='/rrhh' element={<HomeRH area= {"rrhh"}/>} />
-            <Route path='/obrasocial' element={<HomeOs area= {"os"}/>} />
-            <Route path='/usuariopami' element={<Personal />} />
-            <Route path='/obrasocial/afiliaciones' element={<Afiliaciones area= {"os"}/>} />
+            <Route path={publicRoutes.GENERAL} element={<HomeGeneral area= {"general"} />} />
+            <Route path={publicRoutes.PRESTADORES} element={<HomePrestadores area= {"prestadores"} />} />
+            <Route path={publicRoutes.FORM_PAMI} element={<DatosPami area= {"prestadores"} />} />
+            <Route path={publicRoutes.PACIENTES} element={<HomePacientes area= {"pacientes"}/>} />
+            <Route path={publicRoutes.RH} element={<HomeRH area= {"rrhh"}/>} />
+            <Route path={publicRoutes.OS} element={<HomeOs area= {"os"}/>} />
+            {/* <Route path='/usuariopami' element={<Personal />} /> */}
+            <Route path={publicRoutes_os.AFILIACIONES} element={<Afiliaciones area= {"os"}/>} />
             <Route path='/archivos' element={<ArchivosU area= {"rrhh"}/>} />
             <Route path='/rrhh/personal' element={<BuscarPerfil descripcion={"PERSONAL"} area= {"rrhh"}/>} />
             <Route path='/rrhh/personal/perfil/:id' element={<PanelEdicion area= {"rrhh"} />} />

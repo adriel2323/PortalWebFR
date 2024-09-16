@@ -7,11 +7,8 @@ import Footer from "../componentes/Footer/Footer";
 import Secciones from "../componentes/navBar/Secciones";
 
 const HomeGeneral =({usuarios})=>{
-
     const usuario= usuarios;
-    console.log('Estos son los usuarios: ',usuario);
-    
-    
+
     return(
         <>
             <div className="normalize font-mont" >

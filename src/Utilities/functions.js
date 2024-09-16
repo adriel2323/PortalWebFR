@@ -1,3 +1,4 @@
+import axios from "axios"
 import { links } from "../data/constantes"
 
 export function usuariosValidos(usuarios){
@@ -100,4 +101,29 @@ export function usuarioLocalStorage(){
       return false
     }
   }
+}
+
+export async function enviarForm(form, url){
+
+  let formKeys= Object.keys(form)
+  try {
+      const formData = new FormData();
+      for(let i=0;i<formKeys.length;i++){
+        formData.append(formKeys[i], form[formKeys[i]])
+      }
+      console.log('Este es el formData:',formData);
+      
+      const response = await axios({
+        url: url,
+        method: 'POST',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      return response
+    }
+    catch (error) {
+      console.log(error)
+    }
 }
