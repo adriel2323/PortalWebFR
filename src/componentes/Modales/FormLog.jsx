@@ -116,7 +116,7 @@ useEffect(()=>{
                     className="inline-flex w-full justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                     onClick={logearse}
                   >
-                    Ingresar
+                    Ingresar al sistema
                   </button>
                   <button
                     type="button"
