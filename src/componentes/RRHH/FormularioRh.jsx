@@ -71,12 +71,6 @@ const FormularioRh = ()=>{
                     setFormEnviado(true)
                 }
             })
-        //cargarCv(formulario).then(response=> {
-        //     console.log("esta es la respuesta de la carga ",response);
-        //     if(response != undefined){
-        //         setFormEnviado(true)
-        //     }
-        // })
     }
 
     const handleChange= async e=>{

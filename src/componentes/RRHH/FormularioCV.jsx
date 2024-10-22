@@ -8,10 +8,11 @@ import { Link } from "react-router-dom";
 
 const FormularioCV =()=> {
     const usuario= "rrhh"
-
+    
     return(
         <>
             <Secciones area={usuario}/>
+            
             <div className="flex flex-col place-items-center h-[40rem] mb-[55rem] lg:px-52 py-12 bg-secondary text-white">
                 <div className="flex  justify-start w-11/12 md:w-5/6">
                     <Link to="/rrhh">

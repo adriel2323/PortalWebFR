@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Apiurl } from "../../../services/apiPortal";
+import { apiRRHHCv, Apiurl } from "../../../services/apiPortal";
 import { deMiliADias,diferenciaDias } from "../../../Utilities/funcionesTransf";
 import PerfilCV from "./PerfilCV";
+import { usePersonalStore } from "../../../store/personalStore";
 
 let imagen;
 
@@ -21,12 +22,16 @@ const nombre=(perfil)=>{
     }
 }
 const PerfilPersonal= ({perfil, datos})=>{
+    const setPerfil= usePersonalStore((state)=>state.setPerfil)
+    
     validarFoto(perfil)
     const nombreCompleto=nombre(perfil);
     const edad= diferenciaDias(perfil.fecha)
     return(
         <>
-            <Link to="/" key={perfil.id} className="flex justify-between p-2   lg:h-[20vh] shadow-lg my-2 lg:m-2 rounded-lg lg:p-4 items-center lg:w-100 lg:mb-4 bg-white text-mygray">
+            <Link onClick={()=>{
+                console.log("click:",perfil)
+                setPerfil(perfil)}} to={`perfil/${perfil.id}`} key={perfil.id} className="flex justify-between p-2   lg:h-[20vh] shadow-lg my-2 lg:m-2 rounded-lg lg:p-4 items-center lg:w-100 lg:mb-4 bg-white text-mygray">
                 <div className=" aspect-square h-16 mr-2 lg:mr-0 lg:mx-4 lg:h-28 lg:w-28 rounded-full overflow-hidden bg-gray-500">
                     <img className="m-auto w-full" src={imagen} alt="" />
                 </div>
@@ -37,7 +42,7 @@ const PerfilPersonal= ({perfil, datos})=>{
                     <div className="flex">
                         <div className="lg:mb-2 flex  overflow-scroll mr-2 lg:mr-0">
                             <h2 className=" text-sm lg:text-base font-medium sm:font-bold lg:pr-2">Fecha de ingreso: </h2>
-                            <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.fechaIngreso}</h2>
+                            <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.ingreso}</h2>
                         </div>
                         <div className="lg:mb-2 flex  overflow-scroll">
                             <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Area: </h2>

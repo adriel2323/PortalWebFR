@@ -5,16 +5,17 @@ import {logear} from "../../services/apiPortal"
 import {PerfilContext} from '../../App';
 import { permisosValidos } from '../../Utilities/functions';
 import { useUserStore } from '../../store/userStore';
+// import { useAppStore } from '../../store/appStore';
+
 
 
 export default function FormLog( {setViewForm}) {
-
   const usuario= useUserStore((state)=>state.user)
   const permisos= useUserStore((state)=>state.permisos)
   const setUser= useUserStore((state)=>state.setUser)
-
   const errorMSG="Credenciales invalidas"
   const { setLogin}=useContext(PerfilContext)
+
   const [open, setOpen] = useState(true)
   const [datosUsuario,setDatosUsuario]=useState({})
   const [stateRequest,setStateRequest]=useState(true)

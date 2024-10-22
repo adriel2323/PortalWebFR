@@ -10,17 +10,12 @@ import { sections, usersLog } from "../../data/constantes";
 export const LogContext= createContext()
 
 const SeccionesLg= ({area})=>{
-    console.log('este es el area: ',area);
     const[isLoading,setIsLoading]= useState(true);
     const[viewForm,setViewForm]= useState(false);
-
     const [isOpen, setIsOpen]= useState(false);
-
     const sectionList= sections
-
     // const sectionsNav=  usuarios != "admin" || usuarios != "os" || usuarios != "personal" ? sectionList.public : sectionList.privates
     const sectionsNav=  sectionList.public 
-
     const [viewList, setViewList]= useState(false);
     const [viewBars, setViewBars]= useState(false);
     const size= useScreenSize()
@@ -65,15 +60,12 @@ const SeccionesLg= ({area})=>{
                 
                 {usersLog.includes(area) &&(
                     <Sesion className="" setViewForm={setViewForm} />
-                )
-
+                    )
                 }
-                
             </div>
         </div>
         {
                 viewForm  && (<Log viewForm={viewForm} setViewForm={setViewForm} />)
-         
             }
         </div>
     )

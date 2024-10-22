@@ -12,6 +12,7 @@ import Secciones from "../navBar/Secciones";
 import { userAdapter } from "../../Utilities/Adapters/user.adapter";
 import { PerfilContext } from "../../App";
 import Footer from "../Footer/Footer";
+import { useUserStore } from "../../store/userStore";
 export const busquedaContext= createContext();
 
 const paramsSerch=[
@@ -70,8 +71,9 @@ const paramsSerch=[
 
 
 const BuscarPerfil=({descripcion})=>{
-    const {login,permisosRrhh}= useContext(PerfilContext)
-    const usuario= "rrhh"
+    const usuario= useUserStore((state)=>state.user)
+    const permisosRrhh= usuario.permisos.permisosRrhh
+    const {login}= useContext(PerfilContext)
 
     const [listaResultados, setListaResultados]= useState([])
     const [isLoad,setIsLoad]= useState(false);
@@ -83,6 +85,9 @@ const BuscarPerfil=({descripcion})=>{
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
     const [showSmall,setShowSmall]= useState(false);
+
+    console.log("Esto es el load:", isLoad);
+    console.log("Esto es el permiso:", permisosRrhh);
     
     const show=()=>{     
         if(width< 1024){
@@ -161,8 +166,6 @@ const BuscarPerfil=({descripcion})=>{
             fetch(Apiurl+apiRRHHCv.listaCv)
             .then(response=>response.json())
             .then(response=>{
-                console.log(response);
-                
             let resultados=response.Cv
             // let resultadosAdaptados=resultados.map((result)=>{
             //     return userAdapter(result)
@@ -191,13 +194,10 @@ const BuscarPerfil=({descripcion})=>{
         }
       
     },[])
-    console.log('Este es el small:',showSmall);
-    
-
     return(
         <>
             <Secciones usuarios={usuario}/>
-
+            
             {login && permisosRrhh && 
             (<div className={showSmall?"relative flex justify-between w-full  h-fit bg-gray-100":"flex justify-between"}>
                 <busquedaContext.Provider value={{descripcion,paramsSerch,openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
