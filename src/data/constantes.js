@@ -43,8 +43,9 @@ export const adminRoutes= {
 export const usersLog=[ "prestadores","rrhh","os","personal","admin","sistemas"]
 
 export const areas={
+    GENERAL: "general",
     PRESTADORES: "prestadores",
-    RHH: "rrhh",
+    RRHH: "rrhh",
     OS: "os",
     ADMIN: "admin",
     PERSONAL: "personal",

@@ -13,7 +13,7 @@ import PaginaGestionNov from './componentes/Secciones/FormulariosNovedades/Pagin
 import Declaracion from "./componentes/RRHH/DeclaracionJurada/Declaracion"
 import ArchivosU from './componentes/visualizadorArchivos/ArchivoU'
 import Afiliaciones from './componentes/ObraSocial/Afiliaciones'
-
+import {areas} from './data/constantes'
 import NotFound from './Pages/NotFound'
 import ReciboSueldo from './componentes/RRHH/Empleados/ReciboSueldo'
 import Personal from './componentes/RRHH/PersonalEdicion/EdicionPersonal'
@@ -52,25 +52,25 @@ function App() {
           abrirCerrarCartilla, cartillaOpen, login, setLogin, permisos,setPermisos
         }}>	
         <Routes>
-            <Route path='/' element={<HomeGeneral area= {"general"} />} />
-            <Route path={publicRoutes.GENERAL} element={<HomeGeneral area= {"general"} />} />
-            <Route path={publicRoutes.PRESTADORES} element={<HomePrestadores area= {"prestadores"} />} />
-            <Route path={publicRoutes.FORM_PAMI} element={<DatosPami area= {"prestadores"} />} />
-            <Route path={publicRoutes.PACIENTES} element={<HomePacientes area= {"pacientes"}/>} />
-            <Route path={publicRoutes.RH} element={<HomeRH area= {"rrhh"}/>} />
-            <Route path={publicRoutes.OS} element={<HomeOs area= {"os"}/>} />
+            <Route path='/' element={<HomeGeneral area= {areas.GENERAL} />} />
+            <Route path={publicRoutes.GENERAL} element={<HomeGeneral area= {areas.GENERAL} />} />
+            <Route path={publicRoutes.PRESTADORES} element={<HomePrestadores area= {areas.PRESTADORES} />} />
+            <Route path={publicRoutes.FORM_PAMI} element={<DatosPami area= {areas.PRESTADORES} />} />
+            <Route path={publicRoutes.PACIENTES} element={<HomePacientes area= {areas.PRESTADORES}/>} />
+            <Route path={publicRoutes.RH} element={<HomeRH area= {areas.RRHH}/>} />
+            <Route path={publicRoutes.OS} element={<HomeOs area= {areas.OS}/>} />
             {/* <Route path='/usuariopami' element={<Personal />} /> */}
-            <Route path={publicRoutes_os.AFILIACIONES} element={<Afiliaciones area= {"os"}/>} />
-            <Route path='/archivos' element={<ArchivosU area= {"rrhh"}/>} />
-            <Route path='/rrhh/personal' element={<BuscarPerfil descripcion={"PERSONAL"} area= {"rrhh"}/>} />
-            <Route path='/rrhh/personal/perfil/:id' element={<PanelEdicion area= {"rrhh"} />} />
-            <Route path='/rrhh/personal/recibosueldo' element={<ReciboSueldo area= {"rrhh"}/>} />
-            <Route path='/rrhh/cv' element={<FormularioCV area= {"rrhh"}/>} />
+            <Route path={publicRoutes_os.AFILIACIONES} element={<Afiliaciones area= {areas.OS}/>} />
+            <Route path='/archivos' element={<ArchivosU area= {areas.RRHH}/>} />
+            <Route path='/rrhh/personal' element={<BuscarPerfil descripcion={"PERSONAL"} area= {areas.RRHH}/>} />
+            <Route path='/rrhh/personal/perfil/:id' element={<PanelEdicion area= {areas.RRHH} />} />
+            <Route path='/rrhh/personal/recibosueldo' element={<ReciboSueldo area= {areas.RRHH}/>} />
+            <Route path='/rrhh/cv' element={<FormularioCV area= {areas.RRHH}/>} />
             
-            <Route path='/rrhh/buscar' element={<BuscarPerfil descripcion={"CV"} area= {"rrhh"}/>} />
-            <Route path='/rrhh/declaracion' element={<Declaracion area= {"rrhh"}/>} />
-            <Route path='/admin/nov' element={<PaginaGestionNov area= {"general"}/>} />
-            <Route path='*' element={<NotFound area= {"general"}/>} />
+            <Route path='/rrhh/buscar' element={<BuscarPerfil descripcion={"CV"} area= {areas.RRHH}/>} />
+            <Route path='/rrhh/declaracion' element={<Declaracion area= {areas.RRHH}/>} />
+            <Route path='/admin/nov' element={<PaginaGestionNov area= {areas.GENERAL}/>} />
+            <Route path='*' element={<NotFound area= {areas.GENERAL}/>} />
         </Routes>
     </PerfilContext.Provider>
     </main>
