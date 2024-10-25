@@ -5,27 +5,43 @@ import Icon from "../../BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import EdicionPersonalForm from "./EdicionPersonalForm";
 import { usePersonalStore } from "../../../store/personalStore";
-import { Apiurl } from "../../../services/apiPortal";
+import { apiRRHHCv, Apiurl } from "../../../services/apiPortal";
 import { formulario } from "../../../data/constantes";
 import Formulario from "../../Prestadores/FormComponent";
 import { perfilAdapter } from "../../../Utilities/Adapters/user.adapter";
+import { useSearchParams, useParams } from "react-router-dom";
+import { messegesAPI } from "../../../constantes/constantes";
+import { useAppStore } from "../../../store/appStore"; 
 
 const PanelEdicion = () => {
     const [usuario,setUsuario]= useState({});
-    const perfil = usePersonalStore(state => state.perfil);
+    const [isLoad,setIsLoad]= useState(false);
+    const [sinUsuario,setSinUsuario]=useState(false);
+    // const perfil = usePersonalStore(state => state.perfil);
+    // const [params, setParams]=useSearchParams();
+    // console.log("parametros de busqueda:",params);
+    const parametrosBusqueda=useParams();
+    const id= parametrosBusqueda.id;
+    console.log("estos son los parametros: ", Apiurl+ "rrhh/personal/perfil/"+id)
     useEffect(() => {
-        fetch(Apiurl+ "rrhh/personal/perfil/"+perfil.id)
+        fetch(Apiurl+ "rrhh/personal/perfil/"+id)
         .then(res => res.json())
-        .then(data => setUsuario(
-            perfilAdapter(data.result[0])
-        )
+        .then(data => {
+            if(data.result[0]===messegesAPI.SIN_USUARIO){
+                setSinUsuario(true)
+            } else {
+                setUsuario(
+                    perfilAdapter(data.result[0])
+                )
+            }
+            setIsLoad(true)
+    }
     )
     },[])
-    console.log("Este es el perfil:",usuario);
-
     const keys=Object.keys(usuario);
     let formularioEdit= {
         titulo: "Edicion de usuario",
+        url: `${Apiurl}${apiRRHHCv.editarPerfilPersonal}${usuario.id}`,
         form:keys.map((key)=>{
             return {
                 id: key,
@@ -47,15 +63,26 @@ const PanelEdicion = () => {
   return (
     <>
         <Secciones usuarios={usuario}/>
-            <div className="flex flex-col place-items-center h-[40rem] mb-[55rem] lg:px-[5vh] py-12 bg-secondary text-white">
+            <div className="flex flex-col place-items-center h-[40rem] mb-[60rem] lg:px-[5vh] py-12 bg-secondary text-white">
                 <div className="flex justify-start w-11/12 md:w-5/6">
                     <a href="/rrhh">
                         <Icon icono={faArrowAltCircleLeft}/>
                     </a>
                 </div>
-                <Formulario formularioInput={formularioEdit}></Formulario>
+                {
+                    !isLoad &&
+                    <h1 className="font-bold text-xl">Cargando...</h1>
+                }
+                {
+                    sinUsuario &&
+                    <h1 className="font-bold text-xl">No se encontro el usuario</h1>
+                }
+                {
+                    isLoad && !sinUsuario &&
+                    <Formulario formularioInput={formularioEdit}></Formulario>
+                }
             </div>
-        <Footer></Footer>
+        <Footer className="mt-10"/>
     </>
   )
 }

@@ -53,16 +53,21 @@ const Formulario = ({formularioInput, apiSend})=>{
 
     const HandlerEnviarForm=e=>{
         e.preventDefault();
-        console.log(formulario);
-        let url= Apiurl + apiSend;
+        console.log("este es el formulario: ",formulario);
+        let url= formObject.url
+        console.log("Esta es la url:",url);
 
-        enviarForm(formulario.form,url).then(response=>{
-            if(response != undefined){
-                e.target.reset();
-                setFormEnviado(true)
-            }
-          }
-        )
+
+        // enviarForm(formulario.form,url).then(response=>{
+        //     if(response != undefined){
+        //         e.target.reset();
+        //         setFormEnviado(true)
+        //     }
+        //   }
+        // )
+
+
+
         // axios.post(url,formulario)
         // .then(response=> {
         //     if(response != undefined){

@@ -21,3 +21,7 @@ export const links={
     rrhh:[7,4],
     prestadores:[1,2,3,4,5,6,7]
 }
+
+export const messegesAPI={
+    SIN_USUARIO:"No se encontraron resultados",
+}
