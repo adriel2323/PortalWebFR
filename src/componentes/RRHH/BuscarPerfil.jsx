@@ -1,3 +1,4 @@
+import { useParams, useSearchParams } from "react-router-dom";
 import Icon from "../BotonesHome/Icon";
 import {faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons"
 import Categorias from "./PanelBusqueda/Categorias";
@@ -11,7 +12,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Secciones from "../navBar/Secciones";
 import { userAdapter } from "../../Utilities/Adapters/user.adapter";
 import { PerfilContext } from "../../App";
-import Footer from "../Footer/Footer";
 import { useUserStore } from "../../store/userStore";
 export const busquedaContext= createContext();
 
@@ -71,6 +71,7 @@ const paramsSerch=[
 
 
 const BuscarPerfil=({descripcion})=>{
+    const [params, setParams]= useSearchParams();
     const usuario= useUserStore((state)=>state.user)
     const permisosRrhh= usuario.permisos.permisosRrhh
     const {login}= useContext(PerfilContext)
@@ -85,9 +86,6 @@ const BuscarPerfil=({descripcion})=>{
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
     const [showSmall,setShowSmall]= useState(false);
-
-    console.log("Esto es el load:", isLoad);
-    console.log("Esto es el permiso:", permisosRrhh);
     
     const show=()=>{     
         if(width< 1024){
@@ -144,18 +142,18 @@ const BuscarPerfil=({descripcion})=>{
             })
             .catch(error=>console.log(error))
         } else if( descripcion==="PERSONAL"){
-            let area= busqueda.area?busqueda.area:"";
-            let apellido= busqueda.apellido?busqueda.apellido:"";
-            let experiencia= busqueda.experiencia?busqueda.experiencia:"";
             e.preventDefault();
-            console.log(busqueda);
-            fetch(Apiurl+ apiRRHHCv.buscarPersonal+area+"$"+apellido+"$"+experiencia)
-            .then(response=>response.json())
-            .then(response=>{
-                setListaResultados(response.result)
-                setBusquedaDone(true);
-            })
-            .catch(error=>console.log(error))
+            setParams(busqueda);
+            console.log("estos son los parametros: ",useParams);
+            
+
+            // fetch(Apiurl+ apiRRHHCv.buscarPersonal+area+"$"+apellido+"$"+experiencia)
+            // .then(response=>response.json())
+            // .then(response=>{
+            //     setListaResultados(response.result)
+            //     setBusquedaDone(true);
+            // })
+            // .catch(error=>console.log(error))
             
         }
         
@@ -167,9 +165,7 @@ const BuscarPerfil=({descripcion})=>{
             .then(response=>response.json())
             .then(response=>{
             let resultados=response.Cv
-            // let resultadosAdaptados=resultados.map((result)=>{
-            //     return userAdapter(result)
-            // })
+
             setListaResultados(resultados)
             setIsLoad(true)
             })
@@ -185,9 +181,6 @@ const BuscarPerfil=({descripcion})=>{
                 return userAdapter(result)
             })
             setListaResultados(resultadosAdaptados)
-            console.log(resultadosAdaptados);
-            
-    
             setIsLoad(true)
             })
             .catch(error=>console.log(error))

@@ -52,6 +52,16 @@ export const areas={
     SISTEMAS: "sistemas",
     PACIENTES: "pacientes",
 }
+export const areasRRHH= {
+    LIMPIEZA:"Limpieza",
+    PRESTADORES:"Prestadores",
+    SISTEMAS: "Sistemas",
+    CONTADURIA: "Contaduria",
+    FACTURACION: "Facturacion",
+    RRHH: "RRHH",
+    ENFERMERIA: "Enfermeria",
+    MANTENIMIENTO: "Mantenimiento",
+}
 
 export const links= [
     {

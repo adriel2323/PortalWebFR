@@ -4,10 +4,12 @@ import Icon from "../../BotonesHome/Icon";
 import { faArrowAltCircleLeft, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalBusqueda from "./ModalBusqueda";
+import { areasRRHH } from "../../../data/constantes";
 
 
 const Categorias=({contexto})=>{
     const {paramsSerch,buscar,handleChange,openSearch,setOpenSearch,isLoad,descripcion}=useContext(contexto)
+    const areasList=Object.keys(areasRRHH)
     return(
     <> 
         {
@@ -53,7 +55,7 @@ const Categorias=({contexto})=>{
                             <li className="buttomList-item">
                                 <div className="w-11/12">
                                     <label className=" mb-2 text-white"  htmlFor="area">Estudios</label>
-                                    <select  className="form-input text-base mb-1 "  name="area" id="">
+                                    <select onChange={handleChange}  className="form-input text-base mb-1 "  name="area" id="">
                                         <option id="0" value="nn">Elija una opción</option>
                                         <option id="1" value="secundario">secundario</option>
                                         <option id="2" value="universitario">Universitario/Superior</option>
@@ -100,14 +102,22 @@ const Categorias=({contexto})=>{
                         <li className="buttomList-item">
                             <div className="w-11/12">
                                 <label className=" mb-2 text-white"  htmlFor="area">Area</label>
-                                <select  className="form-input text-base mb-1 "  name="area" id="">
+                                <select onChange={handleChange}  className="form-input text-base mb-1 "  name="area" id="">
                                     <option id="0" value="nn">Elija una opción</option>
-                                    <option id="1" value="mantenimiento">Mantenimiento</option>
+                                    {
+                                        areasList.map((item)=>{
+                                            return(
+                                                <option id=
+                                                {item} value={areasRRHH[item]}>{areasRRHH[item]}</option>
+                                            )
+                                        })
+                                    }
+                                    {/* <option id="1" value="mantenimiento">Mantenimiento</option>
                                     <option id="2" value="limpieza">Limpieza</option>
                                     <option id="3" value="facturacion">Facturacion</option>
                                     <option id="4" value="sistemas">Sistemas</option>
                                     <option id="5" value="enfermeria">Enfermeria</option>
-                                    <option id="6" value="contaduria">Contaduria</option>
+                                    <option id="6" value="contaduria">Contaduria</option> */}
                                     
                                 </select>
                                 
