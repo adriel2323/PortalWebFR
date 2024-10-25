@@ -138,7 +138,7 @@ const Formulario = ({formularioInput, apiSend})=>{
                                     return(
                                       <>
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <input ref={form.input.type==="file"?archivo:null} className={form.input.type==="text"?"form-input":""} type={form.input.type} name={form.input.name} placeholder={form.input.placeholder} onChange={form.input.type==="file"?handleChangeArchivo:handleChange} />
+                                        <input ref={form.input.type==="file"?archivo:null} className={form.input.type==="text"?"form-input":""} type={form.input.type} name={form.input.name} value={form.input.value} placeholder={form.input.placeholder} onChange={form.input.type==="file"?handleChangeArchivo:handleChange} />
                                       </>
                                     )
                                     

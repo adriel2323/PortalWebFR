@@ -11,3 +11,21 @@ export const userAdapter = (user) => {
         tipoUser:user.tipoUser,
     };
 }
+
+export const perfilAdapter= (perfil)=> {
+    return {
+        id: perfil.id,
+        Nombre: perfil.name,
+        Permisos: perfil.admin,
+        Nombre_Usuario: perfil.userName,
+        Fecha_Ingreso: perfil.fechaIngreso,
+        Link_Archivos: perfil.linkArchivos,
+        Area: perfil.area,
+        Domicilio: perfil.domicilio,
+        Estado_Civil: perfil.estadoCivil,
+        Fecha_Nacimiento: perfil.fecha,
+        DNI: perfil.dni,
+        Telefono: perfil.telefono,
+        Imagen: perfil.imagen
+    };
+}

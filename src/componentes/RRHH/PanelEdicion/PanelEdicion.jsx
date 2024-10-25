@@ -6,6 +6,9 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import EdicionPersonalForm from "./EdicionPersonalForm";
 import { usePersonalStore } from "../../../store/personalStore";
 import { Apiurl } from "../../../services/apiPortal";
+import { formulario } from "../../../data/constantes";
+import Formulario from "../../Prestadores/FormComponent";
+import { perfilAdapter } from "../../../Utilities/Adapters/user.adapter";
 
 const PanelEdicion = () => {
     const [usuario,setUsuario]= useState({});
@@ -13,10 +16,34 @@ const PanelEdicion = () => {
     useEffect(() => {
         fetch(Apiurl+ "rrhh/personal/perfil/"+perfil.id)
         .then(res => res.json())
-        .then(data => setUsuario(data.result[0]))
+        .then(data => setUsuario(
+            perfilAdapter(data.result[0])
+        )
+    )
     },[])
     console.log("Este es el perfil:",usuario);
-    
+
+    const keys=Object.keys(usuario);
+    let formularioEdit= {
+        titulo: "Edicion de usuario",
+        form:keys.map((key)=>{
+            return {
+                id: key,
+                type: formulario.types.input,
+                label: {
+                    for: key,
+                    text: key,
+                },
+                input: {
+                    type: "text",
+                    name: key,
+                    id: key,
+                    placeholder: "Ingrese los datos correspondientes",
+                    value: usuario[key],
+                    required: true
+                },
+            }})
+    }
   return (
     <>
         <Secciones usuarios={usuario}/>
@@ -26,6 +53,7 @@ const PanelEdicion = () => {
                         <Icon icono={faArrowAltCircleLeft}/>
                     </a>
                 </div>
+                <Formulario formularioInput={formularioEdit}></Formulario>
             </div>
         <Footer></Footer>
     </>
