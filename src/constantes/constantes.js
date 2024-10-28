@@ -26,13 +26,3 @@ export const messegesAPI={
     SIN_USUARIO:"No se encontraron resultados",
 }
 
-export const areas= {
-    LIMPIEZA:"Limpieza",
-    PRESTADORES:"Prestadores",
-    SISTEMAS: "Sistemas",
-    CONTADURIA: "Contaduria",
-    FACTURACION: "Facturacion",
-    RRHH: "RRHH",
-    ENFERMERIA: "Enfermeria",
-    MANTENIMIENTO: "Mantenimiento",
-}

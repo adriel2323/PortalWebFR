@@ -4,91 +4,7 @@ import { Apiurl } from "../../../services/apiPortal";
 import axios from "axios";
 import { Dialog, Transition } from '@headlessui/react'
 
-
-
 const DeclaracionForm = ()=>{
-    const initialForm= {
-       nombre:"",
-       apellido:"",
-       domicilio:"",
-       localidad:"",
-       provincia:"",
-       fecha:"",
-       LNacimiento:"",
-       dni:"",
-       cuil:"",
-       telefono:"",
-       email:"",
-       estadoCivil:"",
-       conyugueNyA:"",
-       conyugueNacimiento:"",
-       conyugueDNI:"",
-       conyugueACargo:"",
-       conyugueV:"",
-       hijoNyA1:"",
-       hijoNacimiento1:"",
-       hijoDNI1:"",
-       hijoACargo1:"",
-       hijoV1:"",
-       hijoNyA2:"",
-       hijoNacimiento2:"",
-       hijoDNI2:"",
-       hijoACargo2:"",
-       hijoV2:"",
-       hijoNyA3:"",
-       hijoNacimiento3:"",
-       hijoDNI3:"",
-       hijoACargo3:"",
-       hijoV3:"",
-       hijoNyA4:"",
-       hijoNacimiento4:"",
-       hijoDNI4:"",
-       hijoACargo4:"",
-       hijoV4:"",
-       hijoNyA5:"",
-       hijoNacimiento5:"",
-       hijoDNI5:"",
-       hijoACargo5:"",
-       hijoV5:"",
-       primario:"",
-       secundario:"",
-       superior:"",
-       titulo:"",
-       curso1:"",
-       curso2:"",
-       ALempresa1:"",
-       ALdesde1:"",
-       ALhasta1:"",
-       ALtarea1:"",
-       ALegreso1:"",
-       ALempresa2:"",
-       ALdesde2:"",
-       ALhasta2:"",
-       ALtarea2:"",
-       ALegreso2:"",
-       ALempresa3:"",
-       ALdesde3:"",
-       ALhasta3:"",
-       ALtarea3:"",
-       ALegreso3:"",
-       ALempresa4:"",
-       ALdesde4:"",
-       ALhasta4:"",
-       ALtarea4:"",
-       ALegreso4:"",
-       DJDcalle:"",
-       DJDnumero:"",
-       DJDpiso:"",
-       DJDdto:"",
-       DJDcp:"",
-       DJDlocalidad:"",
-       DJDprovincia:"",
-       DJDtelefono:""
-    }
-
-    
-    
-
     const [formEnviado,setFormEnviado]= useState(false)
     const [formulario,setFormulario]=useState({
         form:{
@@ -104,8 +20,6 @@ const DeclaracionForm = ()=>{
     }
 
   }, [formEnviado])
-
-
 
   function closeModal() {
     setIsOpen(false)
