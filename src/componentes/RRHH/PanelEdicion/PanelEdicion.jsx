@@ -8,7 +8,7 @@ import { usePersonalStore } from "../../../store/personalStore";
 import { apiRRHHCv, Apiurl } from "../../../services/apiPortal";
 import { formulario } from "../../../data/constantes";
 import Formulario from "../../Prestadores/FormComponent";
-import { perfilAdapter } from "../../../Utilities/Adapters/user.adapter";
+import { perfilAdapter, userEditAdapter } from "../../../Utilities/Adapters/user.adapter";
 import { useSearchParams, useParams } from "react-router-dom";
 import { messegesAPI } from "../../../constantes/constantes";
 import { useAppStore } from "../../../store/appStore"; 
@@ -22,7 +22,6 @@ const PanelEdicion = () => {
     // console.log("parametros de busqueda:",params);
     const parametrosBusqueda=useParams();
     const id= parametrosBusqueda.id;
-    console.log("estos son los parametros: ", Apiurl+ "rrhh/personal/perfil/"+id)
     useEffect(() => {
         fetch(Apiurl+ "rrhh/personal/perfil/"+id)
         .then(res => res.json())
@@ -54,8 +53,8 @@ const PanelEdicion = () => {
                     type: "text",
                     name: key,
                     id: key,
-                    placeholder: "Ingrese los datos correspondientes",
-                    value: usuario[key],
+                    placeholder: "Ingrese  el/la "+key+" correspondientes",
+                    // value: `${usuario[key]}`,
                     required: true
                 },
             }})
@@ -79,7 +78,7 @@ const PanelEdicion = () => {
                 }
                 {
                     isLoad && !sinUsuario &&
-                    <Formulario formularioInput={formularioEdit}></Formulario>
+                    <Formulario formularioPrev={usuario} formularioInput={formularioEdit} adaptador={userEditAdapter} apiSend={Apiurl+apiRRHHCv.editarPerfilPersonal+usuario.id} ></Formulario>
                 }
             </div>
         <Footer className="mt-10"/>

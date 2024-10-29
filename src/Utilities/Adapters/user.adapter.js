@@ -29,3 +29,21 @@ export const perfilAdapter= (perfil)=> {
         Imagen: perfil.imagen
     };
 }
+export const userEditAdapter = (user) => {
+    return {
+        id: user.id,
+        name: user.Nombre,
+        admin: user.Permisos,
+        userName: user.Nombre_Usuario,
+        archivos: user.Link_Archivos,
+        area: user.Area,
+        imagen: user.Imagen,
+        fechaIngreso: user.Fecha_Ingreso,
+        fecha: user.Fecha_Nacimiento,
+        dni: user.DNI,
+        estadoCivil: user.Estado_Civil,
+        domicilio: user.Domicilio,
+        tel: user.Telefono
+
+    };
+}

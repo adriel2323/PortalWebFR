@@ -4,12 +4,20 @@ import { apiPrestadores } from "../../services/apiPortal";
 import { useState,useEffect, Fragment,useRef } from "react";
 import { Dialog, Transition } from '@headlessui/react'
 import { enviarForm } from "../../Utilities/functions";
-
-const Formulario = ({formularioInput, apiSend})=>{
+import { useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
+const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
+  const {register, handleSubmit, formState: { errors }} = useForm({
+    defaultValues: {
+      ...formularioPrev
+    }
+  });
+        const [formularioPreview,setFormularioPreview]=useState()
         const formObject= formularioInput
         const [formEnviado,setFormEnviado]= useState(false)
         const [formulario,setFormulario]=useState({
         form:{
+            ...formularioPrev
         },
         error:false,
         errorMsg:""
@@ -18,6 +26,7 @@ const Formulario = ({formularioInput, apiSend})=>{
     const archivo= useRef()
 
     const handleChangeArchivo= async e=>{
+        console.log("Este es el e:",e);
       await setFormulario({
           form:{
               ...formulario.form,
@@ -25,7 +34,9 @@ const Formulario = ({formularioInput, apiSend})=>{
           }
       })
   }
-
+  useEffect(()=>{
+    setFormularioPreview(formularioPrev)
+  },[])
   useEffect(()=>{
     if(formEnviado==true){
         setIsOpen(true)
@@ -36,45 +47,23 @@ const Formulario = ({formularioInput, apiSend})=>{
 
   function closeModal() {
     setIsOpen(false)
+    Navigate('/rrhh')
   }
 
   function openModal() {
     setIsOpen(true)
   }
 
-  const handleChange= async e=>{
-    await setFormulario({
-        form:{
-            ...formulario.form,
-            [e.target.name]: e.target.value
-        }
-    })
-}
-
-    const HandlerEnviarForm=e=>{
-        e.preventDefault();
-        console.log("este es el formulario: ",formulario);
+    const HandlerEnviarForm= async data=>{
         let url= formObject.url
-        console.log("Esta es la url:",url);
+        let form=adaptador(data)
+        axios.post(url, form).then(response=>{
+            setFormEnviado(true)
+            console.log("esta es la response: ",response);
+        
+            return response
+        })
 
-
-        // enviarForm(formulario.form,url).then(response=>{
-        //     if(response != undefined){
-        //         e.target.reset();
-        //         setFormEnviado(true)
-        //     }
-        //   }
-        // )
-
-
-
-        // axios.post(url,formulario)
-        // .then(response=> {
-        //     if(response != undefined){
-        //         e.target.reset();
-        //         setFormEnviado(true)
-        //     }
-        // })
     }
     
     return(
@@ -92,7 +81,6 @@ const Formulario = ({formularioInput, apiSend})=>{
           >
             <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
-
           <div className="fixed inset-0 overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
@@ -133,7 +121,15 @@ const Formulario = ({formularioInput, apiSend})=>{
         </Dialog>
             </Transition>
             <div className="  bg-white text-mygray px-5 lg:px-10 py-5  rounded-lg mt-[2rem] drop-shadow-xl w-3/4" >
-              <form onSubmit={HandlerEnviarForm}>
+              <form
+                  action={formObject.url}
+                  method="post" // default to post
+                  onSuccess={() => {
+                    setFormEnviado(true)
+                  }} // valid response
+                  onError={() => {}} // error response
+                  validateStatus={(status) => status >= 200} // validate status code
+                  onSubmit={ handleSubmit(HandlerEnviarForm)}>
                         <h1 className=" mb-5 text-sm lg:text-xl font-semibold text-center">{formObject.titulo}</h1>
                         <div className="flex flex-col">
                             {
@@ -143,16 +139,15 @@ const Formulario = ({formularioInput, apiSend})=>{
                                     return(
                                       <>
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <input ref={form.input.type==="file"?archivo:null} className={form.input.type==="text"?"form-input":""} type={form.input.type} name={form.input.name} value={form.input.value} placeholder={form.input.placeholder} onChange={form.input.type==="file"?handleChangeArchivo:handleChange} />
+                                        <input ref={form.input.type==="file"?archivo:null} className={form.input.type==="text"?"form-input":""} type={form.input.type} name={form.input.name}  placeholder={form.input.placeholder} onChange={form.input.type==="file"?handleChangeArchivo:null} {...register(form.input.name)}/>
                                       </>
                                     )
-                                    
                                     break;
                                   case "select":
                                     return(
                                       <>
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <select onChange={handleChange} className="form-input "  name={form.input.name} id={form.input.id} >
+                                        <select  className="form-input "  name={form.input.name} id={form.input.id} >
                                           {
                                             form.options.map(option=>{
                                               return(
@@ -168,7 +163,7 @@ const Formulario = ({formularioInput, apiSend})=>{
                                     return(
                                       <>
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <textarea className="form-input " name={form.input.name} id={form.input.id} cols="10" rows="5" placeholder={form.input.placeholder} onChange={handleChange}>
+                                        <textarea className="form-input " name={form.input.name} id={form.input.id} cols="10" rows="5" placeholder={form.input.placeholder} >
                                         </textarea>
                                       </>
                                     )

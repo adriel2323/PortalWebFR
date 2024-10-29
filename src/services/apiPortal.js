@@ -172,7 +172,8 @@ export const apiRRHHCv ={
     listaPersonal:"rrhh/personal/lista",
     buscarPersonal: "rrhh/personal/buscar/",
     perfilPersonal: "rrhh/personal/perfil/",
-    editarPerfilPersonal: "rrhh/personal/editar/",
+    editarPerfilPersonal: "rrhh/admin/perfil/",
+    actualizarPerfil: "rrhh/admin/editar/",
 }
 
 

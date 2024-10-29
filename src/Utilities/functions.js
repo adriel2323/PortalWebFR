@@ -104,6 +104,8 @@ export function usuarioLocalStorage(){
 }
 
 export async function enviarForm(form, url){
+  console.log('Este es el form:',form);
+  
 
   let formKeys= Object.keys(form)
   try {

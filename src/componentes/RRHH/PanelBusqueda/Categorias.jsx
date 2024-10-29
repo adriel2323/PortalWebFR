@@ -88,8 +88,6 @@ const Categorias=({contexto})=>{
                             <div className="w-11/12">
                                 <label className=" mb-2 text-white"  htmlFor="apellido">Apellido</label>
                                 <input  onChange={handleChange} className="form-input text-base mb-1 " type="text" name="apellido" placeholder="Ej: Gomez" />
-                                    
-                                
                             </div>
                         </li>
                         <li className="buttomList-item pr-2">
@@ -112,13 +110,6 @@ const Categorias=({contexto})=>{
                                             )
                                         })
                                     }
-                                    {/* <option id="1" value="mantenimiento">Mantenimiento</option>
-                                    <option id="2" value="limpieza">Limpieza</option>
-                                    <option id="3" value="facturacion">Facturacion</option>
-                                    <option id="4" value="sistemas">Sistemas</option>
-                                    <option id="5" value="enfermeria">Enfermeria</option>
-                                    <option id="6" value="contaduria">Contaduria</option> */}
-                                    
                                 </select>
                                 
                             </div>
