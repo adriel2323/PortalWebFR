@@ -10,13 +10,13 @@ const PerfilCV=({perfil})=>{
                     <div className="flex flex-col lg:flex-row w-full">
                         <div className="lg:mb-2 flex  overflow-scroll">
                             {/* <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Nombre: </h2> */}
-                            <h2 className="font-bold  text-base lg:h-[5vh]  w-full overflow-scroll lg:font-light"> { `${perfil.nombre} ${perfil.apellido}`}</h2>
+                            <h2 className="font-bold  text-base lg:h-[5vh]  w-full overflow-scroll sm:font-bold sm:text-xl"> { `${perfil.nombre} ${perfil.apellido}`} </h2>
                         </div>
                         <div className="flex">
-                            <div className="lg:mb-2 flex  overflow-scroll mr-2 lg:mr-0">
+                            {/* <div className="lg:mb-2 flex  overflow-scroll mr-2 lg:mr-0">
                                 <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Secundario: </h2>
                                 <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.secundario==1?"Si": 'No'}</h2>
-                            </div>
+                            </div> */}
                             <div className="lg:mb-2 flex  overflow-scroll">
                                 <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Superior: </h2>
                                 <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.superior==1?"Si": 'No'}</h2>
