@@ -119,8 +119,6 @@ const Personal=()=>{
                         </section> 
                             
                         }
-                    {/* <cvContext.Provider value={{openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
-                    </cvContext.Provider> */}
                 </div>
             </edicionPersonalContext.Provider>
         </>
