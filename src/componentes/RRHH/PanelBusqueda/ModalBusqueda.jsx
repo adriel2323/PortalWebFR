@@ -11,8 +11,8 @@ function ModalBusqueda({children,setOpenSearch}) {
                         <Link  className="pl-2 lg:pl-10 mb-10" to="/rrhh">
                             <Icon icono={faArrowAltCircleLeft}/>
                         </Link>
-                        <h1 className="px-8 lg:px-10 pt-5 lg:pt-10 text-xl lg:text-3xl uppercase font-bold">Sanatorio de alta complejidad</h1>
-                        <h1 className="px-8 lg:px-10  lg:pb-8 text-md lg:text-3xl  font-medium">Fundación nuestra Señora del Rosario</h1>
+                        <h1 className="px-8 sm:px-10 pt-5 sm:pt-10 text-lg sm:text-2xl uppercase font-bold">Sanatorio de alta complejidad</h1>
+                        <h1 className="px-8 sm:px-10  sm:pb-8 text-md sm:text-xl  font-medium">Fundación nuestra Señora del Rosario</h1>
 
                         {children}
             

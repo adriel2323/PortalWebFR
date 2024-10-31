@@ -201,7 +201,7 @@ const BuscarPerfil=({descripcion})=>{
                     </div> */}
                     
                     {
-                        isLoad && <Resultados contexto={busquedaContext}/>
+                        isLoad && <Resultados small={showSmall} contexto={busquedaContext}/>
                     }
                     {
                         !isLoad && <section className='z-0 w-3/4 px-10 h-[100vh]'>

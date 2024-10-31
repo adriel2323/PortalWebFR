@@ -26,7 +26,7 @@ const Perfil= ({perfil, datos})=>{
     const edad= diferenciaDias(perfil.fecha)
     return(
         <>
-            <Link to="/" key={perfil.id} className="flex justify-between p-2    shadow-lg my-2 lg:m-2 rounded-lg lg:p-4 items-center lg:w-100 lg:mb-4 bg-white text-mygray">
+            <Link to="/" key={perfil.id} className="flex justify-between p-2 my-3 sm:m-3 rounded-lg lg:p-4 items-center lg:w-100 lg:mb-4 bg-white text-mygray">
                 <div className=" aspect-square w-[15%] mr-2 lg:mr-0 lg:mx-4   rounded-full overflow-hidden bg-gray-500">
                     <img className="m-auto w-full" src={imagen} alt="" />
                 </div>
