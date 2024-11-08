@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Apiurl,MESSAGES } from "../../services/apiPortal";
+import { apiPortal, Apiurl,MESSAGES } from "../../services/apiPortal";
 import { PerfilContext } from "../../App";
 import { Link } from "react-router-dom";
 import { Dialog } from '@headlessui/react'
@@ -10,7 +10,7 @@ const Novedades=({usuarios})=>{
     const [novedadModal, setNovedadeModal]= useState({})
     const [isLoad,setIsLoad]= useState(false);
     const usuario=usuarios
-    const textoGenerico= "Busca en nuestro portal las ultimas noticias.."
+    const textoGenerico= MESSAGES.TEXTO_GENERICO_NOV
     const [isOpen, setIsOpen] = useState(false)
     
     useEffect(()=>{
@@ -69,7 +69,7 @@ const Novedades=({usuarios})=>{
                                 <li onClick={() => abrirNovedad(novedad.id)}  key={novedad.id} className=" h-52 " >
                                     <div  className="flex lg:flex-col  h-full justify-between py-3 md:p-5 " href={novedad.link}>
                                         <div className=" mr-4 md:mr-0 lg:mr-0 w-10/12  aspect-square  ">
-                                            <img src={(Apiurl+ "novedades/imagenes/"+novedad.imagen)||(Apiurl+ "novedades/imagenes/imageDefault")} alt=""className=" rounded-md h-[100%] md:w-[100%] aspect-square object-cover" />
+                                            <img src={(Apiurl+ apiPortal.imagenNovedad+novedad.imagen)||(Apiurl+ apiPortal.imagenNovDefault)} alt=""className=" rounded-md h-[100%] md:w-[100%] aspect-square object-cover" />
                                         </div>
                                         <h4 className="hidden lg:flex text-gray-400">{novedad.fecha}</h4>
                                         <div className=" w-full text-rigth ">
@@ -96,7 +96,7 @@ const Novedades=({usuarios})=>{
                                         <div  className="flex lg:flex-col  w-1/4 justify-start   p-5 " >
                                         {/* <div onClick={verNovedad(novedad.id)} className="flex lg:flex-col  w-full justify-between  p-5 " href={novedad.link}> */}
                                             <div className=" mr-4 lg:mr-0 w-10/12  aspect-square  ">
-                                                <img src={(Apiurl+ "novedades/imagenes/imageDefault")} alt=""className=" rounded-md  h-full aspect-square object-cover" />
+                                                <img src={(Apiurl+ apiPortal.imagenNovDefault)} alt=""className=" rounded-md  h-full aspect-square object-cover" />
                                             </div>
                                             <h4 className="hidden lg:flex text-gray-400">{"..."}</h4>
 

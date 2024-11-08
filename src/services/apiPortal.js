@@ -1,14 +1,17 @@
 import axios from "axios";
 import { userAdapter } from "../Utilities/Adapters/user.adapter";
-//export const Apiurl= "http://publica.fnsr.com.ar:3002/api/";
 export const Apiurl= "http://10.84.1.112:3001/api/";
 
 export const apiPortal = {
     enviarCV: "rrhh/cv/cargar",
+    imagenNovedad: "novedades/imagenes/",
+    imagenNovDefault:"novedades/imagenes/imageDefault",
+
 }
 
 export const MESSAGES= {
-    SIN_RESULTADOS_MESSAGE: "No se encontraron resultados de la busqueda"
+    SIN_RESULTADOS_MESSAGE: "No se encontraron resultados de la busqueda",
+    TEXTO_GENERICO_NOV:"Busca en nuestro portal las ultimas noticias.."
 }
 const errorMSG= "Credenciales invalidas";
 

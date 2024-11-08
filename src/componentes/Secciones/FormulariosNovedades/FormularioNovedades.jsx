@@ -1,8 +1,10 @@
 import { useRef, useEffect, useState, Fragment } from "react";
 import {cargarNovedad } from "../../../services/apiPortal";
 import { Dialog, Transition } from '@headlessui/react'
+import { useForm, Controller } from "react-hook-form";
 
 const FormularioNovedades = ()=>{
+    const {register,handleSubmit,control,formState:{errors}}=useForm();
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -40,19 +42,40 @@ const FormularioNovedades = ()=>{
     const imagen= useRef()
     const usuario={}
 
-    const handleSubmit=e=>{
-        e.preventDefault();
+    const handleSubmitForm=async()=>{
+        
         setFormulario({
             form:{
                 ...formulario.form,
             }
         })  
-        cargarNovedad(formulario).then(response=> {
-            if(response != undefined){
-                setFormEnviado(true)
+        
+        const response= await axios({
+            url: Apiurl+'cargarnovedad',
+            method:'POST',
+            data:formData,
+            headers:{
+                'Content-Type':'multipart/form-data'
             }
         })
+        if(response != undefined){
+            setFormEnviado(true)
+        }
+        
     }
+    // const handleSubmit=e=>{
+    //     e.preventDefault();
+    //     setFormulario({
+    //         form:{
+    //             ...formulario.form,
+    //         }
+    //     })  
+    //     cargarNovedad(formulario).then(response=> {
+    //         if(response != undefined){
+    //             setFormEnviado(true)
+    //         }
+    //     })
+    // }
 
     const handleChange= async e=>{
         await setFormulario({
@@ -152,6 +175,7 @@ const FormularioNovedades = ()=>{
                             <option id="5" value="rrhh">Administración, Contabilidad y Finanzas</option>
                             <option id="6" value="rrhh">Recursos Humanos</option>
                             <option id="7" value="legales">Legales</option>
+                            <option id="7" value="general">General</option>
                             
                         </select>
                         <label className="  form-label " htmlFor="descripcion">Descripcion/texto: </label>
