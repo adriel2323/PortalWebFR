@@ -3,8 +3,13 @@ import React from "react";
 import { Apiurl } from "../../../services/apiPortal";
 import axios from "axios";
 import { Dialog, Transition } from '@headlessui/react'
+import { useForm } from "react-hook-form";
+import Hijos from "./ComponentesAux/Hijos";
+const hijos=[1,2,3,4,5]
 
 const DeclaracionForm = ()=>{
+
+    const {register, handleSubmit, formState: { errors }} = useForm();
     const [formEnviado,setFormEnviado]= useState(false)
     const [formulario,setFormulario]=useState({
         form:{
@@ -32,25 +37,20 @@ const DeclaracionForm = ()=>{
   }
 
 
-    const handleSubmit=e=>{
-        e.preventDefault();
+    // const handleSubmit=e=>{
+    //     e.preventDefault();
         
 
-        let url= Apiurl + "rrhh/declaraciones";
-        axios.post(url,formulario)
-        .then(response=> {
-            if(response != undefined){
-                setFormEnviado(true)
-            }
-        })
-    }
-    const handleChange= async e=>{
-        await setFormulario({
-            form:{
-                ...formulario.form,
-                [e.target.name]: e.target.value
-            }
-        })
+    //     let url= Apiurl + "rrhh/declaraciones";
+    //     axios.post(url,formulario)
+    //     .then(response=> {
+    //         if(response != undefined){
+    //             setFormEnviado(true)
+    //         }
+    //     })
+    // }
+    const onSubmit=(data)=>{
+        console.log("la data:", data);
     }
 
     return(
@@ -109,59 +109,59 @@ const DeclaracionForm = ()=>{
         </Dialog>
       </Transition>
             <div className=" bg-white text-mygray px-5 lg:px-10 py-5  rounded-lg mt-[1rem] drop-shadow-xl w-11/12 md:w-5/6 mb-5" >
-                <form onSubmit={handleSubmit} action="#">
+                <form onSubmit={handleSubmit(onSubmit)} action="#" >
                     <h1 className=" mb-5 text-xl lg:text-3xl font-bold text-center">Declaracion Jurada</h1>
                     <h1 className=" mb-5 text-lg lg:text-xl font-medium text-center">Datos personales</h1>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="apellido">Apellido:</label>
-                            <input className="form-input  " type="text" name="apellido" placeholder="Ej:García" onChange={handleChange} />
+                            <input className="form-input  " type="text" name="apellido" placeholder="Ej:García" {...register("apellido")}/>
                         </div>
                         <div className=" p-3">
                             <label className=" just form-label " htmlFor="nombre">Nombre:</label>
-                            <input className="form-input   " type="text" name="nombre" placeholder="Ej: Juan"  onChange={handleChange} />
+                            <input className="form-input   " type="text" name="nombre" placeholder="Ej: Juan"  {...register("nombre")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="domicilio">Domicilio:</label>
-                            <input className="form-input  " type="text" name="domicilio" placeholder="Ej: Roca 234" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="domicilio" placeholder="Ej: Roca 234" {...register("domicilio")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="localidad">Localidad:</label>
-                            <input className="form-input  " type="text" name="localidad" placeholder="Ej: San Nicolas" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="localidad" placeholder="Ej: San Nicolas" {...register("localidad")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="provincia">Provincia:</label>
-                            <input className="form-input  " type="text" name="provincia" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="provincia" placeholder="ingrese los datos" {...register("provincia")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="fecha">Fecha de nacimiento:</label>
-                            <input className="form-input  " type="date" name="fecha"  onChange={handleChange}/>
+                            <input className="form-input  " type="date" name="fecha"  {...register("fecha")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="LNacimiento">Lugar de nacimiento:</label>
-                            <input className="form-input  " type="text" name="LNacimiento" placeholder="Ej: San Nicolas" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="LNacimiento" placeholder="Ej: San Nicolas" {...register("LNacimiento")}/>
                         </div>
                       
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="dni">Documento:</label>
-                            <input className="form-input  " type="text" name="dni" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="dni" placeholder="ingrese los datos" {...register("dni")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="cuil">CUIL:</label>
-                            <input className="form-input  " type="text" name="cuil" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="cuil" placeholder="ingrese los datos" {...register("cuil")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="telefono">Teléfono: </label>
-                            <input className="form-input " type="text" name="telefono" onChange={handleChange}/>
+                            <input className="form-input " type="text" name="telefono" {...register("telefono")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="email">Correo Electrónico: </label>
-                            <input className="form-input " type="email" name="email" onChange={handleChange}/>
+                            <input className="form-input " type="email" name="email" {...register("email")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="estadoCivil">Estado Civil:</label>
-                            <input className="form-input  " type="text" name="estadoCivil" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="estadoCivil" placeholder="ingrese los datos" {...register("estadoCivil")}/>
                         </div>
 
                     </div>
@@ -172,28 +172,28 @@ const DeclaracionForm = ()=>{
                     <div className="grid grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="conyugueNyA">Apellido y nombres:</label>
-                            <input className="form-input  " type="text" name="conyugueNyA" placeholder="Ingrese sus datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="conyugueNyA" placeholder="Ingrese sus datos" {...register("conyugueNyA")}/>
                         </div>
                         
                         
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="conyugueNacimiento">Fecha de nacimiento:</label>
-                            <input className="form-input  " type="date" name="conyugueNacimiento"  onChange={handleChange}/>
+                            <input className="form-input  " type="date" name="conyugueNacimiento"  {...register("conyugueNacimiento")}/>
                         </div>
                         
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="conyugueDNI">DNI:</label>
-                            <input className="form-input  " type="text" name="conyugueDNI" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="conyugueDNI" placeholder="ingrese los datos" {...register("conyugueDNI")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="conyugueACargo">A cargo:</label>
                             <div className="flex lg:mb-2 lg:py-4">
                                 <div className="flex mr-5">
-                                    <input type="radio" id="si" name="conyugueACargo" value="si"onChange={handleChange}/>
+                                    <input type="radio" id="si" name="conyugueACargo" value="si"{...register("conyugueACargo")}/>
                                     <label htmlFor="conyugueACargo"> Si</label>
                                 </div>
                                 <div className="flex ">
-                                    <input type="radio" id="no" name="conyugueACargoN" value="no"onChange={handleChange}/>
+                                    <input type="radio" id="no" name="conyugueACargoN" value="no"{...register("conyugueACargo")}/>
                                     <label htmlFor="conyugueACargoN"> No</label>
                                 </div>
                             </div>
@@ -202,287 +202,40 @@ const DeclaracionForm = ()=>{
                             <label className="  form-label " htmlFor="conyugueV">Vive: </label>
                             <div className="flex lg:mb-2 lg:py-4">
                                 <div className="flex mr-5">
-                                    <input type="radio" id="si" name="conyugueV" value="si"onChange={handleChange}/>
+                                    <input type="radio" id="si" name="conyugueV" value="si"{...register("conyugueV")}/>
                                     <label htmlFor="conyugueV"> Si</label>
                                 </div>
                                 <div className="flex ">
-                                    <input type="radio" id="no" name="conyugueV" value="no"onChange={handleChange}/>
+                                    <input type="radio" id="no" name="conyugueV" value="no"{...register("conyugueV")}/>
                                     <label htmlFor="conyugueV"> No</label>
                                 </div>
                             </div>
                         </div>
-                        
-
                     </div>
                     
                     <h1 className="  text-lg lg:text-2xl font-bold text-center">Hijos</h1>
-
-
-                    <div>
-                        <h1 className="  text-sm lg:text-lg font-light text-center">Hij@</h1>
-                        <div className="grid grid-cols-1 lg:grid-cols-5 lg:w-full">
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor='hijoNyA1' >Apellido y nombres:</label>
-                                <input className="form-input  " type="text" name='hijoNyA1' placeholder="Ej:García" onChange={handleChange} />
-                            </div>
+                    {
+                        hijos.map( h=>{
+                            console.log("Este es h:",h);
                             
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoNacimiento1">Fecha de nacimiento:</label>
-                                <input className="form-input  " type="date" name="hijoNacimiento1"  onChange={handleChange} />
-                            </div>
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoDNI1">DNI:</label>
-                                <input className="form-input  " type="text" name="hijoDNI1" placeholder="ingrese los datos" onChange={handleChange} />
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoACargo1">A cargo:</label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoACargo1" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoACargo1" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo1"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoV1">Vive: </label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoV1" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoV1"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoV1" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoV1"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                        </div>
-                        
-                    </div>
-
-
-                    <div>
-                        <h1 className="  text-sm lg:text-lg font-light text-center">Hij@</h1>
-                        <div className="grid grid-cols-1 lg:grid-cols-5 lg:w-full">
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor='hijoNyA2' >Apellido y nombres:</label>
-                                <input className="form-input  " type="text" name='hijoNyA2' placeholder="Ej:García" onChange={handleChange} />
-                            </div>
-                            
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoNacimiento2">Fecha de nacimiento:</label>
-                                <input className="form-input  " type="date" name="hijoNacimiento2"  onChange={handleChange} />
-                            </div>
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoDNI2">DNI:</label>
-                                <input className="form-input  " type="text" name="hijoDNI2" placeholder="ingrese los datos" onChange={handleChange} />
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoACargo2">A cargo:</label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoACargo2" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoACargo2" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo2"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoV2">Vive: </label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoV2" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoV2"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoV2" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoV2"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                        </div>
-                        
-                    </div>
-
-                    <div>
-                        <h1 className="  text-sm lg:text-lg font-light text-center">Hij@</h1>
-                        <div className="grid grid-cols-1 lg:grid-cols-5 lg:w-full">
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor='hijoNyA3' >Apellido y nombres:</label>
-                                <input className="form-input  " type="text" name='hijoNyA3' placeholder="Ej:García" onChange={handleChange} />
-                            </div>
-                            
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoNacimiento3">Fecha de nacimiento:</label>
-                                <input className="form-input  " type="date" name="hijoNacimiento3"  onChange={handleChange} />
-                            </div>
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoDNI3">DNI:</label>
-                                <input className="form-input  " type="text" name="hijoDNI3" placeholder="ingrese los datos" onChange={handleChange} />
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoACargo3">A cargo:</label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoACargo3" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoACargo3" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo3"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoV3">Vive: </label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoV3" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoV3"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoV3" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoV3"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                        </div>
-                        
-                    </div>
-
-                    <div>
-                        <h1 className="  text-sm lg:text-lg font-light text-center">Hij@</h1>
-                        <div className="grid grid-cols-1 lg:grid-cols-5 lg:w-full">
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor='hijoNyA4' >Apellido y nombres:</label>
-                                <input className="form-input  " type="text" name='hijoNyA4' placeholder="Ej:García" onChange={handleChange} />
-                            </div>
-                            
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoNacimiento4">Fecha de nacimiento:</label>
-                                <input className="form-input  " type="date" name="hijoNacimiento4"  onChange={handleChange} />
-                            </div>
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoDNI4">DNI:</label>
-                                <input className="form-input  " type="text" name="hijoDNI4" placeholder="ingrese los datos" onChange={handleChange} />
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoACargo4">A cargo:</label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoACargo4" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoACargo4" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo4"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoV4">Vive: </label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoV4" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoV4"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoV4" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoV4"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                        </div>
-                        
-                    </div>
-
-                    <div>
-                        <h1 className="  text-sm lg:text-lg font-light text-center">Hij@</h1>
-                        <div className="grid grid-cols-1 lg:grid-cols-5 lg:w-full">
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor='hijoNyA5' >Apellido y nombres:</label>
-                                <input className="form-input  " type="text" name='hijoNyA5' placeholder="Ej:García" onChange={handleChange} />
-                            </div>
-                            
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoNacimiento5">Fecha de nacimiento:</label>
-                                <input className="form-input  " type="date" name="hijoNacimiento5"  onChange={handleChange} />
-                            </div>
-                            
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoDNI5">DNI:</label>
-                                <input className="form-input  " type="text" name="hijoDNI5" placeholder="ingrese los datos" onChange={handleChange} />
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoACargo5">A cargo:</label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoACargo5" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoACargo5" value="no"onChange={handleChange} />
-                                        <label htmlFor="hijoACargo5"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className=" p-3">
-                                <label className="  form-label " htmlFor="hijoV5">Vive: </label>
-                                <div className="flex lg:mb-2 lg:py-4">
-                                    <div className="flex mr-5">
-                                        <input type="radio" id="si" name="hijoV5" value="si"onChange={handleChange} />
-                                        <label htmlFor="hijoV5"> Si</label>
-                                    </div>
-                                    <div className="flex ">
-                                        <input type="radio" id="no" name="hijoV5" value="no"onSubmit={handleChange} />
-                                        <label htmlFor="hijoV5"> No</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                        </div>
-                        
-                    </div>
-
-
-
+                                    return(
+                                        <> 
+                                            <Hijos key={h} register={register}/>
+                                        </>
+                                    )
+                        })
+                    }
                     <h1 className=" mb-5 text-lg lg:text-xl font-medium text-center">Estudios cursados</h1>
-
                     <div className="lg:grid lg:grid-cols-3   lg:w-full justify-between">
                         <div className="flex flex-col">
                             <label className="  form-label " htmlFor="primario">Primario completo:</label>
                             <div className="flex lg:mb-2 lg:py-4">
                                 <div className="flex mr-5">
-                                    <input type="radio" id="si" name="primario" value="si"onChange={handleChange}/>
+                                    <input type="radio" id="si" name="primario" value="si"{...register("primario")}/>
                                     <label htmlFor="primario"> Si</label>
                                 </div>
                                 <div className="flex ">
-                                    <input type="radio" id="no" name="primario" value="no"onChange={handleChange}/>
+                                    <input type="radio" id="no" name="primario" value="no"{...register("primario")}/>
                                     <label htmlFor="primario"> No</label>
                                 </div>
                             </div>
@@ -492,11 +245,11 @@ const DeclaracionForm = ()=>{
                             <label className="  form-label " htmlFor="secundario">Secundario Completo :</label>
                             <div className="flex lg:mb-2 lg:py-4" >
                                 <div className="flex  mr-5">
-                                    <input type="radio" id="si" name="secundario" value="si"onChange={handleChange}/>
+                                    <input type="radio" id="si" name="secundario" value="si"{...register("secundario")}/>
                                     <label htmlFor="secundario"> Si</label>
                                 </div>
                                 <div className="flex">
-                                    <input type="radio" id="no" name="secundario" value="no"onChange={handleChange}/>
+                                    <input type="radio" id="no" name="secundario" value="no"{...register("secundario")}/>
                                     <label htmlFor="secundario"> No</label>
                                 </div>
                             </div>
@@ -506,11 +259,11 @@ const DeclaracionForm = ()=>{
                             <label className="  form-label " htmlFor="superior">Terciario o nivel superio completo:</label>
                             <div className="flex lg:mb-2 lg:py-4">
                                 <div className="flex mr-5">
-                                    <input type="radio" id="si" name="superior" value="si" onChange={handleChange}/>
+                                    <input type="radio" id="si" name="superior" value="si" {...register("superior")}/>
                                     <label htmlFor="primario"> Si</label>
                                 </div>
                                 <div className="flex">
-                                    <input type="radio" id="no" name="superior" value="no" onChange={handleChange}/>
+                                    <input type="radio" id="no" name="superior" value="no" {...register("superior")}/>
                                     <label htmlFor="primario"> No</label>
                                 </div>
                             </div>
@@ -520,11 +273,11 @@ const DeclaracionForm = ()=>{
                         <div className="flex flex-col">
                             
                             <label className="form-label" htmlFor="institicion-t">Titulo: </label>
-                            <input className="form-input" type="text" name="titulo" onChange={handleChange}/>
+                            <input className="form-input" type="text" name="titulo" {...register("titulo")}/>
                             <label className="form-label" htmlFor="curso1">Curso 1: </label>
-                            <input className="form-input" type="text" name="curso1" onChange={handleChange}/>
+                            <input className="form-input" type="text" name="curso1" {...register("curso1")}/>
                             <label className="form-label" htmlFor="curso2">Curso 2: </label>
-                            <input className="form-input" type="text" name="curso2" onChange={handleChange}/>
+                            <input className="form-input" type="text" name="curso2" {...register("curso2")}/>
                         </div>
                     
                     <h1 className=" mb-5 text-lg lg:text-xl font-medium text-center">Antecedentes laborales</h1>
@@ -532,27 +285,27 @@ const DeclaracionForm = ()=>{
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALempresa1">Empresa:</label>
-                            <input className="form-input  " type="text" name="ALempresa1"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALempresa1"  {...register("ALempresa1")}/>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2">
 
                             <div className=" p-3">
                                 <label className=" just form-label " htmlFor="ALdesde1">Desde:</label>
-                                <input className="form-input   " type="date" name="ALdesde1" onChange={handleChange}/>
+                                <input className="form-input   " type="date" name="ALdesde1" {...register("ALdesde1")}/>
                             </div>
                             <div className=" p-3">
                                 <label className=" just form-label " htmlFor="ALhasta1">Hasta:</label>
-                                <input className="form-input   " type="date" name="ALhasta1" onChange={handleChange}/>
+                                <input className="form-input   " type="date" name="ALhasta1" {...register("ALhasta1")}/>
                             </div>
                         </div>
                         
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALtarea1">Tareas Realizadas:</label>
-                            <input className="form-input  " type="text" name="ALtarea1"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALtarea1"  {...register("ALtarea1")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALegreso1">Motivo de egreso:</label>
-                            <input className="form-input  " type="text" name="ALegreso1"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALegreso1"  {...register("ALegreso1")}/>
                         </div>
                         
                         
@@ -563,63 +316,56 @@ const DeclaracionForm = ()=>{
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALempresa2">Empresa:</label>
-                            <input className="form-input  " type="text" name="ALempresa2"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALempresa2"  {...register("ALempresa2")}/>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2">
 
                             <div className=" p-3">
                                 <label className=" just form-label " htmlFor="ALdesde2">Desde:</label>
-                                <input className="form-input   " type="date" name="ALdesde2" onChange={handleChange}/>
+                                <input className="form-input   " type="date" name="ALdesde2" {...register("ALdesde2")}/>
                             </div>
                             <div className=" p-3">
                                 <label className=" just form-label " htmlFor="ALhasta2">Hasta:</label>
-                                <input className="form-input   " type="date" name="ALhasta2" onChange={handleChange}/>
+                                <input className="form-input   " type="date" name="ALhasta2" {...register("ALhasta2")}/>
                             </div>
                         </div>
                         
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALtarea2">Tareas Realizadas:</label>
-                            <input className="form-input  " type="text" name="ALtarea2"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALtarea2"  {...register("ALtarea2")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALegreso2">Motivo de egreso:</label>
-                            <input className="form-input  " type="text" name="ALegreso2"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALegreso2"  {...register("ALegreso2")}/>
                         </div>
                         
-
-
-
-                        
-
                     </div>
                         <h1 className="  text-sm lg:text-lg font-light text-center">Empresa 3</h1>
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALempresa3">Empresa:</label>
-                            <input className="form-input  " type="text" name="ALempresa3"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALempresa3"  {...register("ALempresa3")}/>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2">
 
                             <div className=" p-3">
                                 <label className=" just form-label " htmlFor="ALdesde3">Desde:</label>
-                                <input className="form-input   " type="date" name="ALdesde3" onChange={handleChange}/>
+                                <input className="form-input   " type="date" name="ALdesde3" {...register("ALdesde3")}/>
                             </div>
                             <div className=" p-3">
                                 <label className=" just form-label " htmlFor="ALhasta3">Hasta:</label>
-                                <input className="form-input   " type="date" name="ALhasta3" onChange={handleChange}/>
+                                <input className="form-input   " type="date" name="ALhasta3" {...register("ALhasta3")}/>
                             </div>
                         </div>
                         
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALtarea3">Tareas Realizadas:</label>
-                            <input className="form-input  " type="text" name="ALtarea3"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALtarea3"  {...register("ALtarea3")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALegreso3">Motivo de egreso:</label>
-                            <input className="form-input  " type="text" name="ALegreso3"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALegreso3"  {...register("ALegreso3")}/>
                         </div>
-                        
-                        
 
                     </div>
 
@@ -627,80 +373,75 @@ const DeclaracionForm = ()=>{
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALempresa4">Empresa:</label>
-                            <input className="form-input  " type="text" name="ALempresa4"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALempresa4"  {...register("ALempresa4")}/>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2">
 
                             <div className=" p-3">
                                 <label className=" just form-label " htmlFor="ALdesde4">Desde:</label>
-                                <input className="form-input   " type="date" name="ALdesde4" onChange={handleChange}/>
+                                <input className="form-input   " type="date" name="ALdesde4" {...register("ALdesde4")}/>
                             </div>
                             <div className=" p-3">
                                 <label className=" just form-label " htmlFor="ALhasta4">Hasta:</label>
-                                <input className="form-input   " type="date" name="ALhasta4" onChange={handleChange}/>
+                                <input className="form-input   " type="date" name="ALhasta4" {...register("ALhasta4")}/>
                             </div>
                         </div>
                         
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALtarea4">Tareas Realizadas:</label>
-                            <input className="form-input  " type="text" name="ALtarea4"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALtarea4"  {...register("ALtarea4")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="ALegreso4">Motivo de egreso:</label>
-                            <input className="form-input  " type="text" name="ALegreso4"  onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="ALegreso4"  {...register("ALegreso4")}/>
                         </div>
-                        
-                        
-
                     </div>
-
 
                     <h1 className=" mb-5 text-lg lg:text-xl font-medium text-center">Declaración Jurada de Domicilio</h1>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDcalle">Calle:</label>
-                            <input className="form-input  " type="text" name="DJDcalle" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="DJDcalle" placeholder="ingrese los datos" {...register("DJDcalle")}/>
                         </div>
                         <div className=" p-3">
                             <label className=" just form-label " htmlFor="DJDnumero">N°:</label>
-                            <input className="form-input   " type="text" name="DJDnumero" placeholder="Ej: Juan" onChange={handleChange}/>
+                            <input className="form-input   " type="text" name="DJDnumero" placeholder="Ej: Juan" {...register("DJDnumero")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDpiso">Piso:</label>
-                            <input className="form-input  " type="text" name="DJDpiso" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="DJDpiso" placeholder="ingrese los datos" {...register("DJDpiso")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDdto">Dto:</label>
-                            <input className="form-input  " type="text" name="DJDdto" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="DJDdto" placeholder="ingrese los datos" {...register("DJDdto")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDcp">Codigo Postal:</label>
-                            <input className="form-input  " type="text" name="DJDcp" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="DJDcp" placeholder="ingrese los datos" {...register("DJDcp")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDlocalidad">Localidad:</label>
-                            <input className="form-input  " type="text" name="DJDlocalidad" placeholder="Ej: San Nicolas" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="DJDlocalidad" placeholder="Ej: San Nicolas" {...register("DJDlocalidad")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDprovincia">Provincia:</label>
-                            <input className="form-input  " type="text" name="DJDprovincia" placeholder="ingrese los datos" onChange={handleChange}/>
+                            <input className="form-input  " type="text" name="DJDprovincia" placeholder="ingrese los datos" {...register("DJDprovincia")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDtelefono">Telefo:</label>
-                            <input className="form-input  " type="phone" name="DJDtelefono"  onChange={handleChange}/>
+                            <input className="form-input  " type="phone" name="DJDtelefono"  {...register("DJDtelefono")}/>
                         </div>
                         
-
                     </div>
 
                     <div className="lg:flex lg:justify-between">
 
                     </div>
-                    {/* <div>
-                        <label className="form-label" htmlFor="firma">Cargar archivo de CV personal  </label>
-                        <input type="file" name="firma" />
-                    </div> */}
+                    <div className="flex">
+                        <label className="font-semibold text-lg mr-10" htmlFor="firma">Reconozco que este formulario es correcto y de validez legal </label>
+                        <input type="checkbox" name="firma" />
+                    </div>
                     <div className=" mt-12 mb-4">
                         <input className="form-buttom-send mr-10 " type="submit" value="Enviar" />
                         <input className="form-buttom-borrar" type="reset" value="Borrar" />

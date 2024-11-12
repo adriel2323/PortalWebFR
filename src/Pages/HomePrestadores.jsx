@@ -20,7 +20,7 @@ const HomePrestadores =({usuarios})=>{
         <>
             <div className="normalize font-mont  " >
                 <Secciones area={area}/>
-                <Carrusel className="" usuarios={area}/>
+                <Carrusel className="" usuarios={area} area={area}/>
                 <div className=' z-30 '>
                     {permisos.permisosPrestadores && <PrestadoresBotones data={botones[0]} />}
                     {!permisos.permisosPrestadores && <PrestadoresNoLogBotones />}

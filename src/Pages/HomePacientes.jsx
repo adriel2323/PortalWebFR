@@ -53,7 +53,7 @@ const HomePacientes =({area})=> {
             }}>
                 <div className="normalize font-mont" >
                     <Secciones area={area}/>
-                    <Carrusel usuarios={area}/>
+                    <Carrusel usuarios={area} area={area}/>
                     <div >
                         <HomeBotones />
                         {cartillaOpen && <BuscarCartilla urlBusquedas={urlBusquedas}  selectores={selectores} />}

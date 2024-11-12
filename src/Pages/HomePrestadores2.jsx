@@ -23,7 +23,7 @@ const HomePrestadores =({usuarios})=>{
 <h1>Algo pasa</h1>
             <div className="normalize font-mont  " >
                 <Secciones usuarios={usuarios}/>
-                <Carrusel className="" usuarios={usuarios}/>
+                <Carrusel className="" usuarios={usuarios} area={area}/>
                 <div className=' z-30 '>
                     {permisosPrestadores && <PrestadoresBotones />}
                     {!permisosPrestadores && <PrestadoresNoLogBotones />}

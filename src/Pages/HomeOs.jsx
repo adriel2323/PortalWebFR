@@ -34,17 +34,14 @@ const HomeOs =({usuarios})=>{
         farmacias:apiBusquedas.buscarFarmaciaOs,
     }
 
-    useEffect(()=>{
-        console.log(permisosOsAdmin)
-    },[permisosOsAdmin])
     return(
         <>
             <OsContext.Provider value={{
                 
             }}>
                 <div className="normalize font-mont" >
-                    <Secciones area={area}/>
-                    <Carrusel usuarios={usuario}/>
+                    <Secciones area={area} />
+                    <Carrusel usuarios={usuario} area={area}/>
                     <div className=''>
                         {permisosOsAdmin && <OsAdminBotones />}
                         {!permisosOsAdmin && <OsBotones />}

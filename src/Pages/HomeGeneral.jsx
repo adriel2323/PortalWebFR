@@ -8,12 +8,13 @@ import Secciones from "../componentes/navBar/Secciones";
 
 const HomeGeneral =({usuarios})=>{
     const usuario= usuarios;
+    const area="general"
 
     return(
         <>
             <div className="normalize font-mont" >
               <Secciones usuarios={usuario}/>
-                <Carrusel usuarios={usuario}/>
+                <Carrusel usuarios={usuario} area={area}/>
                 <div className=''>
                     <HomeBotones />
                     <Nosotros/>

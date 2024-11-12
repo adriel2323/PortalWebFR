@@ -2,8 +2,6 @@ import React from "react";
 import Secciones from "../../navBar/Secciones";
 import FormularioNovedades from "./FormularioNovedades";
 import Footer from "../../Footer/Footer";
-import Icon from "../../BotonesHome/Icon";
-import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect } from "react";
 import { PerfilContext } from "../../../App";
 import { useUserStore } from "../../../store/userStore";
@@ -13,19 +11,12 @@ const PaginaGestionNov =({area})=> {
     const usuario= useUserStore((state)=>state.user);
     const permisos= usuario.permisos;
     const permisosRrhh= permisos.permisosRrhh;
-    console.log(usuario);
     useEffect(()=>{
         if(permisosRrhh==false){
             setTimeout(()=>{window.location = '/';}, 3000);
-
         } else{
         }
     },[])
-
-    // const area= "rrhh"
-    console.log('Esta es el area',area);
-    
-
     return(
         <>
             <Secciones usuarios={area}/>
@@ -37,8 +28,6 @@ const PaginaGestionNov =({area})=> {
                 </div> }
             </div>
             <Footer/>
-
-
         </>
     )
 };

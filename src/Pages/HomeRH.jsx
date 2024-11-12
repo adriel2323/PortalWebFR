@@ -26,7 +26,7 @@ const HomeRH =({})=>{
             <Secciones area={area}/>
             <div>
 
-                <Carrusel usuarios={area}/>
+                <Carrusel usuarios={area} area={area}/>
                 <div className="solapar">
                     {permisosRrhh && <RhBotonesAdmin />}
                     {!permisosRrhh && <RhBotones />}

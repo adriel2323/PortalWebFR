@@ -56,7 +56,7 @@ function App() {
             <Route path={publicRoutes.GENERAL} element={<HomeGeneral area= {areas.GENERAL} />} />
             <Route path={publicRoutes.PRESTADORES} element={<HomePrestadores area= {areas.PRESTADORES} />} />
             <Route path={publicRoutes.FORM_PAMI} element={<DatosPami area= {areas.PRESTADORES} />} />
-            <Route path={publicRoutes.PACIENTES} element={<HomePacientes area= {areas.PRESTADORES}/>} />
+            <Route path={publicRoutes.PACIENTES} element={<HomePacientes area= {areas.PACIENTES}/>} />
             <Route path={publicRoutes.RH} element={<HomeRH area= {areas.RRHH}/>} />
             <Route path={publicRoutes.OS} element={<HomeOs area= {areas.OS}/>} />
             {/* <Route path='/usuariopami' element={<Personal />} /> */}
