@@ -20,7 +20,7 @@ const ReciboSueldo =()=> {
     return(
         <>
             <Secciones usuarios={usuarios}/>
-            <Carrusel usuarios={usuarios}/>
+            <Carrusel usuarios={usuarios} area={usuarios}/>
             <PersonalBotones  cuil={usuario?.userName?usuario.userName:""}/>
             
             <ContactoMail/>

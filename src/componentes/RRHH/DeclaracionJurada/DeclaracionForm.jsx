@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import React from "react";
-import { Apiurl } from "../../../services/apiPortal";
+import { apiPortal, Apiurl } from "../../../services/apiPortal";
 import axios from "axios";
 import { Dialog, Transition } from '@headlessui/react'
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ const hijos=[1,2,3,4,5]
 const DeclaracionForm = ()=>{
 
     const {register, handleSubmit, formState: { errors }} = useForm();
+    const [messege,setMessege]= useState("")
     const [formEnviado,setFormEnviado]= useState(false)
     const [formulario,setFormulario]=useState({
         form:{
@@ -50,7 +51,26 @@ const DeclaracionForm = ()=>{
     //     })
     // }
     const onSubmit=(data)=>{
-        console.log("la data:", data);
+        let url= `${Apiurl}${apiPortal.declaracionJurada}`;
+        axios.post(url,data)
+        .then(response=> {
+            if(response != undefined){
+                setFormEnviado(true)
+                setMessege("Su declaracion ha sido enviada correctamente, le llegara un mail con los datos de la misma.")
+                openModal()
+            }
+        })
+        .catch(error=> {
+            console.log(error);
+            setFormulario({
+                ...formulario,
+                error:true,
+                errorMsg:"Error al enviar la declaracion"
+            })
+            setMessege(formulario.errorMsg)
+            openModal()
+        })
+
     }
 
     return(
@@ -85,11 +105,11 @@ const DeclaracionForm = ()=>{
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Enviado exitoso
+                    Detalles Envio
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Su declaracion ha sido enviada correctamente, le llegara un mail con los datos de la misma.
+                      {messege}
                     </p>
                   </div>
 
@@ -116,53 +136,52 @@ const DeclaracionForm = ()=>{
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="apellido">Apellido:</label>
-                            <input className="form-input  " type="text" name="apellido" placeholder="Ej:García" {...register("apellido")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="apellido" placeholder="Ej:García" {...register("apellido",{required:true})}/>
+                        {errors.apellido && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className=" just form-label " htmlFor="nombre">Nombre:</label>
-                            <input className="form-input   " type="text" name="nombre" placeholder="Ej: Juan"  {...register("nombre")}/>
-                        </div>
+                            <input className="form-input   " type="text" name="nombre" placeholder="Ej: Juan"  {...register("nombre",{required:true})}/>
+                        {errors.nombre && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="domicilio">Domicilio:</label>
-                            <input className="form-input  " type="text" name="domicilio" placeholder="Ej: Roca 234" {...register("domicilio")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="domicilio" placeholder="Ej: Roca 234" {...register("domicilio",{required:true})}/>
+                        {errors.domicilio && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="localidad">Localidad:</label>
-                            <input className="form-input  " type="text" name="localidad" placeholder="Ej: San Nicolas" {...register("localidad")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="localidad" placeholder="Ej: San Nicolas" {...register("localidad",{required:true})}/>
+                        {errors.localidad && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="provincia">Provincia:</label>
-                            <input className="form-input  " type="text" name="provincia" placeholder="ingrese los datos" {...register("provincia")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="provincia" placeholder="ingrese los datos" {...register("provincia",{required:true})}/>
+                        {errors.provincia && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="fecha">Fecha de nacimiento:</label>
-                            <input className="form-input  " type="date" name="fecha"  {...register("fecha")}/>
-                        </div>
+                            <input className="form-input  " type="date" name="fecha"  {...register("fecha",{required:true})}/>
+                        {errors.fecha && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="LNacimiento">Lugar de nacimiento:</label>
-                            <input className="form-input  " type="text" name="LNacimiento" placeholder="Ej: San Nicolas" {...register("LNacimiento")}/>
-                        </div>
-                      
+                            <input className="form-input  " type="text" name="LNacimiento" placeholder="Ej: San Nicolas" {...register("LNacimiento",{required:true})}/>
+                        {errors.LNacimiento && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="dni">Documento:</label>
-                            <input className="form-input  " type="text" name="dni" placeholder="ingrese los datos" {...register("dni")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="dni" placeholder="ingrese los datos" {...register("dni",{required:true})}/>
+                        {errors.dni && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="cuil">CUIL:</label>
-                            <input className="form-input  " type="text" name="cuil" placeholder="ingrese los datos" {...register("cuil")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="cuil" placeholder="ingrese los datos" {...register("cuil",{required:true})}/>
+                        {errors.cuil && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="telefono">Teléfono: </label>
-                            <input className="form-input " type="text" name="telefono" {...register("telefono")}/>
-                        </div>
+                            <input className="form-input " type="text" name="telefono" {...register("telefono",{required:true})}/>
+                        {errors.telefono && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="email">Correo Electrónico: </label>
-                            <input className="form-input " type="email" name="email" {...register("email")}/>
-                        </div>
+                            <input className="form-input " type="email" name="email" {...register("email",{required:true})}/>
+                        {errors.email && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="estadoCivil">Estado Civil:</label>
-                            <input className="form-input  " type="text" name="estadoCivil" placeholder="ingrese los datos" {...register("estadoCivil")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="estadoCivil" placeholder="ingrese los datos" {...register("estadoCivil",{required:true})}/>
+                        {errors.estadoCivil && <span className="warning">Este campo es requerido</span>}</div>
 
                     </div>
 
@@ -206,21 +225,18 @@ const DeclaracionForm = ()=>{
                                     <label htmlFor="conyugueV"> Si</label>
                                 </div>
                                 <div className="flex ">
-                                    <input type="radio" id="no" name="conyugueV" value="no"{...register("conyugueV")}/>
+                                    <input type="radio" id="no" name="conyugueV" value="no"{...register("conyugueV",{required:true})}/>
                                     <label htmlFor="conyugueV"> No</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                     <h1 className="  text-lg lg:text-2xl font-bold text-center">Hijos</h1>
                     {
                         hijos.map( h=>{
-                            console.log("Este es h:",h);
-                            
                                     return(
                                         <> 
-                                            <Hijos key={h} register={register}/>
+                                            <Hijos identificador={h} register={register}/>
                                         </>
                                     )
                         })
@@ -231,13 +247,13 @@ const DeclaracionForm = ()=>{
                             <label className="  form-label " htmlFor="primario">Primario completo:</label>
                             <div className="flex lg:mb-2 lg:py-4">
                                 <div className="flex mr-5">
-                                    <input type="radio" id="si" name="primario" value="si"{...register("primario")}/>
+                                    <input type="radio" id="si" name="primario" value="si"{...register("primario",{required:true})}/>
                                     <label htmlFor="primario"> Si</label>
                                 </div>
                                 <div className="flex ">
-                                    <input type="radio" id="no" name="primario" value="no"{...register("primario")}/>
+                                    <input type="radio" id="no" name="primario" value="no"{...register("primario",{required:true})}/>
                                     <label htmlFor="primario"> No</label>
-                                </div>
+                                {errors.primario && <span className="warning">Este campo es requerido</span>}</div>
                             </div>
                             
                         </div>
@@ -245,28 +261,28 @@ const DeclaracionForm = ()=>{
                             <label className="  form-label " htmlFor="secundario">Secundario Completo :</label>
                             <div className="flex lg:mb-2 lg:py-4" >
                                 <div className="flex  mr-5">
-                                    <input type="radio" id="si" name="secundario" value="si"{...register("secundario")}/>
+                                    <input type="radio" id="si" name="secundario" value="si"{...register("secundario",{required:true})}/>
                                     <label htmlFor="secundario"> Si</label>
                                 </div>
                                 <div className="flex">
-                                    <input type="radio" id="no" name="secundario" value="no"{...register("secundario")}/>
+                                    <input type="radio" id="no" name="secundario" value="no"{...register("secundario",{required:true})}/>
                                     <label htmlFor="secundario"> No</label>
                                 </div>
-                            </div>
+                            {errors.secundario && <span className="warning">Este campo es requerido</span>}</div>
                             
                         </div>
                         <div className="flex flex-col">
                             <label className="  form-label " htmlFor="superior">Terciario o nivel superio completo:</label>
                             <div className="flex lg:mb-2 lg:py-4">
                                 <div className="flex mr-5">
-                                    <input type="radio" id="si" name="superior" value="si" {...register("superior")}/>
+                                    <input type="radio" id="si" name="superior" value="si" {...register("superior",{required:true})}/>
                                     <label htmlFor="primario"> Si</label>
                                 </div>
                                 <div className="flex">
-                                    <input type="radio" id="no" name="superior" value="no" {...register("superior")}/>
+                                    <input type="radio" id="no" name="superior" value="no" {...register("superior",{required:true})}/>
                                     <label htmlFor="primario"> No</label>
                                 </div>
-                            </div>
+                            {errors.superior && <span className="warning">Este campo es requerido</span>}</div>
                             
                         </div>
                     </div>
@@ -402,36 +418,36 @@ const DeclaracionForm = ()=>{
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:w-full">
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDcalle">Calle:</label>
-                            <input className="form-input  " type="text" name="DJDcalle" placeholder="ingrese los datos" {...register("DJDcalle")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="DJDcalle" placeholder="ingrese los datos" {...register("DJDcalle",{required:true})}/>
+                        {errors.DJDcalle && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className=" just form-label " htmlFor="DJDnumero">N°:</label>
-                            <input className="form-input   " type="text" name="DJDnumero" placeholder="Ej: Juan" {...register("DJDnumero")}/>
-                        </div>
+                            <input className="form-input   " type="text" name="DJDnumero" placeholder="Ej: Juan" {...register("DJDnumero",{required:true})}/>
+                        {errors.DJDnumero && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDpiso">Piso:</label>
-                            <input className="form-input  " type="text" name="DJDpiso" placeholder="ingrese los datos" {...register("DJDpiso")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="DJDpiso" placeholder="ingrese los datos" {...register("DJDpiso",{required:true})}/>
+                        {errors.DJDpiso && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDdto">Dto:</label>
                             <input className="form-input  " type="text" name="DJDdto" placeholder="ingrese los datos" {...register("DJDdto")}/>
                         </div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDcp">Codigo Postal:</label>
-                            <input className="form-input  " type="text" name="DJDcp" placeholder="ingrese los datos" {...register("DJDcp")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="DJDcp" placeholder="ingrese los datos" {...register("DJDcp",{required:true})}/>
+                        {errors.DJDcp && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDlocalidad">Localidad:</label>
-                            <input className="form-input  " type="text" name="DJDlocalidad" placeholder="Ej: San Nicolas" {...register("DJDlocalidad")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="DJDlocalidad" placeholder="Ej: San Nicolas" {...register("DJDlocalidad",{required:true})}/>
+                        {errors.DJDlocalidad && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDprovincia">Provincia:</label>
-                            <input className="form-input  " type="text" name="DJDprovincia" placeholder="ingrese los datos" {...register("DJDprovincia")}/>
-                        </div>
+                            <input className="form-input  " type="text" name="DJDprovincia" placeholder="ingrese los datos" {...register("DJDprovincia",{required:true})}/>
+                        {errors.DJDprovincia && <span className="warning">Este campo es requerido</span>}</div>
                         <div className=" p-3">
                             <label className="  form-label " htmlFor="DJDtelefono">Telefo:</label>
-                            <input className="form-input  " type="phone" name="DJDtelefono"  {...register("DJDtelefono")}/>
-                        </div>
+                            <input className="form-input  " type="phone" name="DJDtelefono"  {...register("DJDtelefono",{required:true})}/>
+                        {errors.DJDtelefono && <span className="warning">Este campo es requerido</span>}</div>
                         
                     </div>
 
@@ -440,8 +456,8 @@ const DeclaracionForm = ()=>{
                     </div>
                     <div className="flex">
                         <label className="font-semibold text-lg mr-10" htmlFor="firma">Reconozco que este formulario es correcto y de validez legal </label>
-                        <input type="checkbox" name="firma" />
-                    </div>
+                        <input type="checkbox" name="firma" {...register("firma",{required:true})} />
+                    {errors.firma && <span className="warning">Este campo es requerido</span>}</div>
                     <div className=" mt-12 mb-4">
                         <input className="form-buttom-send mr-10 " type="submit" value="Enviar" />
                         <input className="form-buttom-borrar" type="reset" value="Borrar" />

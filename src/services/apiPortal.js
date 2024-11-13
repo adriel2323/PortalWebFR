@@ -6,12 +6,15 @@ export const apiPortal = {
     enviarCV: "rrhh/cv/cargar",
     imagenNovedad: "novedades/imagenes/",
     imagenNovDefault:"novedades/imagenes/imageDefault",
+    declaracionJurada: "rrhh/declaraciones"
 
 }
 
 export const MESSAGES= {
     SIN_RESULTADOS_MESSAGE: "No se encontraron resultados de la busqueda",
-    TEXTO_GENERICO_NOV:"Busca en nuestro portal las ultimas noticias.."
+    TEXTO_GENERICO_NOV:"Busca en nuestro portal las ultimas noticias..",
+    ERROR_ENVIO_FORMULARIO: "Error al enviar el formulario, vuelva a intentarlo más tarde",
+    ENVIO_EXITOSO:"Su declaracion ha sido enviada correctamente, le llegara un mail con los datos de la misma."
 }
 const errorMSG= "Credenciales invalidas";
 
