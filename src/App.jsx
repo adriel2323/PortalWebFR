@@ -16,11 +16,10 @@ import Afiliaciones from './componentes/ObraSocial/Afiliaciones'
 import {areas} from './data/constantes'
 import NotFound from './Pages/NotFound'
 import ReciboSueldo from './componentes/RRHH/Empleados/ReciboSueldo'
-import Personal from './componentes/RRHH/PersonalEdicion/EdicionPersonal'
 import PanelEdicion from './componentes/RRHH/PanelEdicion/PanelEdicion'
-import EdicionPersonalForm from './componentes/RRHH/PanelEdicion/EdicionPersonalForm'
 import DatosPami from './componentes/Prestadores/DatosPami';
 import { publicRoutes,privatesRoutes,publicRoutes_os,adminRoutes } from './data/constantes';
+import CartillaAdministrar from "./componentes/RRHH/Administrativos/CartillaAdministrar"
 
 
 export const PerfilContext= createContext();

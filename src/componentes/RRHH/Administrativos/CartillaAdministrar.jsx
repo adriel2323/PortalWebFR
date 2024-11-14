@@ -7,42 +7,53 @@ import { Apiurl } from "../../../services/apiPortal";
 const CartillaAdministrar = ({area}) => {
     const {register, handleSubmit, formState: { errors }} = useForm();
     const [openSearch,setOpenSearch]=useState(false)  
+    const [especialidades,setEspecialidades]=useState([])
 
     useEffect(()=>{
         let lista=[]
         fetch(Apiurl+"clinica/personal/lista/especialidades")
         .then(response=>response.json())
         .then(response=>{
-          for(let i=0;i<response.especialidades.length;i++){
-            lista.push(response.especialidades[i]);
-          }
-          setEspecialidadesCompletas(lista)
+            lista=response.result
+            setEspecialidades(lista)
         })
         .catch(error=>console.log(error))
         
       },[])
 
     return (
-        <>
+        <main>
             <Secciones usuarios={area} />
-            <ModalBusqueda setOpenSearch={setOpenSearch}>
-                <form onSubmit={handleSubmit} action="">
-                    <div>
-                        <div className="w-11/12">
-                            <label className=" mb-2 text-white"  htmlFor="nombre">Nombre</label>
-                            <input className="form-input text-base mb-1 " type="text" name="nombre" {...register("nombre")} />
-                        </div>
-                        <div className="w-11/12">
-                            <label className=" mb-2 text-white"  htmlFor="especialidad">Especialidad</label>
-                            <select name="especialidad" id="" {...register("especialidad")}>
-                                <option value="">Elija una opcion</option>
-                            </select>
-                            
-                        </div>
-                    </div>
-                </form>
+            <ModalBusqueda setOpenSearch={setOpenSearch} >
+                    <form onSubmit={handleSubmit} action="">
+                        <ul className="bg-secondary buttomList-contein w-full lg:pr-4">
+                            <li className="buttomList-item pr-2">
+                                <div className=" w-11/12">
+
+                                    <label className=" text-white form-label " htmlFor="nombre">Nombre</label>
+                                    <input className="form-input text-base mb-1 " type="text" name="nombre" {...register("nombre")} />
+                                </div>
+                            </li>
+                            <li className="buttomList-item pr-2">
+                                <div className=" w-11/12">
+
+                                    <label className=" text-white form-label text-base" htmlFor="nombre">Nombre</label>
+                                    <select className="form-input text-base " name="especialidad" id="" {...register("especialidad")}>
+                                    <option value="">Elija una opcion</option>
+                                    {
+                                        especialidades.map((item)=>{
+                                            return(
+                                                <option value={item.especialidades}>{item.especialidades}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
             </ModalBusqueda>
-        </>
+        </main>
     );
 }
 

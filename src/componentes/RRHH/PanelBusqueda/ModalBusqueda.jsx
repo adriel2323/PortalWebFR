@@ -6,8 +6,8 @@ import { faArrowAltCircleLeft, faX } from "@fortawesome/free-solid-svg-icons"
 function ModalBusqueda({children,setOpenSearch}) {
   return (
     <>
-        <div className="absolute sm:static z-10 sm:z-auto sm:w-[20vw] flex flex-row justify-between w-[100vw] ">
-        <div className="  pl-2 lg:pl-4 pt-4 w-3/4 lg:w-full  text-white bg-secondary justify-start  shadow-md lg:shadow-none   ">
+        <div className="absolute sm:static z-10 sm:z-auto sm:w-[25vw] flex flex-row justify-between w-[100vw] ">
+        <div className="  pl-2 lg:pl-4 pt-4 w-3/4 sm:w-full  text-white bg-secondary justify-start  shadow-md lg:shadow-none   ">
                         <Link  className="pl-2 lg:pl-10 mb-10" to="/rrhh">
                             <Icon icono={faArrowAltCircleLeft}/>
                         </Link>
