@@ -5,8 +5,9 @@ import { useState,useEffect, Fragment,useRef } from "react";
 import { Dialog, Transition } from '@headlessui/react'
 import { enviarForm } from "../../Utilities/functions";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
+  const navigate=useNavigate()
   const {register, handleSubmit, formState: { errors }} = useForm({
     defaultValues: {
       ...formularioPrev
@@ -15,6 +16,7 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
         const [formularioPreview,setFormularioPreview]=useState()
         const formObject= formularioInput
         const [formEnviado,setFormEnviado]= useState(false)
+        const [messege,setMessege]=useState("");
         const [formulario,setFormulario]=useState({
         form:{
             ...formularioPrev
@@ -23,10 +25,10 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
         errorMsg:""
     })
     let [isOpen, setIsOpen] = useState(false)
+
     const archivo= useRef()
 
     const handleChangeArchivo= async e=>{
-        console.log("Este es el e:",e);
       await setFormulario({
           form:{
               ...formulario.form,
@@ -47,7 +49,7 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
 
   function closeModal() {
     setIsOpen(false)
-    Navigate('/rrhh')
+    navigate('/rrhh')
   }
 
   function openModal() {
@@ -58,9 +60,9 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
         let url= formObject.url
         let form=adaptador(data)
         axios.post(url, form).then(response=>{
+            setMessege("Su consulta ha sido enviada correctamente, recibira la respuesta correspondiente a su email")
             setFormEnviado(true)
-            console.log("esta es la response: ",response);
-        
+
             return response
         })
 
@@ -97,11 +99,11 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Enviado exitoso
+                    Detalles envio
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Su consulta ha sido enviada correctamente, recibira la respuesta correspondiente a su email
+                     {messege}
                     </p>
                   </div>
 

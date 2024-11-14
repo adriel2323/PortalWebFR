@@ -3,12 +3,12 @@ import Categorias from "./PanelBusqueda/Categorias";
 import Resultados from "./PanelBusqueda/Resultados";
 import { useEffect,createContext,useState,useContext } from "react";
 import { Apiurl,apiRRHHCv } from "../../services/apiPortal";
-// import { Link } from "react-router-dom";
+
 import {  faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Secciones from "../navBar/Secciones";
 import { userAdapter } from "../../Utilities/Adapters/user.adapter";
-// import { PerfilContext } from "../../App";
+
 import { useUserStore } from "../../store/userStore";
 export const busquedaContext= createContext();
 
@@ -21,7 +21,6 @@ const BuscarPerfil=({descripcion})=>{
     const login= usuario.isLogin
     const [listaResultados, setListaResultados]= useState([])
     const [isLoad,setIsLoad]= useState(false);
-    const [isOpen,setIsOpen]= useState(false);
     const [openSearch,setOpenSearch]= useState(false);
     const [busqueda,setBusqueda]=useState({})
     const [busquedaDone,setBusquedaDone]=useState(false);

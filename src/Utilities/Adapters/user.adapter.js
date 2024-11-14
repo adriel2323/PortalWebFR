@@ -18,6 +18,7 @@ export const perfilAdapter= (perfil)=> {
         Nombre: perfil.name,
         Permisos: perfil.admin,
         Nombre_Usuario: perfil.userName,
+        Contraseña: perfil.password,
         Fecha_Ingreso: perfil.fechaIngreso,
         Link_Archivos: perfil.linkArchivos,
         Area: perfil.area,

@@ -1,4 +1,3 @@
-import { useState,useEffect } from "react";
 import HomeBotones from "../componentes/BotonesHome/HomeBotones";
 import Carrusel from "../componentes/Secciones/Carrusel";
 import Nosotros from "../componentes/novedades/Nosotros";

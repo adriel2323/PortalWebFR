@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPen,faUsers,faMoneyCheck,faChalkboardUser,faNotesMedical,faLaptopMedical,faPeopleRoof,faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faLaptop, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed} from "@fortawesome/free-solid-svg-icons";
+import { faUserPen,faFilePen,faUsers,faMoneyCheck,faChalkboardUser,faNotesMedical,faLaptopMedical,faPeopleRoof,faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faLaptop, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed} from "@fortawesome/free-solid-svg-icons";
 import Icon from "./Icon";
 import { Link } from "react-router-dom";
 
@@ -32,7 +32,8 @@ const Buttom = ({titulo, icono, link, redir, })=>{
         "faBuilding":faBuilding,
         "faBed":faBed,
         "faUsers":faUsers,
-        "faUserPen":faUserPen
+        "faUserPen":faUserPen,
+        "faFilePen":faFilePen
     }
 
     return(

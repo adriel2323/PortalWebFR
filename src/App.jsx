@@ -62,14 +62,14 @@ function App() {
             {/* <Route path='/usuariopami' element={<Personal />} /> */}
             <Route path={publicRoutes_os.AFILIACIONES} element={<Afiliaciones area= {areas.OS}/>} />
             <Route path='/archivos' element={<ArchivosU area= {areas.RRHH}/>} />
-            <Route path='/rrhh/personal' element={<BuscarPerfil descripcion={"PERSONAL"} area= {areas.RRHH}/>} />
-            <Route path='/rrhh/personal/perfil/:id' element={<PanelEdicion area= {areas.RRHH} />} />
-            <Route path='/rrhh/personal/recibosueldo' element={<ReciboSueldo area= {areas.RRHH}/>} />
-            <Route path='/rrhh/cv' element={<FormularioCV area= {areas.RRHH}/>} />
+            <Route path={privatesRoutes.RRHH_PERSONAL} element={<BuscarPerfil descripcion={"PERSONAL"} area= {areas.RRHH}/>} />
+            <Route path={privatesRoutes.RRHH_PERSONAL_EDICION} element={<PanelEdicion area= {areas.RRHH} />} />
+            <Route path={privatesRoutes.RRHH_PERSONAL_RECIBOS} element={<ReciboSueldo area= {areas.RRHH}/>} />
+            <Route path={privatesRoutes.RRHH_CV} element={<FormularioCV area= {areas.RRHH}/>} />
             
-            <Route path='/rrhh/buscar' element={<BuscarPerfil descripcion={"CV"} area= {areas.RRHH}/>} />
-            <Route path='/rrhh/declaracion' element={<Declaracion area= {areas.RRHH}/>} />
-            <Route path='/admin/nov' element={<PaginaGestionNov area= {areas.GENERAL}/>} />
+            <Route path={privatesRoutes.RRHH_CV_BUSCAR} element={<BuscarPerfil descripcion={"CV"} area= {areas.RRHH}/>} />
+            <Route path={privatesRoutes.RRHH_DECLARACION}  element={<Declaracion area= {areas.RRHH}/>} />
+            <Route path={privatesRoutes.RRHH_ADMIN_NOVEDADES} element={<PaginaGestionNov area= {areas.GENERAL}/>} />
             <Route path='*' element={<NotFound area= {areas.GENERAL}/>} />
         </Routes>
     </PerfilContext.Provider>

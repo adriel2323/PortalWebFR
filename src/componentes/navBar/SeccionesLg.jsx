@@ -5,7 +5,7 @@ import Log from "../Modales/Log"
 import { Link } from "react-router-dom";
 import useScreenSize from "../../Hooks/UseScreenSize";
 import Sesion from "./ComponentesAuxiliares/Sesion";
-import { sections, usersLog } from "../../data/constantes";
+import { imagenes, sections, usersLog } from "../../data/constantes";
 
 export const LogContext= createContext()
 
@@ -43,8 +43,8 @@ const SeccionesLg= ({area})=>{
         <div className= " bg-white z-65 drop-shadow-2xl py-2  w-[100vw] h-20">
             <div className="  flex justify-between  px-10">
                 <Link className="flex items-center align-middle aspect-square  h-16" to="/home">
-                    { area !="os" && (<img className=" flex" src="../../../public/imagenes/logo.png" alt="" />)}
-                    { area=="os" && (<img className=" align-middle w-12" src="../../../public/imagenes/logoUOM.png" alt="" />)}
+                    { area !="os" && (<img className=" flex" src={imagenes.logoFundacion} alt="" />)}
+                    { area=="os" && (<img className=" align-middle w-12" src={imagenes.logoUOM} alt="" />)}
                     
                 </Link>
                 <div className="grow justify-center content-center">
@@ -56,8 +56,6 @@ const SeccionesLg= ({area})=>{
                         </ul>
                     </div>
                 </div>
-                
-                
                 {usersLog.includes(area) &&(
                     <Sesion className="" setViewForm={setViewForm} />
                     )

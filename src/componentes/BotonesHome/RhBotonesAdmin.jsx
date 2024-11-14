@@ -1,18 +1,34 @@
 import Buttom from "./Buttom";
-import { faGear,faPersonCirclePlus, faSquarePlus,faUsers , faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed, faLaptopMedical} from "@fortawesome/free-solid-svg-icons";
+import { faUserPlus,faPeopleGroup} from "@fortawesome/free-solid-svg-icons";
 import ButtomDrop from "./ButtomDrop";
 import ModalSmButtoms from "../Modales/ModalSmButtoms";
 import { useState, useContext } from "react";
 import ButtomTemplate from "./ButtomTemplate";
 import { botones, dropList } from "../../data/constantes";
+import { useUserStore } from "../../store/userStore";
 
 
 const RhBotonesAdmin=()=>{
+    const usuario=useUserStore(state=> state.user)
+    console.log("Permisos:",usuario.permisos);
+    
     const [viewModalEmpleados,setViewModalEmpleados]=useState(false);
     const [viewModalTN,setViewModalTN]=useState(false);
     const empleadosList =dropList.empleadosList
     const trabajaList =dropList.trabajaList
-    const botonesData=botones.rrhh_admin
+    let botonesData;
+    const permisosAdministrativos= usuario.permisos.permisosAdministrativos
+    const permisosAdminRRHH=usuario.permisos.permisosRrhh
+    if(permisosAdminRRHH){
+        botonesData= botones.rrhh_sudo.concat(botones.rrhh_administrativos)
+        console.log("botones:",botonesData);
+        
+    }else if(permisosAdministrativos){
+        botonesData=botones.rrhh_administrativos
+        console.log("botones:",botonesData);
+    }
+    console.log("botones:",botonesData);
+    
 
     return(
             <div className="grid-buttoms solapar ">

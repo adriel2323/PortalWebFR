@@ -34,6 +34,7 @@ export function permisosValidos(usuario){
           permisos={
             permisosPrestadores: true,
             permisosRrhh: true,
+            permisosAdministrativos:true,
             permisosPersonal: true,
             permisosAdministradorTotal: true,
             permisosAdministradorPersonal: true,
@@ -44,6 +45,7 @@ export function permisosValidos(usuario){
           permisos={
             permisosPrestadores: true,
             permisosRrhh: true,
+            permisosAdministrativos:true,
             permisosPersonal: true,
             permisosAdministradorPersonal: true,
             permisosOsAdmin: false
@@ -52,6 +54,7 @@ export function permisosValidos(usuario){
         else if(usuario.tipoUser===3){
           permisos={
             permisosRrhh: false,
+            permisosAdministrativos:false,
             permisosPersonal: false,
             permisosPersonal: true,
             permisosOsAdmin: false,
@@ -63,10 +66,12 @@ export function permisosValidos(usuario){
             permisos= {
                 permisosPrestadores: false,
                 permisosRrhh: false,
+                permisosAdministrativos:true,
                 permisosPersonal: true,
                 permisosAdministradorTotal: false,
                 permisosAdministradorPersonal: false,
-                permisosOsAdmin: false
+                permisosOsAdmin: false,
+
             }
         } else if (usuario.tipoUser===5){
             permisos= {

@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 import Icon from "../BotonesHome/Icon";
-import { faHandHoldingMedical, faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed } from "@fortawesome/free-solid-svg-icons";
+import { faHandHoldingMedical,faHospitalUser,faBuilding,faBed } from "@fortawesome/free-solid-svg-icons";
 import { Apiurl } from "../../services/apiPortal";
 
 const DatosSanatorio =()=>{
@@ -13,7 +13,6 @@ const DatosSanatorio =()=>{
         .then(response=>{
         //   setNovedades(response.novedades)
             setAtenciones(response.result[0].atencion)
-            console.log(atenciones)
         })
         .catch(error=>console.log(error))
     },[])

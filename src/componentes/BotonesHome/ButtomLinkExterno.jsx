@@ -11,7 +11,6 @@ const ButtomLinkExterno=({link,icono,titulo, redir})=>{
     const {login}= useContext(PerfilContext)
     const [viewForm,setViewForm]= useState(false);
     const navigate = useNavigate();
-    console.log(usuario,'estos son los permisos de rrhh ',permisosRrhh)
 
     function checkLog(){
         if(!login){

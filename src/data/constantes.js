@@ -1,4 +1,8 @@
-import { formToJSON } from "axios"
+
+export const imagenes={
+    logoUOM:"../../../public/imagenes/logoUOM.png",
+    logoFundacion:"../../../public/imagenes/Fundación-Rosario_R.webp"
+}
 
 export const publicRoutes= {
     GENERAL: "/home",
@@ -22,7 +26,19 @@ export const publicRoutes_os= {
     PRESTADORES: "/os/prestadores",
 }
 export const privatesRoutes= {
-    RH: "/personal/rrhh",
+    //Rutas de Recursos Humanos
+    RRHH_PERSONAL: "/rrhh/personal",
+    RRHH_PERSONAL_EDICION:"/rrhh/personal/perfil/:id",
+    RRHH_PERSONAL_RECIBOS:"/rrhh/personal/recibosueldo",
+    RRHH_DECLARACION:"/rrhh/declaracion",
+    RRHH_CV:"/rrhh/cv",
+    RRHH_CV_BUSCAR:"/rrhh/buscar",
+    RRHH_ADMIN_NOVEDADES:"/admin/nov",
+
+    //Rutas de Administracion
+    ADMINISTRACION_CARTILLA:"/admin/cartilla",
+    ADMINISTRACION_CONTACTOS:"/admin/contactos",
+
     PRESTADORES: "/personal/prestadores",
     GENERAL: "/personal/novedades",
     CONTACTOS: "/personal/contactos",
@@ -407,7 +423,7 @@ export const botones= {
                 "redir":0
             }
         ],
-    "rrhh_admin":[
+    "rrhh_sudo":[
             
             {
                 "id":1,
@@ -437,6 +453,30 @@ export const botones= {
                 "link":"/rrhh/personal",
                 "icono":"faUserPen",
                 "redir":0
+            },
+        ],
+        "rrhh_administrativos":[
+            
+            {
+                "id":1,
+                "titulo":"Agregar novedad",
+                "icono":"faSquarePlus",
+                "link":"/admin/nov",
+                "redir":0
+            },
+            {
+                "id":2,
+                "titulo":"Capacitaciones",
+                "link":"https://archivos.fnsr.com.ar",
+                "icono":"faUsers",
+                "redir":1
+            },
+            {
+                "id":3,
+                "titulo":"Editar Cartilla",
+                "link":"/admin/cartilla",
+                "icono":"faFilePen",
+                "redir":1
             },
         ]
 }

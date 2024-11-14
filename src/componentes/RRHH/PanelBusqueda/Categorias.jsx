@@ -8,7 +8,7 @@ import { areasRRHH } from "../../../data/constantes";
 import { paramsSerchCV } from "../../../data/constantes";
 
 const Categorias=({contexto})=>{
-    const {buscar,handleChange,openSearch,setOpenSearch,isLoad,descripcion}=useContext(contexto)
+    const {buscar,handleChange,setOpenSearch,descripcion}=useContext(contexto)
     const areasList=Object.keys(areasRRHH)
 
 
