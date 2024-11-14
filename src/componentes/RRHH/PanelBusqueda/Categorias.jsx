@@ -5,11 +5,13 @@ import { faArrowAltCircleLeft, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalBusqueda from "./ModalBusqueda";
 import { areasRRHH } from "../../../data/constantes";
-
+import { paramsSerchCV } from "../../../data/constantes";
 
 const Categorias=({contexto})=>{
-    const {paramsSerch,buscar,handleChange,openSearch,setOpenSearch,isLoad,descripcion}=useContext(contexto)
+    const {buscar,handleChange,openSearch,setOpenSearch,isLoad,descripcion}=useContext(contexto)
     const areasList=Object.keys(areasRRHH)
+
+
     return(
     <> 
         {
@@ -24,7 +26,7 @@ const Categorias=({contexto})=>{
                                     <select onChange={handleChange} className="form-input font-sans text-base mb-1 w-full"  name="area" id="">
                                         <option id="0" value="">Elija una opción</option>
                                         {
-                                            paramsSerch.map((item)=>{
+                                            paramsSerchCV.map((item)=>{
                                                 return(
                                                     <option id={item.id} value={item.value}>{item.nombre}</option>
                                                 )

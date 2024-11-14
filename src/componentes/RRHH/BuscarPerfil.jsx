@@ -1,81 +1,24 @@
-import { useParams, useSearchParams } from "react-router-dom";
-import Icon from "../BotonesHome/Icon";
-import {faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons"
+import { useSearchParams } from "react-router-dom";
 import Categorias from "./PanelBusqueda/Categorias";
-import CategoriasL from "./PanelBusqueda/CategoriasL";
 import Resultados from "./PanelBusqueda/Resultados";
 import { useEffect,createContext,useState,useContext } from "react";
 import { Apiurl,apiRRHHCv } from "../../services/apiPortal";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import {  faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Secciones from "../navBar/Secciones";
 import { userAdapter } from "../../Utilities/Adapters/user.adapter";
-import { PerfilContext } from "../../App";
+// import { PerfilContext } from "../../App";
 import { useUserStore } from "../../store/userStore";
 export const busquedaContext= createContext();
 
-const paramsSerch=[
-    {
-        id:1, 
-        nombre: "Administración y Atención al Público",	
-        value:"administracion/atencionalpublico"
-    },
-    {
-        id:2,
-        nombre: "Contabilidad",
-        value:"contable"
-    },
-    {
-        id:3,
-        nombre: "Enfermería",
-        value:"enfermeria"
-    },
-    {
-        id:4,
-        nombre: "Farmacia",
-        value:"farmacia"
-    },
-    {
-        id:5,
-        nombre: "Anatomía Patológica",
-        value:"anatomiPatologica"
-    },
-    {
-        id:6,
-        nombre: "Chofer",
-        value:"chofer"
-    },
-    {
-        id:7,
-        nombre: "Diagnostico por imagen",
-        value:"diagnosticoPorimagen"
-    },
-    {
-        id:8,
-        nombre: "Limpieza",
-        value:"limpieza"
-    },
-    {
-        id:9,
-        nombre: "Mantenimiento",
-        value:"Mantenimiento"
-    },
-    {
-        id:10,
-        nombre: "Camillero",
-        value:"camillero"
-    }
-
-]
 
 
 const BuscarPerfil=({descripcion})=>{
     const [params, setParams]= useSearchParams();
     const usuario= useUserStore((state)=>state.user)
     const permisosRrhh= usuario.permisos.permisosRrhh
-    const {login}= useContext(PerfilContext)
-
+    const login= usuario.isLogin
     const [listaResultados, setListaResultados]= useState([])
     const [isLoad,setIsLoad]= useState(false);
     const [isOpen,setIsOpen]= useState(false);
@@ -119,7 +62,6 @@ const BuscarPerfil=({descripcion})=>{
     }, [width]);
 
     const handleChange= async e=>{
-        console.log(busqueda);
         await setBusqueda({
             ...busqueda,
             [e.target.name]: e.target.value
@@ -133,7 +75,6 @@ const BuscarPerfil=({descripcion})=>{
             let apellido= busqueda.apellido?busqueda.apellido:"";
             let experiencia= busqueda.experiencia?busqueda.experiencia:"";
             e.preventDefault();
-            console.log(busqueda);
             fetch(Apiurl+ apiRRHHCv.buscarCv+area+"$"+apellido+"$"+experiencia)
             .then(response=>response.json())
             .then(response=>{
@@ -143,20 +84,21 @@ const BuscarPerfil=({descripcion})=>{
             .catch(error=>console.log(error))
         } else if( descripcion==="PERSONAL"){
             e.preventDefault();
+            let area= busqueda.area?busqueda.area:"";
+            let apellido= busqueda.apellido?busqueda.apellido:"";
+            let dni= busqueda.dni?busqueda.dni:"";
+            let legajo= busqueda.legajo?busqueda.legajo:"";
             setParams(busqueda);
-            console.log("estos son los parametros: ",useParams);
-            
 
-            // fetch(Apiurl+ apiRRHHCv.buscarPersonal+area+"$"+apellido+"$"+experiencia)
-            // .then(response=>response.json())
-            // .then(response=>{
-            //     setListaResultados(response.result)
-            //     setBusquedaDone(true);
-            // })
-            // .catch(error=>console.log(error))
+            fetch(Apiurl+ apiRRHHCv.buscarPersonal+dni+"$"+apellido+"$"+legajo+"$"+area)
+            .then(response=>response.json())
+            .then(response=>{
+                setListaResultados(response.result)
+                setBusquedaDone(true);
+            })
+            .catch(error=>console.log(error))
             
         }
-        
     }
 
     useEffect(()=>{
@@ -185,7 +127,6 @@ const BuscarPerfil=({descripcion})=>{
             })
             .catch(error=>console.log(error))
         }
-      
     },[])
     return(
         <>
@@ -193,7 +134,7 @@ const BuscarPerfil=({descripcion})=>{
             
             {login && permisosRrhh && 
             (<div className={showSmall?"relative flex justify-between w-full  h-fit bg-gray-100":"flex justify-between"}>
-                <busquedaContext.Provider value={{descripcion,paramsSerch,openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
+                <busquedaContext.Provider value={{descripcion,openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
 
                         {openSearch && showSmall && <Categorias contexto={busquedaContext}/>}
                         {!showSmall && <Categorias contexto={busquedaContext}/>}

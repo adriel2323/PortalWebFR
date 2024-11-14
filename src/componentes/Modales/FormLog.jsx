@@ -3,15 +3,12 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 import {logear} from "../../services/apiPortal"
 import {PerfilContext} from '../../App';
-import { permisosValidos } from '../../Utilities/functions';
 import { useUserStore } from '../../store/userStore';
-// import { useAppStore } from '../../store/appStore';
 
 
 
 export default function FormLog( {setViewForm}) {
   const usuario= useUserStore((state)=>state.user)
-  const permisos= useUserStore((state)=>state.permisos)
   const setUser= useUserStore((state)=>state.setUser)
   const errorMSG="Credenciales invalidas"
   const { setLogin}=useContext(PerfilContext)
@@ -35,14 +32,7 @@ useEffect(()=>{
     logear(datosUsuario).then(
       (response) => {
         if(response.msg!=errorMSG){
-          console.log('Esta es la respuesta',response);
-          
           setUser(response)
-          
-          localStorage.setItem('user', JSON.stringify(response));
-          localStorage.setItem('permisos', JSON.stringify(response.permisos));
-          console.log('Este es el usuario en el local storage:',localStorage.getItem('user'));
-          
           setLogin(true)
           setViewForm(false)
           setOpen(false)

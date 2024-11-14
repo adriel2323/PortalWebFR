@@ -63,6 +63,61 @@ export const areasRRHH= {
     MANTENIMIENTO: "Mantenimiento",
 }
 
+export const paramsSerchCV=[
+    {
+        id:1, 
+        nombre: "Administración y Atención al Público",	
+        value:"administracion/atencionalpublico"
+    },
+    {
+        id:2,
+        nombre: "Contabilidad",
+        value:"contable"
+    },
+    {
+        id:3,
+        nombre: "Enfermería",
+        value:"enfermeria"
+    },
+    {
+        id:4,
+        nombre: "Farmacia",
+        value:"farmacia"
+    },
+    {
+        id:5,
+        nombre: "Anatomía Patológica",
+        value:"anatomiPatologica"
+    },
+    {
+        id:6,
+        nombre: "Chofer",
+        value:"chofer"
+    },
+    {
+        id:7,
+        nombre: "Diagnostico por imagen",
+        value:"diagnosticoPorimagen"
+    },
+    {
+        id:8,
+        nombre: "Limpieza",
+        value:"limpieza"
+    },
+    {
+        id:9,
+        nombre: "Mantenimiento",
+        value:"Mantenimiento"
+    },
+    {
+        id:10,
+        nombre: "Camillero",
+        value:"camillero"
+    }
+
+]
+
+
 export const links= [
     {
         "id": 1,

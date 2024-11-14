@@ -5,6 +5,7 @@ export const useUserStore = create((set) => ({
     user: usuarioLocalStorage()? {...JSON.parse(localStorage.getItem('user')), permisos: permisosValidos(JSON.parse(localStorage.getItem('user'))) } : 
     {
         id: null,
+        isLogin:false,
         name: null,
         admin: null,
         userName: null,
@@ -15,14 +16,19 @@ export const useUserStore = create((set) => ({
         tipoUser:null,
         permisos:{}
     },
-    setUser: (user) => set((state) => ({ 
-        user: {...user, permisos: permisosValidos(user)}
-    })),
+    setUser: (user) => {
+        
+        set((state) => ({ 
+        user: {...user,isLogin:true, permisos: permisosValidos(user)}
+        }));
+        localStorage.setItem('user', JSON.stringify({...user,isLogin:true, permisos: permisosValidos(user)}));
+},
     resetUser: () => {
-        localStorage.removeItem('user');
+        localStorage.clear();
         set({
             user: {
                 id: null,
+                isLogin:false,
                 name: null,
                 admin: null,
                 userName: null,
