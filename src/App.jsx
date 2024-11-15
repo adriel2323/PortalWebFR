@@ -21,23 +21,55 @@ import DatosPami from './componentes/Prestadores/DatosPami';
 import { publicRoutes,privatesRoutes,publicRoutes_os,adminRoutes } from './data/constantes';
 import CartillaAdministrar from "./componentes/RRHH/Administrativos/CartillaAdministrar"
 
+import { useAppStore } from './store/appStore';
+
 
 export const PerfilContext= createContext();
 
 
 
 function App() {
-
   const [CurrentPath, setCuerrentPath]= useState(window.location.pathname)
   const [login,setLogin]= useState(false);
   const [permisos,setPermisos]=useState({});
   const setUsuario= useUserStore((state)=>state.setUser)
   const resetPermisos= useUserStore((state)=>state.resetPermisos)
+  const showSmall= useAppStore((state)=>state.showSmall)
+  const setShowSmall= useAppStore((state)=>state.setShowSmall)
 
   const usuario= useUserStore((state)=>state.user)
   
 
   const [cartillaOpen, setCartillaOpen]= useState(false)
+
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+
+  
+  const show=()=>{     
+        if(width< 1024){
+            setShowSmall(true);
+        } else {
+            setShowSmall(false);
+        }
+    }
+
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
+  };
+  
+  useEffect(() => {
+      window.addEventListener("resize", handleResize);
+      return () => {
+          window.removeEventListener("resize", handleResize);
+      }
+  }, []);
+  useEffect(() => {  
+      show()
+  }, [width]);
+
+
   const abrirCerrarCartilla=()=>{
         setCartillaOpen(!cartillaOpen);
     }

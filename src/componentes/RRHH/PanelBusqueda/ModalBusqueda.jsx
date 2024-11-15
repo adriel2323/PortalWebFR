@@ -2,8 +2,11 @@ import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Icon from "../../BotonesHome/Icon"
 import { faArrowAltCircleLeft, faX } from "@fortawesome/free-solid-svg-icons"
+import { useAppStore } from "../../../store/appStore"
 
-function ModalBusqueda({children,setOpenSearch}) {
+function ModalBusqueda({children}) {
+  const setOpenSearch=useAppStore((state)=>state.setOpenSearch)
+  const openSearch=useAppStore((state)=>state.openSearch)
   return (
     <>
         <div className="absolute sm:static z-10 sm:z-auto sm:w-[25vw] flex flex-row justify-between w-[100vw] ">
@@ -17,7 +20,11 @@ function ModalBusqueda({children,setOpenSearch}) {
                         {children}
             
         </div>
-        <div onClick={()=> setOpenSearch((prev)=> !prev)} className=" bg-black bg-opacity-20 w-full relative flex flex-row-reverse sm:hidden">
+        <div 
+        onClick={()=> {
+          console.log(openSearch)
+        setOpenSearch(!openSearch)
+        }} className=" bg-black bg-opacity-20 w-full relative flex flex-row-reverse sm:hidden">
             <FontAwesomeIcon  className=" absolute z-10 text-xl m-4  " icon={faX} />
         </div>
     </div>

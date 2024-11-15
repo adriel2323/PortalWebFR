@@ -3,11 +3,15 @@ import ModalBusqueda from "../PanelBusqueda/ModalBusqueda";
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react";
 import { Apiurl } from "../../../services/apiPortal";
+import Resultados from "../PanelBusqueda/Resultados";
+import { useAppStore } from "../../../store/appStore";
 
 const CartillaAdministrar = ({area}) => {
     const {register, handleSubmit, formState: { errors }} = useForm();
-    const [openSearch,setOpenSearch]=useState(false)  
+    const openSearch=useAppStore((state)=>state.openSearch)
+    const setOpenSearch=useAppStore((state)=>state.setOpenSearch) 
     const [especialidades,setEspecialidades]=useState([])
+    const [busqueda,setBusqueda]=useState([])
 
     useEffect(()=>{
         let lista=[]
@@ -18,13 +22,20 @@ const CartillaAdministrar = ({area}) => {
             setEspecialidades(lista)
         })
         .catch(error=>console.log(error))
+        fetch(Apiurl+"/clinica/personal/lista/profesionales")
+        .then(response=>response.json())
+        .then(response=>{
+            setBusqueda(response.profesionales)
+        })
         
       },[])
 
     return (
         <main>
             <Secciones usuarios={area} />
-            <ModalBusqueda setOpenSearch={setOpenSearch} >
+            {
+                openSearch && 
+                <ModalBusqueda setOpenSearch={setOpenSearch}  >
                     <form onSubmit={handleSubmit} action="">
                         <ul className="bg-secondary buttomList-contein w-full lg:pr-4">
                             <li className="buttomList-item pr-2">
@@ -36,7 +47,6 @@ const CartillaAdministrar = ({area}) => {
                             </li>
                             <li className="buttomList-item pr-2">
                                 <div className=" w-11/12">
-
                                     <label className=" text-white form-label text-base" htmlFor="nombre">Nombre</label>
                                     <select className="form-input text-base " name="especialidad" id="" {...register("especialidad")}>
                                     <option value="">Elija una opcion</option>
@@ -52,7 +62,10 @@ const CartillaAdministrar = ({area}) => {
                             </li>
                         </ul>
                     </form>
-            </ModalBusqueda>
+                </ModalBusqueda>
+            }
+            
+            <Resultados />
         </main>
     );
 }

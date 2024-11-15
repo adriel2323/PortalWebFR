@@ -10,6 +10,7 @@ import Secciones from "../navBar/Secciones";
 import { userAdapter } from "../../Utilities/Adapters/user.adapter";
 
 import { useUserStore } from "../../store/userStore";
+import { useAppStore } from "../../store/appStore";
 export const busquedaContext= createContext();
 
 
@@ -19,23 +20,16 @@ const BuscarPerfil=({descripcion})=>{
     const usuario= useUserStore((state)=>state.user)
     const permisosRrhh= usuario.permisos.permisosRrhh
     const login= usuario.isLogin
-    const [listaResultados, setListaResultados]= useState([])
-    const [isLoad,setIsLoad]= useState(false);
-    const [openSearch,setOpenSearch]= useState(false);
+    const listaResultados= useAppStore((state)=>state.listaResultados)
+    const setListaResultados= useAppStore((state)=>state.setListaResultados)
+    const isLoad= useAppStore((state)=>state.isLoad)
+    const setIsLoad= useAppStore((state)=>state.setIsLoad)
+    const showSmall= useAppStore((state)=>state.showSmall)
+    const openSearch= useAppStore((state)=>state.openSearch)
+    const setOpenSearch= useAppStore((state)=>state.setOpenSearch)
     const [busqueda,setBusqueda]=useState({})
     const [busquedaDone,setBusquedaDone]=useState(false);
 
-    const [width, setWidth] = useState(window.innerWidth);
-    const [height, setHeight] = useState(window.innerHeight);
-    const [showSmall,setShowSmall]= useState(false);
-    
-    const show=()=>{     
-        if(width< 1024){
-            setShowSmall(true);
-        } else {
-            setShowSmall(false);
-        }
-    }
 
     useEffect(()=>{
         if(permisosRrhh==false){
@@ -45,27 +39,11 @@ const BuscarPerfil=({descripcion})=>{
         }
     },[])
 
-    const handleResize = () => {
-        setWidth(window.innerWidth);
-        setHeight(window.innerHeight);
-    };
-    
-    useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        }
-    }, []);
-    useEffect(() => {  
-        show()
-    }, [width]);
-
     const handleChange= async e=>{
         await setBusqueda({
             ...busqueda,
             [e.target.name]: e.target.value
         })
-        
     }
     
     const buscar=e=>{
@@ -137,8 +115,6 @@ const BuscarPerfil=({descripcion})=>{
 
                         {openSearch && showSmall && <Categorias contexto={busquedaContext}/>}
                         {!showSmall && <Categorias contexto={busquedaContext}/>}
-                    {/* <div className={showSmall?"z-10":""}>
-                    </div> */}
                     
                     {
                         isLoad && <Resultados small={showSmall} contexto={busquedaContext}/>
