@@ -1,6 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 import Categorias from "./PanelBusqueda/Categorias";
 import Resultados from "./PanelBusqueda/Resultados";
+import PerfilPersonal from "./PanelBusqueda/PerfilPersonal";
+import Perfil from "./PanelBusqueda/Perfil";
 import { useEffect,createContext,useState,useContext } from "react";
 import { Apiurl,apiRRHHCv } from "../../services/apiPortal";
 
@@ -11,9 +13,9 @@ import { userAdapter } from "../../Utilities/Adapters/user.adapter";
 
 import { useUserStore } from "../../store/userStore";
 import { useAppStore } from "../../store/appStore";
+import  {datosPerfil} from "../../data/constantes"
+
 export const busquedaContext= createContext();
-
-
 
 const BuscarPerfil=({descripcion})=>{
     const [params, setParams]= useSearchParams();
@@ -30,11 +32,9 @@ const BuscarPerfil=({descripcion})=>{
     const [busqueda,setBusqueda]=useState({})
     const [busquedaDone,setBusquedaDone]=useState(false);
 
-
     useEffect(()=>{
         if(permisosRrhh==false){
             setTimeout(()=>{window.location = '/rrhh';}, 5000);
-
         } else{
         }
     },[])
@@ -112,12 +112,23 @@ const BuscarPerfil=({descripcion})=>{
             {login && permisosRrhh && 
             (<div className={showSmall?"relative flex justify-between w-full  h-fit bg-gray-100":"flex justify-between"}>
                 <busquedaContext.Provider value={{descripcion,openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
+                    
 
                         {openSearch && showSmall && <Categorias contexto={busquedaContext}/>}
                         {!showSmall && <Categorias contexto={busquedaContext}/>}
                     
                     {
-                        isLoad && <Resultados small={showSmall} contexto={busquedaContext}/>
+                        isLoad && 
+
+                        <Resultados >
+                            {
+                                isLoad && descripcion==="CV" && listaResultados.map(resultado=> <Perfil perfil={resultado} datos={datosPerfil} className="shadow-[0 4px 6px 0 hsla(0, 0%, 0%, 0.2)]"/>)
+                            }
+                            {
+                                isLoad && descripcion != "CV" && listaResultados.map(resultado=> <PerfilPersonal className="shadow-[0 4px 6px 0 hsla(0, 0%, 0%, 0.2)]" perfil={resultado} datos={datosPerfil}/>)
+                            }
+                        </Resultados>
+                        
                     }
                     {
                         !isLoad && <section className='z-0 w-3/4 px-10 h-[100vh]'>

@@ -68,6 +68,8 @@ export const areas={
     SISTEMAS: "sistemas",
     PACIENTES: "pacientes",
 }
+export const datosPerfil=["nombre","apellido","secundario","superior","titulo","experiencia"]
+
 export const areasRRHH= {
     LIMPIEZA:"Limpieza",
     PRESTADORES:"Prestadores",

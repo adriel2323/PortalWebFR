@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { apiRRHHCv, Apiurl } from "../../../services/apiPortal";
-import { deMiliADias,diferenciaDias } from "../../../Utilities/funcionesTransf";
-import PerfilCV from "./PerfilCV";
+import { Apiurl } from "../../../services/apiPortal";
 import { usePersonalStore } from "../../../store/personalStore";
 
 let imagen;
@@ -21,14 +19,12 @@ const nombre=(perfil)=>{
         return (perfil?.name)
     }
 }
-const PerfilPersonal= ({perfil, datos})=>{
+const PerfilPersonal= ({perfil})=>{
     const setPerfil= usePersonalStore((state)=>state.setPerfil)
     
     validarFoto(perfil)
     const nombreCompleto=nombre(perfil);
-    const edad= diferenciaDias(perfil.fecha)
-    
-    
+
     return(
         <>
             <Link onClick={()=>{
@@ -40,7 +36,7 @@ const PerfilPersonal= ({perfil, datos})=>{
                     <div className="lg:mb-2 flex  overflow-scroll pr-2">
                         <h2 className="font-bold  text-base sm:text-2xl lg:h-[5vh]  w-full overflow-scroll lg:font-extrabold"> {nombreCompleto}</h2>
                     </div>
-                    <div className="grid grid-cols-3">
+                    <div className="grid grid-cols-1 space-y-1 sm:space-y-0 sm:grid-cols-3 ">
                         <div className="lg:mb-2 flex  overflow-scroll mr-2 lg:mr-0">
                             <h2 className=" text-sm lg:text-base font-medium sm:font-bold lg:pr-2">Fecha de ingreso: </h2>
                             <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.ingreso!=""?perfil.ingreso:"Sin definir"}</h2>
