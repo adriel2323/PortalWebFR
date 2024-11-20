@@ -79,6 +79,7 @@ const BuscarPerfil=({descripcion})=>{
     }
 
     useEffect(()=>{
+        setListaResultados([])
         if(descripcion==="CV"){
             fetch(Apiurl+apiRRHHCv.listaCv)
             .then(response=>response.json())
@@ -111,9 +112,8 @@ const BuscarPerfil=({descripcion})=>{
             
             {login && permisosRrhh && 
             (<div className={showSmall?"relative flex justify-between w-full  h-fit bg-gray-100":"flex justify-between"}>
-                <busquedaContext.Provider value={{descripcion,openSearch,setOpenSearch,listaResultados,setListaResultados,isLoad, setIsLoad,usuario, buscar, setBusqueda, busqueda, handleChange}}>
+                <busquedaContext.Provider value={{descripcion,setOpenSearch, buscar, busqueda, handleChange}}>
                     
-
                         {openSearch && showSmall && <Categorias contexto={busquedaContext}/>}
                         {!showSmall && <Categorias contexto={busquedaContext}/>}
                     
@@ -146,9 +146,12 @@ const BuscarPerfil=({descripcion})=>{
                 </busquedaContext.Provider>
             </div>)
             }
-            {!login && <div className="mb-5 text-sm lg:text-2xl font-bold text-center">
+            {
+                !login && 
+                <div className="mb-5 text-sm lg:text-2xl font-bold text-center">
                     No tiene permisos para acceder a esta informacion. Debe ser administrador.
-                </div> }
+                </div>
+                }
         </>
     )
 };
