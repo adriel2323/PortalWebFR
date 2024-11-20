@@ -32,11 +32,6 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
         fetch(Apiurl+urlBusqueda.prestadores+busqueda.palabraBuscada)
         .then(response=>response.json())
         .then(response=>{
-            console.log(Apiurl+urlBusqueda.prestadores+(busqueda.palabraBuscada?busqueda.palabraBuscada:""));
-            
-        //   for(let i=0;i<response.result.length;i++){
-        //     lista.push(response.result[i]);
-        //   }
           setResultados(response.result)
         })
         .catch(error=>console.log(error))
@@ -48,7 +43,6 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
         fetch(Apiurl+urlBusqueda.especialidades)
         .then(response=>response.json())
         .then(response=>{
-            console.log(response);
           for(let i=0;i<response.result.length;i++){
             lista.push(response.result[i]);
           }

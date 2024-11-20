@@ -41,7 +41,6 @@ const BuscarFarmacias =({urlBusqueda})=> {
 
       const buscar=e=>{
         e.preventDefault();
-        console.log(Apiurl+urlBusqueda.farmacias+busqueda.palabraBuscada);
         fetch(Apiurl+urlBusqueda.farmacias+"$"+busqueda.palabraBuscada)
         .then(response=>response.json())
         .then(response=>{
@@ -53,11 +52,11 @@ const BuscarFarmacias =({urlBusqueda})=> {
 
     return(
         <>
-            <section>
-            <h1 className="font-semibold text-2xl mb-5">Farmacias:</h1>
+            <section className="sm:w-full sm:px-10">
+            <h1 className="font-semibold text-2xl mb-5 w-full">Farmacias:</h1>
                 <div className="">
                     <form action="">
-                        <div className="flex justify-between mb-5">
+                        <div className="flex justify-between mb-5 w-full">
                             
                             <h1 className="self-center font-medium text-xl  mr-3">Localidad</h1>
                             <select onChange={handleChange} className="form-input font-sans text-base mb-1 w-full"  name="area" id="">

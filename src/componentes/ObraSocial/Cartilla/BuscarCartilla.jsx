@@ -9,7 +9,8 @@ import BuscarFarmacia from "./BuscarFarmacia";
 
 export const CartillaContext= createContext()
 
-const BuscarCartilla =({selectores, urlBusquedas})=> {
+const BuscarCartilla =({selectores, urlBusquedas,refProp})=> {
+
     const {abrirCerrarCartilla, cartilla}= useContext(PerfilContext);
     const [prestadoresOpen,setPrestadoresOpen]=useState(false)
     const [farmaciasOpen,setFarmaciasOpen]=useState(false)
@@ -44,7 +45,7 @@ const BuscarCartilla =({selectores, urlBusquedas})=> {
             <CartillaContext.Provider value={{ setLaboratoriosOpen,laboratoriosOpen,abrirLaboratorio,
                 setPrestadoresOpen, setFarmaciasOpen, abrirCerrarCartilla,abrirPrestador,abrirFarmacia,volverABuscador
             }}>
-                <div className=" h-4" onClick={abrirCerrarCartilla}>
+                <div ref={refProp}  className=" h-4" onClick={abrirCerrarCartilla}>
                         <Icon icono={faXmarkCircle}/>
                     </div>
                 <section className="flex justify-center">

@@ -4,7 +4,7 @@ import Novedades from "../componentes/Secciones/Novedades";
 import HomeBotones from "../componentes/BotonesHome/PacientesBotones";
 import Footer from "../componentes/Footer/Footer";
 import ListadoProf from "../componentes/Secciones/ListadoProfesionales";
-import { useContext,useState,useEffect, createContext } from "react";
+import { useContext,useState,useEffect, createContext , useRef} from "react";
 import { Apiurl,apiLinks } from "../services/apiPortal";
 import {links} from "../constantes/constantes";
 import { PerfilContext } from "../App";
@@ -19,6 +19,11 @@ const HomePacientes =({area})=> {
     const {cartillaOpen}= useContext(PerfilContext);
     const {login,permisosPrestadores}= useContext(PerfilContext);
     const [buttons, setButtons]= useState([]);
+    const irACartilla=useRef();
+
+    const scrollCallback = () => {
+        irACartilla.current?.scrollIntoView({ behavior: 'smooth' })
+     }
     // console.log('esto es lo que va a entrar ',links.prestadores,usuarios)
     let ids=transformacionLink_URL(links,area);
     // const usuario=
@@ -55,8 +60,12 @@ const HomePacientes =({area})=> {
                     <Secciones area={area}/>
                     <Carrusel usuarios={area} area={area}/>
                     <div >
-                        <HomeBotones />
-                        {cartillaOpen && <BuscarCartilla urlBusquedas={urlBusquedas}  selectores={selectores} />}
+                        <HomeBotones scrollCallback={scrollCallback} refProp={irACartilla} >
+                            <div >
+                                {cartillaOpen && <BuscarCartilla urlBusquedas={urlBusquedas}  selectores={selectores} />}
+                            </div>
+
+                        </HomeBotones>
                         <Novedades usuarios={area}/>
                     </div>
                     <ListadoProf/>

@@ -6,20 +6,31 @@ import ButtomOpen from "./ButtomOpen";
 import { PerfilContext } from "../../App";
 import { botones } from "../../data/constantes";
 
-const HomeBotones=()=>{
+const HomeBotones=({children,scrollCallback,refProp})=>{
     const {abrirCerrarCartilla}=useContext(PerfilContext)
     const botonesData=botones.pacientes
 
     return(
+        <>
             <div className="solapar grid-buttoms">
-                <ButtomOpen onClick={abrirCerrarCartilla}  titulo={"Cartilla Médica"} icono={faMoneyCheck} />
+                <ButtomOpen onClick={()=>{
+
+                    abrirCerrarCartilla()
+                    scrollCallback()
+                }
+                    }  titulo={"Cartilla Médica"} icono={faMoneyCheck} />
                 {
                     botonesData.map(boton =>
                         <Buttom key={boton.id} redir={boton.redir==1 ? true :false} titulo={boton.titulo} icono={boton.icono} link= {boton.link}  />
                     )
                 }
-                
+                <div ref={refProp}>
+
+                </div>
+
             </div>
+            {children}
+        </>
         
     )
 }
