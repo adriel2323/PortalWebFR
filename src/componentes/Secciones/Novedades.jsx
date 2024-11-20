@@ -31,7 +31,6 @@ const Novedades=({usuarios})=>{
         setIsOpen(true)
         let nov=novedades.filter(novedad => novedad.id == id)
         setNovedadeModal(nov[0])
-        console.log(novedadModal);
     }
     return(
         <>
@@ -40,15 +39,18 @@ const Novedades=({usuarios})=>{
                 </div>
                 <div className="fixed inset-0 flex w-screen items-center justify-center p-4 ">
                     <div className=" space-y-4 border bg-white p-12 w-[90vw] md:w-[50vw] my-[30vh] rounded-md">
-                        <h1 className="text-secondary text-xl font-bold">{novedadModal.titulo}</h1>
+                        <h1 className="text-secondary text-xl sm:text-2xl font-bold">{novedadModal.titulo}</h1>
                         <h4 className="hidden lg:flex text-gray-400">{novedadModal.fecha}</h4>
                         <div className="  flex justify-center  aspect-video  ">
                             <img src={(Apiurl+ "novedades/imagenes/"+novedadModal.imagen)||(Apiurl+ "novedades/imagenes/imageDefault")} alt=""className=" flex rounded-md w-[100%]   object-cover" />
                         </div>
-                        <p className=" font-light text-lg from-neutral-500 " >Categoria: <strong>{novedadModal.area}</strong></p>
-                        <p className="sm:hidden md:flex text-lg text-mygray h-[50%]  overflow-scroll">{novedadModal.descripcion}</p>
-                        <div className="flex gap-4">
-                        <button className="bg-secondary text-white mt-4 px-4 py-2 rounded-lg w-full" onClick={() => setIsOpen(false)}>Cerrar</button>
+                        <div className=" " >
+
+                            <p className=" font-light text-lg text-slate-500 " >Categoria: <strong>{novedadModal.area}</strong></p>
+                            <p className="sm:hidden md:flex text-lg text-mygray h-[50%]  overflow-scroll">{novedadModal.descripcion}</p>
+                            <div className="flex gap-4">
+                                <button className="bg-secondary text-white mt-4 px-4 py-2 rounded-lg w-full" onClick={() => setIsOpen(false)}>Cerrar</button>
+                            </div>
                         </div>
                     </div>
                 </div>

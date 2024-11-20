@@ -10,8 +10,6 @@ import { useUserStore } from "../../store/userStore";
 
 const RhBotonesAdmin=()=>{
     const usuario=useUserStore(state=> state.user)
-    console.log("Permisos:",usuario.permisos);
-    
     const [viewModalEmpleados,setViewModalEmpleados]=useState(false);
     const [viewModalTN,setViewModalTN]=useState(false);
     const empleadosList =dropList.empleadosList
@@ -21,13 +19,9 @@ const RhBotonesAdmin=()=>{
     const permisosAdminRRHH=usuario.permisos.permisosRrhh
     if(permisosAdminRRHH){
         botonesData= botones.rrhh_sudo.concat(botones.rrhh_administrativos)
-        console.log("botones:",botonesData);
-        
     }else if(permisosAdministrativos){
         botonesData=botones.rrhh_administrativos
-        console.log("botones:",botonesData);
     }
-    console.log("botones:",botonesData);
     
 
     return(
