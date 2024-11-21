@@ -22,6 +22,7 @@ import { publicRoutes,privatesRoutes,publicRoutes_os,adminRoutes } from './data/
 import CartillaAdministrar from "./componentes/RRHH/Administrativos/CartillaAdministrar"
 
 import { useAppStore } from './store/appStore';
+import PanelEdicionProfesional from './componentes/RRHH/Administrativos/components/PanelEdicionProfesional';
 
 
 export const PerfilContext= createContext();
@@ -94,6 +95,7 @@ function App() {
             <Route path={publicRoutes_os.AFILIACIONES} element={<Afiliaciones area= {areas.OS}/>} />
             <Route path='/archivos' element={<ArchivosU area= {areas.RRHH}/>} />
             <Route path='/admin/cartilla' element={<CartillaAdministrar  area= {areas.RRHH}/>} />
+            <Route path="/admin/profesional/:id" element={<PanelEdicionProfesional area= {areas.RRHH}/>} />
             <Route path={privatesRoutes.RRHH_PERSONAL} element={<BuscarPerfil descripcion={"PERSONAL"} area= {areas.RRHH}/>} />
             <Route path={privatesRoutes.RRHH_PERSONAL_EDICION} element={<PanelEdicion area= {areas.RRHH} />} />
             <Route path={privatesRoutes.RRHH_PERSONAL_RECIBOS} element={<ReciboSueldo area= {areas.RRHH}/>} />

@@ -14,8 +14,10 @@ const CartillaAdministrar = ({area}) => {
     const [especialidades,setEspecialidades]=useState([])
     const [busqueda,setBusqueda]=useState([])
     const showSmall=useAppStore((state)=>state.showSmall)
+    const [isLoad,setIsLoad]=useState(false)
 
     useEffect(()=>{
+
         let lista=[]
         fetch(Apiurl+"clinica/personal/lista/especialidades")
         .then(response=>response.json())
@@ -28,9 +30,22 @@ const CartillaAdministrar = ({area}) => {
         .then(response=>response.json())
         .then(response=>{
             setBusqueda(response.profesionales)
+            setIsLoad(true)
+            
         })
-        
-      },[])
+        .catch(error=>console.log(error))    
+    },[])
+    const buscarProfesional=(data)=>{
+        console.log("la data:",data)
+        let lista=[]
+        fetch(Apiurl+"clinica/personal/busqueda/"+data.nombre+"&"+data.especialidad)
+        .then(response=>response.json())
+        .then(response=>{
+            lista=response.result
+            setBusqueda(lista)
+        })
+        .catch(error=>console.log(error))
+    }
 
     return (
         <main>
@@ -39,7 +54,7 @@ const CartillaAdministrar = ({area}) => {
                 {
                     openSearch && showSmall &&
                     <ModalBusqueda setOpenSearch={setOpenSearch}  >
-                        <form onSubmit={handleSubmit} action="">
+                        <form onSubmit={handleSubmit(buscarProfesional)} action="">
                             <ul className="bg-secondary buttomList-contein w-full lg:pr-4">
                                 <li className="buttomList-item pr-2">
                                     <div className=" w-11/12">
@@ -50,7 +65,7 @@ const CartillaAdministrar = ({area}) => {
                                 </li>
                                 <li className="buttomList-item pr-2">
                                     <div className=" w-11/12">
-                                        <label className=" text-white form-label text-base" htmlFor="nombre">Nombre</label>
+                                        <label className=" text-white form-label text-base" htmlFor="Especialidad">Especialidad</label>
                                         <select className="form-input text-base " name="especialidad" id="" {...register("especialidad")}>
                                         <option value="">Elija una opcion</option>
                                         {
@@ -62,26 +77,27 @@ const CartillaAdministrar = ({area}) => {
                                         }
                                     </select>
                                     </div>
+                                    
                                 </li>
                             </ul>
+                            <input className="ml-6 p-4 mr-4 w-9/12 form-buttom-send2 text-lg " type="submit" value="Buscar" />
                         </form>
                     </ModalBusqueda>
                 }
                 {
                     !openSearch && !showSmall &&
                     <ModalBusqueda setOpenSearch={setOpenSearch}  >
-                        <form onSubmit={handleSubmit} action="">
+                        <form onSubmit={handleSubmit(buscarProfesional)} action="">
                             <ul className="bg-secondary buttomList-contein w-full lg:pr-4">
                                 <li className="buttomList-item pr-2">
                                     <div className=" w-11/12">
-
                                         <label className=" text-white form-label " htmlFor="nombre">Nombre</label>
                                         <input className="form-input text-base mb-1 " type="text" name="nombre" {...register("nombre")} />
                                     </div>
                                 </li>
                                 <li className="buttomList-item pr-2">
                                     <div className=" w-11/12">
-                                        <label className=" text-white form-label text-base" htmlFor="nombre">Nombre</label>
+                                        <label className=" text-white form-label text-base" htmlFor="nombre">Especialidad</label>
                                         <select className="form-input text-base " name="especialidad" id="" {...register("especialidad")}>
                                         <option value="">Elija una opcion</option>
                                         {
@@ -94,6 +110,7 @@ const CartillaAdministrar = ({area}) => {
                                     </select>
                                     </div>
                                 </li>
+                                <input className="ml-6 p-4 mr-4 w-10/12 form-buttom-send2 text-lg " type="submit" value="Buscar" />
                             </ul>
                         </form>
                     </ModalBusqueda>
@@ -101,7 +118,16 @@ const CartillaAdministrar = ({area}) => {
                 
                 <Resultados>
                     {
-                        busqueda.map((item)=>{
+                        !isLoad && 
+                        <h1 className="text-white text-xl text-center">Cargando...</h1>
+                    }
+                    {
+                        isLoad && busqueda==undefined && (
+                            <h1 className="text-white text-center">No se encontraron resultados</h1>
+                        )
+                    }
+                    {
+                        isLoad && busqueda != undefined && busqueda.map((item)=>{
                             return(
                                 <CardProfesional  perfil={item} />
                             )

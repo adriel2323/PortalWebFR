@@ -1,41 +1,40 @@
 import { useEffect,useState } from "react";
-import Secciones from "../../navBar/Secciones";
-import Footer from "../../Footer/Footer";
-import Icon from "../../BotonesHome/Icon";
+import Secciones from "../../../navBar/Secciones";
+import Footer from "../../../Footer/Footer";
+import Icon from "../../../BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import EdicionPersonalForm from "./EdicionPersonalForm";
-import { usePersonalStore } from "../../../store/personalStore";
-import { apiRRHHCv, Apiurl } from "../../../services/apiPortal";
-import { formulario } from "../../../data/constantes";
-import Formulario from "../../Prestadores/FormComponent";
-import { perfilAdapter, userEditAdapter } from "../../../Utilities/Adapters/user.adapter";
-import { useSearchParams, useParams } from "react-router-dom";
-import { messegesAPI } from "../../../constantes/constantes";
-import { useAppStore } from "../../../store/appStore"; 
-import { profesionalAdapter } from "../Administrativos/Adapters/profesionalAdapter";
+import { apiRRHHCv, Apiurl } from "../../../../services/apiPortal";
+import { formulario } from "../../../../data/constantes";
+import Formulario from "../../../Prestadores/FormComponent";
+import { userEditAdapter } from "../../../../Utilities/Adapters/user.adapter";
+import {  useParams } from "react-router-dom";
+import { messegesAPI } from "../../../../constantes/constantes";
+import { useAppStore } from "../../../../store/appStore"; 
+import { profesionalAdapter, tipoEvento } from "../../Administrativos/Adapters/profesionalAdapter";
 
-const PanelEdicion = () => {
+const PanelEdicionProfesional = () => {
     const [usuario,setUsuario]= useState({});
     const [isLoad,setIsLoad]= useState(false);
     const [sinUsuario,setSinUsuario]=useState(false);
-    // const perfil = usePersonalStore(state => state.perfil);
-    // const [params, setParams]=useSearchParams();
-    // console.log("parametros de busqueda:",params);
     const parametrosBusqueda=useParams();
     const id= parametrosBusqueda.id;
     useEffect(() => {
-        fetch(Apiurl+ "rrhh/personal/perfil/"+id)
+
+                fetch(Apiurl+ "clinica/personal/perfil/"+id)
                 .then(res => res.json())
                 .then(data => {
-                    if(data.result[0]===messegesAPI.SIN_USUARIO){
+                    console.log("La data:", data);
+                    
+                    if(data.result === messegesAPI.SIN_USUARIO){
                         setSinUsuario(true)
                     } else {
                         setUsuario(
-                            perfilAdapter(data.result[0])
+                            profesionalAdapter(data.result,tipoEvento.update)
                         )
                     }
                     setIsLoad(true)
-                })
+            })
+
     },[])
     const keys=Object.keys(usuario);
     let formularioEdit= {
@@ -86,6 +85,6 @@ const PanelEdicion = () => {
   )
 }
 
-export default PanelEdicion
+export default PanelEdicionProfesional
 
 
