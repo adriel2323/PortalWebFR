@@ -2,23 +2,24 @@ export const profesionalAdapter = (profesional,evento) => {
     switch (evento) {
         case "editar":
             return {
-                Nombre:profesional.name,
-                Especialidad: profesional.especialidad,
-                Observacion: profesional.osNo
+                nombre:profesional.name,
+                especialidad: profesional.especialidad,
+                observacion: profesional.osNo
             }
         case "update":
             return {
-                name: profesional.Nombre,
-                especialidad:profesional.Especialidad,
-                osNo:profesional.Observacion
+                id:profesional.id,
+                name: profesional.nombre,
+                especialidad:profesional.especialidad,
+                osNo:profesional.observacion
             }
 
         default:
             return {
                 id: profesional.id,
-                Nombre:profesional.name,
-                Especialidad: profesional.especialidad,
-                Observacion: profesional.osNo
+                nombre:profesional.name,
+                especialidad: profesional.especialidad,
+                observacion: profesional.osNo
             }
     }
 }

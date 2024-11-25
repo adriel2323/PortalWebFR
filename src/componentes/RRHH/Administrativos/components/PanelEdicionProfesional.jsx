@@ -3,7 +3,7 @@ import Secciones from "../../../navBar/Secciones";
 import Footer from "../../../Footer/Footer";
 import Icon from "../../../BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import { apiBusquedas, apiRRHHCv, Apiurl } from "../../../../services/apiPortal";
+import { apiBusquedas, Apiurl } from "../../../../services/apiPortal";
 import { formulario } from "../../../../data/constantes";
 import Formulario from "../../../Prestadores/FormComponent";
 import { userEditAdapter } from "../../../../Utilities/Adapters/user.adapter";
@@ -20,6 +20,7 @@ const PanelEdicionProfesional = () => {
     const [sinUsuario,setSinUsuario]=useState(false);
     const parametrosBusqueda=useParams();
     const id= parametrosBusqueda.id;
+    const url_edit= `${Apiurl}${apiBusquedas.editarProfesionalesClinica}${id}`
 
     useEffect(() => {
                 fetch(Apiurl+ "clinica/personal/perfil/"+id)
@@ -46,6 +47,7 @@ const PanelEdicionProfesional = () => {
                         <Icon icono={faArrowAltCircleLeft}/>
                     </a>
                 </div>
+                <h1 className=" font-medium text-2xl text-center w-3/4 ">Formulario de edición de profesionales</h1>
                 {
                     !isLoad &&
                     <h1 className="font-bold text-xl">Cargando...</h1>
@@ -56,7 +58,7 @@ const PanelEdicionProfesional = () => {
                 }
                 {
                     isLoad && !sinUsuario &&
-                    <FormularioEditarProfesional formularioPrev={usuario} />
+                    <FormularioEditarProfesional formularioPrev={usuario} url={url_edit} id={id} />
                 }
             </div>
         <Footer className="mt-10"/>
