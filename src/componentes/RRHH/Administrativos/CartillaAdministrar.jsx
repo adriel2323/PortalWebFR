@@ -6,6 +6,7 @@ import { Apiurl } from "../../../services/apiPortal";
 import Resultados from "../PanelBusqueda/Resultados";
 import { useAppStore } from "../../../store/appStore";
 import CardProfesional from "./components/cardProfesional";
+import { profesionalAdapter } from "./Adapters/profesionalAdapter";
 
 const CartillaAdministrar = ({area}) => {
     const {register, handleSubmit, formState: { errors }} = useForm();
@@ -36,7 +37,6 @@ const CartillaAdministrar = ({area}) => {
         .catch(error=>console.log(error))    
     },[])
     const buscarProfesional=(data)=>{
-        console.log("la data:",data)
         let lista=[]
         fetch(Apiurl+"clinica/personal/busqueda/"+data.nombre+"&"+data.especialidad)
         .then(response=>response.json())

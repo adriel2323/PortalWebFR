@@ -57,10 +57,11 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
   }
 
     const HandlerEnviarForm= async data=>{
+      console.log("la data:",data)
         let url= formObject.url
         let form=adaptador(data)
         axios.post(url, form).then(response=>{
-            setMessege("Su consulta ha sido enviada correctamente, recibira la respuesta correspondiente a su email")
+            setMessege("Su consulta ha sido enviada correctamente")
             setFormEnviado(true)
 
             return response

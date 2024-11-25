@@ -478,7 +478,7 @@ export const botones= {
                 "titulo":"Editar Cartilla",
                 "link":"/admin/cartilla",
                 "icono":"faFilePen",
-                "redir":1
+                "redir":0
             },
         ]
 }

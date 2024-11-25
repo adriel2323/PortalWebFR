@@ -3,7 +3,7 @@ import Secciones from "../../../navBar/Secciones";
 import Footer from "../../../Footer/Footer";
 import Icon from "../../../BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import { apiRRHHCv, Apiurl } from "../../../../services/apiPortal";
+import { apiBusquedas, apiRRHHCv, Apiurl } from "../../../../services/apiPortal";
 import { formulario } from "../../../../data/constantes";
 import Formulario from "../../../Prestadores/FormComponent";
 import { userEditAdapter } from "../../../../Utilities/Adapters/user.adapter";
@@ -11,6 +11,8 @@ import {  useParams } from "react-router-dom";
 import { messegesAPI } from "../../../../constantes/constantes";
 import { useAppStore } from "../../../../store/appStore"; 
 import { profesionalAdapter, tipoEvento } from "../../Administrativos/Adapters/profesionalAdapter";
+import { useForm } from "react-hook-form";
+import FormularioEditarProfesional from "./FormularioEditarProfesional";
 
 const PanelEdicionProfesional = () => {
     const [usuario,setUsuario]= useState({});
@@ -18,46 +20,23 @@ const PanelEdicionProfesional = () => {
     const [sinUsuario,setSinUsuario]=useState(false);
     const parametrosBusqueda=useParams();
     const id= parametrosBusqueda.id;
-    useEffect(() => {
 
+    useEffect(() => {
                 fetch(Apiurl+ "clinica/personal/perfil/"+id)
                 .then(res => res.json())
                 .then(data => {
-                    console.log("La data:", data);
-                    
                     if(data.result === messegesAPI.SIN_USUARIO){
                         setSinUsuario(true)
                     } else {
                         setUsuario(
-                            profesionalAdapter(data.result,tipoEvento.update)
+                            profesionalAdapter(data.result,tipoEvento.editar)
                         )
                     }
                     setIsLoad(true)
             })
 
     },[])
-    const keys=Object.keys(usuario);
-    let formularioEdit= {
-        titulo: "Edicion de usuario",
-        url: `${Apiurl}${apiRRHHCv.editarPerfilPersonal}${usuario.id}`,
-        form:keys.map((key)=>{
-            return {
-                id: key,
-                type: formulario.types.input,
-                label: {
-                    for: key,
-                    text: key,
-                },
-                input: {
-                    type: "text",
-                    name: key,
-                    id: key,
-                    placeholder: "Ingrese  el/la "+key+" correspondientes",
-                    
-                    required: true
-                },
-            }})
-    }
+    
   return (
     <>
         <Secciones usuarios={usuario}/>
@@ -77,14 +56,14 @@ const PanelEdicionProfesional = () => {
                 }
                 {
                     isLoad && !sinUsuario &&
-                    <Formulario formularioPrev={usuario} formularioInput={formularioEdit} adaptador={userEditAdapter} apiSend={Apiurl+apiRRHHCv.editarPerfilPersonal+usuario.id} ></Formulario>
+                    <FormularioEditarProfesional formularioPrev={usuario} />
                 }
             </div>
         <Footer className="mt-10"/>
     </>
   )
 }
-
+{/* <Formulario formularioPrev={usuario} formularioInput={formularioEdit} adaptador={profesionalAdapter} apiSend={Apiurl+apiRRHHCv.editarPerfilPersonal+usuario.id} ></Formulario> */}
 export default PanelEdicionProfesional
 
 

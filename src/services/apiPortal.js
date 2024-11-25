@@ -168,7 +168,9 @@ export const apiBusquedas={
 
     especialidadesClinica:"clinica/personal/lista/especialidades",
     profesionalesClinica:"clinica/personal/lista/profesionales",
-    buscarProfesionalClinica:"clinica/personal/busqueda/"
+    buscarProfesionalClinica:"clinica/personal/busqueda/",
+    //Editar 
+    editarProfesionalesClinica:"clinica/profesional/editar/"
 
 }
 
