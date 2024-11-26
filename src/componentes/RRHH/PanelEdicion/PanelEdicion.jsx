@@ -7,8 +7,9 @@ import { apiRRHHCv, Apiurl } from "../../../services/apiPortal";
 import { areasPersonal, formulario } from "../../../data/constantes";
 import Formulario from "../../Prestadores/FormComponent";
 import { perfilAdapter, userEditAdapter } from "../../../Utilities/Adapters/user.adapter";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { messegesAPI } from "../../../constantes/constantes";
+import { useAppStore } from "../../../store/appStore";
 
 
 const PanelEdicion = () => {
@@ -17,6 +18,7 @@ const PanelEdicion = () => {
     const [sinUsuario,setSinUsuario]=useState(false);
     const parametrosBusqueda=useParams();
     const id= parametrosBusqueda.id;
+    const url= useAppStore(state=>state.url)
     useEffect(() => {
         fetch(Apiurl+ "rrhh/personal/perfil/"+id)
                 .then(res => res.json())
@@ -112,9 +114,9 @@ const PanelEdicion = () => {
         <Secciones usuarios={usuario}/>
             <div className="flex flex-col place-items-center h-[40rem] mb-[60rem] lg:px-[5vh] py-12 bg-secondary text-white">
                 <div className="flex justify-start w-11/12 md:w-5/6">
-                    <a href="/rrhh">
+                    <Link to={url}>
                         <Icon icono={faArrowAltCircleLeft}/>
-                    </a>
+                    </Link>
                 </div>
                 {
                     !isLoad &&
