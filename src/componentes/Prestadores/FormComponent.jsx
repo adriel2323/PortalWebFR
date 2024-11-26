@@ -6,8 +6,10 @@ import { Dialog, Transition } from '@headlessui/react'
 import { enviarForm } from "../../Utilities/functions";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useAppStore } from "../../store/appStore";
 const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
   const navigate=useNavigate()
+  const url=useAppStore(state=>state.url)
   const {register, handleSubmit, formState: { errors }} = useForm({
     defaultValues: {
       ...formularioPrev
@@ -49,7 +51,7 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
 
   function closeModal() {
     setIsOpen(false)
-    navigate('/rrhh')
+    navigate(url)
   }
 
   function openModal() {
@@ -150,7 +152,7 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
                                     return(
                                       <>
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <select  className="form-input "  name={form.input.name} id={form.input.id} >
+                                        <select  className="form-input "  name={form.input.name} id={form.input.id} {...register(form.input.name)} >
                                           {
                                             form.options.map(option=>{
                                               return(

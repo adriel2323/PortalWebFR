@@ -44,7 +44,7 @@ export const userEditAdapter = (user) => {
         dni: user.DNI,
         estadoCivil: user.Estado_Civil,
         domicilio: user.Domicilio,
-        tel: user.Telefono
+        telefono: user.Telefono
 
     };
 }

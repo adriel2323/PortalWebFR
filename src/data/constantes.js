@@ -68,6 +68,21 @@ export const areas={
     SISTEMAS: "sistemas",
     PACIENTES: "pacientes",
 }
+
+export const areasPersonal={
+    MEDICOS:"MÉDICOS",
+    FACTURACION:"FACTURACIÓN",
+    SISTEMAS:"SISTEMAS",
+    MANTENIMIENTO:"MANTENIMIENTO",
+    LIMPIEZA:"LIMPIEZA",
+    ENFERMERIA:"ENFERMERÍA",
+    PRESTADORES:"PRESTADORES",
+    CONTADURIA:"CONTADURÍA",
+    RRHH:"RR.HH.",
+    GENERAL:"GENERAL",
+    ADMINISTRACION:"ADMINISTRACIÓN",
+}
+
 export const datosPerfil=["nombre","apellido","secundario","superior","titulo","experiencia"]
 
 export const areasRRHH= {

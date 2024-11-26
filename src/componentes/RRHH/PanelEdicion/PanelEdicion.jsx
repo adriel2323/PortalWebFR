@@ -3,24 +3,18 @@ import Secciones from "../../navBar/Secciones";
 import Footer from "../../Footer/Footer";
 import Icon from "../../BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import EdicionPersonalForm from "./EdicionPersonalForm";
-import { usePersonalStore } from "../../../store/personalStore";
 import { apiRRHHCv, Apiurl } from "../../../services/apiPortal";
-import { formulario } from "../../../data/constantes";
+import { areasPersonal, formulario } from "../../../data/constantes";
 import Formulario from "../../Prestadores/FormComponent";
 import { perfilAdapter, userEditAdapter } from "../../../Utilities/Adapters/user.adapter";
-import { useSearchParams, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { messegesAPI } from "../../../constantes/constantes";
-import { useAppStore } from "../../../store/appStore"; 
-import { profesionalAdapter } from "../Administrativos/Adapters/profesionalAdapter";
+
 
 const PanelEdicion = () => {
     const [usuario,setUsuario]= useState({});
     const [isLoad,setIsLoad]= useState(false);
     const [sinUsuario,setSinUsuario]=useState(false);
-    // const perfil = usePersonalStore(state => state.perfil);
-    // const [params, setParams]=useSearchParams();
-    // console.log("parametros de busqueda:",params);
     const parametrosBusqueda=useParams();
     const id= parametrosBusqueda.id;
     useEffect(() => {
@@ -38,27 +32,81 @@ const PanelEdicion = () => {
                 })
     },[])
     const keys=Object.keys(usuario);
+
     let formularioEdit= {
         titulo: "Edicion de usuario",
         url: `${Apiurl}${apiRRHHCv.editarPerfilPersonal}${usuario.id}`,
         form:keys.map((key)=>{
-            return {
-                id: key,
-                type: formulario.types.input,
-                label: {
-                    for: key,
-                    text: key,
-                },
-                input: {
-                    type: "text",
-                    name: key,
+            if(key.includes("echa") || key.includes("creacion")) 
+                return {
                     id: key,
-                    placeholder: "Ingrese  el/la "+key+" correspondientes",
-                    
-                    required: true
-                },
-            }})
+                    type: formulario.types.input,
+                    label: {
+                        for: key,
+                        text: key,
+                    },
+                    input: {
+                        type: "date",
+                        name: key,
+                        id: key,
+                        placeholder: "Ingrese  el/la "+key+" correspondientes",
+                        
+                        required: true
+                    },
+            };
+            if(key=="Area"){
+                let areasObject= Object.keys(areasPersonal);
+                let areas= areasObject.map(area=>{
+                    return {
+                        id:area,
+                        value:area,
+                        text:area
+                    }})
+                let options= [{
+                    id:0,
+                    value: "default",
+                    text: "--Elija una opción--",
+                }]
+                areas= options.concat(areas);
+
+                return {
+                    id: key,
+                    type: formulario.types.select,
+                    label: {
+                        for: key,
+                        text: key,
+                    },
+                    input: {
+                        type: "select",
+                        name: key,
+                        id: key,
+                        
+                        required: true
+                    },
+                    options:areas
+                }
+            }else{
+                return {
+                    id: key,
+                    type: formulario.types.input,
+                    label: {
+                        for: key,
+                        text: key,
+                    },
+                    input: {
+                        type: "text",
+                        name: key,
+                        id: key,
+                        placeholder: "Ingrese  el/la "+key+" correspondientes",
+                        
+                        required: true
+                    },
+                }
+            }
+            })
     }
+    console.log("el usuario:",usuario);
+    
   return (
     <>
         <Secciones usuarios={usuario}/>

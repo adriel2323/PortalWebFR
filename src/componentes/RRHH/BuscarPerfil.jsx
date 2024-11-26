@@ -18,6 +18,7 @@ import  {datosPerfil} from "../../data/constantes"
 export const busquedaContext= createContext();
 
 const BuscarPerfil=({descripcion})=>{
+    const setUrl= useAppStore((state)=>state.setUrl)
     const [params, setParams]= useSearchParams();
     const usuario= useUserStore((state)=>state.user)
     const permisosRrhh= usuario.permisos.permisosRrhh
@@ -33,6 +34,8 @@ const BuscarPerfil=({descripcion})=>{
     const [busquedaDone,setBusquedaDone]=useState(false);
 
     useEffect(()=>{
+        setUrl(window.location.pathname)
+
         if(permisosRrhh==false){
             setTimeout(()=>{window.location = '/rrhh';}, 5000);
         } else{

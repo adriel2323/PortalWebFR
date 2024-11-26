@@ -4,14 +4,9 @@ import Footer from "../../../Footer/Footer";
 import Icon from "../../../BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { apiBusquedas, Apiurl } from "../../../../services/apiPortal";
-import { formulario } from "../../../../data/constantes";
-import Formulario from "../../../Prestadores/FormComponent";
-import { userEditAdapter } from "../../../../Utilities/Adapters/user.adapter";
 import {  useParams } from "react-router-dom";
 import { messegesAPI } from "../../../../constantes/constantes";
-import { useAppStore } from "../../../../store/appStore"; 
 import { profesionalAdapter, tipoEvento } from "../../Administrativos/Adapters/profesionalAdapter";
-import { useForm } from "react-hook-form";
 import FormularioEditarProfesional from "./FormularioEditarProfesional";
 
 const PanelEdicionProfesional = () => {
@@ -65,7 +60,6 @@ const PanelEdicionProfesional = () => {
     </>
   )
 }
-{/* <Formulario formularioPrev={usuario} formularioInput={formularioEdit} adaptador={profesionalAdapter} apiSend={Apiurl+apiRRHHCv.editarPerfilPersonal+usuario.id} ></Formulario> */}
 export default PanelEdicionProfesional
 
 
