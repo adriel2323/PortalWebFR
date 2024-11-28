@@ -26,6 +26,8 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
         error:false,
         errorMsg:""
     })
+    console.log("El formulario:", formularioInput);
+    
     let [isOpen, setIsOpen] = useState(false)
 
     const archivo= useRef()
@@ -59,8 +61,6 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
   }
 
     const HandlerEnviarForm= async data=>{
-      console.log("la data:",data)
-      console.log("la url:", formObject.url);
       
       if(adaptador!=undefined){
         
@@ -167,20 +167,29 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
                         <div className="flex flex-col">
                             {
                               formObject.form.map(form=>{
+                                console.log();
+                                
                                 switch (form.type) {
                                   case "input":
                                     return(
                                       <>
+                                        
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <input ref={form.input.type==="file"?archivo:null} className={form.input.type==="text"?"form-input":""} type={form.input.type} name={form.input.name}  placeholder={form.input.placeholder} onChange={form.input.type==="file"?handleChangeArchivo:null} {...register(form.input.name)}/>
+                                        <input ref={form.input.type==="file"?archivo:null} className={form.input.type==="text"?"form-input":""} type={form.input.type} name={form.input.name}  placeholder={form.input.placeholder} onChange={form.input.type==="file"?handleChangeArchivo:null} {...register(form.input.name, (form.params?form.params:{}))}/>
+                                        {
+                                          errors[form.input.name] && (
+                                            <p className="text-sm text-red-600">{errors[form.input.name].message}</p>
+                                          )
+                                        }
                                       </>
                                     )
                                     break;
                                   case "select":
                                     return(
                                       <>
+                                        
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <select  className="form-input "  name={form.input.name} id={form.input.id} {...register(form.input.name)} >
+                                        <select  className="form-input "  name={form.input.name} id={form.input.id} {...register(form.input.name, (form.params?form.params:{}))} >
                                           {
                                             form.options.map(option=>{
                                               return(
@@ -189,18 +198,28 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
                                             })
                                           }
                                         </select>
+                                        {
+                                            errors[form.input.name] && (
+                                              <p className="text-sm text-red-600">{errors[form.input.name].message}</p>
+                                            )
+                                          }
                                       </>
                                     )
                                     break;
                                   case "textarea":
                                     return(
                                       <>
+                                        
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <textarea className="form-input " name={form.input.name} id={form.input.id} cols="10" rows="5" placeholder={form.input.placeholder}  {...register(form.input.name)} >
+                                        <textarea className="form-input " name={form.input.name} id={form.input.id} cols="10" rows="5" placeholder={form.input.placeholder}  {...register(form.input.name, (form.params?form.params:{}))} >
                                         </textarea>
+                                        {
+                                          errors[form.input.name] && (
+                                            <p className="text-sm text-red-600">{errors[form.input.name].message}</p>
+                                          )
+                                        }
                                       </>
                                     )
-                                    break;
                                 
                                   default:
                                     break;

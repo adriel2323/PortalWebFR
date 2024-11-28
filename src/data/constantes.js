@@ -822,6 +822,9 @@ export const formularioPAMI = {
                 placeholder: "",
                 required: true
             },
+            params:{
+                required:true
+            }
         },
         {
             id:1,
@@ -835,8 +838,12 @@ export const formularioPAMI = {
                 name: "dni",
                 id: "dni",
                 placeholder: "",
-                required: true
+                
             },
+            params:{
+                required:true,
+
+            }
         },
         {
             id:2,
@@ -850,8 +857,17 @@ export const formularioPAMI = {
                 name: "numeroTramite",
                 id: "numeroTramite",
                 placeholder: "",
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                } ,
+                minLegth:{
+                    value:11,
+                    message:"El numero de tramite debe tener 11 digitos"
+                }
+            }
         },
         {
             id:3,
@@ -865,8 +881,13 @@ export const formularioPAMI = {
                 name: "cuil",
                 id: "cuil",
                 placeholder: "",
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
         },
         {
             id:4,
@@ -880,8 +901,13 @@ export const formularioPAMI = {
                 name: "especialidad",
                 id: "especialidad",
                 placeholder: "",
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
         },
         {
             id:5,
@@ -895,8 +921,13 @@ export const formularioPAMI = {
                 name: "matricula",
                 id: "matricula",
                 placeholder: "",
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
         },
         {
             id:6,
@@ -910,7 +941,6 @@ export const formularioPAMI = {
                 name: "texto",
                 id: 6,
                 placeholder: "Puede dejarnos alguna aclaración, si lo necesita",
-                required: true
             },
         },
         {
@@ -924,8 +954,13 @@ export const formularioPAMI = {
                 type: "file",
                 name: "certificado",
                 id: 7,
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
         },
         {
             id:8,
@@ -939,8 +974,13 @@ export const formularioPAMI = {
                 name: "email",
                 id: "email",
                 placeholder: "",
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
         },
     ]
 
@@ -962,8 +1002,13 @@ export const formularioContacto = {
                 name: "name",
                 id: "name",
                 placeholder: "Ej. Juan",
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
         },
         {
             id:4,
@@ -977,8 +1022,13 @@ export const formularioContacto = {
                 name: "email",
                 id: "email",
                 placeholder: "ejemplo@gmail.com",
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
         },
         {
             id:1,
@@ -990,7 +1040,12 @@ export const formularioContacto = {
             input:{
                 name:"area",
                 id:"area",
-                required: true
+            },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
             },
             options: [
                 {
@@ -1032,8 +1087,13 @@ export const formularioContacto = {
                 name: "texto",
                 id: 3,
                 placeholder: "Ingrese su consulta",
-                required: true
             },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
         },
         
 
