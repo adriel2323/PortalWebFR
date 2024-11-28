@@ -823,7 +823,8 @@ export const formularioPAMI = {
                 required: true
             },
             params:{
-                required:true
+                required:true,
+                messege:"Este campo es requerido"
             }
         },
         {
@@ -842,7 +843,7 @@ export const formularioPAMI = {
             },
             params:{
                 required:true,
-
+                messege:"Este campo es requerido"
             }
         },
         {
@@ -964,6 +965,25 @@ export const formularioPAMI = {
         },
         {
             id:8,
+            type:formulario.types.input,
+            label: {
+                for: "titulo",
+                text: "Cargue su titulo",
+            },
+            input: {
+                type: "file",
+                name: "titulo",
+                id: 8,
+            },
+            params:{
+                required:{
+                    value:true,
+                    message:"Este campo es requerido"
+                }
+            }
+        },
+        {
+            id:9,
             type:formulario.types.input,
             label: {
                 for: "email",

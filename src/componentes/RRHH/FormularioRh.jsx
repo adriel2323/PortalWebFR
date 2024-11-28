@@ -36,25 +36,6 @@ const FormularioRh = ()=>{
         let url=Apiurl+apiPortal.enviarCV
         setFormulario(data)
         setFormEnviado(true)
-        console.log("esta es la response: ",data);
-
-        // axios.post(url, formulario).then(response=>{
-        //     setFormEnviado(true)
-        //     console.log("esta es la response: ",response);
-        
-        //     return response
-        // })
-
-    }
-
-    // const handleChange= async e=>{
-    //     await setFormulario({
-    //         form:{
-    //             ...formulario.form,
-    //             [e.target.name]: e.target.value
-    //         }
-    //     })
-    // }
     return(
         <>
         <Transition appear show={isOpen} as={Fragment}>
