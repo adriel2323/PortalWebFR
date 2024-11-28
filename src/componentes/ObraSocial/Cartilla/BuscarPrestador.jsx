@@ -19,6 +19,7 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
     const [busqueda, setBusqueda]= useState({});
     const [especialidadesCompletas,setEspecialidadesCompletas]= useState(["Elija una opción"])
     const [resultados,setResultados]= useState(["No se obtuvieron resultados"])
+    const [sinResultados,setSinResultados]= useState(false);
 
     const handleChange= async e=>{
         await setBusqueda({
@@ -29,13 +30,20 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
     
     const buscar=e=>{
         e.preventDefault();
-        fetch(Apiurl+urlBusqueda.prestadores+busqueda.palabraBuscada)
+        console.log("La url:",Apiurl+urlBusqueda.prestadores+busqueda.palabraBuscada )
+        fetch(Apiurl+urlBusqueda.prestadores+"&"+busqueda.palabraBuscada)
         .then(response=>response.json())
         .then(response=>{
+            console.log(response);
+            if(response=="No se encontraron resultados de la busqueda"){
+                setSinResultados(true)
+            }
+            
           setResultados(response.result)
+          setBusquedaDone(true);
         })
         .catch(error=>console.log(error))
-        setBusquedaDone(true);
+        
     }
 
     useEffect(()=>{
@@ -81,7 +89,9 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
                         Volver
                     </h1>
                 </div>
-                
+                {
+                    sinResultados && <h1 className="mt-10 mb-2 font-semibold text-2xl">No se encontraron resultados de la busqueda</h1>
+                }
                 {
                     busquedaDone && <ResultadosCartilla resultados={resultados}/>
                 }
