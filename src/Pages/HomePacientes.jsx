@@ -16,10 +16,13 @@ export const PacientesContext= createContext();
 
 
 const HomePacientes =({area})=> {
+    const setArea= useAppStore((state)=>state.setArea);
     const {cartillaOpen}= useContext(PerfilContext);
     const {login,permisosPrestadores}= useContext(PerfilContext);
     const [buttons, setButtons]= useState([]);
     const irACartilla=useRef();
+
+    setArea(area)
 
     const scrollCallback = () => {
         irACartilla.current?.scrollIntoView({ behavior: 'smooth' })

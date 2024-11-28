@@ -1,5 +1,6 @@
 import FormComponents from "./FormComponent";
-import { formObject } from "../../data/constantes";
+import { formularioContacto } from "../../data/constantes";
+import { Apiurl } from "../../services/apiPortal";
 
 const Contacto =()=>{
 
@@ -9,7 +10,7 @@ const Contacto =()=>{
                 <h1 className=" text-4xl font-bold text-center ">Contactanos</h1>
                 <p className=" px-10 mx-auto my-5 text-center md:w-3/4">Queremos brindarles el mejor servicio a nuestros profesionales. Contactate con nosotros por cualquier consulta que tengas. Tambien podes mandar tus sugerencias para mejorar nuestros servicios</p>
             </div>
-            <FormComponents formularioInput={formObject}/>
+            <FormComponents formularioInput={formularioContacto}/>
         </div>
     )
 

@@ -60,14 +60,42 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
 
     const HandlerEnviarForm= async data=>{
       console.log("la data:",data)
+      console.log("la url:", formObject.url);
+      
+      if(adaptador!=undefined){
+        
         let url= formObject.url
         let form=adaptador(data)
         axios.post(url, form).then(response=>{
+          console.log(response)
+          if(response.status===200){
+            
             setMessege("Su consulta ha sido enviada correctamente")
             setFormEnviado(true)
-
+  
             return response
+          } else {
+            setMessege("Error al enviar la consulta")
+            setFormEnviado(true)
+            return response
+          }
+
         })
+      } else if(adaptador==undefined){
+        let url= formObject.url
+        axios.post(url,data).then(response=>{
+          console.log(response)
+          if(response.status===200){
+            setMessege("Su consulta ha sido enviada correctamente")
+            setFormEnviado(true)
+            return response
+          } else {
+            setMessege("Error al enviar la consulta")
+            setFormEnviado(true)
+            return response
+          }
+        })
+      }
 
     }
     
@@ -168,7 +196,7 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
                                     return(
                                       <>
                                         <label className="  form-label " htmlFor={form.label.for}>{form.label.text}:</label>
-                                        <textarea className="form-input " name={form.input.name} id={form.input.id} cols="10" rows="5" placeholder={form.input.placeholder} >
+                                        <textarea className="form-input " name={form.input.name} id={form.input.id} cols="10" rows="5" placeholder={form.input.placeholder}  {...register(form.input.name)} >
                                         </textarea>
                                       </>
                                     )

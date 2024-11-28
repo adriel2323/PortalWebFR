@@ -30,6 +30,7 @@ export const PerfilContext= createContext();
 
 
 function App() {
+
   const [CurrentPath, setCuerrentPath]= useState(window.location.pathname)
   const [login,setLogin]= useState(false);
   const [permisos,setPermisos]=useState({});

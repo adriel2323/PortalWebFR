@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Icon from "../../BotonesHome/IconXs";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
@@ -15,7 +15,6 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
 
     const area= useAppStore((state)=>state.area);
     
-    const urlCartilla= "obrasocial/cartilla/especialidades/1"
     const {volverABuscador,}=useContext(CartillaContext);
     const [isLoad,setIsLoad]=useState(true)
     const [busquedaDone,setBusquedaDone]=useState(false);
@@ -33,8 +32,11 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
     
     const buscar=e=>{
         e.preventDefault();
+        
         switch (area) {
             case "os":
+                console.log("entro en os");
+                
                 fetch(Apiurl+urlBusqueda.prestadores+busqueda.palabraBuscada)
                 .then(response=>response.json())
                 .then(response=>{
@@ -50,6 +52,7 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
                 
                 break;
             case "pacientes":
+                console.log("entro en pacientes");
                 fetch(Apiurl+urlBusqueda.prestadores+"&"+busqueda.palabraBuscada)
                 .then(response=>response.json())
                 .then(response=>{
@@ -66,9 +69,12 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
 
         
             default:
+                console.log("entro en default");
                 fetch(Apiurl+urlBusqueda.prestadores+"&"+busqueda.palabraBuscada)
                 .then(response=>response.json())
                 .then(response=>{
+                    console.log(response);
+                    
                     
                     if(response=="No se encontraron resultados de la busqueda"){
                         setSinResultados(true)
@@ -79,8 +85,8 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
                 })
                 .catch(error=>console.log(error))
                 break;
-                break;
         }
+        console.log("el area:", area);
         console.log("La url:",Apiurl+urlBusqueda.prestadores+busqueda.palabraBuscada )
         
     }
@@ -98,9 +104,6 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
         .catch(error=>console.log(error))
         
       },[])
-
-
-    const usuario= "os"
 
     return(
         <>
