@@ -7,10 +7,13 @@ import Opciones from "./Opciones";
 import { Apiurl } from "../../../services/apiPortal";
 import ResultadosCartilla from "./ResultadosCartilla";
 import { apiBusquedas } from "../../../services/apiPortal";
+import { useAppStore } from "../../../store/appStore";
 
 
 
 const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
+
+    const area= useAppStore((state)=>state.area);
     
     const urlCartilla= "obrasocial/cartilla/especialidades/1"
     const {volverABuscador,}=useContext(CartillaContext);
@@ -30,19 +33,55 @@ const BuscarPrestador =({urlBusqueda, urlEspecialidades})=> {
     
     const buscar=e=>{
         e.preventDefault();
+        switch (area) {
+            case "os":
+                fetch(Apiurl+urlBusqueda.prestadores+busqueda.palabraBuscada)
+                .then(response=>response.json())
+                .then(response=>{
+                    
+                    if(response=="No se encontraron resultados de la busqueda"){
+                        setSinResultados(true)
+                    }
+                    
+                setResultados(response.result)
+                setBusquedaDone(true);
+                })
+                .catch(error=>console.log(error))
+                
+                break;
+            case "pacientes":
+                fetch(Apiurl+urlBusqueda.prestadores+"&"+busqueda.palabraBuscada)
+                .then(response=>response.json())
+                .then(response=>{
+                    
+                    if(response=="No se encontraron resultados de la busqueda"){
+                        setSinResultados(true)
+                    }
+                    
+                setResultados(response.result)
+                setBusquedaDone(true);
+                })
+                .catch(error=>console.log(error))
+                break;
+
+        
+            default:
+                fetch(Apiurl+urlBusqueda.prestadores+"&"+busqueda.palabraBuscada)
+                .then(response=>response.json())
+                .then(response=>{
+                    
+                    if(response=="No se encontraron resultados de la busqueda"){
+                        setSinResultados(true)
+                    }
+                    
+                setResultados(response.result)
+                setBusquedaDone(true);
+                })
+                .catch(error=>console.log(error))
+                break;
+                break;
+        }
         console.log("La url:",Apiurl+urlBusqueda.prestadores+busqueda.palabraBuscada )
-        fetch(Apiurl+urlBusqueda.prestadores+"&"+busqueda.palabraBuscada)
-        .then(response=>response.json())
-        .then(response=>{
-            console.log(response);
-            if(response=="No se encontraron resultados de la busqueda"){
-                setSinResultados(true)
-            }
-            
-          setResultados(response.result)
-          setBusquedaDone(true);
-        })
-        .catch(error=>console.log(error))
         
     }
 

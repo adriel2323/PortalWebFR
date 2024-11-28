@@ -16,7 +16,6 @@ const ResultadosCartilla=({resultados})=>{
                 No se obtuvieron resultados de la busqueda
             </h1>
                         )
-                   
                 }
                 <div className=" hidden md:grid md:grid-cols-4 text-center font-semibold">
                     <h1>

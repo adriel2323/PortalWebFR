@@ -1,6 +1,8 @@
 import { create } from "zustand"
 
 export const useAppStore = create((set) => ({
+    area:"",
+    setArea: (area) => set({ area }),
     url:"/",
     setUrl: (url) => set({ url }),
     openSearch: false,
