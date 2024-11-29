@@ -36,6 +36,7 @@ const FormularioRh = ()=>{
         let url=Apiurl+apiPortal.enviarCV
         setFormulario(data)
         setFormEnviado(true)
+    }
     return(
         <>
         <Transition appear show={isOpen} as={Fragment}>
