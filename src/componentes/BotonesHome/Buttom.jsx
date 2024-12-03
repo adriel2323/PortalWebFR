@@ -3,7 +3,7 @@ import { faUserPen,faFilePen,faUsers,faMoneyCheck,faChalkboardUser,faNotesMedica
 import Icon from "./Icon";
 import { Link } from "react-router-dom";
 
-const Buttom = ({titulo, icono, link, redir, })=>{
+const Buttom = ({titulo, icono, link, redir })=>{
 
     const iconMap= {
         "faMoneyCheck":faMoneyCheck,
@@ -39,14 +39,27 @@ const Buttom = ({titulo, icono, link, redir, })=>{
     return(
     <div className="flex justify-center w-full"  >
         <div className="buttom-A">
-            <Link to={link} className=" buttom-B"  rel="noopener noreferrer" target={redir==1 ? "_blank" : ""}>
-                <div className="grid place-items-stretch content-end h-1/3">
-                    <Icon  icono={iconMap[icono]} />
-                </div>
-                <div className=" text-center flex justify-center h-1/3">
-                    <h3 className="buttom-T" >{titulo}</h3>
-                </div>
-            </Link>
+            {
+                redir==1 ?
+                <a href={link} className=" buttom-B"  rel="noopener noreferrer" target="_blank" >
+                    <div className="grid place-items-stretch content-end h-1/3">
+                        <Icon  icono={iconMap[icono]} />
+                    </div>
+                    <div className=" text-center flex justify-center h-1/3">
+                        <h3 className="buttom-T" >{titulo}</h3>
+                    </div>
+                </a>
+                : 
+                <Link to={link} className=" buttom-B"  rel="noopener noreferrer" >
+                    <div className="grid place-items-stretch content-end h-1/3">
+                        <Icon  icono={iconMap[icono]} />
+                    </div>
+                    <div className=" text-center flex justify-center h-1/3">
+                        <h3 className="buttom-T" >{titulo}</h3>
+                    </div>
+                </Link>
+            }
+            
         </div>
     </div>
     )

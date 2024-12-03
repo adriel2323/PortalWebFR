@@ -11,6 +11,7 @@ import { PerfilContext } from "../App";
 import BuscarCartilla from "../componentes/ObraSocial/Cartilla/BuscarCartilla";
 import { apiBusquedas } from "../services/apiPortal";
 import { transformacionLink_URL } from "../Utilities/transformadorArray.utilities";
+import { useAppStore } from "../store/appStore";
 
 export const PacientesContext= createContext();
 

@@ -311,41 +311,70 @@ export const botones= {
         }
     ],
     "prestadores":[
-            {
-                "id":1,
-                "titulo":"Interconsulta",
-                "link":"interconsultas.fnsr.com.ar",
-                "icono":"faNotesMedical",
-                "redir":1
-            },
-            {
-                "id":2,
-                "titulo":"Geclisa Web",
-                "link":"geclisa.fnsr.com.ar",
-                "icono":"faLaptopMedical",
-                "redir":1
-            },
-            {
-                "id":3,
-                "titulo":"OME y Recetas(PAMI)",
-                "link":"https://cup.pami.org.ar/controllers/loginController.php",
-                "icono":"faPeopleRoof",
-                "redir":1
-            },
-            {
-                "id":4,
-                "titulo":"Sistema de bonos",
-                "link":"bonos.fnsr.com.ar",
-                "icono":"faMoneyCheck",
-                "redir":1
-            },
-            {
-                "id":5,
-                "titulo":"Instructivos",
-                "link":"archivos.fnsr.com.ar",
-                "icono":"faChalkboardUser",
-                "redir":1
-            }
+
+        {
+            "id": 1,
+            "titulo": "Portal de pacientes",
+            "link": "https://portal.fnsr.com.ar",
+            "fecha": "2023-03-22",
+            "area": "sistemas",
+            "icono": "faHospitalUser",
+            "redir": 1
+        },
+        {
+            "id": 2,
+            "titulo": "PAMI",
+            "link": "https://www.pami.org.ar/preinicio",
+            "fecha": "2023-03-22",
+            "area": "pami",
+            "icono": "faMoneyCheck",
+            "redir": 1
+        },
+        {
+            "id": 3,
+            "titulo": "Diagnostico por imagenes",
+            "link": "https://imagenes.fnsr.com.ar",
+            "fecha": "2023-03-22",
+            "area": "sistemas",
+            "icono": "faHospitalUser",
+            "redir": 1
+        },
+        {
+            "id": 4,
+            "titulo": "Geclisa web",
+            "link": "https://geclisa.fnsr.com.ar",
+            "fecha": "2023-03-22",
+            "area": "sistemas",
+            "icono": "faLaptopMedical",
+            "redir": 1
+        },
+        {
+            "id": 5,
+            "titulo": "OME y Recetas(PAMI)",
+            "link": "https://cup.pami.org.ar/controllers/loginController.php",
+            "fecha": "2023-03-22",
+            "area": "pami",
+            "icono": "faPeopleRoof",
+            "redir": 1
+        },
+        {
+            "id": 6,
+            "titulo": "Sistema de bonos",
+            "link": "https://bonos.fnsr.com.ar",
+            "fecha": "2023-03-22",
+            "area": "sistemas",
+            "icono": "faMoneyCheck",
+            "redir": 1
+        },
+        {
+            "id": 7,
+            "titulo": "Archivos",
+            "link": "https://archivos.fnsr.com.ar/",
+            "fecha": "2023-03-22",
+            "area": "sistemas",
+            "icono": "faChalkboardUser",
+            "redir": 1
+        },
         ],
     "os_admin":[
             

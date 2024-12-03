@@ -26,7 +26,6 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
         error:false,
         errorMsg:""
     })
-    console.log("El formulario:", formularioInput);
     
     let [isOpen, setIsOpen] = useState(false)
 

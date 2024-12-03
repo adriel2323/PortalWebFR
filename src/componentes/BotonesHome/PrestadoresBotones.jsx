@@ -6,7 +6,6 @@ import { faPeopleRoof} from "@fortawesome/free-solid-svg-icons";
 import { useAppStore } from '../../store/appStore';
 import ButtomTemplate from './ButtomTemplate';
 
-
 const HomeBotones=({data})=>{
     const usuario= "prestadores";
     const setArea= useAppStore((state)=>state.setArea);
@@ -14,6 +13,8 @@ const HomeBotones=({data})=>{
 
     const [viewModalPAMI, setViewModalPAMI] = useState(false)
     const pami =dropList.pami
+
+    console.log("la data:", data)
 
     return(
     <div className="solapar grid-buttoms">
