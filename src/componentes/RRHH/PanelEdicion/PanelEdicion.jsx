@@ -17,7 +17,7 @@ const PanelEdicion = () => {
     const [isLoad,setIsLoad]= useState(false);
     const [sinUsuario,setSinUsuario]=useState(false);
     const parametrosBusqueda=useParams();
-    const id= parametrosBusqueda.id;
+    const id= parametrosBusqueda.id?parametrosBusqueda.id:"1";
     const url= useAppStore(state=>state.url)
     useEffect(() => {
         fetch(Apiurl+ "rrhh/personal/perfil/"+id)
@@ -107,7 +107,6 @@ const PanelEdicion = () => {
             }
             })
     }
-    console.log("el usuario:",usuario);
     
   return (
     <>

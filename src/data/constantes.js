@@ -503,14 +503,6 @@ export const botones= {
             },
         ],
         "rrhh_administrativos":[
-            
-            {
-                "id":1,
-                "titulo":"Agregar novedad",
-                "icono":"faSquarePlus",
-                "link":"/admin/nov",
-                "redir":0
-            },
             {
                 "id":2,
                 "titulo":"Capacitaciones",

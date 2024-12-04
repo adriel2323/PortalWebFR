@@ -14,8 +14,6 @@ const HomeBotones=({data})=>{
     const [viewModalPAMI, setViewModalPAMI] = useState(false)
     const pami =dropList.pami
 
-    console.log("la data:", data)
-
     return(
     <div className="solapar grid-buttoms">
         { data.map(boton => 

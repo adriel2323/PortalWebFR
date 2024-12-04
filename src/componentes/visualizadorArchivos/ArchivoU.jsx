@@ -1,18 +1,16 @@
+import { PDFViewer } from '@react-pdf/renderer';
 import archivo from '../../../public/archivos/DDJJ2023.pdf'
+import Archivo from "../visualizadorArchivos/Archivos";
+import PanelEdicion from '../RRHH/PanelEdicion/PanelEdicion';
 
 const ArchivoU=()=>{
 
     return(
-        <div className=' absolute w-full h-full' >
-            <object 
-            data={archivo} 
-            type="application/pdf"
-            height="100%"
-            width="100%"
-            >
-
-            </object>
-        </div>
+        <>
+            <PDFViewer style={{ width: "100vw", height: "100vh" }} >
+                <PanelEdicion  />
+            </PDFViewer>
+        </>
     )
 
 

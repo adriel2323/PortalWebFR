@@ -1,8 +1,7 @@
 import Buttom from "./Buttom";
 import { faUserPlus,faPeopleGroup} from "@fortawesome/free-solid-svg-icons";
-import ButtomDrop from "./ButtomDrop";
 import ModalSmButtoms from "../Modales/ModalSmButtoms";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import ButtomTemplate from "./ButtomTemplate";
 import { botones, dropList } from "../../data/constantes";
 import { useUserStore } from "../../store/userStore";

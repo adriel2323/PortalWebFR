@@ -166,8 +166,6 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
                         <div className="flex flex-col">
                             {
                               formObject.form.map(form=>{
-                                console.log();
-                                
                                 switch (form.type) {
                                   case "input":
                                     return(
