@@ -1,5 +1,5 @@
-import Footer from "../componentes/Footer/Footer";
-import Secciones from "../componentes/navBar/Secciones";
+import Footer from "./Components/Footer/Footer";
+import Secciones from "./Components/navBar/Secciones";
 import Construccion from "../../public/imagenes/construccion.svg"
 
 const NotFound =({usuarios})=>{
