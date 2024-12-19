@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { usePersonalStore } from "../../../store/personalStore";
+import { usePersonalStore } from "../../../../store/personalStore";
 import { profesionalAdapter } from "../../Adapters/profesionalAdapter";
 
 const CardProfesional= ({perfil, datos})=>{

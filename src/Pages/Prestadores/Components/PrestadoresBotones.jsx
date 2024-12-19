@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Buttom from '../BotonesHome/Buttom'
-import { dropList } from '../../data/constantes';
-import ModalSmButtoms from '../Modales/ModalSmButtoms';
+import Buttom from '../../Components/BotonesHome/Buttom';
+import { dropList } from '../../../data/constantes';
+import ModalSmButtoms from '../../Components/Modales/ModalSmButtoms';
 import { faPeopleRoof} from "@fortawesome/free-solid-svg-icons";
-import { useAppStore } from '../../store/appStore';
-import ButtomTemplate from './ButtomTemplate';
+import { useAppStore } from '../../../store/appStore';
+import ButtomTemplate from '../../Components/BotonesHome/ButtomTemplate';
 
 const HomeBotones=({data})=>{
     const usuario= "prestadores";

@@ -1,8 +1,8 @@
 import { faUserPen, faPeopleGroup,faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext } from "react";
-import { PerfilContext } from "../../App";
+import { PerfilContext } from "../../../App";
 import { useNavigate } from "react-router-dom";
-import Icon from "./Icon";
+import Icon from "../BotonesHome/Icon";
 
 const ButtomTemplate=({reqLogin,link,icono,titulo, redir, setViewModal})=>{
     // const {login,usuario,permisosRrhh}= useContext(PerfilContext)

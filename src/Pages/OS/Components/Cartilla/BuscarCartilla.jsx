@@ -1,8 +1,8 @@
 
-import Icon from "../../BotonesHome/IconXs";
+import Icon from "../../../Components/BotonesHome/IconXs";
 import { faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 import { useContext,useState,createContext, useEffect } from "react";
-import { PerfilContext } from "../../../App";
+import { PerfilContext } from "../../../../App";
 import Cartilla from "./Cartilla";
 import BuscarPrestador from "./BuscarPrestador";
 import BuscarFarmacia from "./BuscarFarmacia";

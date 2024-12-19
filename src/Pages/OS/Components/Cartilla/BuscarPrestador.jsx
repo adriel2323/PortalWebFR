@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import Icon from "../../BotonesHome/IconXs";
+import Icon from "../../../Components/BotonesHome/IconXs";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import {CartillaContext} from "./BuscarCartilla";
 import Opciones from "./Opciones";
-import { Apiurl } from "../../../services/apiPortal";
+import { Apiurl } from "../../../../services/apiPortal";
 import ResultadosCartilla from "./ResultadosCartilla";
-import { apiBusquedas } from "../../../services/apiPortal";
-import { useAppStore } from "../../../store/appStore";
+// import { apiBusquedas } from "../../../services/apiPortal";
+import { useAppStore } from "../../../../store/appStore";
 
 
 

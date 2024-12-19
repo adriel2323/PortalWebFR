@@ -2,9 +2,9 @@ import Secciones from "../../../Components/navBar/Secciones";
 import ModalBusqueda from "./ModalBusqueda";
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react";
-import { Apiurl } from "../../../services/apiPortal";
+import { Apiurl } from "../../../../services/apiPortal";
 import Resultados from "./Resultados";
-import { useAppStore } from "../../../store/appStore";
+import { useAppStore } from "../../../../store/appStore";
 import CardProfesional from "./cardProfesional";
 
 const CartillaAdministrar = ({area}) => {

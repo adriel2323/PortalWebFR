@@ -1,6 +1,5 @@
-import FormComponents from "./FormComponent";
+import FormComponents from "../../Components/FormComponent";
 import { formularioContacto } from "../../../data/constantes";
-import { Apiurl } from "../../../services/apiPortal";
 
 const Contacto =()=>{
 

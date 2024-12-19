@@ -1,9 +1,9 @@
-import Buttom from "./ButtomLinkExterno";
+import Buttom from "../../Components/BotonesHome/ButtomLinkExterno";
 import { faMoneyCheck } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext } from "react";
-import { PerfilContext } from "../../App";
-import Modal from "../Modales/FormLog"
-import { useUserStore } from "../../store/userStore";
+import { PerfilContext } from "../../../App";
+import Modal from "../../Components/Modales/FormLog"
+import { useUserStore } from "../../../store/userStore";
 
 const PrestadoresBotones=({cuil})=>{
     const usuario= useUserStore((state)=>state.user)

@@ -1,10 +1,10 @@
-import Buttom from "./Buttom";
+import Buttom from "../../Components/BotonesHome/Buttom";
 import { faUserPlus,faPeopleGroup} from "@fortawesome/free-solid-svg-icons";
-import ModalSmButtoms from "../Modales/ModalSmButtoms";
+import ModalSmButtoms from "../../Components/Modales/ModalSmButtoms";
 import { useState } from "react";
-import ButtomTemplate from "./ButtomTemplate";
-import { botones, dropList } from "../../data/constantes";
-import { useUserStore } from "../../store/userStore";
+import ButtomTemplate from "../../Components/BotonesHome/ButtomTemplate";
+import { botones, dropList } from "../../../data/constantes";
+import { useUserStore } from "../../../store/userStore";
 
 
 const RhBotonesAdmin=()=>{

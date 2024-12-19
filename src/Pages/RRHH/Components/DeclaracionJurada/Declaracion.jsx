@@ -1,8 +1,8 @@
 import React from "react";
-import Secciones from "../../Components/navBar/Secciones";
+import Secciones from "../../../Components/navBar/Secciones";
 import DeclaracionForm from "./DeclaracionForm"
-import Footer from "../../Footer/Footer";
-import Icon from "../../BotonesHome/Icon";
+import Footer from "../../../Components/Footer/Footer";
+import Icon from "../../../Components/BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const FormularioCV =()=> {

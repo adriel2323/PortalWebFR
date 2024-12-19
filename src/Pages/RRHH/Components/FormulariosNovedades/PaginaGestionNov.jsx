@@ -1,7 +1,7 @@
 import React from "react";
-import Secciones from "../../../../Components/navBar/Secciones";
+import Secciones from "../../../Components/navBar/Secciones";
 import FormularioNovedades from "./FormularioNovedades";
-import Footer from "../../../../Components/Footer/Footer";
+import Footer from "../../../Components/Footer/Footer";
 import { useContext, useEffect } from "react";
 import { PerfilContext } from "../../../../App";
 import { useUserStore } from "../../../../store/userStore";

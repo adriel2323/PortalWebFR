@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Apiurl } from "../../../services/apiPortal";
-import { usePersonalStore } from "../../../store/personalStore";
+import { Apiurl } from "../../../../services/apiPortal";
+import { usePersonalStore } from "../../../../store/personalStore";
 
 let imagen;
 

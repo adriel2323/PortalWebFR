@@ -1,8 +1,8 @@
 import { faUserPlus,faPeopleRoof,faLaptopMedical} from "@fortawesome/free-solid-svg-icons";
-import { dropList } from "../../data/constantes";
-import ButtomTemplate from "./ButtomTemplate";
+import { dropList } from "../../../data/constantes";
+import ButtomTemplate from "../../Components/BotonesHome/ButtomTemplate";
 import { useState } from "react";
-import ModalSmButtoms from "../Modales/ModalSmButtoms";
+import ModalSmButtoms from "../../Components/Modales/ModalSmButtoms";
 
 const PrestadoresNolog=()=>{
 

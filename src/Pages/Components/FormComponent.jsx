@@ -1,12 +1,12 @@
 import axios from "axios";
-import { Apiurl } from "../../../services/apiPortal";
-import { apiPrestadores } from "../../../services/apiPortal";
+// import { Apiurl } from "../../services/apiPortal";
+// import { apiPrestadores } from "../../services/apiPortal";
 import { useState,useEffect, Fragment,useRef } from "react";
 import { Dialog, Transition } from '@headlessui/react'
-import { enviarForm } from "../../../Utilities/functions";
+// import { enviarForm } from "../../../Utilities/functions";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useAppStore } from "../../../store/appStore";
+import { useAppStore } from "../../store/appStore";
 const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
   const navigate=useNavigate()
   const url=useAppStore(state=>state.url)

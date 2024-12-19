@@ -1,18 +1,18 @@
 import Secciones from "../Components/navBar/Secciones";
-import OsBotones from "./Components/BotonesHome/OsBotones";
-import OsAdminBotones from "./Components/BotonesHome/OsAdminBotones";
+import OsBotones from "./Components/OsBotones";
+import OsAdminBotones from "./Components/OsAdminBotones";
 import Carrusel from "../Components/Carrusel";
 import Nosotros from "../Home/Components/Nosotros";
-import DatosSanatorio from "../Componentes/Secciones/DatosSanatorio";
+import DatosSanatorio from "./Components/DatosSanatorio";
 import Footer from "../Components/Footer/Footer";
 import {  createContext,useContext } from "react";
 import BuscarCartilla from "./Components/Cartilla/BuscarCartilla";
 import { PerfilContext } from "../../App";
 import { apiBusquedas } from "../../services/apiPortal";
-import Novedades from "../Components/Secciones/Novedades";
+import Novedades from "../Components/Novedades";
 import { useUserStore } from "../../store/userStore";
-import { areas } from "../../data/constantes";
 import { useAppStore } from "../../store/appStore";
+import { areas } from "../../data/constantes";
 
 export const OsContext= createContext();
 

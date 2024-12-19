@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
-import { PerfilContext } from "../../App";
+import { PerfilContext } from "../../../App";
 import { useNavigate } from "react-router-dom";
 import Icon from "./Icon";
-import { useUserStore } from "../../store/userStore";
+import { useUserStore } from "../../../store/userStore";
 
 const ButtomLinkExterno=({link,icono,titulo, redir})=>{
     const usuario= useUserStore((state)=>state.user);

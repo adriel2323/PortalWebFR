@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Buttom from "./Buttom";
+import Buttom from "../../Components/BotonesHome/Buttom";
 import { faGear,faPersonCirclePlus, faSquarePlus,faUsers , faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed, faLaptopMedical} from "@fortawesome/free-solid-svg-icons";
-import ButtomTemplate from "./ButtomTemplate";
-import ModalSmButtoms from "../Modales/ModalSmButtoms";
-import data from "../../data/data.json";
-import { botones } from "../../data/constantes";
+import ButtomTemplate from "../../Components/BotonesHome/ButtomTemplate";
+import ModalSmButtoms from "../../Components/Modales/ModalSmButtoms";
+import data from "../../../data/data.json";
+import { botones } from "../../../data/constantes";
 
 const RhBotones=()=>{
     const [viewModalEmpleados,setViewModalEmpleados]=useState(false);

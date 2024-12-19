@@ -1,16 +1,16 @@
-import Carrusel from "../componentes/Secciones/Carrusel"
+import Carrusel from "../Components/Carrusel";
 import Secciones from "../Components/navBar/Secciones";
-import Footer from "../Componentes/Footer/Footer";
+import Footer from "../Components/Footer/Footer";
 
-import RhBotones from "../componentes/BotonesHome/RhBotones";
-import RhBotonesAdmin from "../componentes/BotonesHome/RhBotonesAdmin";
-import Novedades from "../componentes/Secciones/Novedades";
+import RhBotones from "./Components/RhBotones";
+import RhBotonesAdmin from "./Components/RhBotonesAdmin";
+import Novedades from "../Components/Novedades";
 import {  useContext } from "react";
-import Modal from "../componentes/Modales/FormLog" 
-import { PerfilContext } from "../App";
+// import Modal from "../componentes/Modales/FormLog" 
+import { PerfilContext } from "../../App";
 
-import PreguntasFrecuentes from "../componentes/Secciones/PreguntasFrecuentes"
-import { useUserStore } from "../store/userStore";
+import PreguntasFrecuentes from "./Components/PreguntasFrecuentes"
+import { useUserStore } from "../../store/userStore";
 
 
 const HomeRH =({})=>{

@@ -1,7 +1,7 @@
 import React from "react";
-import Secciones from "../../../Components/navBar/Secciones";
+import Secciones from "../../Components/navBar/Secciones";
 import AfiliacionesForm from "./AfiliacionesForm"
-import Icon from "../../../Components/BotonesHome/Icon";
+import Icon from "../../Components/BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 

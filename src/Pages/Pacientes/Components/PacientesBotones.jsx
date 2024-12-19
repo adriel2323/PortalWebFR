@@ -1,8 +1,8 @@
-import { useContext,useState } from "react";
-import Buttom from "../../../Components/BotonesHome/Buttom";
+import { useContext } from "react";
+import Buttom from "../../Components/BotonesHome/Buttom";
 import { faGear,faPersonCirclePlus, faSquarePlus, faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed, faLaptopMedical} from "@fortawesome/free-solid-svg-icons";
-import { PacientesContext } from "../../Pages/HomePacientes";
-import ButtomOpen from "../../../Components/BotonesHome/ButtomOpen";
+// import { PacientesContext } from "../../Pages/HomePacientes";
+import ButtomOpen from "../../Components/BotonesHome/ButtomOpen";
 import { PerfilContext } from "../../../App";
 import { botones } from "../../../data/constantes";
 

@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
-import Secciones from "../../../../../Components/navBar/Secciones";
-import Footer from "../../../../../Components/Footer/Footer";
-import Icon from "../../../../../Components/BotonesHome/Icon";
+import Secciones from "../../../Components/navBar/Secciones";
+import Footer from "../../../Components/Footer/Footer";
+import Icon from "../../../Components/BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { apiBusquedas, Apiurl } from "../../../../services/apiPortal";
 import {  useParams } from "react-router-dom";

@@ -1,11 +1,11 @@
 import { useEffect,useState } from "react";
-import Secciones from "../../../../Components/navBar/Secciones";
-import Footer from "../../../../Components/Footer/Footer";
-import Icon from "../../../../Components/BotonesHome/Icon";
+import Secciones from "../../../Components/navBar/Secciones";
+import Footer from "../../../Components/Footer/Footer";
+import Icon from "../../../Components/BotonesHome/Icon";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { apiRRHHCv, Apiurl } from "../../../../services/apiPortal";
 import { areasPersonal, formulario } from "../../../../data/constantes";
-import Formulario from "../../../Prestadores/Components/FormComponent";
+import Formulario from "../../../Components/FormComponent";
 import { perfilAdapter, userEditAdapter } from "../../../../Utilities/Adapters/user.adapter";
 import { Link, useParams } from "react-router-dom";
 import { messegesAPI } from "../../../../constantes/constantes";

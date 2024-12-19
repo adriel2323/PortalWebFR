@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { dropList } from "../../data/constantes";
+// import { dropList } from "../../data/constantes";
 
 const Dropdown =()=>{
     const [isOpen, setIsOpen]= useState(false)

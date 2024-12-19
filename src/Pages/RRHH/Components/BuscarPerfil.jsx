@@ -8,7 +8,7 @@ import { Apiurl,apiRRHHCv } from "../../../services/apiPortal";
 
 import {  faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Secciones from "../../../Components/navBar/Secciones";
+import Secciones from "../../Components/navBar/Secciones";
 import { userAdapter } from "../../../Utilities/Adapters/user.adapter";
 
 import { useUserStore } from "../../../store/userStore";

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Icon from "../../BotonesHome/Icon"
+import Icon from "../../../Components/BotonesHome/Icon"
 import { faArrowAltCircleLeft, faX } from "@fortawesome/free-solid-svg-icons"
-import { useAppStore } from "../../../store/appStore"
+import { useAppStore } from "../../../../store/appStore"
 
 function ModalBusqueda({children}) {
   const setOpenSearch=useAppStore((state)=>state.setOpenSearch)

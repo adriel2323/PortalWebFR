@@ -1,9 +1,9 @@
 import Secciones from "../Components/navBar/Secciones";
-import Carrusel from "../../Components/Carrusel";
-import Novedades from "../../Components/Novedades";
-import HomeBotones from "../../Components/BotonesHome/PacientesBotones";
-import Footer from "../../Components/Footer/Footer";
-import ListadoProf from "../componentes/Secciones/ListadoProfesionales";
+import Carrusel from "../Components/Carrusel";
+import Novedades from "../Components/Novedades";
+import HomeBotones from "./Components/PacientesBotones";
+import Footer from "../Components/Footer/Footer";
+import ListadoProf from "./Components/ListaProfesionales";
 import { useContext,useState,useEffect, createContext , useRef} from "react";
 import { Apiurl,apiLinks } from "../../services/apiPortal";
 import {links} from "../../constantes/constantes";

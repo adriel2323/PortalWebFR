@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Icon from "../../BotonesHome/IconXs";
+import Icon from "../../../Components/BotonesHome/IconXs";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useContext,useEffect } from "react";
-import { OsContext } from "../../../Pages/OS/HomeOs";
+import { OsContext } from "../../HomeOs";
 import {CartillaContext} from "./BuscarCartilla";
 import Opciones from "./Opciones";
-import { Apiurl } from "../../../services/apiPortal";
+import { Apiurl } from "../../../../services/apiPortal";
 import ResultadosCartilla from "./ResultadosCartilla";
 
 const BuscarFarmacias =({urlBusqueda})=> {

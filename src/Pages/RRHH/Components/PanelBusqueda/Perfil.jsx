@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Apiurl } from "../../../services/apiPortal";
-import { deMiliADias,diferenciaDias } from "../../../Utilities/funcionesTransf";
+import { Apiurl } from "../../../../services/apiPortal";
+import { deMiliADias,diferenciaDias } from "../../../../Utilities/funcionesTransf";
 import PerfilCV from "./PerfilCV";
 
 let imagen;

@@ -1,11 +1,10 @@
 import { useContext} from "react";
-import { Link } from "react-router-dom";
-import Icon from "../../BotonesHome/Icon";
-import { faArrowAltCircleLeft, faX } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { Link } from "react-router-dom";
+// import Icon from "../../../Components/BotonesHome/Icon";
+// import { faArrowAltCircleLeft, faX } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalBusqueda from "./ModalBusqueda";
-import { areasRRHH } from "../../../data/constantes";
-import { paramsSerchCV } from "../../../data/constantes";
+import { areasRRHH,paramsSerchCV } from "../../../../data/constantes";
 
 const Categorias=({contexto})=>{
     const {buscar,handleChange,setOpenSearch,descripcion}=useContext(contexto)

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import { apiPortal, Apiurl,MESSAGES } from "../services/apiPortal";
-import { PerfilContext } from "../App";
+import { apiPortal, Apiurl,MESSAGES } from "../../services/apiPortal";
+import { PerfilContext } from "../../App";
 import { Link } from "react-router-dom";
 import { Dialog } from '@headlessui/react'
 

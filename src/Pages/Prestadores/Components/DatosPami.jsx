@@ -1,6 +1,6 @@
 import { formularioPAMI } from "../../../data/constantes";
-import Secciones from "../../../Components/navBar/Secciones";
-import Formulario from "./FormComponent";
+import Secciones from "../../Components/navBar/Secciones";
+import Formulario from "../../Components/FormComponent";
 
 const DatosPami =()=>{
 

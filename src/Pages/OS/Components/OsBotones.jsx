@@ -1,10 +1,10 @@
-import Buttom from "./Buttom";
+import Buttom from "../../Components/BotonesHome/Buttom";
+import ButtomDrop from "../../Components/BotonesHome/ButtomDrop";
+import ButtomOpen from "../../Components/BotonesHome/ButtomOpen";
 import { faGear,faPersonCirclePlus, faSquarePlus,faUsers , faHouseLaptop,faUserPlus,faPeopleGroup,faUser,faChalkboardUser,faMoneyCheck,faLaptop,faNotesMedical, faRectangleList,faHelmetSafety,faBoxTissue,faFlaskVial,faPeopleRoof, faUserDoctor, faHospitalUser,faHospital, faCaretDown, faCommentDots, faCalendarCheck,faBuilding,faBed, faLaptopMedical} from "@fortawesome/free-solid-svg-icons";
-import ButtomDrop from "./ButtomDrop";
-import ButtomOpen from "./ButtomOpen";
-import { useState,useContext } from "react";
-import { PerfilContext } from "../../App";
-import { botones, dropList } from "../../data/constantes";
+import { useContext } from "react";
+import { PerfilContext } from "../../../App";
+import { botones, dropList } from "../../../data/constantes";
 
 
 const RhBotones=()=>{
