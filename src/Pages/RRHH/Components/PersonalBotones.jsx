@@ -24,7 +24,7 @@ const PrestadoresBotones=({cuil})=>{
         </div>
         {
                     viewForm && (
-                        <Modal />
+                        <Modal viewForm={viewForm} setViewForm={setViewForm} />
                     )
                 }
     </>

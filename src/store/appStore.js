@@ -15,4 +15,6 @@ export const useAppStore = create((set) => ({
     setDescripcion: (descripcion) => set({ descripcion }),
     showSmall: false,
     setShowSmall: (showSmall) => set({ showSmall }),
+    elementoEdicion: null,
+    setElementoEdicion: (elementoEdicion) => set({ elementoEdicion }),
 }))

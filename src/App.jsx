@@ -86,6 +86,7 @@ function App() {
           abrirCerrarCartilla, cartillaOpen, login, setLogin, permisos,setPermisos
         }}>	
         <Routes>
+          {/* HOME generales */}
             <Route path='/' element={<HomeGeneral area= {areas.GENERAL} />} />
             <Route path={publicRoutes.GENERAL} element={<HomeGeneral area= {areas.GENERAL} />} />
             <Route path={publicRoutes.PRESTADORES} element={<HomePrestadores area= {areas.PRESTADORES} />} />
@@ -96,16 +97,22 @@ function App() {
             {/* <Route path='/usuariopami' element={<Personal />} /> */}
             <Route path={publicRoutes_os.AFILIACIONES} element={<Afiliaciones area= {areas.OS}/>} />
             {/* <Route path='/archivos' element={<ArchivosU area= {areas.RRHH}/>} /> */}
+
+            {/* Recursos Humanos */}
+            {/* Prestadores */}
             <Route path='/admin/cartilla' element={<CartillaAdministrar  area= {areas.RRHH}/>} />
             <Route path="/admin/profesional/:id" element={<PanelEdicionProfesional area= {areas.RRHH}/>} />
+            {/* Personal*/}
             <Route path={privatesRoutes.RRHH_PERSONAL} element={<BuscarPerfil descripcion={"PERSONAL"} area= {areas.RRHH}/>} />
             <Route path={privatesRoutes.RRHH_PERSONAL_EDICION} element={<PanelEdicion area= {areas.RRHH} />} />
             <Route path={privatesRoutes.RRHH_PERSONAL_RECIBOS} element={<ReciboSueldo area= {areas.RRHH}/>} />
+            {/* Nuevos ingresos */}
             <Route path={privatesRoutes.RRHH_CV} element={<FormularioCV area= {areas.RRHH}/>} />
-            
             <Route path={privatesRoutes.RRHH_CV_BUSCAR} element={<BuscarPerfil descripcion={"CV"} area= {areas.RRHH}/>} />
             <Route path={privatesRoutes.RRHH_DECLARACION}  element={<Declaracion area= {areas.RRHH}/>} />
+            {/* Novedades */}
             <Route path={privatesRoutes.RRHH_ADMIN_NOVEDADES} element={<PaginaGestionNov area= {areas.GENERAL}/>} />
+            
             <Route path='*' element={<NotFound area= {areas.GENERAL}/>} /> 
         </Routes>
     </PerfilContext.Provider>

@@ -49,7 +49,7 @@ export default function Example() {
             
               )
         }
-        <Disclosure as="div" className="mt-2">
+        {/* <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
               <Disclosure.Button className="flex w-full border-2 border-mygray justify-between rounded-lg bg-white px-4 py-2 text-left text-xl font-medium text-mygray hover:bg-secondary hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
@@ -66,7 +66,7 @@ export default function Example() {
               </Disclosure.Panel>
             </>
           )}
-        </Disclosure>
+        </Disclosure> */}
       </div>
     </div>
   )
