@@ -41,13 +41,17 @@ const PerfilPersonal= ({perfil})=>{
                             <h2 className=" text-sm lg:text-base font-medium sm:font-bold lg:pr-2">Fecha de ingreso: </h2>
                             <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.ingreso!=""?perfil.ingreso:"Sin definir"}</h2>
                         </div>
+                        <div className="lg:mb-2 flex  overflow-scroll mr-2 lg:mr-0">
+                            <h2 className=" text-sm lg:text-base font-medium sm:font-bold lg:pr-2">Fecha de Baja: </h2>
+                            <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.egreso != undefined ?perfil.egreso:"Personal Activo"}</h2>
+                        </div>
                         <div className="lg:mb-2 flex  overflow-scroll">
-                            <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Area: </h2>
+                            <h2 className=" text-sm lg:text-base font-medium sm:font-bold  lg:pr-2">Area: </h2>
                             <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.area != ""?perfil.area:"Sin definir"}</h2>
                         </div>
                         
                         <div className="lg:mb-2  flex overflow-scroll">
-                            <h2 className=" text-sm lg:text-base font-medium lg:pr-2">Link Archivos: </h2>
+                            <h2 className=" text-sm lg:text-base font-medium sm:font-bold  lg:pr-2">Link Archivos: </h2>
                             <h2 className=" text-sm lg:text-base lg:h-[5vh]  w-full overflow-scroll font-light"> { perfil.archivos?'SI':'NO'  }</h2>
                         </div>
                     </div>

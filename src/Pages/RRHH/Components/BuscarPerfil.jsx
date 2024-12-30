@@ -100,6 +100,8 @@ const BuscarPerfil=({descripcion})=>{
             .then(response=>response.json())
             .then(response=>{
             let resultados=response.result
+            console.log("los perfiles:", resultados);
+            
             let resultadosAdaptados=resultados.map((result)=>{
                 return userAdapter(result)
             })

@@ -62,11 +62,11 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
     const HandlerEnviarForm= async data=>{
       
       if(adaptador!=undefined){
-        
+        console.log(data);
+
         let url= formObject.url
         let form=adaptador(data)
         axios.post(url, form).then(response=>{
-          console.log(response)
           if(response.status===200){
             
             setMessege("Su consulta ha sido enviada correctamente")
@@ -83,7 +83,6 @@ const Formulario = ({formularioPrev,formularioInput, apiSend,adaptador})=>{
       } else if(adaptador==undefined){
         let url= formObject.url
         axios.post(url,data).then(response=>{
-          console.log(response)
           if(response.status===200){
             setMessege("Su consulta ha sido enviada correctamente")
             setFormEnviado(true)

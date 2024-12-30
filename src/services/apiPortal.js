@@ -1,6 +1,6 @@
 import axios from "axios";
 import { userAdapter } from "../Utilities/Adapters/user.adapter";
-export const Apiurl= "http://10.84.1.112:3001/api/";
+export const Apiurl= "http://10.84.1.112:3002/api/";
 
 export const apiPortal = {
     enviarCV: "rrhh/cv/cargar",
