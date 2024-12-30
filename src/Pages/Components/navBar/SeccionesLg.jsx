@@ -39,9 +39,9 @@ const SeccionesLg= ({area})=>{
                     
                 </ul>
         </div>
-        <div className= " bg-white z-65 drop-shadow-2xl py-2  w-[100vw] h-20">
+        <div className= " bg-white z-65 drop-shadow-2xl py-1  w-[100vw] sm:h-[7rem] ">
             <div className="  flex justify-between  px-10">
-                <Link className="flex items-center align-middle aspect-square  h-16" to="/home">
+                <Link className="flex items-center align-middle aspect-square  h-[6rem]" to="/home">
                     { area !="os" && (<img className=" flex" src={imagenes.logoFundacion} alt="" />)}
                     { area=="os" && (<img className=" align-middle w-12" src={imagenes.logoUOM} alt="" />)}
                     
@@ -56,7 +56,7 @@ const SeccionesLg= ({area})=>{
                     </div>
                 </div>
                 {usersLog.includes(area) &&(
-                    <Sesion className="" setViewForm={setViewForm} />
+                    <Sesion className="h-full" setViewForm={setViewForm} />
                     )
                 }
             </div>
